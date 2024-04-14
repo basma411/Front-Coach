@@ -8,9 +8,10 @@ import { HiOutlineViewList } from "react-icons/hi";
 import '../coach/css/login.css'
 export const NavBar = () => {
   return (
-<Navbar bg="light" data-bs-theme="light" style={{ display: 'flex', flexDirection: 'column'}}>
-        <div style={{ width: '100%', backgroundColor: 'blue',height:'40px',padding_tob:'20x'}}>hello</div>
-      <Container style={{ display: "flex", justifyContent: "space-around" }}>
+<Navbar bg="light" expand="lg" data-bs-theme="light" style={{ display: 'flex', flexDirection: 'column' }} className="m-0 p-0">
+
+       
+      <Container style={{ display: "flex", justifyContent: "space-around" }} className="m-0 p-4">
         <div>
           <img src={logo} alt="Logo" style={{ marginRight: "20px" }} />
           <HiOutlineViewList  style={{fontSize:"40px",color:"gray"}} />
