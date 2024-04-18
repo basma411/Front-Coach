@@ -3,8 +3,9 @@ import Accueil from './components/admin/Accueil';
 import Login from './components/admin/Login';
 import { Route, Routes } from 'react-router-dom';
 import LoginCoch from './components/coach/LoginCoch';
-import { NavBar } from './components/coach/NavBar';
 import ProfilCoach from './components/coach/ProfilCoach';
+import SettingProfil from './components/coach/SettingProfil';
+import EditProfile from './components/coach/EditProfile';
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
  
       <Route path="/coach/login" element={<><LoginCoch/></>}/>
       <Route path="/coach/profil" element={<><ProfilCoach/></>}/>
+      <Route path="/coach/setting" element={<><SettingProfil/></>}/>
+      <Route path="/coach/edit" element={<><EditProfile/></>}/>
 
      </Routes>
 

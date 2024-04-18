@@ -1,38 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
-/*NavBar*/
-.nav-link-custom {
-    font-family: 'Rubik', Arial, sans-serif;
-    font-weight: 300;
-    font-size: 16px;
- color: rgb(43, 43, 43);
-    line-height: 30px;
-    /* padding: 20px; */
-}
-.nav-link-custom:hover {
-    background-color:#275491;
-}
-
-.barheader {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 10px 100px 10px 10px; 
-    margin: auto;
-    width: 100%;
-    background-color: #275491;
-    font-size: 16;
-    font-weight: 400;
-    color: #D3C418;
-    
-}
-.iconCompte{
-    font-size: 30px;
-} 
-.barheader h5{
-    margin: 0;
-    padding: 5px;
-}
 /*section1*/
 .ImagePlatforme {
     position: absolute;
@@ -47,17 +14,18 @@ font-family: 'Rubik', Arial, sans-serif;
 font-weight: 400;
 line-height: 72px;
 }
+.container-Form{
+  width: 100%;
+  height: 400px;
+}
 .Form-Login {
     position: absolute;
-    bottom: -29%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -12%);
     background-color: #FFFFFF;
-    width: 700px;
-    height: 335;
-    padding:58px;
+    padding:60px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -67,6 +35,7 @@ line-height: 72px;
   
   .Form-Login label {
     display: block;
+    padding-bottom: 10px;
   }
   
   .Form-Login input[type="email"],
@@ -108,4 +77,15 @@ color: black; }
   }
   
   
+  .ImagePlatforme {
+    margin-bottom: 20px; /* Ajoute une marge en bas de l'image */
+  }
+  
+  .FormSection {
+    margin-bottom: 40px; /* Ajoute une marge en bas du formulaire */
+  }
+  
+  .NewsletterSection {
+    margin-bottom: 30px; /* Ajoute une marge en bas de la section newsletter */
+  }
   

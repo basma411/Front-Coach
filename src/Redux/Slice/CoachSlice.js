@@ -17,6 +17,16 @@ export const getCoach = createAsyncThunk('coach/get', async (data, { rejectWithV
       return rejectWithValue(error);
     }
   });
+  export const updatePassword = createAsyncThunk('/editpassword', async (data, { rejectWithValue,dispatch }) => {
+
+    try {
+        const res=await axios.put(`/api/coach/edit`,data,{headers:{token:localStorage.getItem('token')}})
+
+        return res.data
+    } catch (error) {
+        return rejectWithValue(error.response.data.msg)
+    }
+     })
   const coachSlice = createSlice({
     name: "coach",
     initialState: {
@@ -63,6 +73,21 @@ export const getCoach = createAsyncThunk('coach/get', async (data, { rejectWithV
           state.isLoading = false;
           state.token = null;
           state.isAuth = false;
+          state.error = action.payload.error;
+        })
+        .addCase(updatePassword.pending, (state) => {
+          state.isLoading = true;
+          state.error = null;
+        })
+        .addCase(updatePassword.fulfilled, (state, action) => {
+          state.isLoading = false;
+          state.error = null;
+          
+    
+        })
+        .addCase(updatePassword.rejected, (state, action) => {
+          state.isLoading = false;
+         
           state.error = action.payload.error;
         });
     },

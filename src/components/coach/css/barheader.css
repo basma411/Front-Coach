@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+.barheader {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px 100px 10px 10px; 
+    margin: auto;
+    width: 100%;
+    background-color: #275491;
+    font-size: 16px; /* Specify the unit */
+    font-weight: 400;
+    color: #D3C418;
+    font-family: 'Rubik', sans-serif; /* Apply the Rubik font */
+}
+.iconCompte {
+    font-size: 30px;
+} 
+.barheader h5 {
+    margin: 0;
+    padding: 5px;
+    font-size: 16px;
+}
+/* Ajoutez ces styles à votre fichier barheader.css */
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 20px); /* Positionne le menu déroulant 10px en dessous de l'élément déclencheur */
+    right: 0; /* Aligne le menu déroulant à droite de l'élément déclencheur */
+    z-index: 1000; /* Assure que le menu déroulant soit au-dessus des autres éléments */
+}
+
+.barheader.selected {
+    background-color:#D3C418; /* Changez la couleur de fond lorsque l'option est sélectionnée */
+    color: #fff; /* Changez la couleur du texte lorsque l'option est sélectionnée */
+}

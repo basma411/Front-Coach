@@ -1,0 +1,84 @@
+
+.Site-Footer {
+    background-color: #fff;
+margin: 0 50px;  }
+  
+  .container {
+    width: 100%; /* Adjust container width as needed */
+    margin: 0 80px;
+    padding: 0 20px;
+  }
+  
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns with equal width */
+    gap: 80px; /* Adjust gap between columns as needed */
+  }
+  
+  .footer-column {
+    text-align: start; /* Center content in each column */
+    
+  }
+  .footer-column h3 {
+    color: #000;
+    font-family: "Rubik", arial, sans-serif;
+    font-weight: 300;
+font-size: 1.75rem;
+margin-bottom: 0.5rem;
+box-sizing: border-box;
+}
+.footer-column P{
+    margin-bottom: 1rem;
+    line-height: 1.7;
+    font-family: "Rubik", arial, sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: gray;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+    text-align: left;
+
+}
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;}
+    ul {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+
+    }
+    ul li a{
+        text-decoration: none;
+color:rgb(209, 209, 11);
+cursor: pointer;
+line-height: 1.7;
+font-family: "Rubik", arial, sans-serif;
+font-weight: 300;
+font-size: 16px;
+
+    }
+    .contact{
+        display: flex;
+        justify-content: start;
+        align-items: center;
+    }
+    .contact p {
+       padding: 0px 10px;
+       color: rgb(209, 209, 11);
+    }
+    .style-sosial {
+
+        margin: 0px 10px;
+        color: rgb(209, 209, 11);  
+    }

@@ -1,11 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
 .container {
     display: flex;
-    justify-content: space-between;
-    padding:100px 80px;
+    justify-content: space-around;
+    padding:100px 10px;
    
 
   }
+  /*left*/
   .Photo{
     display: flex;
+flex-direction: column;
+align-items: start;  }
+  .Photo p{
+font-size:20px ;
+font-weight: 300;
+font-family: 'Rubik', Arial, sans-serif;
+line-height:25px ;
+color: #797979;
   }
-  
+  .Contact{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F7F7F7;
+    margin-top: 30px;
+    height:100vh;
+  }
+  .Contact h1{
+    color: rgb(255,205,51);
+    padding-bottom: 30px;
+
+font-weight: 400;
+font-size: 40px;
+
+  }
+ 
+  .information div{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-left:  20PX; ;
+  }
+  .information div h3{
+    padding-left:10px;
+    font-size: 20px;
+    font-weight: 300;
+  }
+  /*right*/
+  .abonner{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F7F7F7;
+    padding: 40px 40px 80px 40px;
+  }
+  .abonner p{
+    text-align: center;
+    padding-bottom: 20px;
+    color: #333;
+    font-size: 18px;  }
+  .abonner button {
+    padding: 25px 50px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    background-color: #295591;
+    border-bottom: 8px solid #295591;
+    border-left: 18px solid #295591;
+    border-right: 18px solid #295591;
+    border-top: 8px solid #295591;
+}
+.titre {
+background-color: #EFEFEF;
+margin-top: 15px ;
+text-align: center;
+padding: 10px;
+    color: #333;
+    font-family: "Rubik", arial, sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 2;
+
+}
+.domaines-intervention  {
+  background-color: #F9F9F9;
+  color:#333;
+  padding:10px;
+}
+.list  h3{
+ 
+  padding:10px;
+  font-family: "Rubik", arial, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  text-align: start;
+
+}
+.bio{
+  background-color: #F9F9F9;
+  color:#333;
+  padding:10px;
+  text-align: start;
+}
+.bio p{
+  padding:10px;
+  font-family: "Rubik", arial, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  text-align: start;
+
+
+}

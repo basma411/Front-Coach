@@ -5,6 +5,9 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../Redux/Slice/CoachSlice";
 import Barheader from "./Barheader";
+import '../coach/css/login.css'
+import Newsletter from "./Newsletter";
+import Footer from "./Footer";
 
 const LoginCoch = () => {
   const email = useRef();
@@ -43,6 +46,8 @@ const LoginCoch = () => {
           </h2>
         </div>
       </div>
+      <div className="container-Form">
+
       <form  className="Form-Login">
           <h5>Connectez-vous:
 </h5>
@@ -59,6 +64,10 @@ const LoginCoch = () => {
               navigator('/coach/profil');
             }}>Connecter</button>
         </form>
+
+      </div>
+        <Newsletter/>
+        <Footer/>
     </>
   );
 };
