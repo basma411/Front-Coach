@@ -45,25 +45,25 @@ const Edit = () => {
   
     // Ajoutez le fichier à l'objet FormData
     formData.append('imagee', imageCoach);
-  
-    // const updatedData = {
-    //   NomPrenom: Nom.current.value,
-    //   Email: Email.current.value,
-    //   NumTel: Numero.current.value,
-    //   Site: Site.current.value,
-    //   Facebook: Facebook.current.value,
-    //   LinkedIn: LinkedIn.current.value,
-    //   Youtube: Youtube.current.value,
-    //   Bio: Bio.current.value,
-    //   DomainesIntervention: selectedDomaines.join(","),
-    //   MethodesDeCoaching: selectedMethode.join(","),
-    //   Photo: formData // Assurez-vous que Photo contient FormData
-    // };
+    formData.append('NomPrenom', Nom.current.value);
+    formData.append('Email',Email.current.value);
+    formData.append('NumTel', Numero.current.value);
+    formData.append('Site',Site.current.value);
+    formData.append('Facebook',Facebook.current.value);
+    formData.append('LinkedIn', LinkedIn.current.value);
+    formData.append('Youtube',Youtube.current.value);
+    formData.append('Bio',Bio.current.value);
+    formData.append('DomainesIntervention', selectedDomaines.join(","));
+    formData.append('MethodesDeCoaching',selectedMethode.join(","));
+   
+   
+   
     console.log(imageCoach)
     // Envoyez le formData et les autres données mises à jour à votre action Redux
 // dispatch(UpdateCoach({ _id: id, Email: Email.current.value, Bio: Bio.current.value }));
 console.log(id)
-dispatch(UpdateImage({ id, formData }));
+// dispatch(UpdateImage({ id, formData }));
+dispatch(UpdateCoach({ id,formData}));
 
     navigator("/coach/profil");
   };
@@ -134,8 +134,7 @@ dispatch(UpdateImage({ id, formData }));
           <div className="domaineIntervention">
             <label>Domaines d'intervention</label>
             <br />
-            {domaines &&
-              domaines.map((domaine, index) => (
+            {Array.isArray(domaines) && domaines.map((domaine, index) => (
                 <div key={index} className="domaine checkbox">
                   <div>
                     <input

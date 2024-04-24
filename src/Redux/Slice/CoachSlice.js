@@ -29,9 +29,9 @@ export const updatePassword = createAsyncThunk('coach/updatePassword', async (da
   }
 });
 
-export const UpdateCoach = createAsyncThunk('coach/update', async (formData, { rejectWithValue,dispatch }) => {
+export const UpdateCoach = createAsyncThunk('coach/update', async ({ id, formData }, { rejectWithValue,dispatch }) => {
   try {
-    const res = await axios.put(`/api/putCoach/${formData._id}`, formData, { 
+    const res = await axios.put(`/api/putCoach/${id}`, formData, { 
       headers: { 
         token: localStorage.getItem('token'),
       } 
