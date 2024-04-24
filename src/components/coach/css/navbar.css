@@ -3,10 +3,14 @@
 .nav-link-custom {
   font-family: 'Rubik', Arial, sans-serif;
   font-weight: 300;
-  font-size: 20px;
+  font-size: 17px;
 color: rgb(43, 43, 43);
   line-height: 30px;
-  padding: 30px;
+  padding: 20px;
+  /* margin-left: 50px ; 
+   margin-right: 50px ; */
+
+
 }
 .nav-link-custom:hover {
   background-color:#275491;
@@ -17,4 +21,7 @@ color: rgb(43, 43, 43);
   font-size:40px;
   color:gray ;
   display: none;
+}
+.me-auto {
+  padding-right: 200px;
 }

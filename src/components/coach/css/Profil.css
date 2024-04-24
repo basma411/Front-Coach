@@ -11,7 +11,7 @@
   .Photo{
     display: flex;
 flex-direction: column;
-align-items: start;  }
+align-items: flex-start;  }
   .Photo p{
 font-size:20px ;
 font-weight: 300;
@@ -38,7 +38,7 @@ font-size: 40px;
  
   .information div{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     padding-left:  20PX; ;
   }

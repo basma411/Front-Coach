@@ -2,17 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 import "./css/edit.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getdomaine } from "../../Redux/Slice/DomainSlice";
-import { UpdateCoach, UpdateImage, getCoach } from "../../Redux/Slice/CoachSlice";
+import { UpdateCoach, getCoach } from "../../Redux/Slice/CoachSlice";
 import { useNavigate, useParams } from "react-router-dom";
 
 const Edit = () => {
   const dispatch = useDispatch();
   const navigator = useNavigate();
-
   const { id } = useParams();
-
   const { domaines } = useSelector((state) => state.domaine);
-  const { coachdata } = useSelector((state) => state.coach);
+  const { coachdata, isLoading, error } = useSelector((state) => state.coach);
   const Nom = useRef();
   const Email = useRef();
   const Numero = useRef();
@@ -21,7 +19,7 @@ const Edit = () => {
   const LinkedIn = useRef();
   const Youtube = useRef();
   const Bio = useRef();
-  // const Image = useRef();
+  const Image=useRef()
   const [selectedDomaines, setSelectedDomaines] = useState(
     coachdata.DomainesIntervention || [] // Assurer une valeur par défaut []
   );
@@ -29,53 +27,40 @@ const Edit = () => {
   const [selectedMethode, setselectedMethode] = useState(
     coachdata.MethodesDeCoaching || [] 
   );
-  const [imageCoach,setImage]=useState(null)
+  const [selectedImage, setSelectedImage] = useState(null);
+
   useEffect(() => {
     dispatch(getCoach());
     dispatch(getdomaine());
-
   }, [dispatch]);
 
-  const handleFileChange = (e) => {
-    setImage(e.target.files[0]);
-  };
-  const handleSubmit = (event) => {
+  const handleUpdate = async (event) => {
     event.preventDefault();
-    const formData = new FormData();
-  
-    // Ajoutez le fichier à l'objet FormData
-    formData.append('imagee', imageCoach);
-  
-    // const updatedData = {
-    //   NomPrenom: Nom.current.value,
-    //   Email: Email.current.value,
-    //   NumTel: Numero.current.value,
-    //   Site: Site.current.value,
-    //   Facebook: Facebook.current.value,
-    //   LinkedIn: LinkedIn.current.value,
-    //   Youtube: Youtube.current.value,
-    //   Bio: Bio.current.value,
-    //   DomainesIntervention: selectedDomaines.join(","),
-    //   MethodesDeCoaching: selectedMethode.join(","),
-    //   Photo: formData // Assurez-vous que Photo contient FormData
-    // };
-    console.log(imageCoach)
-    // Envoyez le formData et les autres données mises à jour à votre action Redux
-// dispatch(UpdateCoach({ _id: id, Email: Email.current.value, Bio: Bio.current.value }));
-console.log(id)
-dispatch(UpdateImage({ id, formData }));
-
-    navigator("/coach/profil");
+     const formData = new FormData();
+    formData.append('Photo', Image.current.files[0]);
+    const updatedData = {
+      // _id: id,
+      NomPrenom: Nom.current.value,
+      Email: Email.current.value,
+      NumTel: Numero.current.value,
+      Site: Site.current.value,
+      Facebook: Facebook.current.value,
+      LinkedIn: LinkedIn.current.value,
+      Youtube: Youtube.current.value,
+      Bio: Bio.current.value,
+      DomainesIntervention: selectedDomaines.join(","),
+      MethodesDeCoaching: selectedMethode.join(","),
+// Photo:selectedImage
+    };
+    try {
+      await dispatch(UpdateCoach({_id: id,Photo:selectedImage}));
+console.log(selectedImage.name)
+      navigator("/coach/profil");
+    } catch (error) {
+      console.error("Erreur lors de la mise à jour du coach :", error);
+    }
+   
   };
-  
-// const handleSubmit = async (e) => {
-//   e.preventDefault();
-//   const formData = new FormData();
-//   formData.append('image', imageCoach);
-//   dispatch(UpdateCoach({_id:id,formData}));
-// };
-
-
   const handleDomaineChange = (domaine, checked) => {
     if (checked) {
       setSelectedDomaines((prevSelected) => [...prevSelected, domaine]);
@@ -84,6 +69,9 @@ dispatch(UpdateImage({ id, formData }));
         prevSelected.filter((selected) => selected !== domaine)
       );
     }
+  };
+  const handleImageChange = (event) => {
+    setSelectedImage(event.target.files[0]);
   };
   const handleMethodeChange = (methode, checked) => {
     if (checked) {
@@ -97,7 +85,7 @@ dispatch(UpdateImage({ id, formData }));
   return (
     <div className="container">
       <div className="Profil">
-        <form onSubmit={handleSubmit}>
+        <form>
           <label htmlFor="Nom">Nom et Prénom</label>
           <br />
           <textarea
@@ -383,19 +371,22 @@ dispatch(UpdateImage({ id, formData }));
             ref={Bio}
           />
           <br />
-          <label htmlFor="otherFileInput:">Photo:</label>
+          <label htmlFor="Photo:">Photo:</label>
           <div className="updateimage">
-          <img src={`http://localhost:8000/${coachdata.Photo}`} style={{ width: '150px',height:'150px' }}               name="imagee"
-  />
-            <input
+          <img src={`http://localhost:8000/${coachdata.Photo}`} alt="Coach" />
+          <input
               type="file"
-              name="imagee"
-
-onChange={handleFileChange}            />
+              id="Photo"
+              name="Photo"
+              accept="image/*"
+              style={{ border: "transparent" }}
+              onChange={handleImageChange} // Gérez le changement de l'image ici
+              ref={Image}
+            />
           </div>
 
           <div className="Update">
-            <button type="submit" >
+            <button type="submit" onClick={handleUpdate}>
               Modifier
             </button>
             <h3>Annuler</h3>

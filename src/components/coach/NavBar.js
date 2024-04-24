@@ -9,17 +9,17 @@ import '../coach/css/navbar.css'
 
 export const NavBar = () => {
   return (
-<Navbar bg="light" expand="lg" data-bs-theme="light" style={{ display: 'flex', flexDirection: 'column' }} className="m-0 p-0">
+<Navbar bg="light" expand="lg" data-bs-theme="light" style={{ display: 'flex', flexDirection: 'column',margin:' 80px' }} className="m-0 p-0">
 
        
-      <Container style={{ display: "flex", justifyContent: "space-between" }} className="m-0 p-0">
+      <Container style={{ display: "flex", justifyContent: "space-between" }} className="m-0 p-1">
         <div>
-          <img src={logo} alt="Logo" style={{ marginRight: "20px" }} />
+          <img src={logo} alt="Logo" style={{ paddingLeft: "100px" }} />
           <HiOutlineViewList className="icon-LIST" />
 
         </div>
         <div>
-          <Nav className="me-auto" >
+        <Nav className="me-auto ">
             <Nav.Link href="#Accueil" className="nav-link-custom">Accueil</Nav.Link>
             <Nav.Link href="#Trouver un coach" className="nav-link-custom">Trouver un coach</Nav.Link>
             <Nav.Link href="#Espace Coach" className="nav-link-custom">Espace Coach</Nav.Link>

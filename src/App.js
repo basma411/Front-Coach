@@ -19,7 +19,7 @@ function App() {
       <Route path="/coach/login" element={<><LoginCoch/></>}/>
       <Route path="/coach/profil" element={<><ProfilCoach/></>}/>
       <Route path="/coach/setting" element={<><SettingProfil/></>}/>
-      <Route path="/coach/edit" element={<><EditProfile/></>}/>
+      <Route path="/coach/edit/:id" element={<><EditProfile/></>}/>
 
      </Routes>
 
