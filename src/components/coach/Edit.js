@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./css/edit.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getdomaine } from "../../Redux/Slice/DomainSlice";
-import { UpdateCoach, UpdateImage, getCoach } from "../../Redux/Slice/CoachSlice";
+import { UpdateCoach, getCoach } from "../../Redux/Slice/CoachSlice";
 import { useNavigate, useParams } from "react-router-dom";
 
 const Edit = () => {
@@ -21,19 +21,25 @@ const Edit = () => {
   const LinkedIn = useRef();
   const Youtube = useRef();
   const Bio = useRef();
-  // const Image = useRef();
   const [selectedDomaines, setSelectedDomaines] = useState(
     coachdata.DomainesIntervention || [] // Assurer une valeur par défaut []
   );
 
+  const [selectedLangue, setselectedLangue] = useState(coachdata.Langues || []);
   const [selectedMethode, setselectedMethode] = useState(
-    coachdata.MethodesDeCoaching || [] 
+    coachdata.MethodesDeCoaching || []
   );
-  const [imageCoach,setImage]=useState(null)
+  const [selectedTypesClient, setSelectedTypesClient] = useState(
+    coachdata.TypesDeClients || []
+  );
+  const [tarifPreferentiel, setTarifPreferentiel] = useState(
+    coachdata.TarifPreferentiel || false
+  );
+  const [imageCoach, setImage] = useState(null);
   useEffect(() => {
     dispatch(getCoach());
     dispatch(getdomaine());
-
+    
   }, [dispatch]);
 
   const handleFileChange = (e) => {
@@ -42,39 +48,27 @@ const Edit = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData();
-  
+
     // Ajoutez le fichier à l'objet FormData
-    formData.append('imagee', imageCoach);
-    formData.append('NomPrenom', Nom.current.value);
-    formData.append('Email',Email.current.value);
-    formData.append('NumTel', Numero.current.value);
-    formData.append('Site',Site.current.value);
-    formData.append('Facebook',Facebook.current.value);
-    formData.append('LinkedIn', LinkedIn.current.value);
-    formData.append('Youtube',Youtube.current.value);
-    formData.append('Bio',Bio.current.value);
-    formData.append('DomainesIntervention', selectedDomaines.join(","));
-    formData.append('MethodesDeCoaching',selectedMethode.join(","));
-   
-   
-   
-    console.log(imageCoach)
-    // Envoyez le formData et les autres données mises à jour à votre action Redux
-// dispatch(UpdateCoach({ _id: id, Email: Email.current.value, Bio: Bio.current.value }));
-console.log(id)
-// dispatch(UpdateImage({ id, formData }));
-dispatch(UpdateCoach({ id,formData}));
+    formData.append("imagee", imageCoach);
+    formData.append("NomPrenom", Nom.current.value);
+    formData.append("Email", Email.current.value);
+    formData.append("NumTel", Numero.current.value);
+    formData.append("Site", Site.current.value);
+    formData.append("Facebook", Facebook.current.value);
+    formData.append("LinkedIn", LinkedIn.current.value);
+    formData.append("Youtube", Youtube.current.value);
+    formData.append("Bio", Bio.current.value);
+    formData.append("DomainesIntervention", selectedDomaines.join(","));
+    formData.append("MethodesDeCoaching", selectedMethode.join(","));
+    formData.append("Langues", selectedLangue.join(","));
+    formData.append("TypesDeClients", selectedTypesClient.join(","));
+    formData.append("TarifPreferentiel", tarifPreferentiel ? "true" : "false");
+    dispatch(UpdateCoach({ id, formData }));
+    alert("Modification effectuée avec succès!");
 
     navigator("/coach/profil");
   };
-  
-// const handleSubmit = async (e) => {
-//   e.preventDefault();
-//   const formData = new FormData();
-//   formData.append('image', imageCoach);
-//   dispatch(UpdateCoach({_id:id,formData}));
-// };
-
 
   const handleDomaineChange = (domaine, checked) => {
     if (checked) {
@@ -93,6 +87,28 @@ dispatch(UpdateCoach({ id,formData}));
         prevSelected.filter((selected) => selected !== methode)
       );
     }
+  };
+  const handleLangueChange = (Langue, checked) => {
+    if (checked) {
+      setselectedLangue((prevSelected) => [...prevSelected, Langue]);
+    } else {
+      setselectedLangue((prevSelected) =>
+        prevSelected.filter((selected) => selected !== Langue)
+      );
+    }
+  };
+  const handleTypeClientChange = (typeClient, checked) => {
+    if (checked) {
+      setSelectedTypesClient((prevSelected) => [...prevSelected, typeClient]);
+    } else {
+      setSelectedTypesClient((prevSelected) =>
+        prevSelected.filter((selected) => selected !== typeClient)
+      );
+    }
+  };
+  
+  const handleTarifChange = (e) => {
+    setTarifPreferentiel(e.target.checked);
   };
   return (
     <div className="container">
@@ -134,7 +150,8 @@ dispatch(UpdateCoach({ id,formData}));
           <div className="domaineIntervention">
             <label>Domaines d'intervention</label>
             <br />
-            {Array.isArray(domaines) && domaines.map((domaine, index) => (
+            {Array.isArray(domaines) &&
+              domaines.map((domaine, index) => (
                 <div key={index} className="domaine checkbox">
                   <div>
                     <input
@@ -142,8 +159,10 @@ dispatch(UpdateCoach({ id,formData}));
                       id={`domaine-${index}`}
                       name={`domaine-${index}`}
                       defaultChecked={
-                        selectedDomaines &&
-                        selectedDomaines.includes(domaine.NomDomaine)
+                        coachdata.DomainesIntervention &&
+                        coachdata.DomainesIntervention.includes(
+                          domaine.NomDomaine
+                        )
                       }
                       onChange={(e) =>
                         handleDomaineChange(
@@ -194,7 +213,7 @@ dispatch(UpdateCoach({ id,formData}));
               "Gafsa",
             ].map((gouvernorat, index) => (
               <option key={index} value={gouvernorat}>
-                {gouvernorat}
+                {gouvernorat} defaultValue={coachdata.Governorat}
               </option>
             ))}
           </select>
@@ -203,35 +222,35 @@ dispatch(UpdateCoach({ id,formData}));
           <br />
           <div className="checkbox">
             <div>
-            <input
-              type="checkbox"
-              id="face-a-face"
-              name="face-a-face"
-              defaultChecked={
-                selectedMethode &&
-                selectedMethode.includes("Face à face")
-              }
-              onChange={(e) =>
-                handleMethodeChange("Face à face", e.target.checked)
-              }
-            />
+              <input
+                type="checkbox"
+                id="face-a-face"
+                name="face-a-face"
+                defaultChecked={
+                  coachdata.MethodesDeCoaching &&
+                  coachdata.MethodesDeCoaching.includes("Face à face")
+                }
+                onChange={(e) =>
+                  handleMethodeChange("Face à face", e.target.checked)
+                }
+              />
             </div>
             <label htmlFor="face-a-face">Face à face</label>
           </div>
           <div className="checkbox">
             <div>
-            <input
-              type="checkbox"
-              id="en-ligne"
-              name="en-ligne"
-              defaultChecked={
-                selectedMethode &&
-                selectedMethode.includes("En ligne")
-              }
-              onChange={(e) =>
-                handleMethodeChange("En ligne", e.target.checked)
-              }
-            />
+              <input
+                type="checkbox"
+                id="en-ligne"
+                name="en-ligne"
+                defaultChecked={
+                  coachdata.MethodesDeCoaching &&
+                  coachdata.MethodesDeCoaching.includes("En ligne")
+                }
+                onChange={(e) =>
+                  handleMethodeChange("En ligne", e.target.checked)
+                }
+              />
             </div>
             <label htmlFor="en-ligne">En ligne</label>
           </div>
@@ -246,7 +265,9 @@ dispatch(UpdateCoach({ id,formData}));
               defaultChecked={
                 coachdata.Langues && coachdata.Langues.includes("Arabe")
               }
+              onChange={(e) => handleLangueChange("Arabe", e.target.checked)}
             />
+
             <label htmlFor="arabe">Arabe</label>
           </div>
           <div className="checkbox">
@@ -257,6 +278,7 @@ dispatch(UpdateCoach({ id,formData}));
               defaultChecked={
                 coachdata.Langues && coachdata.Langues.includes("Français")
               }
+              onChange={(e) => handleLangueChange("Français", e.target.checked)}
             />
 
             <label htmlFor="français">Français</label>
@@ -269,6 +291,7 @@ dispatch(UpdateCoach({ id,formData}));
               defaultChecked={
                 coachdata.Langues && coachdata.Langues.includes("Anglais")
               }
+              onChange={(e) => handleLangueChange("Anglais", e.target.checked)}
             />
             <label htmlFor="anglais">Anglais</label>
           </div>
@@ -280,10 +303,8 @@ dispatch(UpdateCoach({ id,formData}));
               type="checkbox"
               id="personne"
               name="personne"
-              defaultChecked={
-                coachdata.TypesDeClients &&
-                coachdata.TypesDeClients.includes("Personne")
-              }
+              defaultChecked={coachdata.TypesDeClients && coachdata.TypesDeClients.includes("Personne")}
+              onChange={(e) => handleTypeClientChange("Personne", e.target.checked)}
             />
             <label htmlFor="personne">Personne</label>
           </div>
@@ -292,10 +313,8 @@ dispatch(UpdateCoach({ id,formData}));
               type="checkbox"
               id="organisation"
               name="organisation"
-              defaultChecked={
-                coachdata.TypesDeClients &&
-                coachdata.TypesDeClients.includes("Organisation")
-              }
+              defaultChecked={coachdata.TypesDeClients && coachdata.TypesDeClients.includes("Organisation")}
+              onChange={(e) => handleTypeClientChange("Organisation", e.target.checked)}
             />
             <label htmlFor="organisation">Organisation</label>
           </div>
@@ -313,7 +332,7 @@ dispatch(UpdateCoach({ id,formData}));
                 id="organisation-oui"
                 name="tarif"
                 defaultChecked={coachdata.TarifPreferentiel === true}
-              />
+                onChange={handleTarifChange}              />
               <label htmlFor="organisation-oui">oui</label>
             </div>
 
@@ -323,7 +342,7 @@ dispatch(UpdateCoach({ id,formData}));
                 id="organisation-non"
                 name="tarif"
                 defaultChecked={coachdata.TarifPreferentiel === false}
-              />
+                onChange={handleTarifChange}              />
               <label htmlFor="organisation-non">non</label>
             </div>
           </div>
@@ -384,19 +403,16 @@ dispatch(UpdateCoach({ id,formData}));
           <br />
           <label htmlFor="otherFileInput:">Photo:</label>
           <div className="updateimage">
-          <img src={`http://localhost:8000/${coachdata.Photo}`} style={{ width: '150px',height:'150px' }}               name="imagee"
-  />
-            <input
-              type="file"
+            <img
+              src={`http://localhost:8000/${coachdata.Photo}`}
+              style={{ width: "150px", height: "150px" }}
               name="imagee"
-
-onChange={handleFileChange}            />
+            />
+            <input type="file" name="imagee" onChange={handleFileChange} />
           </div>
 
           <div className="Update">
-            <button type="submit" >
-              Modifier
-            </button>
+            <button type="submit">Modifier</button>
             <h3>Annuler</h3>
           </div>
         </form>
@@ -406,5 +422,3 @@ onChange={handleFileChange}            />
 };
 
 export default Edit;
-
-
