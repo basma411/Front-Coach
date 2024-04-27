@@ -30,7 +30,6 @@ const ProfilCoach = () => {
 
   return (
     <>
-      <BarheaderProfil />
 
       <NavBar />
       <div
@@ -180,7 +179,7 @@ const ProfilCoach = () => {
           </div>
           <h2 className="tarif titre list">Tarif préférentiel (réduction de 10% pour les clients de la plateforme)</h2>
           <div className="Tarif list">
-          {coachdata.TarifPreferentiel ? <h3>oui</h3> : null}
+          {coachdata.TarifPreferentiel ? <h3>oui</h3> : <h3>non</h3>}
 
           </div>
         </div>

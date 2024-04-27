@@ -23,7 +23,7 @@ const BarheaderProfil = () => {
             navigator('/coach/login'); // Remplacez 'LoginPage' par le nom de la page de connexion dans votre application
         }
         if (option === "Settings") {
-            navigator('/coach/setting'); // Remplacez 'LoginPage' par le nom de la page de connexion dans votre application
+            navigator(`/coach/setting/${coachdata._id}`); // Remplacez 'LoginPage' par le nom de la page de connexion dans votre application
         }
         if (option === "Modifier Profil") {
             navigator(`/coach/edit/${coachdata._id}`); // Remplacez 'LoginPage' par le nom de la page de connexion dans votre application

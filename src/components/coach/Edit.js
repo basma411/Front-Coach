@@ -33,9 +33,10 @@ const Edit = () => {
     coachdata.TypesDeClients || []
   );
   const [tarifPreferentiel, setTarifPreferentiel] = useState(
-    coachdata.TarifPreferentiel || false
-  );
+    coachdata.TarifPreferentiel || false)
   const [imageCoach, setImage] = useState(null);
+  const [gouvernorat, setGouvernorat] = useState(coachdata.Governorat || "");
+
   useEffect(() => {
     dispatch(getCoach());
     dispatch(getdomaine());
@@ -64,8 +65,10 @@ const Edit = () => {
     formData.append("Langues", selectedLangue.join(","));
     formData.append("TypesDeClients", selectedTypesClient.join(","));
     formData.append("TarifPreferentiel", tarifPreferentiel ? "true" : "false");
+    formData.append("Governorat", gouvernorat);
+
     dispatch(UpdateCoach({ id, formData }));
-    alert("Modification effectuée avec succès!");
+    alert("Profil modifié");
 
     navigator("/coach/profil");
   };
@@ -107,8 +110,11 @@ const Edit = () => {
     }
   };
   
-  const handleTarifChange = (e) => {
-    setTarifPreferentiel(e.target.checked);
+  const handleTarifChange = (value) => {
+    setTarifPreferentiel(value);
+  };
+  const handleGouvernoratChange = (e) => {
+    setGouvernorat(e.target.value);
   };
   return (
     <div className="container">
@@ -183,8 +189,9 @@ const Edit = () => {
           <br />
           <select
             id="gouvernorat"
-            defaultValue={coachdata.Governorat}
-            className="Gouvernorat"
+            value={gouvernorat}
+            onChange={handleGouvernoratChange}
+                        className="Gouvernorat"
           >
             {[
               "Tunis",
@@ -213,7 +220,7 @@ const Edit = () => {
               "Gafsa",
             ].map((gouvernorat, index) => (
               <option key={index} value={gouvernorat}>
-                {gouvernorat} defaultValue={coachdata.Governorat}
+                {gouvernorat} 
               </option>
             ))}
           </select>
@@ -328,21 +335,22 @@ const Edit = () => {
           <div>
             <div className="checkbox">
               <input
-                type="checkbox"
+                type="radio"
                 id="organisation-oui"
                 name="tarif"
-                defaultChecked={coachdata.TarifPreferentiel === true}
-                onChange={handleTarifChange}              />
+                checked={tarifPreferentiel === true}
+                onChange={() => handleTarifChange(true)}          />
               <label htmlFor="organisation-oui">oui</label>
             </div>
 
             <div className="checkbox">
               <input
-                type="checkbox"
+                type="radio"
                 id="organisation-non"
                 name="tarif"
-                defaultChecked={coachdata.TarifPreferentiel === false}
-                onChange={handleTarifChange}              />
+                checked={tarifPreferentiel === false}
+                onChange={() => handleTarifChange(false)}
+                          />
               <label htmlFor="organisation-non">non</label>
             </div>
           </div>

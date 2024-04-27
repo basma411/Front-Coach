@@ -25,7 +25,6 @@ const LoginCoch = () => {
 
   return (
     <>
-    <Barheader/>
       <NavBar />
       <div
         className="ImagePlatforme"

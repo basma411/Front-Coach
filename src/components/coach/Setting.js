@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './css/Setting.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { updatePassword } from '../../Redux/Slice/CoachSlice';
-import { useNavigate } from 'react-router-dom';
+import { getCoach, updatePassword } from '../../Redux/Slice/CoachSlice';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Setting = () => {
     const { coachdata } = useSelector((state) => state.coach);
@@ -10,7 +10,12 @@ const Setting = () => {
     const newPassword = useRef();
     const Email = useRef();
     const dispatch = useDispatch();
-    const navigator = useNavigate(); // Correctement initialisé en tant que navigateur
+    const navigator = useNavigate(); 
+    const { id } = useParams();
+    useEffect(() => {
+        dispatch(getCoach());
+        
+      }, [dispatch]);
     const handleSubmit = (e) => {
         e.preventDefault();
         const emailValue = Email.current.value;
@@ -18,7 +23,7 @@ const Setting = () => {
         const newPasswordValue = newPassword.current.value;
 
         // Dispatchez l'action updatePassword avec les données du formulaire
-        dispatch(updatePassword({ newEmail: emailValue, oldPassword: oldPasswordValue, newPassword: newPasswordValue }));
+        dispatch(updatePassword({ _id:id,newEmail: emailValue, oldPassword: oldPasswordValue, newPassword: newPasswordValue }));
         
         // Utilisez navigator() pour naviguer vers la nouvelle page
         navigator('/coach/profil');

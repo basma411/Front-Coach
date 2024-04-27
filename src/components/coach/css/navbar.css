@@ -14,6 +14,7 @@ color: rgb(43, 43, 43);
 }
 .nav-link-custom:hover {
   background-color:#275491;
+  color: #fff;
 }
 
 .icon-LIST{
@@ -23,5 +24,9 @@ color: rgb(43, 43, 43);
   display: none;
 }
 .me-auto {
-  padding-right: 200px;
+  padding-right: 70px;
+}
+.nav-link-custom {
+  text-decoration: none;
+  
 }

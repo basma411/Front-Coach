@@ -19,15 +19,18 @@ export const getCoach = createAsyncThunk('coach/get', async (_, { rejectWithValu
   }
 });
 
-export const updatePassword = createAsyncThunk('coach/updatePassword', async (data, { rejectWithValue, dispatch }) => {
+export const updatePassword = createAsyncThunk('coach/updatePassword', async (payload, { rejectWithValue, dispatch }) => {
   try {
-    const res = await axios.put(`/api/putCoach`, data, { headers: { token: localStorage.getItem('token') } });
-    dispatch(getCoach()); // Mettre à jour les données du coach après le changement de mot de passe
+    const { id, oldPassword, newPassword, newEmail } = payload;
+
+    const res = await axios.put(`/api/coach/edit/${id}`, { oldPassword, newPassword, newEmail }, { headers: { token: localStorage.getItem('token') } });
+    dispatch(getCoach()); 
     return res.data;
   } catch (error) {
     return rejectWithValue(error);
   }
 });
+
 
 export const UpdateCoach = createAsyncThunk('coach/update', async ({ id, formData }, { rejectWithValue,dispatch }) => {
   try {
@@ -36,26 +39,14 @@ export const UpdateCoach = createAsyncThunk('coach/update', async ({ id, formDat
         token: localStorage.getItem('token'),
       } 
     });
-    dispatch(getCoach()); // Mettre à jour les données du coach après le changement de mot de passe
+    dispatch(getCoach()); 
 
     return res.data;
   } catch (error) {
     return rejectWithValue(error);
   }
 });
-export const UpdateImage = createAsyncThunk('coach/updatePhoto', async ({ id, formData }, { rejectWithValue, dispatch }) => {
-  try {
-    const res = await axios.put(`/api/editImage/${id}`, formData, {
-      headers: {
-        token: localStorage.getItem('token'),
-      }
-    });
-    dispatch(getCoach()); // Mettre à jour les données du coach après le changement de mot de passe
-    return res.data;
-  } catch (error) {
-    return rejectWithValue(error);
-  }
-});
+
 
 const coachSlice = createSlice({
   name: "coach",
@@ -114,7 +105,7 @@ const coachSlice = createSlice({
       })
       .addCase(updatePassword.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.error.message; // Récupérer le message d'erreur depuis action.error
+        state.error = action.error.message; 
       })
       .addCase(UpdateCoach.pending, (state) => {
         state.isLoading = true;
@@ -128,20 +119,8 @@ const coachSlice = createSlice({
         state.isLoading = false;
         state.error = action.error.message;
       })
-      .addCase(UpdateImage.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addCase(UpdateImage.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        // state.Photo = action.payload.imagePath;
-
-      })
-      .addCase(UpdateImage.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.error.message;
-      })
+   
+    
   },
 });
 
