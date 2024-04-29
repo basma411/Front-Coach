@@ -1,0 +1,39 @@
+.grid-container {
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+margin: 0 auto;
+  }
+  
+ 
+  
+  .subgrid-item {
+    display: flex;
+    flex-direction: column;
+ 
+    padding: 10PX;
+  }
+  
+  
+  .subgrid-item h2 {
+    font-family: "Rubik", Arial, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 2;
+    color: #000;
+    margin: 0;
+  }
+  
+  .subgrid-item p {
+    font-family: "Rubik", Arial, sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 2;
+    color: gray;
+    text-align: start;
+  }
+  .subgrid-item h3{
+    color:  #e3d80a;
+    font-size: 16px;
+  }
+  

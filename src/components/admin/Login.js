@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import './css/style.css';
+// import './css/style.css';
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -30,7 +30,6 @@ const Login = () => {
           <h3 href="#" className="mdpoublie">Mot de passe oublié ?</h3>
           <input 
             type="submit" 
-            id="submit" 
             value="LOGIN"    
             onClick={() => {
               dispatch(login({ login: user.current.value, password: password.current.value }));

@@ -51,10 +51,10 @@ const LoginCoch = () => {
           <h5>Connectez-vous:
 </h5>
           <div>
-            <input type="email" id="email" name="email"  ref={email}/>
+            <input type="email" name="email"  ref={email}/>
           </div>
           <div>
-            <input type="password" id="password" name="password" ref={password} />
+            <input type="password"  name="password" ref={password} />
           </div>
           <label >Mot de passe oublié?</label>
 

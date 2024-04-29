@@ -8,7 +8,6 @@ import Setting from './Setting'
 const SettingProfil = () => {
   return (
 <>
-<BarheaderProfil/>
 <NavBar/>
 <Setting/>
 <Newsletter/>

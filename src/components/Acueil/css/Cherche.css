@@ -1,0 +1,79 @@
+
+.cherche-coach {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    margin: 0 auto;
+    gap: 20px;
+  }
+  /* .Trouver-coach {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  } */
+  .cherche h1 {
+    width: 75%;
+    margin-top: 100px;
+    text-align: center;
+  
+    font-size: 47px;
+    color: #275491;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  margin: 100px auto 0  auto;
+  }
+ 
+  .Domaines,
+  .coachcherche,
+  .gouvernorat {
+    width: 400px;
+    font-size: 0.2rem;
+    margin-top: 10px;
+    font-family: "Rubik", arial, sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1;
+    color: gray;
+    border: solid 1px gray;
+  }
+  .coachcherche {
+height: 42px;      }
+.coachcherche:focus {
+  border: transparent ;
+  border:solid 2px red ;      }
+  .cherche-coach button {
+    width: 200px; /* Set width for consistency */
+    height: 40px;
+    margin: 10px;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    background-color: #fdc900;
+    border-radius: 10px;
+    color: #fff;
+    border: 2px solid transparent;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+  
+  .cherche-coach select {
+    width: 200px;
+    height: 40px;
+    font-family: "Rubik", arial, sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 2;
+    color: gray;
+  }
+  .cherche-coach select:first-child {
+    width: 300px;
+    height: 40px;
+  }
+  /* .cherche .coachcherche:focus {
+    border: solid 1px blue !important;
+  } */
+  

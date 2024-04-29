@@ -34,13 +34,13 @@ const Setting = () => {
             <div className='Profil'>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="Email">Email</label><br />
-                    <input type="text" id="nom" name="email" defaultValue={coachdata.Email} ref={Email} /><br />
+                    <input type="text"  name="email" defaultValue={coachdata.Email} ref={Email} /><br />
 
                     <label htmlFor="oldPassword">Ancien mot de passe</label><br />
-                    <input type="password" id="oldPassword" name="oldPassword" ref={oldPassword} /><br />
+                    <input type="password"  name="oldPassword" ref={oldPassword} /><br />
 
                     <label htmlFor="newPassword">Nouveau mot de passe</label><br />
-                    <input type="password" id="newPassword" name="newPassword" ref={newPassword} /><br />
+                    <input type="password"  name="newPassword" ref={newPassword} /><br />
 
                     <div className='UpdatePasword'>
                         <button type="submit">Modifier</button>

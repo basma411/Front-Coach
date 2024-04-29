@@ -33,7 +33,7 @@ form {
   form textarea{
       background-color:transparent;
   width: 100%;
-  border: solid 1px rgb(175, 173, 173) !important;
+  border: solid 1px rgb(175, 173, 173) ;
   
   }
   .domaineIntervention {
@@ -82,8 +82,17 @@ justify-content: center;
 align-items: center;
 gap:30px
 
+
     }
-   
+    textarea:hover{
+        border: solid 1PX rgb(36, 233, 233);
+
+    }
+    .updateimage input{
+
+      height: 37px;
+        
+            }
     .Update {
         display: flex;
         justify-content: center;

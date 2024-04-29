@@ -1,0 +1,76 @@
+.Atelier-container {
+    width: 80%;
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   gap: 50PX;
+   background: #fff;
+   font-family: "Rubik", arial, sans-serif;
+   font-weight: 300;
+   font-size: 18px;
+   line-height: 2;
+   color: gray;
+   margin: 120px auto;
+  }
+     .heading {
+        max-width: 480px;
+        margin-bottom: 60px;
+    }
+    .heading h2{
+        font-size: 45px;
+    margin: 0;
+    padding: 0;
+    color: #275491;
+    }
+    .atelier-image{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+
+    }
+    .atelier-image .icon-play{
+
+        position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 80px;
+  color: #e3d80a;
+  ;
+    }
+    .atelier-image button{
+        width: 50%;
+    padding: 10px 20px;
+    background-color: #275491;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    margin: 20px 130px  ;
+
+    }
+ 
+  
+  
+
+ 
+    
+  /* #button {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+  } */
+  
+  .button:hover {
+    background-color: #0261c7; 
+  }
+
+   

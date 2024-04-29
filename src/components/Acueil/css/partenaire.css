@@ -1,0 +1,44 @@
+:root {
+    --marquee-width: 80vw;
+    --marquee-height: 20vh;
+    --marquee-elements: 12; /* Si vous avez besoin */
+    --marquee-elements-displayed: 5;
+    --marquee-element-width: calc(var(--marquee-width) / var(--marquee-elements-displayed));
+     --marquee-animation-duration: calc(var(--marquee-elements) * 1s); 
+  }
+.Partenaire {
+    width: 100%;
+  }
+  
+  .form-groupe h2 {
+    text-align: center;
+    font-size: 36px;
+    color: #275491;
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+  }
+  
+  
+.marquee {
+    width: var(--marquee-width); /* Utilisation de la variable pour la largeur */
+    margin: 0 auto; /* Centrage horizontal */
+    list-style: none;
+    height: var(--marquee-height); /* Utilisation de la variable pour la hauteur */
+    display: flex;
+    animation: scrolling  var(--marquee-animation-duration) linear infinite;
+    gap: 30px; /* Espacement entre les images */
+  }
+  
+  .marquee .marquee-img {
+    margin-right: 0px;
+    border: 1px solid #e9e9e9;
+  }
+  
+  @keyframes scrolling {
+    0% {
+      transform: translateX(-40%);
+    }
+    100% {
+      transform: translateX(calc(-100% + var(--marquee-element-width))); /* Retour à la position de départ */
+    }
+  }
+  

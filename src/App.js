@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './App.css';
 import Accueil from './components/Acueil/Accueil';
 import Login from './components/admin/Login';
 import { Route, Routes } from 'react-router-dom';
@@ -16,6 +15,7 @@ import Evenement from './components/Evenement';
 import Contact from './components/Contact';
 import Vediocoach from './components/Vediocoach';
 import { NavBar } from './components/coach/NavBar';
+import Acueil from './components/Acueil/Accueil';
 
 function App() {
   // Définissez un état pour suivre l'état de connexion de l'utilisateur
@@ -26,7 +26,7 @@ function App() {
       {isAuth ? <BarheaderProfil /> : <Barheader />}
       <Routes>
         <Route path="/admin/login" element={<> <Login /></>} />
-        <Route path="/admin/Accueil" element={<><Accueil /></>} />
+        <Route path="/admin/Accueil" element={<><Acueil /></>} />
 
         <Route path="/coach/login" element={<><LoginCoch /></>} />
         <Route path="/coach/profil" element={<><ProfilCoach /></>} />

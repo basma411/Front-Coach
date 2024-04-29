@@ -17,7 +17,10 @@ align-items: flex-start;}
 form input{
     background-color:transparent;
 width: 100%;
-border: solid 1px rgb(175, 173, 173) !important;
+border: solid 1px gray ;
+height: 50px;
+font-size: 20px;
+color: gray !important;
 
 }
 form input:focus {
