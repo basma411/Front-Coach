@@ -1,44 +1,89 @@
+/* Définition des variables CSS personnalisées */
 :root {
-    --marquee-width: 80vw;
-    --marquee-height: 20vh;
-    --marquee-elements: 12; /* Si vous avez besoin */
-    --marquee-elements-displayed: 5;
-    --marquee-element-width: calc(var(--marquee-width) / var(--marquee-elements-displayed));
-     --marquee-animation-duration: calc(var(--marquee-elements) * 1s); 
-  }
-.Partenaire {
-    width: 100%;
-  }
-  
-  .form-groupe h2 {
-    text-align: center;
-    font-size: 36px;
-    color: #275491;
-    font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
-  }
-  
-  
+  --marquee-width: 80vw; /* Largeur du conteneur du marquee */
+  --marquee-height: 20vh; /* Hauteur du conteneur du marquee */
+  --marquee-elements: 12; /* Nombre total d'éléments dans le marquee */
+  --marquee-elements-displayed: 5; /* Nombre d'éléments affichés à la fois dans le marquee */
+  --marquee-element-width: calc(var(--marquee-width) / var(--marquee-elements-displayed)); /* Largeur de chaque élément dans le marquee */
+  --marquee-animation-duration: calc(var(--marquee-elements) * 3s); /* Durée totale de l'animation */
+}
+
+/* Styles pour le conteneur principal */
+.form-groupe {
+  width: 80%; /* Largeur du formulaire groupe */
+  margin: 0 auto; /* Centrer horizontalement */
+}
+.form-groupe h2{
+  width: 75%;
+  margin-top: 100px;
+  text-align: center;
+
+  font-size: 47px;
+  color: #275491;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+margin: 100px auto 0  auto;
+}
+/* Styles pour le conteneur du marquee */
 .marquee {
-    width: var(--marquee-width); /* Utilisation de la variable pour la largeur */
-    margin: 0 auto; /* Centrage horizontal */
-    list-style: none;
-    height: var(--marquee-height); /* Utilisation de la variable pour la hauteur */
-    display: flex;
-    animation: scrolling  var(--marquee-animation-duration) linear infinite;
-    gap: 30px; /* Espacement entre les images */
-  }
-  
-  .marquee .marquee-img {
-    margin-right: 0px;
-    border: 1px solid #e9e9e9;
-  }
-  
-  @keyframes scrolling {
-    0% {
-      transform: translateX(-40%);
-    }
-    100% {
-      transform: translateX(calc(-100% + var(--marquee-element-width))); /* Retour à la position de départ */
-    }
-  }
-  
+  width: 100%; /* Largeur totale */
+  overflow: hidden; /* Masquer le contenu débordant */
+  color: #eee; /* Couleur du texte */
+  position: relative; /* Position relative pour les éléments enfants absolus */
+}
+
+/* Styles pour la liste non ordonnée */
+ul {
+  list-style-type: disc; /* Style de puce de liste */
+  margin-block-start: 1em; /* Marge avant */
+  margin-block-end: 1em; /* Marge après */
+  margin-inline-start: 0px; /* Marge à gauche */
+  margin-inline-end: 0px; /* Marge à droite */
+  padding-inline-start: 40px; /* Rembourrage à gauche */
+  unicode-bidi: isolate; /* Sens de l'écriture bidirectionnelle isolé */
+}
+
+/* Styles pour le contenu du marquee */
+.marquee-content {
+  list-style: none; /* Supprimer les puces de liste */
+  height: 100%; /* Hauteur totale */
+  display: flex; /* Affichage en mode flex */
+  animation: scrolling var(--marquee-animation-duration) linear infinite; /* Animation du défilement */
+  margin: 0; /* Marge zéro */
+  margin: 30px; /* Marge autour du contenu */
+}
+
+/* Styles pour chaque élément de la liste */
+.marquee-content li {
+  display: flex; /* Affichage en mode flex */
+  justify-content: center; /* Centrer horizontalement */
+  align-items: center; /* Centrer verticalement */
+  flex-shrink: 0; /* Ne pas rétrécir */
+  width: var(--marquee-element-width); /* Largeur calculée de chaque élément */
+  max-height: 100%; /* Hauteur maximale */
+  font-size: calc(var(--marquee-height) * 3 / 4); /* Taille de police */
+  white-space: nowrap; /* Ne pas passer à la ligne */
+}
+
+/* Styles pour les images à l'intérieur des éléments */
+.marquee-content li img {
+  width: 80%; /* Largeur de l'image */
+  border: 1px solid #e9e9e9; /* Bordure */
+}
+
+/* Styles pour chaque élément du marquee */
+.marquee-item {
+  margin-right: 0; /* Marge à droite */
+  padding-right: 0; /* Rembourrage à droite */
+  list-style-type: none; /* Type de puce de liste */
+}
+
+/* Styles pour les images du marquee */
+.marquee-img {
+  height: 200px; /* Hauteur des images */
+}
+
+/* Définition de l'animation du défilement */
+@keyframes scrolling {
+  0% { transform: translateX(0); } /* Début de l'animation */
+  100% { transform: translateX(calc(-192vw)) } /* Fin de l'animation */
+}

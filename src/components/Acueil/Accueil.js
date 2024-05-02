@@ -1,4 +1,7 @@
+import Footer from "../coach/Footer";
+import Newsletter from "../coach/Newsletter";
 import Atelier from "./Atelier";
+import BiblioCoaching from "./BiblioCoaching";
 import ChercheCoach from "./ChercheCoach";
 import Icon from "./Icon";
 import Partenaire from "./Partenaire";
@@ -15,6 +18,9 @@ function Acueil() {
 <Partenaire/>
 <Atelier/>
 <Icon/>
+<BiblioCoaching/>
+<Newsletter/>
+<Footer/>
     </>
   );
 }

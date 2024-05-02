@@ -2,7 +2,6 @@ import React from 'react';
 import image from '../../images/atelier-01.jpg';
 import './css/atelier.css'; // Assurez-vous de remplacer le chemin par le bon
 import { FaPlay } from "react-icons/fa";
-
 const Atelier = () => {
   return (
     <div className="Atelier-container">

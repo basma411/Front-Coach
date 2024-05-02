@@ -1,0 +1,34 @@
+/* biblio.css */
+.Container{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 50px auto;
+  padding: 0;
+}
+.Container h2{
+  width: 80%;
+  text-align: center;
+
+  font-size: 47px;
+  color: #fdc900;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+margin: 50px auto 50px  auto;
+}
+.site-section {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 auto ;
+  gap: 30px;
+
+  }
+  .site-section img{
+    border: solid 3px gray;
+/* box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.4);  */
+
+}
+ 
+  
+ 
+  

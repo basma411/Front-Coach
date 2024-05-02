@@ -39,6 +39,8 @@ function App() {
       <NavBar /> {/* Incluez le NavBar en haut de votre application */}
       <Routes>
         {/* Définissez les routes avec les composants correspondants */}
+        <Route path="/" element={<Accueil />} />
+
         <Route path="/Accueil" element={<Accueil />} />
         <Route path="/TrouverCoach" element={<TrouverCoach />} />
         <Route path="/EspaceCoach" element={<EspaceCoach />} />

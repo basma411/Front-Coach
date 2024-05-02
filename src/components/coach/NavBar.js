@@ -18,7 +18,6 @@ export const NavBar = () => {
         </div>
         <div>
           <Nav className="me-auto">
-            {/* Use Link instead of Nav.Link for routing */}
             <Link to="/Accueil" className="nav-link-custom">Accueil</Link>
             <Link to="/TrouverCoach" className="nav-link-custom">Trouver un coach</Link>
             <Link to="/EspaceCoach" className="nav-link-custom">Espace Coach</Link>

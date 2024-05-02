@@ -84,10 +84,10 @@ gap:30px
 
 
     }
-    textarea:hover{
-        border: solid 1PX rgb(36, 233, 233);
-
+    textarea:focus {
+        border: solid 1px rgb(36, 233, 233);
     }
+    
     .updateimage input{
 
       height: 37px;

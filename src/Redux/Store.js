@@ -5,6 +5,7 @@ import DomaineSlice from "./Slice/DomainSlice";
 import SlidesSlice from "./Slice/SlidesSlice";
 import PartenaireSlice from "./Slice/PartenaireSlice";
 import IconSlice from "./Slice/IconSlice";
+import BiblioSlice from "./Slice/BiblioSlice";
 
 export default configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export default configureStore({
     slide: SlidesSlice,
     partenaire: PartenaireSlice,
     icon:IconSlice,
+    biblio:BiblioSlice,
   },
 });
