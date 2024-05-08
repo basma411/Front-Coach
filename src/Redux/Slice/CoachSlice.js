@@ -47,12 +47,21 @@ export const UpdateCoach = createAsyncThunk('coach/update', async ({ id, formDat
   }
 });
 
+export const cherchecoach = createAsyncThunk('coach/cherchecoach', async ( formData , { rejectWithValue, dispatch }) => {
+  try {
+    const res = await axios.post('/api/cherchecoach', formData);
+
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
 
 const coachSlice = createSlice({
   name: "coach",
   initialState: {
     coachdata: {},
-    // Photo:"",
+    coachfiltre: [], 
     isLoading: false,
     error: null,
     token: localStorage.getItem("token") || null,
@@ -88,6 +97,8 @@ const coachSlice = createSlice({
         state.error = null;
         state.isAuth = true;
         state.coachdata = action.payload.coach;
+        state.coachfiltre = action.payload.coaches;
+
       })
       .addCase(getCoach.rejected, (state, action) => {
         state.isLoading = false;
@@ -119,7 +130,20 @@ const coachSlice = createSlice({
         state.isLoading = false;
         state.error = action.error.message;
       })
-   
+      .addCase(cherchecoach.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(cherchecoach.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.coachfiltre = action.payload.coaches;
+      })
+      .addCase(cherchecoach.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
+      })
+      
     
   },
 });

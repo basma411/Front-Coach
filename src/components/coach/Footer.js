@@ -2,7 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './css/footer.css';
 import logofooter from '../../images/logofooter.png';
-import { FiPhone, FiMail, FiFacebook, FiYoutube, FiLinkedin, FiInstagram } from 'react-icons/fi';
+import { FiPhone, FiMail, FiFacebook, FiYoutube, FiLinkedin, FiInstagram  } from 'react-icons/fi';
+import { FaHeart } from "react-icons/fa";
+
 import { MdAccessTime } from 'react-icons/md';
 
 const Footer = () => {
@@ -19,10 +21,10 @@ const Footer = () => {
             <h3>Liens rapides</h3>
             <ul className='list-unstyled'>
               <li>
-                <Link to='trouvez-coach.php'>Trouver un coach</Link>
+                <Link to='/TrouverCoach'>Trouver un coach</Link>
               </li>
               <li>
-                <Link to='espace-coach.php'>Espace coach</Link>
+                <Link to='/EspaceCoach'>Espace coach</Link>
               </li>
               <li>
                 <Link to='https://www.moncoach.tn/presentation'>Le salon de coaching</Link>
@@ -54,7 +56,12 @@ const Footer = () => {
             </div>
           </div>
         </div>
+       
       </div>
+      <div className='float-md-left'>
+        <h3>  Copyright ©2024 Tous les droits sont réservés| Mon coach.tn <FaHeart/> <span>by Tounes Connect</span></h3>
+
+        </div>
     </div>
   );
 };

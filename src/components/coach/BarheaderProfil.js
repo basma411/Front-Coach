@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { GoPersonFill } from "react-icons/go";
 import '../coach/css/barheader.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RiArrowDropDownLine } from "react-icons/ri";
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useNavigate } from 'react-router-dom';
+import { getCoach } from '../../Redux/Slice/CoachSlice';
 
 const BarheaderProfil = () => {
     const [isListOpen, setIsListOpen] = useState(false);
     const { coachdata } = useSelector((state) => state.coach);
     const navigator=useNavigate()
+    const dispatch = useDispatch();
 
+    useEffect(() => {
+        dispatch(getCoach());
+        
+      }, [dispatch]);
     const toggleList = () => {
         setIsListOpen(!isListOpen);
     };

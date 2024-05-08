@@ -31,7 +31,6 @@ const ProfilCoach = () => {
   return (
     <>
 
-      <NavBar />
       <div
         className="ImagePlatforme"
         style={{

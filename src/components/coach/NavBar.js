@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'; // Import the Link component
 import '../coach/css/navbar.css';
 
 export const NavBar = () => {
+  
   return (
     <Navbar bg="light" expand="lg" data-bs-theme="light" style={{ display: 'flex', flexDirection: 'column', margin: '80px' }} className="m-0 p-0">
       <Container style={{ display: "flex", justifyContent: "space-between" }} className="m-0 p-0">

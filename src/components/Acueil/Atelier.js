@@ -2,6 +2,7 @@ import React from 'react';
 import image from '../../images/atelier-01.jpg';
 import './css/atelier.css'; // Assurez-vous de remplacer le chemin par le bon
 import { FaPlay } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 const Atelier = () => {
   return (
     <div className="Atelier-container">
@@ -14,12 +15,14 @@ const Atelier = () => {
       </div>
       <div className='atelier-image'> 
         <img src={image} alt="Image placeholder" height={'400px'} />
-        <FaPlay className='icon-play'/>
-
+        <Link to="/atelier_degustation">
+            <FaPlay className='icon-play' />
+          </Link>
         <div className="play-button">
 
-          <button>Je m'inscris</button>
-        </div>
+        <Link to="/FormAtelier">
+            <button>Je m'inscris</button>
+          </Link>        </div>
       </div>
     </div>
   );

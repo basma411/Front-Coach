@@ -6,6 +6,10 @@ import SlidesSlice from "./Slice/SlidesSlice";
 import PartenaireSlice from "./Slice/PartenaireSlice";
 import IconSlice from "./Slice/IconSlice";
 import BiblioSlice from "./Slice/BiblioSlice";
+import NewsLetterSlice from "./Slice/NewsLetterSlice";
+import InterfaceSlice from "./Slice/InterfaceSlice";
+import loadingSlice from "./Slice/LodingSlice";
+import ArticleSlice from "./Slice/ArticleSlice";
 
 export default configureStore({
   reducer: {
@@ -16,5 +20,10 @@ export default configureStore({
     partenaire: PartenaireSlice,
     icon:IconSlice,
     biblio:BiblioSlice,
+    newsletter:NewsLetterSlice,
+    interface:InterfaceSlice,
+    loading: loadingSlice,
+    article:ArticleSlice
+
   },
 });

@@ -9,7 +9,6 @@ const EditProfile = () => {
   return (
 <>
 
-<NavBar/>
 <Edit/>
 <Newsletter/>
 <Footer/>

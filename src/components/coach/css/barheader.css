@@ -12,6 +12,14 @@
     font-weight: 400;
     color: #D3C418;
     font-family: 'Rubik', sans-serif; /* Apply the Rubik font */
+    text-decoration: none ;
+    font-size: 30px;
+
+
+}
+.barheader :link{
+    text-decoration: none ;
+
 }
 .iconCompte {
     font-size: 30px;
@@ -19,7 +27,12 @@
 .barheader h5 {
     margin: 0;
     padding: 5px;
-    font-size: 16px;
+    font-weight: 400;
+    color: #D3C418;
+    font-family: 'Rubik', sans-serif; 
+    font-weight: 400;
+    text-decoration: none;
+
 }
 /* Ajoutez ces styles à votre fichier barheader.css */
 

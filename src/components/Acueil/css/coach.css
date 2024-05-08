@@ -1,0 +1,50 @@
+.ContainerFilter {
+    background-color: #F8F9FA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Rubik", arial, sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 2;
+    color: gray;
+    height:1000px;
+}
+
+.episodes {
+    width: 70%; 
+    background-color: #FFF;
+    padding: 20px;
+    /* margin-top: 100px; */
+    /* height: 100vh; */
+
+}
+
+.ContainerCoach {
+    width: 100%;
+    background-color: #F8F9FA;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    height: 100vh;
+
+}
+.Coach{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+.nomCoach{
+    display: flex;
+    flex-direction: column;
+}
+.nomCoach h3{
+font-size: 18px;
+font-weight: 300;
+
+}
+.nomCoach h4{
+    font-size: 15px;
+    font-weight: lighter;
+    }

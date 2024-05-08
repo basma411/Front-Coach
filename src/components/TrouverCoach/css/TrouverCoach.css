@@ -1,4 +1,4 @@
-.Atelier-container {
+.Temaignage-container {
     width: 80%;
    display: flex;
    align-items: center;
@@ -22,14 +22,14 @@
     padding: 0;
     color: #275491;
     }
-    .atelier-image{
+    .Temaignage-image{
         display: flex;
         flex-direction: column;
         justify-content: center;
         position: relative;
 
     }
-    .atelier-image .icon-play{
+    .Temaignage-image .icon-play{
 
         position: absolute;
   top: 40%;
@@ -39,8 +39,8 @@
   color: #e3d80a;
   ;
     }
-    .atelier-image button{
-        width: 50%;
+    .Temaignage-image button{
+        width: 80%;
     padding: 10px 20px;
     background-color: #275491;
     color: #fff;
@@ -52,7 +52,7 @@
     margin: 20px 130px  ;
 
     }
- .Atelier-container .play-button button{
+ .Temaignage-container .play-button button{
   width: 80%;
   padding: 10px 20px;
   background-color: #275491;
@@ -62,27 +62,20 @@
   cursor: pointer;
   text-decoration: none;
   border: none;
-  margin: 20px 60px  ;
+  margin: 20px 0px  ;
 
  }
   
-  
-
- 
-    
-  /* #button {
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    text-align: center;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-  } */
   
   .button:hover {
     background-color: #0261c7; 
   }
 
    
+.Temaignage-image h3 {
+
+    color: blue;
+    font-size: 18px;
+    padding: 10px;
+    font-weight: 300;
+}

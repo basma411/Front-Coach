@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import './css/newsletter.css';
+import { addNewsLetter } from '../../Redux/Slice/NewsLetterSlice';
+import { useDispatch } from 'react-redux';
 
 const Newsletter = () => {
-    const [email, setEmail] = useState('');
-
-    const handleChange = (e) => {
-        setEmail(e.target.value);
-    };
-
+    const emailRef = useRef();
+    const dispatch = useDispatch();
+ 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Vous pouvez implémenter ici la logique pour soumettre l'email
-        console.log('Email soumis:', email);
-        // Réinitialiser le champ email après la soumission
-        setEmail('');
+        const email = emailRef.current.value;
+        dispatch(addNewsLetter({ Email: email }));
+        emailRef.current.value = '';
+
     };
 
     return (
@@ -28,9 +27,8 @@ const Newsletter = () => {
                     <input
                         type="email"
                         placeholder="Entrer votre email"
-                        value={email}
-                        onChange={handleChange}
                         required
+                        ref={emailRef}
                     />
                     <button type="submit">Envoyer</button>
                 </div>
