@@ -35,7 +35,7 @@ const EspaceCoach = () => {
       </div>
 
       <div className="AddArticle">
-      <Link to="/articles" >
+      <Link to="/ajouter_article" >
 
         <button>Partagez article,offre</button>
         </Link>

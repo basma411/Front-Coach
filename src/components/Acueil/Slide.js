@@ -6,7 +6,7 @@ import './css/slide.css';
 
 const Slide = () => {
     const dispatch = useDispatch();
-    const { Slide, isLoading, error } = useSelector((state) => state.slide);
+    const { Slide } = useSelector((state) => state.slide);
   
     useEffect(() => {
       dispatch(GetSlides());
@@ -24,12 +24,13 @@ const Slide = () => {
           alt={`Slide ${index + 1}`}
         />
         <Carousel.Caption>
-          <h3 className="slide-title">{slide.titre1}</h3> {/* Add a class for animation */}
-          {/* Add any additional captions or content here */}
+          <h3 className="slide-title">{slide.titre1}</h3> 
+          
         </Carousel.Caption>
       </Carousel.Item>
     ))}
-  </Carousel>  )
+  </Carousel>  
+  )
 }
 
 export default Slide

@@ -21,6 +21,7 @@ import NotFound from './components/coach/NotFound';
 import Atelier_Degustation from './components/Acueil/Atelier_Degustation';
 import FormAtelier from './components/Acueil/FormAtelier';
 import Articles from './components/espaceCoach/Articles';
+import AjoutArticle from './components/espaceCoach/AjoutArticle';
 
 function App() {
   const isLoading = useSelector(state => state.loading.isLoading);
@@ -56,7 +57,8 @@ function App() {
     "/coach",
     "/atelier_degustation",
     "/FormAtelier",
-    "/articles"
+    "/articles",
+   "/ajouter_article"
   ];
 
   // Vérifie si l'URL actuelle correspond à une route valide
@@ -97,6 +99,7 @@ function App() {
             <Route path="/atelier_degustation" element={<Atelier_Degustation />} />
             <Route path="/formatelier" element={<FormAtelier />} />
             <Route path="/articles" element={<Articles />} />
+            <Route path="/ajouter_article" element={<AjoutArticle />} />
 
           </Routes>
         </>
