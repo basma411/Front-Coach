@@ -9,7 +9,15 @@ export const GetArticle= createAsyncThunk('article/get', async (data, { rejectWi
     return rejectWithValue(error);
   }
 });
-
+export const AddArticle= createAsyncThunk('article/add', async (formData, { rejectWithValue,dispatch }) => {
+  try {
+    const res = await axios.post('/api/Article',formData);
+    dispatch(GetArticle)
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
 const ArticleSlice = createSlice({
   name: "articles",
   initialState: {
@@ -36,6 +44,22 @@ const ArticleSlice = createSlice({
      
       })
       .addCase(GetArticle.rejected, (state, action) => {
+        state.isLoading = false;
+        state.token = null;
+        state.isAuth = false;
+        state.error = action.payload.error;
+      })
+      .addCase(AddArticle.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(AddArticle.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.isAuth = true;
+     
+      })
+      .addCase(AddArticle.rejected, (state, action) => {
         state.isLoading = false;
         state.token = null;
         state.isAuth = false;
