@@ -56,12 +56,21 @@ export const cherchecoach = createAsyncThunk('coach/cherchecoach', async ( formD
     return rejectWithValue(error);
   }
 });
-
+export const getCoachVisivble = createAsyncThunk('coachVisible/get', async (_, { rejectWithValue }) => {
+  try {
+    const res = await axios.get('/api/coachesVisible');
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
 const coachSlice = createSlice({
   name: "coach",
   initialState: {
     coachdata: {},
     coachfiltre: [], 
+    coachVisible: [], 
+
     isLoading: false,
     error: null,
     token: localStorage.getItem("token") || null,
@@ -143,7 +152,22 @@ const coachSlice = createSlice({
         state.isLoading = false;
         state.error = action.error.message;
       })
-      
+      .addCase(getCoachVisivble.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getCoachVisivble.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.coachVisible = action.payload.coachesVisible;
+
+      })
+      .addCase(getCoachVisivble.rejected, (state, action) => {
+        state.isLoading = false;
+        state.token = null;
+        state.isAuth = false;
+        state.error = action.payload.error;
+      })
     
   },
 });

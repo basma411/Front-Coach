@@ -22,6 +22,7 @@ import Atelier_Degustation from './components/Acueil/Atelier_Degustation';
 import FormAtelier from './components/Acueil/FormAtelier';
 import Articles from './components/espaceCoach/Articles';
 import AjoutArticle from './components/espaceCoach/AjoutArticle';
+import Formulaire from './components/espaceCoach/Formulaire';
 
 function App() {
   const isLoading = useSelector(state => state.loading.isLoading);
@@ -58,7 +59,8 @@ function App() {
     "/atelier_degustation",
     "/FormAtelier",
     "/articles",
-   "/ajouter_article"
+   "/ajouter_article",
+   "/formulaire"
   ];
 
   // Vérifie si l'URL actuelle correspond à une route valide
@@ -100,6 +102,7 @@ function App() {
             <Route path="/formatelier" element={<FormAtelier />} />
             <Route path="/articles" element={<Articles />} />
             <Route path="/ajouter_article" element={<AjoutArticle />} />
+            <Route path="/formulaire" element={<Formulaire />} />
 
           </Routes>
         </>

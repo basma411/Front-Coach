@@ -27,7 +27,11 @@ const EspaceCoach = () => {
             <div class="fields">
               <h2>
                 Rejoignez votre plateforme
+                <Link to="/formulaire" >
+
                 <button>Formulaire à remplir</button>
+                </Link>
+
               </h2>
             </div>
           </form>

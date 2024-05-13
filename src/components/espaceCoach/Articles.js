@@ -10,7 +10,7 @@ import Footer from "../coach/Footer";
 
 const Articles = () => {
   const dispatch = useDispatch();
-  const { Articles } = useSelector((state) => state.article);
+  const { Articles } = useSelector((state) => state.article); // Renommez cette variable
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const Articles = () => {
   };
 
   const startIndex = (currentPage - 1) * pageSize;
-  const endIndex = Math.min(startIndex + pageSize, Articles.length);
+  const endIndex = Math.min(startIndex + pageSize, Articles.length); // Utilisez la variable renommée
 
   return (
     <>
