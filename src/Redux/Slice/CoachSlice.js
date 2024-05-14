@@ -64,13 +64,32 @@ export const getCoachVisivble = createAsyncThunk('coachVisible/get', async (_, {
     return rejectWithValue(error);
   }
 });
+export const getCoachInVisivble = createAsyncThunk('coachesInvisible/get', async (_, { rejectWithValue }) => {
+  try {
+    const res = await axios.get('/api/coachesInvisible');
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
+export const addCoach = createAsyncThunk('coach/add', async (data, { rejectWithValue,dispatch }) => {
+  try {
+    const res = await axios.post('/api/registre',data);
+    dispatch(getCoachInVisivble())
+
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
+
 const coachSlice = createSlice({
   name: "coach",
   initialState: {
     coachdata: {},
     coachfiltre: [], 
     coachVisible: [], 
-
+    coacheInvisible:[],
     isLoading: false,
     error: null,
     token: localStorage.getItem("token") || null,
@@ -168,7 +187,38 @@ const coachSlice = createSlice({
         state.isAuth = false;
         state.error = action.payload.error;
       })
-    
+    .addCase(addCoach.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    })
+    .addCase(addCoach.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.error = null;
+
+    })
+    .addCase(addCoach.rejected, (state, action) => {
+      state.isLoading = false;
+      state.token = null;
+      state.isAuth = false;
+      state.error = action.payload.error;
+    })
+  
+    .addCase(getCoachInVisivble.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    })
+    .addCase(getCoachInVisivble.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.error = null;
+      state.coacheInvisible = action.payload.coachesInviseble;
+
+    })
+    .addCase(getCoachInVisivble.rejected, (state, action) => {
+      state.isLoading = false;
+      state.token = null;
+      state.isAuth = false;
+      state.error = action.payload.error;
+    })
   },
 });
 

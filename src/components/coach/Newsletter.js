@@ -30,7 +30,7 @@ const Newsletter = () => {
                         required
                         ref={emailRef}
                     />
-                    <button type="submit">Envoyer</button>
+                    <button type="submit" className='envoyer'>Envoyer</button>
                 </div>
             </form>
         </div>

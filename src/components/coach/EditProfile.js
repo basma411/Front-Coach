@@ -8,7 +8,8 @@ import Footer from './Footer'
 const EditProfile = () => {
   return (
 <>
-
+<BarheaderProfil/>
+       <NavBar/>
 <Edit/>
 <Newsletter/>
 <Footer/>

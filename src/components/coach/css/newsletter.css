@@ -33,8 +33,9 @@
     position: relative; /* Position relative pour positionner le bouton */
   }
   
-  .newsletter button {
-    padding: 5px 10px; /* Espacement interne */
+  .envoyer  {
+    width: 100px;
+    padding: 5px; /* Espacement interne */
     background-color: #D3C418; /* Couleur de fond */
     color: #275491; /* Couleur du texte */
     border: none; /* Suppression de la bordure */
@@ -43,6 +44,6 @@
     position: absolute; /* Position absolue pour positionner le bouton */
     right: 0; /* Alignement à droite */
     top: 0; /* Alignement au haut */
-    margin: 5px 20px 0px 0px;
+    margin: 25px 20px 0px 0px;
   }
   

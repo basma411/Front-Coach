@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+/*NavBar*/
+.nav-link-custom {
+  font-family: 'Rubik', Arial, sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+color: rgb(43, 43, 43);
+  line-height: 30px;
+  padding: 16px 9px ;
+
+
+
+}
+.nav-link-custom:hover {
+  background-color:#275491;
+  color: #fff;
+  padding: 10px;
+}
+
+.icon-LIST{
+
+  font-size:40px;
+  color:gray ;
+  display: none;
+}
+.me-auto {
+  padding-right: 70px;
+}
+.nav-link-custom {
+  text-decoration: none;
+  
+}

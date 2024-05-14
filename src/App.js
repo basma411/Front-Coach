@@ -23,6 +23,7 @@ import FormAtelier from './components/Acueil/FormAtelier';
 import Articles from './components/espaceCoach/Articles';
 import AjoutArticle from './components/espaceCoach/AjoutArticle';
 import Formulaire from './components/espaceCoach/Formulaire';
+import AccueilAdmin from './components/admin/AccueilAdmin';
 
 function App() {
   const isLoading = useSelector(state => state.loading.isLoading);
@@ -42,12 +43,9 @@ function App() {
 
   // Routes valides de l'application
   const validRoutes = [
-    "/admin/login",
-    "/admin/Accueil",
     "/coach/login",
     "/coach/profil",
-    "/coach/setting/:id",
-    "/coach/edit/:id",
+    
     "/",
     "/Accueil",
     "/TrouverCoach",
@@ -59,9 +57,10 @@ function App() {
     "/atelier_degustation",
     "/FormAtelier",
     "/articles",
-   "/ajouter_article",
-   "/formulaire"
+    "/ajouter_article",
+    "/formulaire"
   ];
+  
 
   // Vérifie si l'URL actuelle correspond à une route valide
   const isRouteValid = validRoutes.includes(location.pathname);
@@ -83,7 +82,7 @@ function App() {
           )}
           <Routes>
             <Route path="/admin/login" element={<Login />} />
-            <Route path="/admin/Accueil" element={<Accueil />} />
+            <Route path="/admin/Accueil" element={<AccueilAdmin />} />
             <Route path="/coach/login" element={<LoginCoch />} />
             <Route path="/coach/profil" element={<ProfilCoach />} />
             <Route path="/coach/setting/:id" element={<SettingProfil />} />

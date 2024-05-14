@@ -5,7 +5,7 @@ import BarheaderProfil from './BarheaderProfil';
 
 const Header = () => {
   // Supposons que isAuth est un état dans votre Redux qui indique si l'utilisateur est authentifié ou non
-  const isAuth = useSelector((state) => state.coach.isAuth);
+  const { isAuth } = useSelector((state) => state.coach);
 
   return (
     <div>

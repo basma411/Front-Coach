@@ -1,17 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
-.container {
+.profil-container {
+  width: 80%;
     display: flex;
     justify-content: space-around;
-    padding:100px 10px;
+    padding:100px 0px ;
+    margin: 0 auto;
+    gap: 30px;
    
 
   }
   /*left*/
+  .PROFIL_LEFT{
+    width: 30%;
+text-align: center;
+  }
   .Photo{
     display: flex;
 flex-direction: column;
-align-items: flex-start;  }
+align-items: center;  }
   .Photo p{
 font-size:20px ;
 font-weight: 300;

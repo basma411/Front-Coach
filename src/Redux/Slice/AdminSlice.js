@@ -16,11 +16,10 @@ const adminSlice = createSlice({
     admindata: {},
     isLoading: false,
     error: null,
-    token: localStorage.getItem("token") || null,
-    isAuth: localStorage.getItem("isAuth") || false,
+    token1: localStorage.getItem("token1") || null,
+    isAuthadmin: localStorage.getItem("isAuthadmin") === "true", 
   },
   reducers: {
-    // Vos reducers synchrones ici
   },
   extraReducers: (builder) => {
     builder
@@ -31,18 +30,21 @@ const adminSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.isAuth = true;
-        state.token = action.payload.token;
-        localStorage.setItem("isAuth", state.isAuth);
-        localStorage.setItem("token", state.token);
+        state.isAuthadmin = true;
+        state.token1 = action.payload.token1;
+        localStorage.setItem("isAuthadmin", "true"); 
+        localStorage.setItem("token1", state.token1);
       })
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;
-        state.token = null;
-        state.isAuth = false;
+        state.token1 = null;
+        state.isAuthadmin = false;
         state.error = action.payload.error;
+        localStorage.setItem("isAuthadmin", "false");
+        localStorage.removeItem("token1"); 
       });
   },
 });
+
 
 export default adminSlice.reducer;

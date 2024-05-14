@@ -27,7 +27,7 @@
     position: relative;
 }
 
-label {
+.title {
     display: block;
     color: #333;
     text-align: start;
@@ -37,8 +37,8 @@ label {
     cursor: default;
 }
 
-input[type="text"],
-input[type="password"] {
+.inputadmin {
+    width: 100%;
     font-size: 15px;
     height: 40px;
     margin-bottom: 10px;
@@ -60,7 +60,7 @@ input[type="password"] {
     clear: both;
 }
 
-#submit {
+.loginAdmin {
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
@@ -71,7 +71,7 @@ input[type="password"] {
     width: 100%;
 }
 
-#submit:hover {
+.loginAdmin:hover {
     background-color: #45a049;
 }
 

@@ -47,8 +47,8 @@ const ProfilCoach = () => {
         </div>
       </div>
 
-      <div className="container">
-        <div style={{ textAlign: "left" }}>
+      <div className="profil-container">
+        <div style={{ textAlign: "left" }} className="PROFIL_LEFT">
           <div className="Photo">
             <p>{coachdata.NomPrenom}</p>
             <img

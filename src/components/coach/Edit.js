@@ -420,7 +420,7 @@ const Edit = () => {
           </div>
 
           <div className="Update">
-            <button type="submit">Modifier</button>
+            <button type="submit" className="modifier">Modifier</button>
             <h3>Annuler</h3>
           </div>
         </form>

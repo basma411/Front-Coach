@@ -1,0 +1,22 @@
+.PlatformeAdmin{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.containerPlatforme{
+    width: 80%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+}
+.left,.rigth{
+
+    display: flex;
+    flex-direction: column;
+}
+button{
+    margin-bottom: 30px;
+    width: 400px;
+}

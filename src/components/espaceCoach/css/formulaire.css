@@ -36,6 +36,8 @@ background-color: #F8F9FA;
     border-radius: 50%;
     padding: 20px;
 
+    width: 200px;
+
 }
 .formulaire-left h1,h3,p{
     font-size: 20px;
@@ -79,4 +81,18 @@ width: 20px;
   }
   input{
 border: solid 1px rgb(148, 147, 147) !important;
+margin: 20px 0;
+  }
+  .sabmit {
+    background-color: yellow;
+    width: 100px;
+    margin: 0 auto;
+    border: none;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); 
+    border-radius: 20%; 
+
+  }
+  .sabmit:hover {
+    background-color: rgb(223, 223, 4);
+color: #F8F9FA;
   }

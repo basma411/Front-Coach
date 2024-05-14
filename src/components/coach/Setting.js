@@ -3,6 +3,8 @@ import './css/Setting.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCoach, updatePassword } from '../../Redux/Slice/CoachSlice';
 import { useNavigate, useParams } from 'react-router-dom';
+import BarheaderProfil from './BarheaderProfil';
+import { NavBar } from './NavBar';
 
 const Setting = () => {
     const { coachdata } = useSelector((state) => state.coach);
@@ -30,25 +32,30 @@ const Setting = () => {
     }
 
     return (
-        <div className='containerr'>
+       <>
+       <BarheaderProfil/>
+       <NavBar/>
+       <div className='containerr'>
             <div className='Profil'>
                 <form onSubmit={handleSubmit}>
-                    <label htmlFor="Email">Email</label><br />
-                    <input type="text"  name="email" defaultValue={coachdata.Email} ref={Email} /><br />
+                    <label htmlFor="Email" className='Labelstyle'>Email</label><br />
+                    <input type="text"  name="email" defaultValue={coachdata.Email} ref={Email} className='inputStyle'/><br />
 
-                    <label htmlFor="oldPassword">Ancien mot de passe</label><br />
-                    <input type="password"  name="oldPassword" ref={oldPassword} /><br />
+                    <label htmlFor="oldPassword" className='Labelstyle'>Ancien mot de passe</label><br />
+                    <input type="password"  name="oldPassword" ref={oldPassword}  className='inputStyle'/><br />
 
-                    <label htmlFor="newPassword">Nouveau mot de passe</label><br />
-                    <input type="password"  name="newPassword" ref={newPassword} /><br />
+                    <label htmlFor="newPassword" className='Labelstyle'>Nouveau mot de passe</label><br />
+                    <input type="password"  name="newPassword" ref={newPassword} className='inputStyle'/><br />
 
                     <div className='UpdatePasword'>
-                        <button type="submit">Modifier</button>
+                        <button type="submit" className='Setting'>Modifier</button>
                         <h3>Annuler</h3>
                     </div>
                 </form>
             </div>
         </div>
+       
+       </>
     );
 };
 

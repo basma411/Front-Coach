@@ -29,7 +29,7 @@ const EspaceCoach = () => {
                 Rejoignez votre plateforme
                 <Link to="/formulaire" >
 
-                <button>Formulaire à remplir</button>
+                <button className="remplir">Formulaire à remplir</button>
                 </Link>
 
               </h2>
@@ -41,7 +41,7 @@ const EspaceCoach = () => {
       <div className="AddArticle">
       <Link to="/ajouter_article" >
 
-        <button>Partagez article,offre</button>
+        <button className="remplir">Partagez article,offre</button>
         </Link>
 
         <div>
