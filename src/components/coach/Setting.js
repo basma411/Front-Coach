@@ -7,7 +7,7 @@ import BarheaderProfil from './BarheaderProfil';
 import { NavBar } from './NavBar';
 
 const Setting = () => {
-    const { coachdata } = useSelector((state) => state.coach);
+    const { isAuth, coachdata } = useSelector((state) => state.coach);
     const oldPassword = useRef();
     const newPassword = useRef();
     const Email = useRef();
@@ -18,6 +18,9 @@ const Setting = () => {
         dispatch(getCoach());
         
       }, [dispatch]);
+      useEffect(() => {
+        if (!isAuth) navigator("/coach/setting/:id");
+      }, [isAuth, navigator]);
     const handleSubmit = (e) => {
         e.preventDefault();
         const emailValue = Email.current.value;

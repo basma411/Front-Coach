@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import Barheader from './Barheader';
 import BarheaderProfil from './BarheaderProfil';
 
 const Header = () => {
-  // Supposons que isAuth est un état dans votre Redux qui indique si l'utilisateur est authentifié ou non
   const { isAuth } = useSelector((state) => state.coach);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Rediriger l'utilisateur vers la page de connexion si isAuth est false
+    if (!isAuth) {
+      navigate('/coach/login');
+    }
+    console.log("isAuth value changed:", isAuth); // Afficher la nouvelle valeur de isAuth dans la console
+  }, [isAuth, navigate]);
 
   return (
     <div>

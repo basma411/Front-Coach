@@ -12,7 +12,7 @@ const Edit = () => {
   const { id } = useParams();
 
   const { domaines } = useSelector((state) => state.domaine);
-  const { coachdata } = useSelector((state) => state.coach);
+  const { isAuth, coachdata } = useSelector((state) => state.coach);
   const Nom = useRef();
   const Email = useRef();
   const Numero = useRef();
@@ -42,7 +42,9 @@ const Edit = () => {
     dispatch(getdomaine());
     
   }, [dispatch]);
-
+  useEffect(() => {
+    if (!isAuth) navigator("/coach/edit/:id");
+  }, [isAuth, navigator]);
   const handleFileChange = (e) => {
     setImage(e.target.files[0]);
   };

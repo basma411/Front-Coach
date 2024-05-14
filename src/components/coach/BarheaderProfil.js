@@ -9,14 +9,16 @@ import { getCoach } from '../../Redux/Slice/CoachSlice';
 
 const BarheaderProfil = () => {
     const [isListOpen, setIsListOpen] = useState(false);
-    const { coachdata } = useSelector((state) => state.coach);
+    const { isAuth,coachdata ,} = useSelector((state) => state.coach);
     const navigator=useNavigate()
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getCoach());
+
+      
         
-      }, [dispatch]);
+    }, [dispatch, navigator]);
     const toggleList = () => {
         setIsListOpen(!isListOpen);
     };
@@ -25,9 +27,12 @@ const BarheaderProfil = () => {
         // Implement your logic for each menu item here
         console.log("Clicked on:", option);
         if (option === "Déconnexion") {
+            localStorage.removeItem("isAuth"); // Supprime l'état d'authentification du localStorage
+            localStorage.removeItem("token"); // Supprime l'état d'authentification du localStorage
+            navigator("/coach/login")
 
-            navigator('/coach/login'); // Remplacez 'LoginPage' par le nom de la page de connexion dans votre application
-        }
+     }
+        
         if (option === "Settings") {
             navigator(`/coach/setting/${coachdata._id}`); // Remplacez 'LoginPage' par le nom de la page de connexion dans votre application
         }

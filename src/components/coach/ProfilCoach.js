@@ -24,9 +24,9 @@ const ProfilCoach = () => {
     dispatch(getCoach());
   }, [dispatch]);
 
-  useEffect(() => {
-    if (!isAuth) navigator("/coach/login");
-  }, [isAuth, navigator]);
+  // useEffect(() => {
+  //   if (isAuth) navigator("/coach/profil")
+  // }, [isAuth, navigator]);
 
   return (
     <>
