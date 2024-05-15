@@ -18,15 +18,15 @@ const NavBarAdmin = () => {
         </div>
         <div>
           <Nav className="me-auto">
-          <Link to="/AccueilAdmin" className="nav-link-custom">Accueil</Link>
-            <Link to="/Article" className="nav-link-custom">Articles</Link>
-            <Link to="/Coachs" className="nav-link-custom">Coachs</Link>
-            <Link to="/Partenaires" className="nav-link-custom">Partenaires</Link>
-            <Link to="/Salon" className="nav-link-custom">Les Salon de coaching</Link>
-            <Link to="/Evenements" className="nav-link-custom">Evenements</Link>
-            <Link to="/VedioCoching" className="nav-link-custom">VedioCoching</Link>
-            <Link to="/Contact" className="nav-link-custom">Contact</Link>
-            <Link to="/Newsletter" className="nav-link-custom">Newsletter</Link>
+          <Link to="/AccueilAdmin" className="nav-link">Accueil</Link>
+            <Link to="/Article" className="nav-link">Articles</Link>
+            <Link to="/Coachs" className="nav-link">Coachs</Link>
+            <Link to="/Partenaires" className="nav-link">Partenaires</Link>
+            <Link to="/Salon" className="nav-link">Les Salon de coaching</Link>
+            <Link to="/Evenements" className="nav-link">Evenements</Link>
+            <Link to="/VedioCoching" className="nav-link">VedioCoching</Link>
+            <Link to="/Contact" className="nav-link">Contact</Link>
+            <Link to="/Newsletter" className="nav-link">Newsletter</Link>
 
           </Nav>
         </div>

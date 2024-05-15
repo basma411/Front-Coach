@@ -1,43 +1,44 @@
-.containerr{
+.containerEdit{
     width: 100%;
     background: linear-gradient(to bottom, #DFDFDF, #fff);
-    display: flex;
-    justify-content: center; /* Centre horizontalement l'élément .Profil */
-    align-items: center; /* Centre verticalement l'élément .Profil */
-    height: 100vh; /* Ajustez la hauteur selon vos besoins */
+  margin: 0;
+  padding: 0;
 }
-.Profil{
+.ProfilEdit{
+ 
     background-color:transparent;
-    width: 90%; /* Vous avez mentionné que vous voulez centrer dans 80% de la largeur */
+    width: 80%; /* Vous avez mentionné que vous voulez centrer dans 80% de la largeur */
     border-radius: 10px; /* Ajoutez une bordure arrondie si nécessaire */
     margin: 0 auto;
+    padding-top: 80px;
 }
-.Profil label{
+.ProfilEdit label{
 
     font-family: "Rubik", arial, sans-serif;
  font-weight: 300;
  font-size: 20px;
  line-height: 2;
  color: gray;
+
 }
-.Profil textarea{
+.ProfilEdit textarea{
     font-family: "Rubik", arial, sans-serif;
     font-weight: 300;
     font-size: 18px;
     line-height: 2;
     color: #000; 
+    width: 100%; /* Vous avez mentionné que vous voulez centrer dans 80% de la largeur */
+    background-color:transparent;
+    border: solid 1px rgb(175, 173, 173) ;
 }
 form {
     display: flex;
     flex-direction: column;
   align-items: flex-start;
+  width: 100%; /* Vous avez mentionné que vous voulez centrer dans 80% de la largeur */
+
 }
-  form textarea{
-      background-color:transparent;
-  width: 100%;
-  border: solid 1px rgb(175, 173, 173) ;
-  
-  }
+
   .domaineIntervention {
     display: flex;
 flex-direction: column;

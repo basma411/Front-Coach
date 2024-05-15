@@ -178,7 +178,7 @@ const Formulaire = () => {
             <h1>Remplissez le formulaire ci-joint et faites partie de notre communauté de coachs.</h1>
             <form onSubmit={handleAddCoach}  >
               <label>Nom et prénom:</label>
-              <input type="text"  ref={nomPrenomRef}/>
+              <input type="text"  ref={nomPrenomRef} className="inputCoach"/>
               <label>Domaines d’intervention:</label>
               <Select 
   options={domaines && [
@@ -251,6 +251,7 @@ const Formulaire = () => {
                 type="text"
                 placeholder=""
                ref={autresDomainesRef}
+               className="inputCoach"
               />
               <label>Gouvernorats</label>
               <select
@@ -297,15 +298,20 @@ const Formulaire = () => {
                 type="text"
                 placeholder=""
             ref={telephoneRef}
+            className="inputCoach"
               />
               <label>Adresse mail:</label>
-              <input type="text" placeholder="" ref={adresseMailRef}/>
+              <input type="text" placeholder="" ref={adresseMailRef}             className="inputCoach"
+/>
               <label>Mot de passe:</label>
-              <input type="password" placeholder="" ref={passwordRef} />
+              <input type="password" placeholder="" ref={passwordRef}             className="inputCoach"
+ />
               <label>Confirmer Mot de passe:</label>
-              <input type="password" placeholder="" ref={confirmPasswordRef}/>
+              <input type="password" placeholder="" ref={confirmPasswordRef}             className="inputCoach"
+/>
               <label>Brève Bio (maximum 5 lignes):</label>
-              <input type="text" placeholder=""  style={{height:'300px'}}   ref={bioRef}/>
+              <input type="text" placeholder=""  style={{height:'300px'}}   ref={bioRef}             className="inputCoach"
+/>
               <label>Méthodes de coaching:</label>
               <div className="checkbox">
             <div>
@@ -416,24 +422,35 @@ const Formulaire = () => {
             </div>
           </div>
               <label>Photo</label>
-              <input type="file" placeholder=""  name="imagee" onChange={handleFileChange}/>
+              <input type="file" placeholder=""  name="imagee" onChange={handleFileChange} className="filecoach"/>
               <label>Lien du site:</label>
-              <input type="text" placeholder="" ref={siteRef}/>
+              <input type="text" placeholder="" ref={siteRef}             className="inputCoach"
+/>
               <label>Logo</label>
-              <input type="file" placeholder=" " name="logo" onChange={handleLogoChange} />
+              <input type="file" placeholder=" " name="logo" onChange={handleLogoChange} className="filecoach" />
               <label>Réseaux sociaux :</label>
-              <input type="text" placeholder="" ref={facebook}/>
-              
+              <br/>
+              <label>Facebook:</label>
 
-              <input type="text" placeholder=""  ref={Youtube} />
-              <input type="text" placeholder=""  ref={linkedin}/>
+              <input type="text" placeholder="" ref={facebook}             className="inputCoach"
+/>
+<label>Youtube:</label>
+
+
+              <input type="text" placeholder=""  ref={Youtube}             className="inputCoach"
+/>
+
+<label>Linkedin:</label>
+
+              <input type="text" placeholder=""  ref={linkedin}             className="inputCoach"
+/>
               <label>
                 Un fichier PDF contenant toute pièce justifiant l’expérience en
                 coaching et toutes autres compétences (diplômes, certificats,
                 formations):
               </label>
-              <input type="file" placeholder=" "  name="fichierPDF" onChange={handlePdfChange} />
-              <input type="submit" className="sabmit" />
+              <input type="file" placeholder=" "  name="fichierPDF" onChange={handlePdfChange}  className="filecoach" />
+              <input type="submit" className="AddCoach" />
             </form>
           </div>
 

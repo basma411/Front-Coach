@@ -72,8 +72,10 @@ const Articles = () => {
             <button
               key={index}
               style={{
+                width:'20px',
+                textAlign:'centre',
                 margin: "5px",
-                padding: "5px 10px",
+                padding: "auto",
                 background: index + 1 === currentPage ? "#275491" : "#ddd",
                 color: index + 1 === currentPage ? "#fff" : "#000",
                 border: "none",

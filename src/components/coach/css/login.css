@@ -1,3 +1,5 @@
+
+
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 /*section1*/
@@ -8,17 +10,17 @@
     transform: translate(-50%, 0%);
     color: white;
   }
-  .ImagePlatforme h2{
-font-size: 60px;
-font-family: 'Rubik', Arial, sans-serif;
-font-weight: 400;
-line-height: 72px;
+
+.containerLogin{
+  height: 500px;
 }
-.container-Form{
-  width: 100%;
-  height: 400px;
-}
-.Form-Login {
+.ImagePlatforme h2{
+  font-size: 60px;
+  font-family: 'Rubik', Arial, sans-serif;
+  font-weight: 400;
+  line-height: 72px;
+  }
+.FormLogin{
     position: absolute;
     left: 50%;
     transform: translate(-50%, -12%);
@@ -29,33 +31,36 @@ line-height: 72px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 40%;
+
   }
   
 
   
-  .Form-Login label {
-    display: block;
+  .labelField {
+    font-size: 18px;
+font-family: 'Rubik', Arial, sans-serif;
+font-weight: 400;
+line-height: 30px;
     padding-bottom: 10px;
   }
   
-  .Form-Login input[type="email"],
-  .Form-Login input[type="password"] {
-    width: 600px;
+.inputField {
+    width: 500px;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box; /* Assurez-vous que la largeur inclut le padding et la bordure */
-    transition: border-color 0.3s ease; /* Ajoutez une transition pour un effet visuel lors du focus */
+    box-sizing: border-box; 
+    transition: border-color 0.3s ease; 
   }
   
-  .Form-Login input[type="email"]:focus,
-  .Form-Login input[type="password"]:focus {
-    border-color: #275491; /* Couleur de la bordure lorsqu'un champ est en focus */
+  .inputField:focus {
+    border:solid 1px  #275491 !important;/* Couleur de la bordure lorsqu'un champ est en focus */
   }
   
   
-  .Form-Login button {
+  .Connecter {
     width: 20%;
     padding: 10px;
     background-color: #FDC900;
@@ -66,15 +71,15 @@ line-height: 72px;
     transition: background-color 0.3s ease;
   }
   
-  .Form-Login button:hover {
+  .Connecter:hover {
 border: solid 1px rgb(7, 7, 59);
 background-color: transparent; 
 color: black; }
-  
-  .Form-Login label.forgot-password {
+/*   
+  /* .FormLogin label.forgot-password {
     display: block;
     text-align: right;
-  }
+  } */ 
   
   
   .ImagePlatforme {

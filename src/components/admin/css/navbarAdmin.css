@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 /*NavBar*/
-.nav-link-custom {
+.nav-link {
   font-family: 'Rubik', Arial, sans-serif;
   font-weight: 300;
   font-size: 18px;
@@ -11,7 +11,7 @@ color: rgb(43, 43, 43);
 
 
 }
-.nav-link-custom:hover {
+.nav-link:hover {
   background-color:#275491;
   color: #fff;
   padding: 10px;
@@ -25,8 +25,4 @@ color: rgb(43, 43, 43);
 }
 .me-auto {
   padding-right: 70px;
-}
-.nav-link-custom {
-  text-decoration: none;
-  
 }

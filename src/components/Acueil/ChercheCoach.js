@@ -46,7 +46,8 @@ const navigator=useNavigate()
     <form className='cherche'>
       <h1>Trouvez un coach et prenez rendez-vous en ligne</h1>
       <div className='cherche-coach'>
-        <select className='Domaines' ref={domaine}>
+     <div>
+     <select className='Domaines' ref={domaine}>
           <option>Choisir un domaine de coaching</option>
           {domaines.map((domaine) => (
             <option key={domaine.id} value={domaine.NomDomaine}>
@@ -54,6 +55,7 @@ const navigator=useNavigate()
             </option>
           ))}
         </select>
+     </div>
         <div>
           <input
             type="text"
@@ -62,7 +64,7 @@ const navigator=useNavigate()
             ref={nom}
           />
         </div>
-        <select className='gouvernorat' ref={gouvernorat}>
+       <div> <select className='gouvernorat' ref={gouvernorat}>
           <option>Gouvernorat</option>
           {[
             "Tunis", "Ariana", "Ben Arous", "Manouba", "Nabeul", "Zaghouan", 
@@ -74,8 +76,9 @@ const navigator=useNavigate()
               {gouvernorat}
             </option>
           ))}
-        </select>
-        <button type="submit" onClick={handleSubmit}>Recherche</button>
+        </select></div>
+        <button type="submit" onClick={handleSubmit} className='ChercheCoach'>Recherche</button>
+
       </div>
     </form>
   );

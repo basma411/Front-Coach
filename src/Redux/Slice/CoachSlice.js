@@ -50,7 +50,7 @@ export const UpdateCoach = createAsyncThunk('coach/update', async ({ id, formDat
 export const cherchecoach = createAsyncThunk('coach/cherchecoach', async ( formData , { rejectWithValue, dispatch }) => {
   try {
     const res = await axios.post('/api/cherchecoach', formData);
-
+    dispatch(getCoachVisivble())
     return res.data;
   } catch (error) {
     return rejectWithValue(error);

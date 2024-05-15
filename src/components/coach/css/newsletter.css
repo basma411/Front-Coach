@@ -1,18 +1,26 @@
 .newsletter{
-    background-color: #275491;
-    width: 100%;
-    display: flex;
-    padding: 60PX;
-    justify-content: space-around;
-    align-items: center;
-    margin-bottom: 20px;
+  background-color: #275491;
+
+  /* width: 100%; */
+  margin: 0;
+  padding: 0;
 }
-.newsletter h2 {
+.newsletterContainer{
+width: 80%;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 30px;
+margin: 10px auto;
+gap: 300PX;
+}
+.newsletterContainer h2 {
     color: #D3C418; /* Couleur du texte */
     margin: 0; /* Suppression des marges par défaut */
   }
   
-  .newsletter p {
+  .newsletterContainer p {
+    
     color: rgba(255, 255, 255, 0.7)    ; /* Couleur du texte */
     font-size: 20px;
     margin-bottom: 20px; /* Espacement inférieur */
@@ -20,20 +28,19 @@
   }
   
 
-  .newsletter input[type="email"] {
+  .NewsleInput {
     padding: 10px; /* Espacement interne */
     border: none; /* Suppression de la bordure */
     border-radius: 5px; /* Bordures arrondies */
-    margin-right: 10px; /* Marge à droite */
     width: 500px; /* Largeur de l'input - largeur du bouton + marge */
     background-color:#fff ;
   }
   
-  .newsletter .input-wrapper {
+  .newsletterContainer .input-wrapper {
     position: relative; /* Position relative pour positionner le bouton */
   }
   
-  .envoyer  {
+  .EnvoyerNewsletter  {
     width: 100px;
     padding: 5px; /* Espacement interne */
     background-color: #D3C418; /* Couleur de fond */
@@ -44,6 +51,6 @@
     position: absolute; /* Position absolue pour positionner le bouton */
     right: 0; /* Alignement à droite */
     top: 0; /* Alignement au haut */
-    margin: 25px 20px 0px 0px;
+    margin: 7px 20px 0px 0px;
   }
   

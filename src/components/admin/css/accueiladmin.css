@@ -11,12 +11,24 @@
     align-items: center;
     margin: 0 auto;
 }
+.left{
+    padding-right: 140px;
+    border-right: solid 1px black;
+}
 .left,.rigth{
 
     display: flex;
     flex-direction: column;
 }
-button{
+.buttonStyle {
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: #0D345A;
+    color: yellow;
+
+    font-weight: bold;
+    padding: 10px 60px;
+    text-align: center;
     margin-bottom: 30px;
-    width: 400px;
+    font-size: 18px;
 }

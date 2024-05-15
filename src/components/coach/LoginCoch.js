@@ -15,7 +15,10 @@ const LoginCoch = () => {
   const navigator = useNavigate();
 
   useEffect(() => {
-    if (isAuth) navigator("/coach/profil"); // Rediriger vers la page de profil si l'utilisateur est authentifié
+    if (isAuth) navigator("/coach/profil"); 
+    else{
+      navigator("/coach/login"); 
+    }
   }, [isAuth, navigator]);
 
   const handleLoginFormSubmit = (e) => {
@@ -45,18 +48,22 @@ const LoginCoch = () => {
           </h2>
         </div>
       </div>
-      <div className="container-Form">
-        <form className="Form-Login" onSubmit={handleLoginFormSubmit}>
-          <h5>Connectez-vous:</h5>
+      <div className="containerLogin">
+        <form className="FormLogin" onSubmit={handleLoginFormSubmit}>
+          <label className="labelField">Connectez-vous:</label>
           <div>
-            <input type="email" name="email" ref={email} />
-          </div>
-          <div>
-            <input type="password" name="password" ref={password} />
-          </div>
-          <label>Mot de passe oublié?</label>
+          <label className="labelField">Login:</label>
 
-          <button type="submit">Connecter</button>
+            <input type="email" name="email" ref={email} className="inputField" />
+          </div>
+          <div>
+          <label className="labelField ">Password:</label>
+
+            <input type="password" name="password" ref={password} className="inputField" />
+          </div>
+          <label className="labelField ">Mot de passe oublié?</label>
+
+          <button type="submit" className="Connecter">Connecter</button>
         </form>
       </div>
       <Newsletter />

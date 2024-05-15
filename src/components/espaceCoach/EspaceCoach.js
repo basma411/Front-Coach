@@ -41,7 +41,7 @@ const EspaceCoach = () => {
       <div className="AddArticle">
       <Link to="/ajouter_article" >
 
-        <button className="remplir">Partagez article,offre</button>
+        <button className="remplirArticle">Partagez article,offre</button>
         </Link>
 
         <div>

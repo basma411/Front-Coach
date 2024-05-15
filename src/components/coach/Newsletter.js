@@ -16,10 +16,11 @@ const Newsletter = () => {
     };
 
     return (
-        <div className="newsletter">
+       <div className='newsletter'>
+         <div className="newsletterContainer">
             <div>
                 <h2>Newsletters</h2>
-                <p>Vous voulez joindre notre communauté de coachs et coachés et être<br/> informés des nouveautés dans le métier</p>
+                <p>Vous voulez joindre notre communauté de coachs et coachés et être informés des nouveautés dans le métier</p>
             </div>
 
             <form onSubmit={handleSubmit}>
@@ -29,11 +30,13 @@ const Newsletter = () => {
                         placeholder="Entrer votre email"
                         required
                         ref={emailRef}
+                        className='NewsleInput'
                     />
-                    <button type="submit" className='envoyer'>Envoyer</button>
+                    <button type="submit" className='EnvoyerNewsletter'>Envoyer</button>
                 </div>
             </form>
         </div>
+       </div>
     );
 };
 

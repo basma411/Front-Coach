@@ -119,8 +119,8 @@ const Edit = () => {
     setGouvernorat(e.target.value);
   };
   return (
-    <div className="container">
-      <div className="Profil">
+    <div className="containerEdit">
+      <div className="ProfilEdit">
         <form onSubmit={handleSubmit}>
           <label htmlFor="Nom">Nom et Prénom</label>
           <br />
