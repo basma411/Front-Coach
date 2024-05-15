@@ -24,6 +24,8 @@ import Articles from './components/espaceCoach/Articles';
 import AjoutArticle from './components/espaceCoach/AjoutArticle';
 import Formulaire from './components/espaceCoach/Formulaire';
 import AccueilAdmin from './components/admin/AccueilAdmin';
+import ConsulterIcon from './components/admin/icon/ConsulterIcon';
+import Edit from './components/admin/icon/Edit';
 
 function App() {
   const isLoading = useSelector(state => state.loading.isLoading);
@@ -81,6 +83,9 @@ function App() {
             </>
           )}
           <Routes>
+          <Route path="/admin/consulter_icon" element={<ConsulterIcon />} />
+          <Route path="/admin/icon/edit/:id" element={<Edit />} />
+
             <Route path="/admin/login" element={<Login />} />
             <Route path="/admin/Accueil" element={<AccueilAdmin />} />
             <Route path="/coach/login" element={<LoginCoch />} />

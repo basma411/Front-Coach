@@ -130,6 +130,8 @@ const Edit = () => {
             name="Nom"
             defaultValue={coachdata.NomPrenom}
             ref={Nom}
+            className="textareaEdit"
+
           />
           <br />
 
@@ -141,6 +143,8 @@ const Edit = () => {
             name="Email"
             defaultValue={coachdata.Email}
             ref={Email}
+            className="textareaEdit"
+
           />
           <br />
 
@@ -152,6 +156,8 @@ const Edit = () => {
             name="Numéro"
             defaultValue={coachdata.NumTel}
             ref={Numero}
+            className="textareaEdit"
+
           />
           <br />
 
@@ -365,6 +371,7 @@ const Edit = () => {
             name="Site"
             defaultValue={coachdata.Site}
             ref={Site}
+            className="textareaEdit"
           />
           <br />
 
@@ -376,6 +383,8 @@ const Edit = () => {
             name="Facebook"
             defaultValue={coachdata.Facebook}
             ref={Facebook}
+            className="textareaEdit"
+
           />
           <br />
 
@@ -387,6 +396,8 @@ const Edit = () => {
             name="LinkedIn"
             defaultValue={coachdata.LinkedIn}
             ref={LinkedIn}
+            className="textareaEdit"
+
           />
           <br />
 
@@ -398,6 +409,8 @@ const Edit = () => {
             name="Youtube"
             defaultValue={coachdata.Youtube}
             ref={Youtube}
+            className="textareaEdit"
+
           />
           <br />
 
@@ -409,6 +422,8 @@ const Edit = () => {
             name="Brève Bio"
             defaultValue={coachdata.Bio}
             ref={Bio}
+            className="textareaEdit"
+
           />
           <br />
           <label htmlFor="otherFileInput:">Photo:</label>

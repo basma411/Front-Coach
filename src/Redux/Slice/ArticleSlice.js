@@ -12,7 +12,7 @@ export const GetArticle= createAsyncThunk('article/get', async (data, { rejectWi
 export const AddArticle= createAsyncThunk('article/add', async (formData, { rejectWithValue,dispatch }) => {
   try {
     const res = await axios.post('/api/Article',formData);
-    dispatch(GetArticle)
+    // dispatch(GetArticle())
     return res.data;
   } catch (error) {
     return rejectWithValue(error);

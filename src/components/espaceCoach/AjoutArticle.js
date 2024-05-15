@@ -12,12 +12,14 @@ import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 const AjoutArticle = () => {
   const dispatch = useDispatch();
   const { Articles } = useSelector((state) => state.article);
-  const [imageArticle, setImage] = useState(null);
+  const [imageArticle, setImageArticle] = useState(null);
 
   useEffect(() => {
     dispatch(GetArticle());
   }, [dispatch]);
-
+  useEffect(() => {
+    console.log(imageArticle);
+  }, [imageArticle]);
   const {
     register,
     handleSubmit,
@@ -54,24 +56,28 @@ const AjoutArticle = () => {
     }
     setIsItalic(!isItalic); // Mettre à jour l'état de l'italique
   };
-
+  const handleImageChange = (e) => {
+    setImageArticle(e.target.files[0]);
+  };
+  useEffect(() => {
+    console.log(imageArticle);
+  }, [imageArticle]);
   const handleChange = (event) => {
     setText(event.target.value);
   };
-console.log(imageArticle)
-  const handleFormSubmit = () => {
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
     const formData = new FormData();
     formData.append("Auteur", authorRef.current.value);
     formData.append("Titre", titleRef.current.value);
     formData.append("Texte", textRef.current.value);
-    formData.append("imagee", imageArticle); 
+    formData.append("imagee", imageArticle);
     formData.append("Lien", linkRef.current.value);
 
-    dispatch(AddArticle(formData));
-};
+    console.log(formData);
 
-  const handleFileChange = (e) => {
-    setImage(e.target.files[0]);
+    dispatch(AddArticle(formData));
   };
 
   return (
@@ -111,12 +117,22 @@ console.log(imageArticle)
           <h1>
             Pour partager un article, une offre, cet espace est pour vous!
           </h1>
-          <form onSubmit={handleSubmit(handleFormSubmit)}>
-            <label>Auteur(e)/ Entreprise:</label>
-            <input type="text" placeholder="" ref={authorRef} />
-            <label>Titre:</label>
-            <input type="text" placeholder="" ref={titleRef} />
-            <label>Texte:</label>
+          <form onSubmit={handleFormSubmit}>
+            <label className="LabelArticle">Auteur(e)/ Entreprise:</label>
+            <input
+              type="text"
+              placeholder=""
+              ref={authorRef}
+              className="inputArticle"
+            />
+            <label className="LabelArticle">Titre:</label>
+            <input
+              type="text"
+              placeholder=""
+              ref={titleRef}
+              className="inputArticle"
+            />
+            <label className="LabelArticle">Texte:</label>
 
             <div className="editor">
               <div className="POLICE">
@@ -143,11 +159,11 @@ console.log(imageArticle)
               </div>
 
               <textarea
+                className="TextareaArticle"
                 type="text"
                 value={text}
                 onChange={handleChange}
                 placeholder=""
-                className="input-text"
                 ref={textRef}
                 style={{
                   fontWeight: isBold ? "bold" : "normal",
@@ -157,17 +173,25 @@ console.log(imageArticle)
               />
             </div>
 
-            <label>Photo ou illustration:</label>
+            <label className="LabelArticle">Photo ou illustration:</label>
             <input
               type="file"
               placeholder=""
-              ref={photoRef}
-              onClick={handleFileChange}
+              onChange={handleImageChange}
               name="imagee"
+              className="FileArticle"
             />
-            <label>Lien (si votre texte est publié sur un site):</label>
-            <input type="text" placeholder="" ref={linkRef} />
-            <input type="submit" />
+
+            <label className="LabelArticle">
+              Lien (si votre texte est publié sur un site):
+            </label>
+            <input
+              type="text"
+              placeholder=""
+              ref={linkRef}
+              className="inputArticle"
+            />
+            <input className="BoutonArticle" type="submit" />
           </form>
         </div>
       </div>

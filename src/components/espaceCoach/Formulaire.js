@@ -18,12 +18,11 @@ const Formulaire = () => {
   const [selectedMethodes, setSelectedMethodes] = useState([]);
   const [selectedLangues, setSelectedLangues] = useState([]);
   const [selectedTypesClients, setSelectedTypesClients] = useState([]);
-  const [tarifPreferentiel, setTarifPreferentiel] = useState()
+  const [tarifPreferentiel, setTarifPreferentiel] = useState();
   const [imageCoach, setImage] = useState(null);
   const [LogoCoach, setLogo] = useState(null);
   const [PdfCoach, setPdf] = useState(null);
 
-  
   const passwordRef = useRef(null);
   const confirmPasswordRef = useRef(null);
   const nomPrenomRef = useRef(null);
@@ -50,18 +49,34 @@ const Formulaire = () => {
   const customContentRenderer = () => {
     return (
       <label>
-        <p style={{ color: "#fff", background: "blue", fontSize: "25px", padding: "2px", marginLeft: "600px" }}>
+        <p
+          style={{
+            color: "#fff",
+            background: "blue",
+            fontSize: "25px",
+            padding: "2px",
+            marginLeft: "600px",
+          }}
+        >
           {compte}
         </p>
       </label>
     );
   };
 
-  const isALLselected = domaines.length > 0 && selectedDomaines.length === domaines.length;
+  const isALLselected =
+    domaines.length > 0 && selectedDomaines.length === domaines.length;
 
   const handleDomaineChange = (selectedValues) => {
     if (selectedValues.includes("allDomaine")) {
-      setSelectedDomaines(isALLselected ? [] : domaines.map((domaine) => ({ value: domaine._id, label: domaine.NomDomaine })));
+      setSelectedDomaines(
+        isALLselected
+          ? []
+          : domaines.map((domaine) => ({
+              value: domaine._id,
+              label: domaine.NomDomaine,
+            }))
+      );
     } else {
       setSelectedDomaines(selectedValues);
     }
@@ -75,7 +90,9 @@ const Formulaire = () => {
     if (checked) {
       setSelectedMethodes((prevSelected) => [...prevSelected, methode]);
     } else {
-      setSelectedMethodes((prevSelected) => prevSelected.filter((selected) => selected !== methode));
+      setSelectedMethodes((prevSelected) =>
+        prevSelected.filter((selected) => selected !== methode)
+      );
     }
   };
 
@@ -83,7 +100,9 @@ const Formulaire = () => {
     if (checked) {
       setSelectedLangues((prevSelected) => [...prevSelected, langue]);
     } else {
-      setSelectedLangues((prevSelected) => prevSelected.filter((selected) => selected !== langue));
+      setSelectedLangues((prevSelected) =>
+        prevSelected.filter((selected) => selected !== langue)
+      );
     }
   };
 
@@ -91,7 +110,9 @@ const Formulaire = () => {
     if (checked) {
       setSelectedTypesClients((prevSelected) => [...prevSelected, typeClient]);
     } else {
-      setSelectedTypesClients((prevSelected) => prevSelected.filter((selected) => selected !== typeClient));
+      setSelectedTypesClients((prevSelected) =>
+        prevSelected.filter((selected) => selected !== typeClient)
+      );
     }
   };
   const handleTarifChange = (value) => {
@@ -100,20 +121,19 @@ const Formulaire = () => {
   const handleFileChange = (e) => {
     setImage(e.target.files[0]);
   };
-  
+
   const handleLogoChange = (e) => {
     setLogo(e.target.files[0]);
   };
   const handlePdfChange = (e) => {
-    setPdf
-    (e.target.files[0]);
+    setPdf(e.target.files[0]);
   };
-  
+
   const handleAddCoach = (e) => {
     e.preventDefault();
-  
+
     const formData = new FormData();
-  
+
     formData.append("NomPrenom", nomPrenomRef.current.value);
     formData.append("AutreDomaine", autresDomainesRef.current.value);
     formData.append("NumTel", telephoneRef.current.value);
@@ -124,7 +144,10 @@ const Formulaire = () => {
     formData.append("Youtube", Youtube.current.value);
     formData.append("LinkedIn", linkedin.current.value);
     formData.append("Governorat", gouvernorat);
-    formData.append("DomainesIntervention", selectedDomaines.map((domaine) => domaine.label));
+    formData.append(
+      "DomainesIntervention",
+      selectedDomaines.map((domaine) => domaine.label)
+    );
 
     formData.append("MethodesDeCoaching", selectedMethodes.join(","));
     formData.append("Langues", selectedLangues.join(","));
@@ -136,12 +159,12 @@ const Formulaire = () => {
     formData.append("Logo", LogoCoach);
     formData.append("FichierPDF", PdfCoach);
     console.log(formData);
-    dispatch(addCoach(formData))
+    dispatch(addCoach(formData));
   };
 
   return (
     <>
-     <div
+      <div
         className="ImagePlatforme"
         style={{
           position: "relative",
@@ -153,11 +176,10 @@ const Formulaire = () => {
         }}
       >
         <div style={{ paddingTop: "100px" }}>
-          <h2>Espace Coach
-</h2>
+          <h2>Espace Coach</h2>
         </div>
       </div>
-<div className="Formulaire">
+      <div className="Formulaire">
         <div className="Formulaire-container">
           <div className="formulaire-left">
             {latestCoach.map((CoachVisible, index) => (
@@ -173,293 +195,346 @@ const Formulaire = () => {
               </div>
             ))}
           </div>
-          
+
           <div className="formulaire-right">
-            <h1>Remplissez le formulaire ci-joint et faites partie de notre communauté de coachs.</h1>
-            <form onSubmit={handleAddCoach}  >
+            <h1>
+              Remplissez le formulaire ci-joint et faites partie de notre
+              communauté de coachs.
+            </h1>
+            <form onSubmit={handleAddCoach}>
               <label>Nom et prénom:</label>
-              <input type="text"  ref={nomPrenomRef} className="inputCoach"/>
+              <input type="text" ref={nomPrenomRef} className="inputCoach" />
               <label>Domaines d’intervention:</label>
-              <Select 
-  options={domaines && [
-    {
-      value: "allDomaine",
-      label: (
-        <label>
-        <input
-          type="checkbox"
-          checked={isALLselected}
-          onChange={() =>
-            handleDomaineChange(
-              isALLselected
-                ? []
-                : domaines.map((domaine) => ({
-                    value: domaine._id,
-                    label: domaine.NomDomaine,
-                  }))
-            )
-          }
-          className="CHECK"
-
-        />
-        <span style={{ marginLeft: "0px", color: "black" }}>
-          Tous les domaines
-        </span>
-      </label>
-      
-      ),
-    },
-    ...domaines.map((domaine) => ({
-      value: domaine._id,
-      label: (
-        <label>
-          <input
-            type="checkbox"
-            checked={selectedDomaines.some(
-              (selected) => selected.value === domaine._id
-            )}
-            onChange={() =>
-              handleDomaineChange(
-                selectedDomaines.some(
-                  (selected) => selected.value === domaine._id
-                )
-                  ? selectedDomaines.filter(
-                      (selected) => selected.value !== domaine._id
-                    )
-                  : [
-                      ...selectedDomaines,
-                      { value: domaine._id, label: domaine.NomDomaine },
-                    ]
-              )
-            }
-            className="CHECK"
-          />
-          <span style={{ marginLeft: "8px", color: "black" }}>{domaine.NomDomaine}</span>
-        </label>
-      ),
-    })),
-  ]}
-  multi
-  color="none"
-  contentRenderer={customContentRenderer}
-  style={{ width: "100%" }}
-
-/>
+              <Select
+                options={
+                  domaines && [
+                    {
+                      value: "allDomaine",
+                      label: (
+                        <label>
+                          <input
+                            type="checkbox"
+                            checked={isALLselected}
+                            onChange={() =>
+                              handleDomaineChange(
+                                isALLselected
+                                  ? []
+                                  : domaines.map((domaine) => ({
+                                      value: domaine._id,
+                                      label: domaine.NomDomaine,
+                                    }))
+                              )
+                            }
+                            className="CHECK"
+                          />
+                          <span style={{ marginLeft: "0px", color: "black" }}>
+                            Tous les domaines
+                          </span>
+                        </label>
+                      ),
+                    },
+                    ...domaines.map((domaine) => ({
+                      value: domaine._id,
+                      label: (
+                        <label>
+                          <input
+                            type="checkbox"
+                            checked={selectedDomaines.some(
+                              (selected) => selected.value === domaine._id
+                            )}
+                            onChange={() =>
+                              handleDomaineChange(
+                                selectedDomaines.some(
+                                  (selected) => selected.value === domaine._id
+                                )
+                                  ? selectedDomaines.filter(
+                                      (selected) =>
+                                        selected.value !== domaine._id
+                                    )
+                                  : [
+                                      ...selectedDomaines,
+                                      {
+                                        value: domaine._id,
+                                        label: domaine.NomDomaine,
+                                      },
+                                    ]
+                              )
+                            }
+                            className="CHECK"
+                          />
+                          <span style={{ marginLeft: "8px", color: "black" }}>
+                            {domaine.NomDomaine}
+                          </span>
+                        </label>
+                      ),
+                    })),
+                  ]
+                }
+                multi
+                color="none"
+                contentRenderer={customContentRenderer}
+                style={{ width: "100%" }}
+              />
 
               <label>Autres domaines:</label>
               <input
                 type="text"
                 placeholder=""
-               ref={autresDomainesRef}
-               className="inputCoach"
+                ref={autresDomainesRef}
+                className="inputCoach"
               />
               <label>Gouvernorats</label>
               <select
-            id="gouvernorat"
-        
-                        className="Gouvernorat"
-                        value={gouvernorat}
-                        onChange={handleGouvernoratChange}
-          >
-            {[
-              "Tunis",
-              "Ariana",
-              "Ben Arous",
-              "Manouba",
-              "Nabeul",
-              "Zaghouan",
-              "Bizerte",
-              "Béja",
-              "Jendouba",
-              "Kef",
-              "Siliana",
-              "Kairouan",
-              "Kasserine",
-              "Sidi Bouzid",
-              "Sousse",
-              "Monastir",
-              "Mahdia",
-              "Sfax",
-              "Kébili",
-              "Gabès",
-              "Medenine",
-              "Tataouine",
-              "Tozeur",
-              "Gafsa",
-            ].map((gouvernorat, index) => (
-              <option key={index}  
-             >
-                {gouvernorat} 
-              </option>
-            ))}
-          </select>
+                id="gouvernorat"
+                className="Gouvernorat"
+                value={gouvernorat}
+                onChange={handleGouvernoratChange}
+              >
+                {[
+                  "Tunis",
+                  "Ariana",
+                  "Ben Arous",
+                  "Manouba",
+                  "Nabeul",
+                  "Zaghouan",
+                  "Bizerte",
+                  "Béja",
+                  "Jendouba",
+                  "Kef",
+                  "Siliana",
+                  "Kairouan",
+                  "Kasserine",
+                  "Sidi Bouzid",
+                  "Sousse",
+                  "Monastir",
+                  "Mahdia",
+                  "Sfax",
+                  "Kébili",
+                  "Gabès",
+                  "Medenine",
+                  "Tataouine",
+                  "Tozeur",
+                  "Gafsa",
+                ].map((gouvernorat, index) => (
+                  <option key={index}>{gouvernorat}</option>
+                ))}
+              </select>
               <label>Numéro de téléphone:</label>
               <input
                 type="text"
                 placeholder=""
-            ref={telephoneRef}
-            className="inputCoach"
+                ref={telephoneRef}
+                className="inputCoach"
               />
               <label>Adresse mail:</label>
-              <input type="text" placeholder="" ref={adresseMailRef}             className="inputCoach"
-/>
+              <input
+                type="text"
+                placeholder=""
+                ref={adresseMailRef}
+                className="inputCoach"
+              />
               <label>Mot de passe:</label>
-              <input type="password" placeholder="" ref={passwordRef}             className="inputCoach"
- />
+              <input
+                type="password"
+                placeholder=""
+                ref={passwordRef}
+                className="inputCoach"
+              />
               <label>Confirmer Mot de passe:</label>
-              <input type="password" placeholder="" ref={confirmPasswordRef}             className="inputCoach"
-/>
+              <input
+                type="password"
+                placeholder=""
+                ref={confirmPasswordRef}
+                className="inputCoach"
+              />
               <label>Brève Bio (maximum 5 lignes):</label>
-              <input type="text" placeholder=""  style={{height:'300px'}}   ref={bioRef}             className="inputCoach"
-/>
+              <input
+                type="text"
+                placeholder=""
+                style={{ height: "300px" }}
+                ref={bioRef}
+                className="inputCoach"
+              />
               <label>Méthodes de coaching:</label>
               <div className="checkbox">
-            <div>
-              <input
-                type="checkbox"
-                id="face-a-face"
-                name="face-a-face"
-                onChange={(e) =>
-                  handleMethodeChange("Face à face", e.target.checked)
-                }
-              />
-            </div>
-            <label htmlFor="face-a-face">Face à face</label>
-          </div>
-          <div className="checkbox">
-            <div>
-              <input
-                type="checkbox"
-                id="en-ligne"
-                name="en-ligne"
-                onChange={(e) =>
-                  handleMethodeChange("En ligne", e.target.checked)
-                }
-              />
-            </div>
-            <label htmlFor="en-ligne">En ligne</label>
-          </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="face-a-face"
+                    name="face-a-face"
+                    onChange={(e) =>
+                      handleMethodeChange("Face à face", e.target.checked)
+                    }
+                  />
+                </div>
+                <label htmlFor="face-a-face">Face à face</label>
+              </div>
+              <div className="checkbox">
+                <div>
+                  <input
+                    type="checkbox"
+                    id="en-ligne"
+                    name="en-ligne"
+                    onChange={(e) =>
+                      handleMethodeChange("En ligne", e.target.checked)
+                    }
+                  />
+                </div>
+                <label htmlFor="en-ligne">En ligne</label>
+              </div>
 
               <label>Langues</label>
               <div className="checkbox">
-            <input
-              type="checkbox"
-              id="arabe"
-              name="arabe"
-              onChange={(e) => handleLangueChange("Arabe", e.target.checked)}
+                <input
+                  type="checkbox"
+                  id="arabe"
+                  name="arabe"
+                  onChange={(e) =>
+                    handleLangueChange("Arabe", e.target.checked)
+                  }
+                />
 
-            />
+                <label htmlFor="arabe">Arabe</label>
+              </div>
+              <div className="checkbox">
+                <input
+                  type="checkbox"
+                  id="français"
+                  name="français"
+                  onChange={(e) =>
+                    handleLangueChange("Français", e.target.checked)
+                  }
+                />
 
-            <label htmlFor="arabe">Arabe</label>
-          </div>
-          <div className="checkbox">
-            <input
-              type="checkbox"
-              id="français"
-              name="français"
-              onChange={(e) => handleLangueChange("Français", e.target.checked)}
-
-            />
-
-            <label htmlFor="français">Français</label>
-          </div>
-          <div className="checkbox">
-            <input
-              type="checkbox"
-              id="anglais"
-              name="anglais"
-              onChange={(e) => handleLangueChange("Anglais", e.target.checked)}
-
-            />
-            <label htmlFor="anglais">Anglais</label>
-          </div>
+                <label htmlFor="français">Français</label>
+              </div>
+              <div className="checkbox">
+                <input
+                  type="checkbox"
+                  id="anglais"
+                  name="anglais"
+                  onChange={(e) =>
+                    handleLangueChange("Anglais", e.target.checked)
+                  }
+                />
+                <label htmlFor="anglais">Anglais</label>
+              </div>
               <label>Types de clients:</label>
               <div className="checkbox">
-            <input
-              type="checkbox"
-              id="personne"
-              name="personne"
-              onChange={(e) => handleTypeClientChange("Personne", e.target.checked)}
-
-            />
-            <label htmlFor="personne">Personne</label>
-          </div>
-          <div className="checkbox">
-            <input
-              type="checkbox"
-              id="organisation"
-              name="organisation"
-              onChange={(e) => handleTypeClientChange("Organisation", e.target.checked)}
-
-            />
-            <label htmlFor="organisation">Organisation</label>
-          </div>
+                <input
+                  type="checkbox"
+                  id="personne"
+                  name="personne"
+                  onChange={(e) =>
+                    handleTypeClientChange("Personne", e.target.checked)
+                  }
+                />
+                <label htmlFor="personne">Personne</label>
+              </div>
+              <div className="checkbox">
+                <input
+                  type="checkbox"
+                  id="organisation"
+                  name="organisation"
+                  onChange={(e) =>
+                    handleTypeClientChange("Organisation", e.target.checked)
+                  }
+                />
+                <label htmlFor="organisation">Organisation</label>
+              </div>
               <label>
                 Tarif préférentiel (réduction de 10% pour les clients de la
                 plateforme):
               </label>
               <div>
-            <div className="checkbox">
-              <input
-                type="radio"
-                id="organisation-oui"
-                name="tarif"
-                onChange={() => handleTarifChange(true)}         
+                <div className="checkbox">
+                  <input
+                    type="radio"
+                    id="organisation-oui"
+                    name="tarif"
+                    onChange={() => handleTarifChange(true)}
+                  />
+                  <label htmlFor="organisation-oui">oui</label>
+                </div>
 
-  />
-              <label htmlFor="organisation-oui">oui</label>
-            </div>
-
-            <div className="checkbox">
-              <input
-                type="radio"
-                id="organisation-non"
-                name="tarif"
-                onChange={() => handleTarifChange(false)}         
-
-                          />
-              <label htmlFor="organisation-non">non</label>
-            </div>
-          </div>
+                <div className="checkbox">
+                  <input
+                    type="radio"
+                    id="organisation-non"
+                    name="tarif"
+                    onChange={() => handleTarifChange(false)}
+                  />
+                  <label htmlFor="organisation-non">non</label>
+                </div>
+              </div>
               <label>Photo</label>
-              <input type="file" placeholder=""  name="imagee" onChange={handleFileChange} className="filecoach"/>
+              <input
+                type="file"
+                placeholder=""
+                name="imagee"
+                onChange={handleFileChange}
+                className="filecoach"
+              />
               <label>Lien du site:</label>
-              <input type="text" placeholder="" ref={siteRef}             className="inputCoach"
-/>
+              <input
+                type="text"
+                placeholder=""
+                ref={siteRef}
+                className="inputCoach"
+              />
               <label>Logo</label>
-              <input type="file" placeholder=" " name="logo" onChange={handleLogoChange} className="filecoach" />
+              <input
+                type="file"
+                placeholder=" "
+                name="logo"
+                onChange={handleLogoChange}
+                className="filecoach"
+              />
               <label>Réseaux sociaux :</label>
-              <br/>
+              <br />
               <label>Facebook:</label>
 
-              <input type="text" placeholder="" ref={facebook}             className="inputCoach"
-/>
-<label>Youtube:</label>
+              <input
+                type="text"
+                placeholder=""
+                ref={facebook}
+                className="inputCoach"
+              />
+              <label>Youtube:</label>
 
+              <input
+                type="text"
+                placeholder=""
+                ref={Youtube}
+                className="inputCoach"
+              />
 
-              <input type="text" placeholder=""  ref={Youtube}             className="inputCoach"
-/>
+              <label>Linkedin:</label>
 
-<label>Linkedin:</label>
-
-              <input type="text" placeholder=""  ref={linkedin}             className="inputCoach"
-/>
+              <input
+                type="text"
+                placeholder=""
+                ref={linkedin}
+                className="inputCoach"
+              />
               <label>
                 Un fichier PDF contenant toute pièce justifiant l’expérience en
                 coaching et toutes autres compétences (diplômes, certificats,
                 formations):
               </label>
-              <input type="file" placeholder=" "  name="fichierPDF" onChange={handlePdfChange}  className="filecoach" />
+              <input
+                type="file"
+                placeholder=" "
+                name="fichierPDF"
+                onChange={handlePdfChange}
+                className="filecoach"
+              />
               <input type="submit" className="AddCoach" />
             </form>
           </div>
-
-    </div> 
-    </div> 
-  
-
-     </>
-   
+        </div>
+      </div>
+    </>
   );
 };
 

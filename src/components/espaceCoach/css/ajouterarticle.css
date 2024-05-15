@@ -10,7 +10,7 @@
 .left-Article {
   width: 30%;
   height: 100% !important;
-  padding: 20px ;
+  padding: 30px 50px 20px 20px ;
 
   background-color: #fff;
   border-radius: 10px;
@@ -66,7 +66,9 @@
 
 .right-Article h1 {
   margin-bottom: 20px;
-  font-size: 18px;
+  font-size: 25px;
+  font-weight: 400;
+  color: gray;
 }
 
 .right-Article form {
@@ -74,28 +76,58 @@
   flex-direction: column;
 }
 
-.right-Article form input[type="text"],
-.right-Article form input[type="file"] {
+.inputArticle {
+  width: 100%;
+  height: 50px;
   margin-bottom: 10px;
-  padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 14px;
-}
-
-.right-Article form input[type="submit"] {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  color: #535252;
   cursor: pointer;
 }
+.TextareaArticle{
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #535252;
 
-.right-Article form input[type="submit"]:hover {
-  background-color: #0056b3;
+  cursor: pointer;
+
 }
+.LabelArticle{
+  margin: 10px 0;
+}
+.FileArticle{
+
+  margin: 10px;
+  font-size: 20px; 
+}
+.BoutonArticle{
+
+  background-color: yellow;
+  width: 150px;
+  height: 50px;
+  margin: 20px auto;
+  border: none;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); 
+  border-radius: 2%; 
+  font-size: 20px;
+  color: #000;
+
+}
+
+.inputArticle:focus,
+.TextareaArticle:focus,
+.FileArticle:focus {
+  outline-color: rgb(36, 233, 233);
+  outline-style: solid; /* Set the outline style to solid */
+  outline-offset: 0; /* Set the outline width to 1px */
+}
+
 .editor{
   position: relative;
   width: 100%; /* Ajuste la largeur en fonction du contenu */
@@ -140,11 +172,7 @@
 
 
 
-.input-text {
-  padding-left: 30px;
-  height:200PX;
 
-}
 
 #article-button {
   background-color: rgb(229, 255, 0);

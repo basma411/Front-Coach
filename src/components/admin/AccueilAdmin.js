@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import BarheaderAdmin from './BarheaderAdmin';
 import NavBarAdmin from './NavBarAdmin';
 import image from '../../images/big_image_2.jpg';
@@ -28,7 +28,9 @@ const AccueilAdmin = () => {
       <div className="PlatformeAdmin">
         <div className="containerPlatforme">
           <div className="left">
+          <Link to="/admin/consulter_icon" >
             <button className="buttonStyle">Consulter Icones</button>
+            </Link>
             <button className="buttonStyle">Consulter Slider</button>
             <button className="buttonStyle">Consulter La Plume des Coachs</button>
             <button className="buttonStyle">Consulter Biblio</button>

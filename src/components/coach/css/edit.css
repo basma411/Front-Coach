@@ -73,11 +73,16 @@ margin-left: 50px;
         line-height: 2;
         color: gray;
         border: solid 1PX gray;
+        background-color: transparent;
     }
-    .Gouvernorat:focus{
-        border: solid 1PX rgb(36, 233, 233);
-
-    }
+  
+    
+.textareaEdit:focus,
+.Gouvernorat:focus {
+  outline-color: rgb(36, 233, 233);
+  outline-style: solid; /* Set the outline style to solid */
+  outline-offset: 0; /* Set the outline width to 1px */
+}
     .updateimage{
 
 display: flex;
@@ -87,9 +92,7 @@ gap:30px
 
 
     }
-    textarea:focus {
-        border: solid 1px rgb(36, 233, 233);
-    }
+
     
     .updateimage input{
 
