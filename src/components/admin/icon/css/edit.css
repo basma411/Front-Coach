@@ -1,0 +1,42 @@
+/* edit.css */
+
+.editIcon {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.containerIcon {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.ck-editor__editable {
+    min-height: 300px;
+    max-height: 500px;
+    width: 100%;
+    text-align: justify;
+}
+
+.EDIT-IMG  {
+ width: 30%;
+ margin: 0 auto;
+}
+.IconBoutton{
+   width: 40%; 
+   margin: 20px auto;
+
+}
+.editButton {
+    /* Style pour le bouton Modifier */
+    margin-right: 10px; /* Ajoute un espace entre les boutons */
+}
+
+.cancelButton {
+background-color: white;
+color: black;}
+

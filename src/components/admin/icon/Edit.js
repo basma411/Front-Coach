@@ -2,54 +2,80 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetIcon } from '../../../Redux/Slice/IconSlice';
 import { useParams } from 'react-router-dom';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { useResizeDetector } from 'react-resize-detector'; // Importer useResizeDetector
+import './css/edit.css';
 
 const Edit = () => {
     const dispatch = useDispatch();
-    const { id } = useParams(); // Récupère l'ID de l'URL
-
+    const { id } = useParams();
     const { Icon } = useSelector((state) => state.icon);
     useEffect(() => {
         dispatch(GetIcon());
     }, [dispatch]);
 
-    const [formData, setFormData] = useState({}); // State to hold form data
+    const [formData, setFormData] = useState({});
 
-    // Update form data when Icon changes
     useEffect(() => {
-        // Filter the icon data based on the ID
         const iconToEdit = Icon.find(icon => icon._id === id);
         if (iconToEdit) {
-            setFormData(iconToEdit); // Initialize form data with Icon values
+            setFormData(iconToEdit);
         }
     }, [Icon, id]);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
+    const handleEditorChange = (event, editor, name) => {
+        const data = editor.getData();
         setFormData((prevData) => ({
             ...prevData,
-            [name]: value, // Update the corresponding field in form data
+            [name]: data,
         }));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Dispatch action to update Icon with formData
-        // Example: dispatch(updateIcon(formData));
+        console.log(formData);
     };
 
+    const { width, height, ref } = useResizeDetector(); // Utiliser useResizeDetector
+
     return (
-        <div className='editIcon'>
+        <div className='editIcon' ref={ref}> {/* Utiliser la référence retournée par useResizeDetector */}
             <div className='containerIcon'>
                 <form onSubmit={handleSubmit}>
-                    <label>Titre</label>
-                    <input type='text' name='Titre' defaultValue={formData.Titre || ''} onChange={handleChange} />
+                    <div className="form-group">
+                        <label>Titre</label>
+                        <CKEditor
+                            editor={ClassicEditor}
+                            data={formData.Titre || ''}
+                            onChange={(event, editor) => handleEditorChange(event, editor, 'Titre')}
+                            config={{
+                                // Configuration supplémentaire peut être placée ici
+                            }}
+                        />
+                    </div>
 
-                    <label>Texte</label>
-                    <input type='text' name='Texte' defaultValue={formData.Texte || ''} onChange={handleChange} />
+                    <div className="form-group">
+                        <label>Texte</label>
+                        <CKEditor
+                            editor={ClassicEditor}
+                            data={formData.Texte || ''}
+                            onChange={(event, editor) => handleEditorChange(event, editor, 'Texte')}
+                            config={{
+                                // Configuration supplémentaire peut être placée ici
+                            }}
+                        />
+                    </div>
 
-                    <label>Icone</label>
-                    <img src={`http://localhost:8000/${formData.image}`} />
-                    <button type='submit'>Modifier</button>
+                    <div className="form-group">
+                        <label>Icone</label>
+                        {formData.image && <img src={`http://localhost:8000/${formData.image}`} alt="Icone" className='EDIT-IMG' />}
+                    </div>
+
+                    <div>
+                        <button onClick={handleSubmit} className='btn btn-primary'>Modifier</button>
+                        <button onClick='btn btn-primary'>Annuler</button>
+                    </div>
                 </form>
             </div>
         </div>
