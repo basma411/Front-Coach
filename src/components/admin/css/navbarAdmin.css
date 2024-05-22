@@ -1,9 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 /*NavBar*/
 .nav-link {
-  font-family: 'Rubik', Arial, sans-serif;
   font-weight: 300;
-  font-size: 18px;
+  font-size: 15px;
 color: rgb(43, 43, 43);
   line-height: 30px;
   padding: 16px 9px ;

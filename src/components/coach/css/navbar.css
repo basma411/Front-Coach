@@ -1,18 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 /*NavBar*/
-.nav-link-custom {
-  font-family: 'Rubik', Arial, sans-serif;
+.nav-link-coach {
   font-weight: 300;
-  font-size: 17px;
+  font-size: 18px;
 color: rgb(43, 43, 43);
   line-height: 30px;
-  padding: 20px;
-  /* margin-left: 50px ; 
-   margin-right: 50px ; */
+  padding: 16px 9px ;
 
 
 }
-.nav-link-custom:hover {
+.nav-link-coach:hover {
   background-color:#275491;
   color: #fff;
 }
@@ -26,7 +23,7 @@ color: rgb(43, 43, 43);
 .me-auto {
   padding-right: 70px;
 }
-.nav-link-custom {
+.nav-link-coach {
   text-decoration: none;
   
 }

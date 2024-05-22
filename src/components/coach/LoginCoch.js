@@ -25,7 +25,7 @@ const LoginCoch = () => {
     e.preventDefault(); // Empêcher le formulaire de se soumettre normalement
 
     // Dispatch de l'action de connexion avec les informations d'identification de l'utilisateur
-    dispatch(login({ Email: email.current.value, Password: password.current.value }));
+    dispatch(login({ email: email.current.value, pwd: password.current.value }));
   };
 
   return (

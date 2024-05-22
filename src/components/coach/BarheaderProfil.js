@@ -49,7 +49,7 @@ const BarheaderProfil = () => {
     return (
         <div className="barheader">
             <GoPersonFill className="iconCompte" />
-            <h5>{coachdata.NomPrenom}</h5>
+            <h5>{coachdata.nom}</h5>
             <RiArrowDropDownLine onClick={toggleList} style={{fontSize:'40px'}} />
 
             <Dropdown show={isListOpen} align="end" onClose={() => setIsListOpen(false)}>

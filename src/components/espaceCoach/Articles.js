@@ -16,7 +16,7 @@ const Articles = () => {
   useEffect(() => {
     dispatch(GetArticle());
   }, [dispatch]);
-
+console.log("article",Articles)
   const pageSize = 6; // Nombre d'articles par page
 
   const onPageChange = (page) => {
@@ -24,7 +24,7 @@ const Articles = () => {
   };
 
   const startIndex = (currentPage - 1) * pageSize;
-  const endIndex = Math.min(startIndex + pageSize, Articles.length); // Utilisez la variable renommée
+  const endIndex = Math.min(startIndex + pageSize, Articles.length); 
 
   return (
     <>
@@ -50,14 +50,14 @@ const Articles = () => {
             <Card>
               <Card.Img
                 variant="top"
-                src={`http://localhost:8000/${article.Photo}`}
+                src={`http://localhost:8000/${article.photo}`}
               />
               <Card.Body>
-                <Card.Title className="article-card-title">{article.Titre}</Card.Title>
+                <Card.Title className="article-card-title">{article.titre}</Card.Title>
                 <Card.Text>
                   <div className="article-card-author"> 
                     <MdPerson className="article-card-author-icon" /> 
-                    <h5>{article.Auteur}</h5>
+                    <h5>{article.auteur}</h5>
                   </div>
                 </Card.Text>
               </Card.Body>

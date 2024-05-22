@@ -22,20 +22,20 @@ const Edit = () => {
   const Youtube = useRef();
   const Bio = useRef();
   const [selectedDomaines, setSelectedDomaines] = useState(
-    coachdata.DomainesIntervention || [] // Assurer une valeur par défaut []
+    coachdata.domain || [] // Assurer une valeur par défaut []
   );
 
-  const [selectedLangue, setselectedLangue] = useState(coachdata.Langues || []);
+  const [selectedLangue, setselectedLangue] = useState(coachdata.langue || []);
   const [selectedMethode, setselectedMethode] = useState(
-    coachdata.MethodesDeCoaching || []
+    coachdata.method || []
   );
   const [selectedTypesClient, setSelectedTypesClient] = useState(
-    coachdata.TypesDeClients || []
+    coachdata.type_client || []
   );
   const [tarifPreferentiel, setTarifPreferentiel] = useState(
-    coachdata.TarifPreferentiel || false)
+    coachdata.tarif || false)
   const [imageCoach, setImage] = useState(null);
-  const [gouvernorat, setGouvernorat] = useState(coachdata.Governorat || "");
+  const [gouvernorat, setGouvernorat] = useState(coachdata.gouv || "");
 
   useEffect(() => {
     dispatch(getCoach());
@@ -54,20 +54,20 @@ const Edit = () => {
 
     // Ajoutez le fichier à l'objet FormData
     formData.append("imagee", imageCoach);
-    formData.append("NomPrenom", Nom.current.value);
-    formData.append("Email", Email.current.value);
-    formData.append("NumTel", Numero.current.value);
-    formData.append("Site", Site.current.value);
-    formData.append("Facebook", Facebook.current.value);
-    formData.append("LinkedIn", LinkedIn.current.value);
-    formData.append("Youtube", Youtube.current.value);
-    formData.append("Bio", Bio.current.value);
-    formData.append("DomainesIntervention", selectedDomaines.join(","));
-    formData.append("MethodesDeCoaching", selectedMethode.join(","));
-    formData.append("Langues", selectedLangue.join(","));
-    formData.append("TypesDeClients", selectedTypesClient.join(","));
-    formData.append("TarifPreferentiel", tarifPreferentiel ? "true" : "false");
-    formData.append("Governorat", gouvernorat);
+    formData.append("nom", Nom.current.value);
+    formData.append("email", Email.current.value);
+    formData.append("num", Numero.current.value);
+    formData.append("site", Site.current.value);
+    formData.append("fb", Facebook.current.value);
+    formData.append("In", LinkedIn.current.value);
+    formData.append("yt", Youtube.current.value);
+    formData.append("bio", Bio.current.value);
+    formData.append("domain", selectedDomaines.join(","));
+    formData.append("method", selectedMethode.join(","));
+    formData.append("langue", selectedLangue.join(","));
+    formData.append("type_client", selectedTypesClient.join(","));
+    formData.append("tarif", tarifPreferentiel ? "true" : "false");
+    formData.append("gouv", gouvernorat);
 
     dispatch(UpdateCoach({ id, formData }));
     alert("Profil modifié");
@@ -128,7 +128,7 @@ const Edit = () => {
             type="text"
             id="nom"
             name="Nom"
-            defaultValue={coachdata.NomPrenom}
+            defaultValue={coachdata.nom}
             ref={Nom}
             className="textareaEdit"
 
@@ -141,7 +141,7 @@ const Edit = () => {
             type="text"
             id="Email"
             name="Email"
-            defaultValue={coachdata.Email}
+            defaultValue={coachdata.email}
             ref={Email}
             className="textareaEdit"
 
@@ -154,7 +154,7 @@ const Edit = () => {
             type="text"
             id="Numéro"
             name="Numéro"
-            defaultValue={coachdata.NumTel}
+            defaultValue={coachdata.num}
             ref={Numero}
             className="textareaEdit"
 
@@ -173,8 +173,8 @@ const Edit = () => {
                       id={`domaine-${index}`}
                       name={`domaine-${index}`}
                       defaultChecked={
-                        coachdata.DomainesIntervention &&
-                        coachdata.DomainesIntervention.includes(
+                        coachdata.domain &&
+                        coachdata.domain.includes(
                           domaine.NomDomaine
                         )
                       }
@@ -242,8 +242,8 @@ const Edit = () => {
                 id="face-a-face"
                 name="face-a-face"
                 defaultChecked={
-                  coachdata.MethodesDeCoaching &&
-                  coachdata.MethodesDeCoaching.includes("Face à face")
+                  coachdata.method &&
+                  coachdata.method.includes("Face à face")
                 }
                 onChange={(e) =>
                   handleMethodeChange("Face à face", e.target.checked)
@@ -259,8 +259,8 @@ const Edit = () => {
                 id="en-ligne"
                 name="en-ligne"
                 defaultChecked={
-                  coachdata.MethodesDeCoaching &&
-                  coachdata.MethodesDeCoaching.includes("En ligne")
+                  coachdata.method &&
+                  coachdata.method.includes("En ligne")
                 }
                 onChange={(e) =>
                   handleMethodeChange("En ligne", e.target.checked)
@@ -278,7 +278,7 @@ const Edit = () => {
               id="arabe"
               name="arabe"
               defaultChecked={
-                coachdata.Langues && coachdata.Langues.includes("Arabe")
+                coachdata.langue && coachdata.langue.includes("Arabe")
               }
               onChange={(e) => handleLangueChange("Arabe", e.target.checked)}
             />
@@ -291,7 +291,7 @@ const Edit = () => {
               id="français"
               name="français"
               defaultChecked={
-                coachdata.Langues && coachdata.Langues.includes("Français")
+                coachdata.langue && coachdata.langue.includes("Français")
               }
               onChange={(e) => handleLangueChange("Français", e.target.checked)}
             />
@@ -304,7 +304,7 @@ const Edit = () => {
               id="anglais"
               name="anglais"
               defaultChecked={
-                coachdata.Langues && coachdata.Langues.includes("Anglais")
+                coachdata.langue && coachdata.langue.includes("Anglais")
               }
               onChange={(e) => handleLangueChange("Anglais", e.target.checked)}
             />
@@ -318,7 +318,7 @@ const Edit = () => {
               type="checkbox"
               id="personne"
               name="personne"
-              defaultChecked={coachdata.TypesDeClients && coachdata.TypesDeClients.includes("Personne")}
+              defaultChecked={coachdata.type_client && coachdata.type_client.includes("Personne")}
               onChange={(e) => handleTypeClientChange("Personne", e.target.checked)}
             />
             <label htmlFor="personne">Personne</label>
@@ -328,7 +328,7 @@ const Edit = () => {
               type="checkbox"
               id="organisation"
               name="organisation"
-              defaultChecked={coachdata.TypesDeClients && coachdata.TypesDeClients.includes("Organisation")}
+              defaultChecked={coachdata.type_client && coachdata.type_client.includes("Organisation")}
               onChange={(e) => handleTypeClientChange("Organisation", e.target.checked)}
             />
             <label htmlFor="organisation">Organisation</label>
@@ -369,7 +369,7 @@ const Edit = () => {
             type="text"
             id="Site"
             name="Site"
-            defaultValue={coachdata.Site}
+            defaultValue={coachdata.site}
             ref={Site}
             className="textareaEdit"
           />
@@ -394,7 +394,7 @@ const Edit = () => {
             type="text"
             id="LinkedIn"
             name="LinkedIn"
-            defaultValue={coachdata.LinkedIn}
+            defaultValue={coachdata.In}
             ref={LinkedIn}
             className="textareaEdit"
 
@@ -407,7 +407,7 @@ const Edit = () => {
             type="text"
             id="Youtube"
             name="Youtube"
-            defaultValue={coachdata.Youtube}
+            defaultValue={coachdata.yt}
             ref={Youtube}
             className="textareaEdit"
 
@@ -420,7 +420,7 @@ const Edit = () => {
             type="text"
             id="Brève Bio"
             name="Brève Bio"
-            defaultValue={coachdata.Bio}
+            defaultValue={coachdata.bio}
             ref={Bio}
             className="textareaEdit"
 
@@ -429,7 +429,7 @@ const Edit = () => {
           <label htmlFor="otherFileInput:">Photo:</label>
           <div className="updateimage">
             <img
-              src={`http://localhost:8000/${coachdata.Photo}`}
+              src={`http://localhost:8000/${coachdata.image}`}
               style={{ width: "150px", height: "150px" }}
               name="imagee"
             />

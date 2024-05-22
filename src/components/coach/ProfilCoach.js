@@ -53,9 +53,9 @@ const ProfilCoach = () => {
       <div className="profil-container">
         <div style={{ textAlign: "left" }} className="PROFIL_LEFT">
           <div className="Photo">
-            <p>{coachdata.NomPrenom}</p>
+            <p>{coachdata.nom}</p>
             <img
-              src={`http://localhost:8000/${coachdata.Photo}`}
+              src={`http://localhost:8000/${coachdata.image}`}
               alt="Photo de profil"
               style={{
                 width: "220px",
@@ -72,25 +72,25 @@ const ProfilCoach = () => {
             <div className="information">
               <div>
                 <FaEarthAfrica style={{ color: " rgb(255,205,51)" }} />
-                <h3>Site web: {coachdata.Site}</h3>
+                <h3>Site web: {coachdata.site}</h3>
               </div>
               <hr />
               <div>
                 <MdEmail style={{ color: " rgb(255,205,51)" }} />
 
-                <h3>E-mail: {coachdata.Email}</h3>
+                <h3>E-mail: {coachdata.email}</h3>
               </div>
               <hr />
               <div>
                 <BsTelephoneFill style={{ color: " rgb(255,205,51)" }} />
 
-                <h3>Tél: {coachdata.NumTel}</h3>
+                <h3>Tél: {coachdata.num}</h3>
               </div>
               <hr />
               <div>
                 <GiPositionMarker style={{ color: " rgb(255,205,51)" }} />
 
-                <h3>Gouvernorat: {coachdata.Governorat}</h3>
+                <h3>Gouvernorat: {coachdata.gouv}</h3>
               </div>
               <hr />
 
@@ -141,8 +141,8 @@ const ProfilCoach = () => {
           </h3>
 
           <div className="domaines-intervention list">
-            {coachdata.DomainesIntervention &&
-              coachdata.DomainesIntervention.map((domaine, index) => (
+            {coachdata.domain &&
+              coachdata.domain.map((domaine, index) => (
                 <h3 key={index}>{domaine}</h3>
               ))}
           </div>
@@ -150,7 +150,7 @@ const ProfilCoach = () => {
           <h2 className="domaines-coaching-title titre">Brève Bio</h2>
 
           <div className="bio">
-            <p>{coachdata.Bio}</p>
+            <p>{coachdata.bio}</p>
           </div>
 
           <h2 className="Méthodes de Coaching-title titre list">
@@ -159,8 +159,8 @@ const ProfilCoach = () => {
           </h2>
 
           <div className="Méthodes-Coaching list">
-            {coachdata.MethodesDeCoaching &&
-              coachdata.MethodesDeCoaching.map((MethCoach, index) => (
+            {coachdata.method &&
+              coachdata.method.map((MethCoach, index) => (
                 <h3 key={index}>{MethCoach}</h3>
               ))}
           </div>
@@ -168,20 +168,20 @@ const ProfilCoach = () => {
           <h2 className="Type-de-Client-title titre list"> Type de Client</h2>
 
           <div className="Type-de-Client list">
-            <h3>{coachdata.TypesDeClients}</h3>
+            <h3>{coachdata.type_client}</h3>
           </div>
 
           <h2 className="Langues titre list">Langues</h2>
 
           <div className="Langues list">
-            {coachdata.Langues &&
-              coachdata.Langues.map((Lang, index) => (
+            {coachdata.langue &&
+              coachdata.langue.map((Lang, index) => (
                 <h3 key={index}>{Lang}</h3>
               ))}
           </div>
           <h2 className="tarif titre list">Tarif préférentiel (réduction de 10% pour les clients de la plateforme)</h2>
           <div className="Tarif list">
-          {coachdata.TarifPreferentiel ? <h3>oui</h3> : <h3>non</h3>}
+          {coachdata.tarif ? <h3>oui</h3> : <h3>non</h3>}
 
           </div>
         </div>

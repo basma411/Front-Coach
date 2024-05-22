@@ -22,7 +22,8 @@ const BiblioCoaching = () => {
   };
 
   return (
-    <div className="Container">
+    <div className="biblioAccueil">
+<div className="ContainerBiblio">
       <h2>BiblioCoaching</h2>
       <div className="site-section">
         {Biblios &&
@@ -61,7 +62,7 @@ const BiblioCoaching = () => {
                         }}
                       >
                         {" "}
-                        {Biblio.description}
+                        {Biblio.texte}
                       </p>
                       <div className="author d-flex">
                         <img
@@ -71,7 +72,7 @@ const BiblioCoaching = () => {
                         />
                         <div className="name align-self-center">
                         
-<h3>{Biblio.auteur1}</h3>
+<h3>{Biblio.editeur}</h3>
 <h4>{Biblio.annee}</h4>
 
                         </div>
@@ -83,6 +84,7 @@ const BiblioCoaching = () => {
             </div>
           ))}
       </div>
+    </div>
     </div>
   );
 };

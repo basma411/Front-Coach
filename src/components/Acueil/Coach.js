@@ -42,14 +42,14 @@ const Coach = () => {
                   <div key={coach.id}>
                     <div className="Coach">
                       <div className="nomCoach">
-                        <h3>{coach.NomPrenom}</h3>
+                        <h3>{coach.nom}</h3>
                         <h4>
-                          {coach.Governorat}
+                          {coach.gouv}
                           <GiPositionMarker />
                         </h4>
                       </div>
                       <img
-                        src={`http://localhost:8000/${coach.Photo}`}
+                        src={`http://localhost:8000/${coach.image}`}
                         alt={`icon ${index + 1}`}
                         width={"100px"}
                       />

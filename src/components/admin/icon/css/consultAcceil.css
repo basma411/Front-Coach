@@ -18,7 +18,7 @@
     margin: 50px auto;
     gap: 50px;
 }
-.ButtonAccueil{
+.AccueilIcon{
     margin:auto;
      margin-top:50px; 
     margin-bottom:50px; 
@@ -29,12 +29,12 @@
      color: #e3d80a;
      cursor: pointer;
      line-height: 32px;
-     font-weight: 700;
+     font-weight: 500;
      text-decoration-style:solid ;
      font-size: 20px;
 
 
 }
-.TableIcon{
+/* .TableIcon{
     width: 100%;
-}
+} */

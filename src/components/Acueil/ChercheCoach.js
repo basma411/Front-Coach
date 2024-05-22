@@ -13,28 +13,28 @@ const navigator=useNavigate()
   }, [dispatch]);
 
   const { domaines } = useSelector((state) => state.domaine);
-  const nom = useRef();
+  const Nom = useRef();
   const domaine = useRef();
   const gouvernorat = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const NomPrenom = nom.current.value;
-    const DomainesIntervention = domaine.current.value;
-    const Governorat = gouvernorat.current.value;
+    const nom = Nom.current.value;
+    const domain = domaine.current.value;
+    const gouv = gouvernorat.current.value;
 
     const filter = {};
 
-    if (NomPrenom) {
-      filter.NomPrenom = NomPrenom;
+    if (nom) {
+      filter.nom = nom;
     }
 
-    if (DomainesIntervention !== 'Choisir un domaine de coaching') {
-      filter.DomainesIntervention = DomainesIntervention;
+    if (domain !== 'Choisir un domaine de coaching') {
+      filter.domain = domain;
     }
 
-    if (Governorat !== 'Gouvernorat') {
-      filter.Governorat = Governorat;
+    if (gouv !== 'Gouvernorat') {
+      filter.gouv = gouv;
     }
   console.log(filter)
     dispatch(cherchecoach(filter));
@@ -61,7 +61,7 @@ const navigator=useNavigate()
             type="text"
             placeholder="Rechercher par nom et prénom du coach"
             className='coachcherche'
-            ref={nom}
+            ref={Nom}
           />
         </div>
        <div> <select className='gouvernorat' ref={gouvernorat}>

@@ -1,0 +1,37 @@
+.ConsultSlide{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Rubik", arial, sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 2;
+    color: gray;
+ } 
+.ConsultSlideContainer{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+    gap: 50px;
+ 
+}
+.imgSlide{
+    width: 200px !important;
+}
+.AccueilSlide{
+    width: 100%;
+    margin-top:40px; 
+   background-color:#0D345A;
+   font-weight:bold; 
+   padding:10px 200px;
+    text-align:center; 
+    color: #e3d80a;
+    cursor: pointer;
+    line-height: 32px;
+    font-weight: 500;
+    text-decoration-style:solid ;
+    font-size: 20px;
+}

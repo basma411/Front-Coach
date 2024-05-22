@@ -31,7 +31,11 @@ const AccueilAdmin = () => {
           <Link to="/admin/consulter_icon" >
             <button className="buttonStyle">Consulter Icones</button>
             </Link>
+            <Link to="/admin/editer_slider" >
+
             <button className="buttonStyle">Consulter Slider</button>
+            </Link>
+
             <button className="buttonStyle">Consulter La Plume des Coachs</button>
             <button className="buttonStyle">Consulter Biblio</button>
             <button className="buttonStyle">Consulter Domaines</button>

@@ -33,7 +33,7 @@ const Login = () => {
             value="LOGIN" 
             className="loginAdmin"   
             onClick={() => {
-              dispatch(login({ login: user.current.value, password: password.current.value }));
+              dispatch(login({ nom_utilisateur: user.current.value, mot_de_passe: password.current.value }));
               navigator('/admin/Accueil');
             }}
           />

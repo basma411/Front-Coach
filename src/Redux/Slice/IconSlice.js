@@ -10,6 +10,15 @@ export const GetIcon= createAsyncThunk('Icon/get', async (data, { rejectWithValu
   }
 });
 
+export const PutIcon= createAsyncThunk('Icon/put', async ({id, data}, { rejectWithValue }) => {
+  try {
+    const res = await axios.put(`/api/Icon/update/${id}`, data, { headers: { token: localStorage.getItem('token1') } });
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
+
 const IconSlice = createSlice({
   name: "icon",
   initialState: {
@@ -33,13 +42,28 @@ const IconSlice = createSlice({
         state.error = null;
         state.isAuth = true;
         state.Icon = action.payload.icon;
-     
       })
       .addCase(GetIcon.rejected, (state, action) => {
         state.isLoading = false;
         state.token = null;
         state.isAuth = false;
         state.error = action.payload.error;
+      })
+      .addCase(PutIcon.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(PutIcon.fulfilled, (state, action) => {
+        state.isLoading = false;
+        // Mettre à jour le token si nécessaire
+        state.token = action.payload.token; // ou peut-être action.payload.token1 selon votre logique
+        state.error = null;
+        state.isAuth = true;
+      })
+      .addCase(PutIcon.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload.error;
+        // Mettre à jour d'autres champs du state si nécessaire
       });
   },
 });

@@ -31,7 +31,7 @@ const adminSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.isAuthadmin = true;
-        state.token1 = action.payload.token1;
+        state.token1 = action.payload.token;
         localStorage.setItem("isAuthadmin", "true"); 
         localStorage.setItem("token1", state.token1);
       })

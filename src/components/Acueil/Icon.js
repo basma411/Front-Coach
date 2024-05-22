@@ -25,11 +25,12 @@ const Icon = () => {
     };
 
     return (
-        <div className="grid-container">
+      <div className='Icon'>
+          <div className="grid-container">
             {Icon && Icon.map((icon, index) => (
                 <div key={index} className="grid-item">
                     <div className="subgrid-item">
-                        <img src={`http://localhost:8000/${icon.image}`} alt={`icon ${index + 1}`} width={'100px'} />
+                        <img src={`http://localhost:8000/${icon.image}`} alt={`icon ${index + 1}`} className='ImgIcon' />
                         <h2>{icon.Titre}</h2>
                         <p>{icon.Texte.substring(0, 100)}...</p>
                         <h3 onClick={() => handleOpenDialog(icon)}>Afficher la suite...</h3> {/* Ouvre la boîte de dialogue */}
@@ -47,6 +48,7 @@ const Icon = () => {
 </Dialog>
 
         </div>
+      </div>
     );
 }
 

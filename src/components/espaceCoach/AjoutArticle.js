@@ -69,11 +69,11 @@ const AjoutArticle = () => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append("Auteur", authorRef.current.value);
-    formData.append("Titre", titleRef.current.value);
-    formData.append("Texte", textRef.current.value);
+    formData.append("auteur", authorRef.current.value);
+    formData.append("titre", titleRef.current.value);
+    formData.append("texte", textRef.current.value);
     formData.append("imagee", imageArticle);
-    formData.append("Lien", linkRef.current.value);
+    formData.append("lien", linkRef.current.value);
 
     console.log(formData);
 
@@ -104,11 +104,11 @@ const AjoutArticle = () => {
           {latestArticles.map((article, index) => (
             <div key={index}>
               <img
-                src={`http://localhost:8000/${article.Photo}`}
+                src={`http://localhost:8000/${article.photo}`}
                 alt="Article"
               />
-              <h1>{article.Titre}</h1>
-              <h2>{article.Auteur}</h2>
+              <h1>{article.titre}</h1>
+              <h2>{article.auteur}</h2>
               <hr />
             </div>
           ))}

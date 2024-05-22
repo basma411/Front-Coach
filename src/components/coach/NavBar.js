@@ -19,12 +19,12 @@ export const NavBar = () => {
         </div>
         <div>
           <Nav className="me-auto">
-            <Link to="/Accueil" className="nav-link-custom">Accueil</Link>
-            <Link to="/TrouverCoach" className="nav-link-custom">Trouver un coach</Link>
-            <Link to="/EspaceCoach" className="nav-link-custom">Espace Coach</Link>
-            <Link to="/Evenement" className="nav-link-custom">Évènements</Link>
-            <Link to="/Vedio" className="nav-link-custom">VidéoCoaching</Link>
-            <Link to="/Coatact" className="nav-link-custom">Contact</Link>
+            <Link to="/Accueil" className="nav-link-coach">Accueil</Link>
+            <Link to="/TrouverCoach" className="nav-link-coach">Trouver un coach</Link>
+            <Link to="/EspaceCoach" className="nav-link-coach">Espace Coach</Link>
+            <Link to="/Evenement" className="nav-link-coach">Évènements</Link>
+            <Link to="/Vedio" className="nav-link-coach">VidéoCoaching</Link>
+            <Link to="/Coatact" className="nav-link-coach">Contact</Link>
           </Nav>
         </div>
       </Container>
