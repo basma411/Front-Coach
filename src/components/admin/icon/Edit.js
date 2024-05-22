@@ -66,7 +66,7 @@ const Edit = () => {
                             data={formData.Titre || ''}
                             onChange={(event, editor) => handleEditorChange(event, editor, 'Titre')}
                             config={{
-                                toolbar: ['bold', 'italic', '|', 'bulletedList', 'outdent', 'indent', '|', 'link', 'unlink', 'language'],
+                                toolbar: ['bold', 'italic', '|', 'numberedList', 'bulletedList', '|', 'outdent', 'indent', '|', 'link', 'unlink', 'language'],
                                 language: 'en',
                             }}
                         />

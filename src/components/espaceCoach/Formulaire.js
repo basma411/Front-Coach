@@ -74,7 +74,7 @@ const Formulaire = () => {
           ? []
           : domaines.map((domaine) => ({
               value: domaine._id,
-              label: domaine.NomDomaine,
+              label: domaine.domaines,
             }))
       );
     } else {
@@ -185,13 +185,13 @@ const Formulaire = () => {
             {latestCoach.map((CoachVisible, index) => (
               <div key={index} className="formulaire-Coach">
                 <img
-                  src={`http://localhost:8000/${CoachVisible.Photo}`}
+                  src={`http://localhost:8000/${CoachVisible.image}`}
                   alt="coach"
                 />
-                <h1 style={{ color: "#000" }}>{CoachVisible.NomPrenom}</h1>
+                <h1 style={{ color: "#000" }}>{CoachVisible.nom}</h1>
                 <h3 style={{ color: "gray" }}>Coach</h3>
                 <h3 style={{ color: "gary" }}>Brève bio</h3>
-                <p>{CoachVisible.Bio}</p>
+                <p>{CoachVisible.bio}</p>
               </div>
             ))}
           </div>
@@ -221,7 +221,7 @@ const Formulaire = () => {
                                   ? []
                                   : domaines.map((domaine) => ({
                                       value: domaine._id,
-                                      label: domaine.NomDomaine,
+                                      label: domaine.domaines,
                                     }))
                               )
                             }
@@ -255,7 +255,7 @@ const Formulaire = () => {
                                       ...selectedDomaines,
                                       {
                                         value: domaine._id,
-                                        label: domaine.NomDomaine,
+                                        label: domaine.domaines,
                                       },
                                     ]
                               )
@@ -263,7 +263,7 @@ const Formulaire = () => {
                             className="CHECK"
                           />
                           <span style={{ marginLeft: "8px", color: "black" }}>
-                            {domaine.NomDomaine}
+                            {domaine.domaines}
                           </span>
                         </label>
                       ),

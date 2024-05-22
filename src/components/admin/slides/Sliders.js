@@ -6,9 +6,11 @@ import { IoPowerOutline } from 'react-icons/io5';
 import { GetSlides } from '../../../Redux/Slice/SlidesSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { MdOutlineModeEdit } from 'react-icons/md';
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { CiEdit } from "react-icons/ci";
+
 import './CSS/EditerSlide.css'
-const EditerSlider = () => {
+const Sliders = () => {
     const dispatch = useDispatch();
 
     const { Slide } = useSelector((state) => state.slide);
@@ -91,13 +93,11 @@ const EditerSlider = () => {
                  
 
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    <Link to={`/admin/slide/edit/${slide._id}`}>
-                      <MdOutlineModeEdit style={{ fontSize: "30px" }} />
-                    </Link>
+                      <RiDeleteBin6Line  style={{ fontSize: "20px",  color:'black'}} />
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
                     <Link to={`/admin/slide/edit/${slide._id}`}>
-                      <MdOutlineModeEdit style={{ fontSize: "30px" }} />
+                      <CiEdit  style={{ fontSize: "25px",  color:'black'}} />
                     </Link>
                   </td>
                 </tr>
@@ -109,4 +109,4 @@ const EditerSlider = () => {
 </>  )
 }
 
-export default EditerSlider
+export default Sliders

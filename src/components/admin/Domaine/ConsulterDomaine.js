@@ -1,25 +1,24 @@
-import React, { useEffect } from "react";
-import BarheaderAdmin from "../BarheaderAdmin";
 import NavBarAdmin from "../NavBarAdmin";
-import "./css/consultAcceil.css";
+import "./css/consulterdomaine.css";
 import image from "../../../images/big_image_2.jpg";
 import { IoPowerOutline } from "react-icons/io5";
-import { GetIcon } from "../../../Redux/Slice/IconSlice";
+import { RiDeleteBin6Line } from "react-icons/ri";
+
 import { useDispatch, useSelector } from "react-redux";
 import { CiEdit } from "react-icons/ci";
 import { Link } from "react-router-dom";
+import { getdomaine } from "../../../Redux/Slice/DomainSlice";
+import BarheaderAdmin from "../BarheaderAdmin";
+import { useEffect } from "react";
+const ConsulterDomaine = () => {
+    const dispatch = useDispatch();
 
-const ConsulterIcon = () => {
-  const dispatch = useDispatch();
-
-  const { Icon } = useSelector((state) => state.icon);
-  useEffect(() => {
-    dispatch(GetIcon());
-  }, [dispatch]);
-  console.log(Icon);
-
+    const { domaines } = useSelector((state) => state.domaine);
+    useEffect(() => {
+      dispatch(getdomaine());
+    }, [dispatch]);
   return (
-    <>
+<>
       <BarheaderAdmin />
       <NavBarAdmin />
       <div
@@ -40,13 +39,16 @@ const ConsulterIcon = () => {
           </h2>
         </div>
       </div>
-      <div className="ConsultIcon">
-        <div className="ConsultIconContainer">
+      <div className="ConsultDomaine">
+        <div className="ConsultDomaineContainer">
           <Link to='/admin/Accueil'>
-          <button className="AccueilIcon">Accueil</button>
+          <button className="AccueilDomaine">Accueil</button>
+          </Link>
+          <Link to='/admin/ajouter_domaine'>
+          <button className="AccueilDomaine">Ajouter Domaine</button>
           </Link>
           <table
-            className="TableIcon"
+            className="TableDomaine"
             style={{
               borderCollapse: "collapse",
               width: "100%",
@@ -56,36 +58,27 @@ const ConsulterIcon = () => {
             <thead>
               <tr>
                 <th style={{ border: "1px solid gray", padding: "8px" }}>
-                  Titre
+                Domaines D'interventions	
                 </th>
+              
                 <th style={{ border: "1px solid gray", padding: "8px" }}>
-                  Texte
-                </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
-                  Image
-                </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
-                  Modifier
+                Action
                 </th>
               </tr>
             </thead>
             <tbody>
-              {Icon.map((icon, index) => (
+              {domaines.map((domaine, index) => (
                 <tr key={index}>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    {icon.Titre}
+                    {domaine.domaines}
                   </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    {icon.Texte.substring(0, 50)}
-                  </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    <img src={`http://localhost:8000/${icon.image}`} />
-                  </td>
+                  
 
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    <Link to={`/admin/icon/edit/${icon._id}`}>
-                    <CiEdit style={{ fontSize: "25px",  color:'black'}} />
+                    <Link to={`/admin/domaine/edit/${domaine._id}`}>
+                      <CiEdit style={{ fontSize: "25px",  color:'black', marginRight:'40px'}} />
                     </Link>
+                      <RiDeleteBin6Line  style={{ fontSize: "20px",  color:'black'}} />
                   </td>
                 </tr>
               ))}
@@ -93,8 +86,7 @@ const ConsulterIcon = () => {
           </table>
         </div>
       </div>
-    </>
-  );
-};
+    </>  )
+}
 
-export default ConsulterIcon;
+export default ConsulterDomaine

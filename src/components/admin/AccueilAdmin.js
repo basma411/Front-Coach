@@ -37,11 +37,22 @@ const AccueilAdmin = () => {
             </Link>
 
             <button className="buttonStyle">Consulter La Plume des Coachs</button>
+            <Link to="/admin/consulter_biblio" >
+
             <button className="buttonStyle">Consulter Biblio</button>
+            </Link>
+            <Link to="/admin/consulter_domaine" >
+
             <button className="buttonStyle">Consulter Domaines</button>
+            </Link>
+
           </div>
           <div className="rigth">
+          <Link to="/admin/consulter_interface" >
+
             <button className="buttonStyle">Consulter Interface</button>
+            </Link>
+
             <button className="buttonStyle">Consulter Salon</button>
             <button className="buttonStyle">Consulter Temoignage</button>
             <button className="buttonStyle">Les Ateliers Dégustation Coaching</button>

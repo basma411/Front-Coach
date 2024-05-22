@@ -175,19 +175,19 @@ const Edit = () => {
                       defaultChecked={
                         coachdata.domain &&
                         coachdata.domain.includes(
-                          domaine.NomDomaine
+                          domaine.domaines
                         )
                       }
                       onChange={(e) =>
                         handleDomaineChange(
-                          domaine.NomDomaine,
+                          domaine.domaines,
                           e.target.checked
                         )
                       }
                     />
                   </div>
                   <label htmlFor={`domaine-${index}`}>
-                    {domaine.NomDomaine}
+                    {domaine.domaines}
                   </label>
                 </div>
               ))}

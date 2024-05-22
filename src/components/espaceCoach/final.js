@@ -48,7 +48,7 @@ const Formulaire = () => {
   console.log(isALLselected)
   const handleDomaineChange = (selectedValues) => {
     if (selectedValues.includes("allDomaine")) {
-      setSelectedDomaines(isALLselected ? [] : domaines.map(domaine => ({ value: domaine._id, label: domaine.NomDomaine })));
+      setSelectedDomaines(isALLselected ? [] : domaines.map(domaine => ({ value: domaine._id, label: domaine.domaines })));
     } else {
       setSelectedDomaines(selectedValues);
     }
@@ -112,7 +112,7 @@ const Formulaire = () => {
                   ? [] // Désélectionner tous les domaines si la case "Tous les domaines" est déjà cochée
                   : domaines.map((domaine) => ({
                       value: domaine._id,
-                      label: domaine.NomDomaine,
+                      label: domaine.domaines,
                     })) // Sélectionner tous les domaines si la case "Tous les domaines" n'est pas cochée
               )
             }
@@ -138,11 +138,11 @@ const Formulaire = () => {
                   ? selectedDomaines.filter(
                       (selected) => selected.value !== domaine._id
                     )
-                  : [...selectedDomaines, { value: domaine._id, label: domaine.NomDomaine }]
+                  : [...selectedDomaines, { value: domaine._id, label: domaine.domaines }]
               )
             }
           />
-          <span style={{ marginLeft: "8px" }}>{domaine.NomDomaine}</span>
+          <span style={{ marginLeft: "8px" }}>{domaine.domaines}</span>
         </label>
       ),
     })),

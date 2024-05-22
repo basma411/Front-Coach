@@ -1,26 +1,27 @@
-import React, { useEffect } from "react";
-import BarheaderAdmin from "../BarheaderAdmin";
-import NavBarAdmin from "../NavBarAdmin";
-import "./css/consultAcceil.css";
+import React, { useEffect } from 'react'
 import image from "../../../images/big_image_2.jpg";
 import { IoPowerOutline } from "react-icons/io5";
-import { GetIcon } from "../../../Redux/Slice/IconSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { CiEdit } from "react-icons/ci";
-import { Link } from "react-router-dom";
 
-const ConsulterIcon = () => {
+import { useDispatch, useSelector } from "react-redux";
+import { MdOutlineModeEdit } from "react-icons/md";
+import { Link } from "react-router-dom";
+import BarheaderAdmin from '../BarheaderAdmin';
+import NavBarAdmin from '../NavBarAdmin';
+import { GetBiblio } from '../../../Redux/Slice/BiblioSlice';
+
+import './css/consulterbiblio.css'
+const ConsulterBiblio = () => {
   const dispatch = useDispatch();
 
-  const { Icon } = useSelector((state) => state.icon);
+  const { Biblios } = useSelector((state) => state.biblio);
   useEffect(() => {
-    dispatch(GetIcon());
+    dispatch(GetBiblio());
   }, [dispatch]);
-  console.log(Icon);
-
+  console.log(Biblios);
   return (
-    <>
-      <BarheaderAdmin />
+
+<>
+<BarheaderAdmin />
       <NavBarAdmin />
       <div
         className="ImagePlatforme"
@@ -40,13 +41,16 @@ const ConsulterIcon = () => {
           </h2>
         </div>
       </div>
-      <div className="ConsultIcon">
-        <div className="ConsultIconContainer">
+   
+
+
+      <div className="ConsultBiblio">
+        <div className="ConsultBiblioContainer">
           <Link to='/admin/Accueil'>
-          <button className="AccueilIcon">Accueil</button>
+          <button className="AccueilBiblio">Accueil</button>
           </Link>
           <table
-            className="TableIcon"
+            className="TableBiblio"
             style={{
               borderCollapse: "collapse",
               width: "100%",
@@ -56,13 +60,16 @@ const ConsulterIcon = () => {
             <thead>
               <tr>
                 <th style={{ border: "1px solid gray", padding: "8px" }}>
-                  Titre
-                </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
-                  Texte
-                </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
                   Image
+                </th>
+                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                Description
+                </th>
+                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                auteurs
+                </th>
+                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                  Année
                 </th>
                 <th style={{ border: "1px solid gray", padding: "8px" }}>
                   Modifier
@@ -70,22 +77,27 @@ const ConsulterIcon = () => {
               </tr>
             </thead>
             <tbody>
-              {Icon.map((icon, index) => (
+              {Biblios.map((Biblio, index) => (
                 <tr key={index}>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    {icon.Titre}
+                    <td style={{ border: "1px solid gray", padding: "10px" }}>
+                    <img src={`http://localhost:8000/${Biblio.image}`}  height={"100px"}/>
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    {icon.Texte.substring(0, 50)}
+                    {Biblio.texte.substring(0, 50)}
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    <img src={`http://localhost:8000/${icon.image}`} />
+                    {Biblio.editeur}
+                  </td>
+                
+                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                    {Biblio.annee}
                   </td>
 
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    <Link to={`/admin/icon/edit/${icon._id}`}>
-                    <CiEdit style={{ fontSize: "25px",  color:'black'}} />
+                    <Link to={`/admin/Biblio/edit/${Biblio._id}`}>
+                      <MdOutlineModeEdit style={{ fontSize: "30px",  color:'black'}} />
                     </Link>
+                   
                   </td>
                 </tr>
               ))}
@@ -93,8 +105,9 @@ const ConsulterIcon = () => {
           </table>
         </div>
       </div>
-    </>
-  );
-};
 
-export default ConsulterIcon;
+</>
+  )
+}
+
+export default ConsulterBiblio

@@ -26,8 +26,11 @@ import Formulaire from './components/espaceCoach/Formulaire';
 import AccueilAdmin from './components/admin/AccueilAdmin';
 import ConsulterIcon from './components/admin/icon/ConsulterIcon';
 import Edit from './components/admin/icon/Edit';
-import EditerSlider from './components/admin/slides/EditerSlider';
 import AjouterSlider from './components/admin/slides/AjouterSlider';
+import Sliders from './components/admin/slides/Sliders';
+import ConsulterBiblio from './components/admin/biblio/ConsulterBiblio';
+import ConsulterDomaine from './components/admin/Domaine/ConsulterDomaine';
+import ConsulterInterface from './components/admin/interface/ConsulterInterface';
 
 function App() {
   const isLoading = useSelector(state => state.loading.isLoading);
@@ -88,10 +91,12 @@ function App() {
           <Route path="/admin/consulter_icon" element={<ConsulterIcon />} />
           <Route path="/admin/icon/edit/:id" element={<Edit />} />
 
-          <Route path="/admin/editer_slider" element={<EditerSlider />} />
+          <Route path="/admin/editer_slider" element={<Sliders />} />
           <Route path="/admin/ajouter_slider" element={<AjouterSlider />} />
+          <Route path="/admin/consulter_biblio" element={<ConsulterBiblio />} />
+          <Route path="/admin/consulter_domaine" element={<ConsulterDomaine />} />
+          <Route path="/admin/consulter_interface" element={<ConsulterInterface />} />
 
-         
             <Route path="/admin/login" element={<Login />} />
             <Route path="/admin/Accueil" element={<AccueilAdmin />} />
             <Route path="/coach/login" element={<LoginCoch />} />
