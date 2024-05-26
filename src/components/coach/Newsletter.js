@@ -9,8 +9,8 @@ const Newsletter = () => {
  
     const handleSubmit = (e) => {
         e.preventDefault();
-        const email = emailRef.current.value;
-        dispatch(addNewsLetter({ Email: email }));
+        const Email = emailRef.current.value;
+        dispatch(addNewsLetter({ email: Email }));
         emailRef.current.value = '';
 
     };

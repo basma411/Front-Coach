@@ -10,6 +10,7 @@ import NewsLetterSlice from "./Slice/NewsLetterSlice";
 import InterfaceSlice from "./Slice/InterfaceSlice";
 import loadingSlice from "./Slice/LodingSlice";
 import ArticleSlice from "./Slice/ArticleSlice";
+import ContactSlice from "./Slice/ContactSlice";
 
 export default configureStore({
   reducer: {
@@ -23,7 +24,7 @@ export default configureStore({
     newsletter:NewsLetterSlice,
     interface:InterfaceSlice,
     loading: loadingSlice,
-    article:ArticleSlice
-
+    article:ArticleSlice,
+contact:ContactSlice
   },
 });

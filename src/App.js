@@ -12,7 +12,6 @@ import { NavBar } from './components/coach/NavBar';
 import TrouverCoach from './components/TrouverCoach/TrouverCoach';
 import EspaceCoach from './components/espaceCoach/EspaceCoach';
 import Evenement from './components/Evenement/Evenement';
-import Contact from './components/Contact/Contact';
 import Vediocoach from './components/vedioCoach/Vediocoach';
 import Coach from './components/Acueil/Coach';
 import { setLoading } from './Redux/Slice/LodingSlice';
@@ -31,6 +30,21 @@ import Sliders from './components/admin/slides/Sliders';
 import ConsulterBiblio from './components/admin/biblio/ConsulterBiblio';
 import ConsulterDomaine from './components/admin/Domaine/ConsulterDomaine';
 import ConsulterInterface from './components/admin/interface/ConsulterInterface';
+import Temoignage from './components/admin/temoignage/Temoignage';
+import TémignageInvisible from './components/admin/temoignage/TémignageInvisible';
+import TémoignageVisible from './components/admin/temoignage/TémoignageVisible';
+import Article from './components/admin/article/Article';
+import CoachA from './components/admin/coach_admin/CoachA';
+import PartenairesA from './components/admin/partenairesAdmin/PartenairesA';
+import EvenementA from './components/admin/evenementA/EvenementA';
+import VedioA from './components/admin/vedioA/VedioA';
+import NewsletterA from './components/admin/newsletter/NewsletterA';
+import ContactA from './components/admin/contact/ContactA';
+import ContactEmailA from './components/admin/contact/ContactEmailA';
+import ArticleInvisible from './components/admin/article/ArticleInvisible';
+import ArticleVisible from './components/admin/article/ArticleVisible';
+import CoachVisib from './components/admin/coach_admin/CoachVisib';
+import CoachInvisib from './components/admin/coach_admin/CoachInvisib';
 
 function App() {
   const isLoading = useSelector(state => state.loading.isLoading);
@@ -96,6 +110,27 @@ function App() {
           <Route path="/admin/consulter_biblio" element={<ConsulterBiblio />} />
           <Route path="/admin/consulter_domaine" element={<ConsulterDomaine />} />
           <Route path="/admin/consulter_interface" element={<ConsulterInterface />} />
+          <Route path="/admin/témoignages" element={<Temoignage />} />
+          <Route path="/admin/témoignages/invisible" element={<TémignageInvisible />} />
+          <Route path="/admin/témoignages/visible" element={<TémoignageVisible />} />
+          <Route path="/admin/article" element={<Article />} />
+          <Route path="/admin/article/invisible" element={<ArticleInvisible />} />
+          <Route path="/admin/article/visible" element={<ArticleVisible />} />
+
+          <Route path="/admin/Coachs" element={<CoachA />} />
+          <Route path="/admin/Coachs/invisible" element={<CoachInvisib />} />
+
+          <Route path="/admin/Coachs/visible" element={<CoachVisib />} />
+
+          <Route path="/admin/Partenaires" element={<PartenairesA />} />
+
+          {/* <Route path="/admin/Salon" element={<Article />} /> */}
+          <Route path="/admin/Evenements" element={<EvenementA />} />
+          <Route path="/admin/VedioCoching" element={<VedioA />} />
+          <Route path="/admin/Contact" element={<ContactA />} />
+                    <Route path="/admin/Contact/Email/:id" element={<ContactEmailA />} />
+
+          <Route path="/admin/Newsletter" element={<NewsletterA />} />
 
             <Route path="/admin/login" element={<Login />} />
             <Route path="/admin/Accueil" element={<AccueilAdmin />} />
@@ -109,7 +144,7 @@ function App() {
             <Route path="/EspaceCoach" element={<EspaceCoach />} />
             <Route path="/Evenement" element={<Evenement />} />
             <Route path="/Vedio" element={<Vediocoach />} />
-            <Route path="/CoNtact" element={<Contact />} />
+            {/* <Route path="/CoNnact" element={<Contact />} /> */}
             <Route path="/coach" element={<Coach />} />
             {/* Route pour la page non trouvée */}
             <Route path="*" element={<NotFound />} />

@@ -41,7 +41,7 @@ const Partenaire = () => {
               Partenaire.map((partenaire, index) => (
                 <li key={index} className="marquee-item">
                   <img
-                    src={`http://localhost:8000/${partenaire.Photo}`}
+                    src={`http://localhost:8000/${partenaire.photo}`}
                     alt={`Partenaire ${index + 1}`}
                     height={"200px"}
                     className="marquee-img"

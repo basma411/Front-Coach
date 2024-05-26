@@ -5,7 +5,7 @@
   font-size: 15px;
 color: rgb(43, 43, 43);
   line-height: 30px;
-  padding: 16px 9px ;
+  padding: 18px 9px ;
 
 
 
@@ -13,7 +13,6 @@ color: rgb(43, 43, 43);
 .nav-link:hover {
   background-color:#275491;
   color: #fff;
-  padding: 10px;
 }
 
 .icon-LIST{

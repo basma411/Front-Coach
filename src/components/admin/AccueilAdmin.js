@@ -54,7 +54,12 @@ const AccueilAdmin = () => {
             </Link>
 
             <button className="buttonStyle">Consulter Salon</button>
+
+            <Link to="/admin/témoignages " >
+
             <button className="buttonStyle">Consulter Temoignage</button>
+            </Link>
+
             <button className="buttonStyle">Les Ateliers Dégustation Coaching</button>
           </div>
         </div>
