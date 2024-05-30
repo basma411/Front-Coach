@@ -29,7 +29,7 @@ const EvenementA = () => {
           overflow: "hidden",
         }}
       >
-        <div style={{ paddingTop: "100px" }}>
+        <div >
       
 <h4 style={{ fontSize: "20px", cursor: "pointer" }} onClick={handleLogout}>
   Déconnexion
@@ -43,10 +43,10 @@ const EvenementA = () => {
       </div>
       <div className="ConsultEvenement">
         <div className="ConsultEvenementContainer">
-          <Link to='/admin/Evenements/ajouter'>
+          <Link to='/admin/Evenements/AjouterEvenement'>
           <button className="AccueilEvenement">Ajouter un événement</button>
           </Link>
-          <Link to='/admin/Evenements/listes'>
+          <Link to='/admin/Evenements/liste'>
           <button className="AccueilEvenement">Liste des événements </button>
           </Link>
          

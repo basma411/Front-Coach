@@ -11,6 +11,8 @@ import InterfaceSlice from "./Slice/InterfaceSlice";
 import loadingSlice from "./Slice/LodingSlice";
 import ArticleSlice from "./Slice/ArticleSlice";
 import ContactSlice from "./Slice/ContactSlice";
+import EvenementSlice from "./Slice/EvenementSlice";
+import VedioSlice from "./Slice/VedioSlice";
 
 export default configureStore({
   reducer: {
@@ -25,6 +27,8 @@ export default configureStore({
     interface:InterfaceSlice,
     loading: loadingSlice,
     article:ArticleSlice,
-contact:ContactSlice
+contact:ContactSlice,
+evenement:EvenementSlice,
+vedio:VedioSlice
   },
 });

@@ -29,16 +29,17 @@ const Article = () => {
           overflow: "hidden",
         }}
       >
-        <div style={{ paddingTop: "100px" }}>
-        <h4 style={{ fontSize: "20px", cursor: "pointer" }} onClick={handleLogout}>
-  Déconnexion
-</h4>
-
-          <h4 style={{ fontSize: "20px" }}>
-          Menu principal
-
-          </h4>
-        </div>
+          <div>
+      
+      <h4 style={{ fontSize: "20px", cursor: "pointer" }} onClick={handleLogout}>
+        Déconnexion
+      </h4>
+      
+                <h4 style={{ fontSize: "20px" , padding:"0px"}}>
+                Menu principal
+      
+                </h4>
+              </div>
       </div>
       <div className="ConsultArticles">
         <div className="ConsultArticlesContainer">

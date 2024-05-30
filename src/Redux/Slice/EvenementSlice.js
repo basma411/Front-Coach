@@ -1,27 +1,27 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const GetPartenaire= createAsyncThunk('Partenaire/get', async (data, { rejectWithValue }) => {
+export const GetEvenement= createAsyncThunk('Evenement/get', async (data, { rejectWithValue }) => {
   try {
-    const res = await axios.get('/api/partenaires/get');
+    const res = await axios.get('/api/Evenements/get');
     return res.data;
   } catch (error) {
     return rejectWithValue(error);
   }
 });
-export const deletePartenaire= createAsyncThunk('Partenaire/delete', async ({id,data}, { rejectWithValue,dispatch }) => {
+export const deleteEvenement= createAsyncThunk('Evenement/delete', async ({id,data}, { rejectWithValue,dispatch }) => {
   try {
-    const res = await axios.delete(`/api/partenaires/delete/${id}`,{ headers: { token: localStorage.getItem('token1') } });
-    dispatch(GetPartenaire())
+    const res = await axios.delete(`/api/Evenements/delete/${id}`,{ headers: { token: localStorage.getItem('token1') } });
+    dispatch(GetEvenement())
     return res.data;
   } catch (error) {
     return rejectWithValue(error);
   }
 });
-const PartenaireSlice = createSlice({
-  name: "Partenaire",
+const EvenementSlice = createSlice({
+  name: "Evenement",
   initialState: {
-    Partenaire: [],
+    Evenement: [],
     isLoading: false,
     error: null,
     token: localStorage.getItem("token") || null,
@@ -32,34 +32,34 @@ const PartenaireSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(GetPartenaire.pending, (state) => {
+      .addCase(GetEvenement.pending, (state) => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(GetPartenaire.fulfilled, (state, action) => {
+      .addCase(GetEvenement.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.isAuth = true;
-        state.Partenaire = action.payload.partenaires;
+        state.Evenement = action.payload.Evenements;
      
       })
-      .addCase(GetPartenaire.rejected, (state, action) => {
+      .addCase(GetEvenement.rejected, (state, action) => {
         state.isLoading = false;
         state.token = null;
         state.isAuth = false;
         state.error = action.payload.error;
       })
-      .addCase(deletePartenaire.pending, (state) => {
+      .addCase(deleteEvenement.pending, (state) => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(deletePartenaire.fulfilled, (state, action) => {
+      .addCase(deleteEvenement.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.isAuth = true;
      
       })
-      .addCase(deletePartenaire.rejected, (state, action) => {
+      .addCase(deleteEvenement.rejected, (state, action) => {
         state.isLoading = false;
         state.token = null;
         state.isAuth = false;
@@ -69,4 +69,4 @@ const PartenaireSlice = createSlice({
   },
 });
 
-export default PartenaireSlice.reducer;
+export default EvenementSlice.reducer;

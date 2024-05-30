@@ -45,7 +45,7 @@ const VedioA = () => {
           <Link to='/admin/VedioCoching/ajouter'>
           <button className="AccueilVedio">Ajouter une Vidéo</button>
           </Link>
-          <Link to='/admin/VedioCoching/vedio_liste'>
+          <Link to='/admin/VedioCoching/liste'>
           <button className="AccueilVedio">Liste des Vidéos </button>
           </Link>
          

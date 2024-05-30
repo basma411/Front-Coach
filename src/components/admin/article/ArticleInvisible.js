@@ -103,7 +103,7 @@ const ArticleInvisible = () => {
                   </td>
 
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    <Link to={`/admin/article/invisible/${artV._id}`}>
+                    <Link to={`/admin/Coachs/invisible/view/${artV._id}`}>
                       <GrView style={{ fontSize: "25px", color: "black" }} />
                     </Link>
                     <FaCheck

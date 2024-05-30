@@ -5,7 +5,7 @@ import "./css/partenairesA.css";
 import image from "../../../images/big_image_2.jpg";
 import { Link } from "react-router-dom";
 import { IoPowerOutline } from 'react-icons/io5';
-import { GetPartenaire } from "../../../Redux/Slice/PartenaireSlice";
+import { GetPartenaire, deletePartenaire } from "../../../Redux/Slice/PartenaireSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
@@ -16,7 +16,11 @@ const PartenairesA = () => {
   useEffect(() => {
     dispatch(GetPartenaire());
   }, [dispatch]);
-
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this partenaire?")) {
+      dispatch(deletePartenaire({ id }));
+    }
+  };
   return (
 <>
 
@@ -62,20 +66,21 @@ const PartenairesA = () => {
               {Partenaire.map((partenaire, index) => (
                 <tr key={index}>
                     <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    <img src={`http://localhost:8000/${partenaire.Photo}`} width="100px" alt="Partenaire" />
+                    <img src={`http://localhost:8000/${partenaire.photo}`} width="100px" alt="Partenaire" />
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    {partenaire.Nom}
+                    {partenaire.nom}
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    {partenaire.Statut}
+                    {partenaire.statut}
                   </td>
                 
 
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    <Link to={`/admin/partenaire/edit/${partenaire._id}`}>
-                    <RiDeleteBin6Line style={{ fontSize: "25px",  color:'black'}} />
-                    </Link>
+                    <RiDeleteBin6Line style={{ fontSize: "25px",  color:'black'}}
+                                          onClick={() => handleDelete(partenaire._id)}
+
+                    />
                   </td>
                 </tr>
               ))}

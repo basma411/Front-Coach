@@ -4,6 +4,8 @@ import { GetIcon, PutIcon } from '../../../Redux/Slice/IconSlice';
 import { useParams, useNavigate } from 'react-router-dom';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import loadingGif from './../../../images/loading.gif'
+
 import './css/edit.css';
 
 const Edit = () => {
@@ -19,11 +21,9 @@ const Edit = () => {
     const [editorLoaded, setEditorLoaded] = useState(false);
 
     useEffect(() => {
-        const fetchData = async () => {
-            await dispatch(GetIcon());
+   dispatch(GetIcon());
             setEditorLoaded(true);
-        };
-        fetchData();
+      
     }, [dispatch]);
 
     useEffect(() => {
@@ -52,7 +52,11 @@ const Edit = () => {
     };
 
     if (!editorLoaded) {
-        return <div>Loading...</div>;
+        return (
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+                <img src={loadingGif} alt="Chargement..." />
+            </div>
+        );
     }
 
     return (

@@ -63,7 +63,15 @@ export const PutArticleInv = createAsyncThunk('article/updateInvisible', async (
     return rejectWithValue(error.response.data);
   }
 });
-
+export const PutArticle = createAsyncThunk('article/update', async ({ id, data }, { rejectWithValue, dispatch }) => {
+  try {
+    const res = await axios.put(`/api/Article/put/${id}`, data, { headers: { token: localStorage.getItem('token1') } });
+    dispatch(GetArticle());
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error.response.data);
+  }
+});
 // Article slice
 const ArticleSlice = createSlice({
   name: "articles",
@@ -171,7 +179,23 @@ const ArticleSlice = createSlice({
         state.token = null;
         state.isAuth = false;
         state.error = action.payload;
-      });
+      })
+      .addCase(PutArticle.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(PutArticle.fulfilled, (state) => {
+        state.isLoading = false;
+        state.error = null;
+        state.isAuth = true;
+      })
+      .addCase(PutArticle.rejected, (state, action) => {
+        state.isLoading = false;
+        state.token = null;
+        state.isAuth = false;
+        state.error = action.payload;
+      })
+      ;
   },
 });
 

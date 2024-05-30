@@ -45,6 +45,13 @@ import ArticleInvisible from './components/admin/article/ArticleInvisible';
 import ArticleVisible from './components/admin/article/ArticleVisible';
 import CoachVisib from './components/admin/coach_admin/CoachVisib';
 import CoachInvisib from './components/admin/coach_admin/CoachInvisib';
+import AjouterEvenement from './components/admin/evenementA/AjouterEvenement';
+import ListeEvenement from './components/admin/evenementA/ListeEvenement';
+import AjouterVedio from './components/admin/vedioA/AjouterVedio';
+import ListeVedio from './components/admin/vedioA/ListeVedio';
+import EditArticle from './components/admin/article/EditArticle';
+import ViewArticle from './components/admin/article/ViewArticle';
+import EditCoach from './components/admin/coach_admin/EditCoach';
 
 function App() {
   const isLoading = useSelector(state => state.loading.isLoading);
@@ -115,18 +122,30 @@ function App() {
           <Route path="/admin/témoignages/visible" element={<TémoignageVisible />} />
           <Route path="/admin/article" element={<Article />} />
           <Route path="/admin/article/invisible" element={<ArticleInvisible />} />
+
           <Route path="/admin/article/visible" element={<ArticleVisible />} />
+          <Route path="/admin/article/visible/edit/:id" element={<EditArticle />} />
 
           <Route path="/admin/Coachs" element={<CoachA />} />
           <Route path="/admin/Coachs/invisible" element={<CoachInvisib />} />
+          <Route path="/admin/Coachs/invisible/view/:id" element={<ViewArticle />} />
 
           <Route path="/admin/Coachs/visible" element={<CoachVisib />} />
+          <Route path="/admin/Coachs/visible/edit/:id" element={<EditCoach />} />
 
           <Route path="/admin/Partenaires" element={<PartenairesA />} />
 
           {/* <Route path="/admin/Salon" element={<Article />} /> */}
           <Route path="/admin/Evenements" element={<EvenementA />} />
+          <Route path="/admin/Evenements/AjouterEvenement" element={<AjouterEvenement />} />
+
+          <Route path="/admin/Evenements/Liste" element={<ListeEvenement />} />
+
           <Route path="/admin/VedioCoching" element={<VedioA />} />
+          <Route path="/admin/VedioCoching/ajouter" element={<AjouterVedio />} />
+
+          <Route path="/admin/VedioCoching/liste" element={<ListeVedio />} />
+
           <Route path="/admin/Contact" element={<ContactA />} />
                     <Route path="/admin/Contact/Email/:id" element={<ContactEmailA />} />
 

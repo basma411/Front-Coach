@@ -134,30 +134,30 @@ const Formulaire = () => {
 
     const formData = new FormData();
 
-    formData.append("NomPrenom", nomPrenomRef.current.value);
+    formData.append("nom", nomPrenomRef.current.value);
     formData.append("AutreDomaine", autresDomainesRef.current.value);
-    formData.append("NumTel", telephoneRef.current.value);
-    formData.append("Email", adresseMailRef.current.value);
-    formData.append("Bio", bioRef.current.value);
-    formData.append("Site", siteRef.current.value);
-    formData.append("Facebook", facebook.current.value);
-    formData.append("Youtube", Youtube.current.value);
-    formData.append("LinkedIn", linkedin.current.value);
-    formData.append("Governorat", gouvernorat);
+    formData.append("num", telephoneRef.current.value);
+    formData.append("email", adresseMailRef.current.value);
+    formData.append("bio", bioRef.current.value);
+    formData.append("site", siteRef.current.value);
+    formData.append("fb", facebook.current.value);
+    formData.append("yt", Youtube.current.value);
+    formData.append("In", linkedin.current.value);
+    formData.append("gouv", gouvernorat);
     formData.append(
-      "DomainesIntervention",
+      "domain",
       selectedDomaines.map((domaine) => domaine.label)
     );
 
-    formData.append("MethodesDeCoaching", selectedMethodes.join(","));
-    formData.append("Langues", selectedLangues.join(","));
-    formData.append("TypesDeClients", selectedTypesClients.join(","));
-    formData.append("Password", passwordRef.current.value);
+    formData.append("method", selectedMethodes.join(","));
+    formData.append("langue", selectedLangues.join(","));
+    formData.append("type_client", selectedTypesClients.join(","));
+    formData.append("pwd", passwordRef.current.value);
     formData.append("ConfirmPassword", confirmPasswordRef.current.value);
-    formData.append("TarifPreferentiel", tarifPreferentiel);
+    formData.append("tarif", tarifPreferentiel);
     formData.append("imagee", imageCoach);
-    formData.append("Logo", LogoCoach);
-    formData.append("FichierPDF", PdfCoach);
+    formData.append("logo", LogoCoach);
+    formData.append("piece", PdfCoach);
     console.log(formData);
     dispatch(addCoach(formData));
   };
