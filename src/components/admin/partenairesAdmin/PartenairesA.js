@@ -35,7 +35,7 @@ const PartenairesA = () => {
     
       <div className="ConsultPartenaires">
         <div className="ConsultPartenairesContainer">
-          <Link to='/admin/Accueil'>
+          <Link to='/admin/Partenaires/ajouter'>
           <button className="AccueilPartenaires">Ajouter parteniare</button>
           </Link>
           <table

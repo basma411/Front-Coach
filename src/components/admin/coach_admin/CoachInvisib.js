@@ -20,9 +20,10 @@ const CoachInvisib = () => {
   const handleLogout = () => {
     navigator("/admin/login");
   };
-  const handleDelete = (id) => {
+  const handleDeletee = (id) => {
     if (window.confirm("Are you sure you want to delete this coach?")) {
     dispatch(delCoachInvisible({ id }));
+
     }
   }; 
 
@@ -115,7 +116,7 @@ const CoachInvisib = () => {
 
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
                   
- <Link to={`/admin/coach/invisible/${coachI._id}`}>
+ <Link to={`/admin/Coachs/invisible/view/${coachI._id}`}>
                       <GrView style={{ fontSize: "25px", color: "black" }} />
                     </Link>
                     <FaCheck
@@ -134,7 +135,7 @@ const CoachInvisib = () => {
                         color: "black",
                         marginRight: "20px",
                       }}
-                      onClick={() => handleDelete(coachI._id)}
+                      onClick={() => handleDeletee(coachI._id)}
                     />
                   </td>
                 </tr>

@@ -16,6 +16,8 @@ export const login = createAsyncThunk('coach/login', async (data, { rejectWithVa
   }
 });
 
+
+
 export const getCoach = createAsyncThunk('coach/get', async (_, { rejectWithValue }) => {
   try {
     const res = await axios.get('/api/getCoach', setHeaders());
@@ -83,15 +85,6 @@ export const getCoachVisivble = createAsyncThunk('coachVisible/get', async (_, {
   }
 });
 
-export const getCoachInVisivble = createAsyncThunk('coachesInvisible/get', async (_, { rejectWithValue }) => {
-  try {
-    const res = await axios.get('/api/coachesInvisible', setHeaders('token1'));
-    return res.data;
-  } catch (error) {
-    return rejectWithValue(error.response.data);
-  }
-});
-
 export const addCoach = createAsyncThunk('coach/add', async (data, { rejectWithValue, dispatch }) => {
   try {
     const res = await axios.post('/api/registre', data);
@@ -111,10 +104,17 @@ export const delCoachVisible = createAsyncThunk('coachvisib/delete', async ({ id
     return rejectWithValue(error.response.data);
   }
 });
-
+export const getCoachInVisivble = createAsyncThunk('coachesInvisible/get', async (_, { rejectWithValue }) => {
+  try {
+    const res = await axios.get('/api/coachesInvisible', setHeaders('token1'));
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error.response.data);
+  }
+});
 export const delCoachInvisible = createAsyncThunk('coachinvisib/delete', async ({ id, data }, { rejectWithValue, dispatch }) => {
   try {
-    const res = await axios.delete(`/api/deletecoach/${id}`, { ...setHeaders('token1'), data: data });
+    const res = await axios.delete(`/api/deletecoach/${id}`, { ...setHeaders('token1') });
     dispatch(getCoachInVisivble());
     return res.data;
   } catch (error) {

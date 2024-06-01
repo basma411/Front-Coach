@@ -52,6 +52,9 @@ import ListeVedio from './components/admin/vedioA/ListeVedio';
 import EditArticle from './components/admin/article/EditArticle';
 import ViewArticle from './components/admin/article/ViewArticle';
 import EditCoach from './components/admin/coach_admin/EditCoach';
+import ViewCoachInvisible from './components/admin/coach_admin/ViewCoachInvisible';
+import ViewCoachVisible from './components/admin/coach_admin/ViewCoachVisible';
+import AjouterPartenaires from './components/admin/partenairesAdmin/AjouterPartenaires';
 
 function App() {
   const isLoading = useSelector(state => state.loading.isLoading);
@@ -128,12 +131,14 @@ function App() {
 
           <Route path="/admin/Coachs" element={<CoachA />} />
           <Route path="/admin/Coachs/invisible" element={<CoachInvisib />} />
-          <Route path="/admin/Coachs/invisible/view/:id" element={<ViewArticle />} />
+          <Route path="/admin/Coachs/invisible/view/:id" element={<ViewCoachInvisible />} />
 
           <Route path="/admin/Coachs/visible" element={<CoachVisib />} />
           <Route path="/admin/Coachs/visible/edit/:id" element={<EditCoach />} />
+          <Route path="/admin/Coachs/visible/view/:id" element={<ViewCoachVisible />} />
 
           <Route path="/admin/Partenaires" element={<PartenairesA />} />
+          <Route path="/admin/Partenaires/ajouter" element={<AjouterPartenaires />} />
 
           {/* <Route path="/admin/Salon" element={<Article />} /> */}
           <Route path="/admin/Evenements" element={<EvenementA />} />

@@ -18,6 +18,14 @@ export const deletePartenaire= createAsyncThunk('Partenaire/delete', async ({id,
     return rejectWithValue(error);
   }
 });
+export const AddPartenaire= createAsyncThunk('Partenaire/add', async (data, { rejectWithValue }) => {
+  try {
+    const res = await axios.post("/api/Partenaire",data,{ headers: { token: localStorage.getItem('token1') } });
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
 const PartenaireSlice = createSlice({
   name: "Partenaire",
   initialState: {
@@ -60,6 +68,22 @@ const PartenaireSlice = createSlice({
      
       })
       .addCase(deletePartenaire.rejected, (state, action) => {
+        state.isLoading = false;
+        state.token = null;
+        state.isAuth = false;
+        state.error = action.payload.error;
+      })
+      .addCase(AddPartenaire.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(AddPartenaire.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.isAuth = true;
+     
+      })
+      .addCase(AddPartenaire.rejected, (state, action) => {
         state.isLoading = false;
         state.token = null;
         state.isAuth = false;

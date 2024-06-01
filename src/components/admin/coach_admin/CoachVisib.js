@@ -110,7 +110,7 @@ const CoachVisib = () => {
                   </td>
 
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    <Link to={`/admin/Coachs/invisible/view/${coachV._id}`}>
+                    <Link to={`/admin/Coachs/visible/view/${coachV._id}`}>
                       <GrView
                         style={{
                           fontSize: "25px",
