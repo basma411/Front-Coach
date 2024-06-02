@@ -2,14 +2,16 @@ import React, { useRef } from 'react';
 import image from '../../../images/big_image_2.jpg';
 import { IoPowerOutline } from 'react-icons/io5';
 import { useDispatch } from 'react-redux';
-
 import './css/ajouterpartenaire.css';
 import BarheaderAdmin from '../BarheaderAdmin';
 import NavBarAdmin from '../NavBarAdmin';
 import { AddPartenaire } from '../../../Redux/Slice/PartenaireSlice';
+import { useNavigate } from 'react-router-dom';
 
 const AjouterPartenaires = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const statutRef = useRef();
   const photoRef = useRef();
   const nomRef = useRef();
@@ -20,7 +22,11 @@ const AjouterPartenaires = () => {
     formData.append('statut', statutRef.current.value);
     formData.append('photo', photoRef.current.files[0]);
     formData.append('nom', nomRef.current.value);
-    dispatch(AddPartenaire({ statut:statutRef,photo:photoRef,nom:nomRef }));
+    
+    // Dispatch the action with the formData
+    dispatch(AddPartenaire(formData));
+    navigate('/admin/Partenaires')
+
   };
 
   return (

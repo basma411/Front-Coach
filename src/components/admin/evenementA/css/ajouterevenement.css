@@ -1,0 +1,36 @@
+/* ajouterevenement.css */
+
+.EvenementAjouter {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.EveAjouterContainer {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.EveAjouterContainer label {
+    margin: 5px;
+}
+
+.EveAjouterContainer .styleinput {
+    width: 56%;
+    box-sizing: border-box;
+    margin: 5px 0;
+    height: 40px;
+}
+
+.EveAjouterContainer input[type="file"] {
+    height: auto;
+}
+
+.ck-editor__editable_inline {
+    min-height: 40px;
+    box-sizing: border-box;
+}
+
+.EveAjouterContainer button {
+    margin: 20px;
+}

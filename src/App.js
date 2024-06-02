@@ -55,6 +55,7 @@ import EditCoach from './components/admin/coach_admin/EditCoach';
 import ViewCoachInvisible from './components/admin/coach_admin/ViewCoachInvisible';
 import ViewCoachVisible from './components/admin/coach_admin/ViewCoachVisible';
 import AjouterPartenaires from './components/admin/partenairesAdmin/AjouterPartenaires';
+import EditEvenement from './components/admin/evenementA/EditEvenement';
 
 function App() {
   const isLoading = useSelector(state => state.loading.isLoading);
@@ -145,6 +146,8 @@ function App() {
           <Route path="/admin/Evenements/AjouterEvenement" element={<AjouterEvenement />} />
 
           <Route path="/admin/Evenements/Liste" element={<ListeEvenement />} />
+          <Route path="/admin/Evenements/liste/edit/:id" element={<EditEvenement />} />
+
 
           <Route path="/admin/VedioCoching" element={<VedioA />} />
           <Route path="/admin/VedioCoching/ajouter" element={<AjouterVedio />} />

@@ -18,6 +18,24 @@ export const deleteEvenement= createAsyncThunk('Evenement/delete', async ({id,da
     return rejectWithValue(error);
   }
 });
+export const AddEvenement = createAsyncThunk('Evenement/add', async (data, { rejectWithValue }) => {
+  try {
+    const res = await axios.post("/api/Evenements", data, { headers: { token: localStorage.getItem('token1') } });
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
+export const putEvenement= createAsyncThunk('Evenement/put', async ({id,data}, { rejectWithValue,dispatch }) => {
+  try {
+    const res = await axios.put(`/api/Evenements/Put/${id}`,data,{ headers: { token: localStorage.getItem('token1') } });
+    dispatch(GetEvenement())
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
+
 const EvenementSlice = createSlice({
   name: "Evenement",
   initialState: {
@@ -60,6 +78,38 @@ const EvenementSlice = createSlice({
      
       })
       .addCase(deleteEvenement.rejected, (state, action) => {
+        state.isLoading = false;
+        state.token = null;
+        state.isAuth = false;
+        state.error = action.payload.error;
+      })
+      .addCase(AddEvenement.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(AddEvenement.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.isAuth = true;
+     
+      })
+      .addCase(AddEvenement.rejected, (state, action) => {
+        state.isLoading = false;
+        state.token = null;
+        state.isAuth = false;
+        state.error = action.payload.error;
+      })
+      .addCase(putEvenement.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(putEvenement.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.isAuth = true;
+     
+      })
+      .addCase(putEvenement.rejected, (state, action) => {
         state.isLoading = false;
         state.token = null;
         state.isAuth = false;

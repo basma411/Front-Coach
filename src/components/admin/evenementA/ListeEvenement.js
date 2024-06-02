@@ -24,6 +24,13 @@ const ListeEvenement = () => {
     }
   };
 
+  const truncateText = (htmlText, maxLength) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlText, 'text/html');
+    const textContent = doc.body.textContent || "";
+    return textContent.length > maxLength ? textContent.substring(0, maxLength) + '...' : textContent;
+  };
+
   return (
     <>
       <BarheaderAdmin />
@@ -87,7 +94,6 @@ const ListeEvenement = () => {
                       src={`http://localhost:8000/${evt.photo}`}
                       width="100px"
                       height="70px"
-
                       alt="Event"
                     />
                   </td>
@@ -95,7 +101,7 @@ const ListeEvenement = () => {
                     {evt.titre}
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    {evt.texte.substring(0, 49)}...
+                    {truncateText(evt.texte, 49)}
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
                     {evt.dates}
@@ -109,7 +115,7 @@ const ListeEvenement = () => {
                       }}
                       onClick={() => handleDelete(evt._id)}
                     />
-                    <Link to={`/admin/Evenement/visible/edit/${evt._id}`}>
+                    <Link to={`/admin/Evenements/liste/edit/${evt._id}`}>
                       <CiEdit style={{ fontSize: "25px", color: "black" }} />
                     </Link>
                   </td>
