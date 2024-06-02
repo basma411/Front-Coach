@@ -18,6 +18,14 @@ export const deleteVedio= createAsyncThunk('vedio/delete', async ({id,data}, { r
     return rejectWithValue(error);
   }
 });
+export const addVedio= createAsyncThunk('vedio/add', async (data, { rejectWithValue,dispatch }) => {
+  try {
+    const res = await axios.post('/api/Vedio',data,{ headers: { token: localStorage.getItem('token1') } });
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
 const VedioSlice = createSlice({
   name: "Vedio",
   initialState: {
@@ -60,6 +68,22 @@ const VedioSlice = createSlice({
      
       })
       .addCase(deleteVedio.rejected, (state, action) => {
+        state.isLoading = false;
+        state.token = null;
+        state.isAuth = false;
+        state.error = action.payload.error;
+      })
+      .addCase(addVedio.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(addVedio.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.isAuth = true;
+     
+      })
+      .addCase(addVedio.rejected, (state, action) => {
         state.isLoading = false;
         state.token = null;
         state.isAuth = false;

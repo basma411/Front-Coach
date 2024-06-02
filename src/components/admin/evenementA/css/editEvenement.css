@@ -1,4 +1,4 @@
-.edit-Article {
+.edit-Evenement {
     width: 100%;
     height: 100vh;
     margin: 0;
@@ -6,7 +6,7 @@
 }
 
 
-.FormContainer {
+.FormContainerEvenement {
     width: 50%;
     height: 100vh;
 
@@ -14,7 +14,7 @@
 
 }
 
-.container-Edit-Article {
+.container-Edit-Evenement {
     width: 100%;
 
     display: flex;
@@ -22,9 +22,10 @@
     justify-content: center;
 }
 
-.TitleArticle,
-.LienArticle,
-.AuteurArticle {
+.TitreEvenement,
+.LienEvenement,
+.LieuEvenement ,.DateEvenement
+{
     width: 600px;
     margin-bottom: 15px;
     padding: 5px;
@@ -34,7 +35,7 @@
     height: 300px;
 }
 
-.form-group-Article {
+.form-group-Evenement {
     width: 600px;
     margin-bottom: 15px;
 }
@@ -44,14 +45,11 @@
     width: 30%;
     margin: 0 auto;
 }
+.custom-ckeditor-text {
+    color: #000 !important; /* Couleur du texte souhaitée */
+}
+.Bouton-Edit-Evenement {
 
-/* .edit-modifier-Article {
-    margin-left: 50px;
-} */
-
-.Bouton-Edit-Article {
-    /* width: 60%;
-    margin: 30px auto;*/
      display: flex; 
     gap: 20px;
 }

@@ -1,0 +1,30 @@
+/* ajouterevenement.css */
+
+.VedioAjouter {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.VedioAjouterContainer {
+    width: 80%;
+    margin: 0 auto;
+ 
+}
+
+.VedioAjouterContainer label {
+    margin: 5px;
+}
+
+.VedioAjouterContainer .styleinput {
+    width: 56%;
+    box-sizing: border-box;
+    margin: 5px 0;
+    height: 40px;
+}
+
+.VedioAjouterContainer input[type="file"] {
+    height: auto;
+}
+
+

@@ -1,6 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
-import image from '../../../images/big_image_2.jpg';
-import { IoPowerOutline } from 'react-icons/io5';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
@@ -8,6 +6,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import './css/editEvenement.css';
 import { GetEvenement, putEvenement } from '../../../Redux/Slice/EvenementSlice';
 import loadingGif from './../../../images/loading.gif';
+import { getImageUrl } from '../../../index.js';
 
 const EditEvenement = () => {
     const dispatch = useDispatch();
@@ -68,12 +67,10 @@ const EditEvenement = () => {
         formDataToSend.append('lieu', formData.lieu);
         formDataToSend.append('dates', formData.dates);
         
-        // Ajoutez l'image seulement si une nouvelle image a été sélectionnée
         if (image) {
             formDataToSend.append('photo', image);
         }
 
-        // Dispatch the action with the formData
         dispatch(putEvenement({ id, data: formDataToSend }));
         navigate('/admin/Evenements/liste');
     };
@@ -87,13 +84,13 @@ const EditEvenement = () => {
     }
 
     return (
-        <div className='edit-Article'>
-            <div className='FormContainer'>
-                <form onSubmit={handleSubmit} className='container-Edit-Article '>
+        <div className='edit-Evenement'>
+            <div className='FormContainerEvenement'>
+                <form onSubmit={handleSubmit} className='container-Edit-Evenement'>
                     <div>
                         <label>Titre</label>
                         <input
-                            className='TitleArticle'
+                            className='TitreEvenement'
                             type='text'
                             name='titre'
                             value={formData.titre}
@@ -103,19 +100,29 @@ const EditEvenement = () => {
                     <div>
                         <label>Texte</label>
                         <CKEditor
-                            editor={ClassicEditor}
-                            data={formData.texte || ''}
-                            onChange={(event, editor) => handleEditorChange(event, editor, 'texte')}
-                            config={{
-                                toolbar: ['bold', 'italic', '|', 'numberedList', 'bulletedList', '|', 'outdent', 'indent', '|', 'link', 'unlink'],
-                                language: 'en',
-                            }}
-                        />
+    editor={ClassicEditor}
+    data={formData.texte || ''}
+    onChange={(event, editor) => handleEditorChange(event, editor, 'texte')}
+    config={{
+        toolbar: ['bold', 'italic', '|', 'numberedList', 'bulletedList', '|', 'outdent', 'indent', '|', 'link', 'unlink'],
+        language: 'en',
+        styles: [
+            {
+                name: 'Custom Style',
+                element: 'p',
+                styles: {
+                    color: '#000' // Couleur du texte souhaitée
+                }
+            }
+        ]
+    }}
+/>
+
                     </div>
                     <div>
                         <label>Lien</label>
                         <input
-                            className='LienArticle'
+                            className='LienEvenement'
                             type='text'
                             name='lien'
                             value={formData.lien}
@@ -125,7 +132,7 @@ const EditEvenement = () => {
                     <div>
                         <label>Lieu</label>
                         <input
-                            className='AuteurArticle'
+                            className='LieuEvenement'
                             type='text'
                             name='lieu'
                             value={formData.lieu}
@@ -135,7 +142,7 @@ const EditEvenement = () => {
                     <div>
                         <label>Date</label>
                         <input
-                            className='AuteurArticle'
+                            className='LienEvenement'
                             type='text'
                             name='dates'
                             value={formData.dates}
@@ -145,7 +152,7 @@ const EditEvenement = () => {
                     <div className="form-group-Article">
                         <label>Image</label>
                         <input type="file" name="photo" onChange={handleFileChange} style={{margin:"20px 0", display:'block',}}/>
-                        {formData.photo && !image && <img src={`http://localhost:8000/${formData.photo}`} alt="Icone" className='imageEdit-Article' />}
+                        {formData.photo && !image && <img src={getImageUrl(formData.photo)} alt="Icone" className='imageEdit-Article' />}
                     </div>
                     <div className='Bouton-Edit-Article'>
                         <button type="submit" className='btn btn-primary edit-modifier-Article'>Modifier</button>

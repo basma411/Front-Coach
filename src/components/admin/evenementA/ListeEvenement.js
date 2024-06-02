@@ -9,7 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { CiEdit } from "react-icons/ci";
 import { GetEvenement, deleteEvenement } from "../../../Redux/Slice/EvenementSlice";
-
+import { getImageUrl } from '../../../index.js';
+import Test from "./Test.js";
 const ListeEvenement = () => {
   const dispatch = useDispatch();
   const { Evenement } = useSelector((state) => state.evenement);
@@ -90,12 +91,12 @@ const ListeEvenement = () => {
               {Evenement.map((evt, index) => (
                 <tr key={index}>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    <img
-                      src={`http://localhost:8000/${evt.photo}`}
-                      width="100px"
-                      height="70px"
-                      alt="Event"
-                    />
+                  <img
+            src={getImageUrl(evt.photo)}
+            width="100px"
+            height="70px"
+            alt="Event"
+        />
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
                     {evt.titre}
@@ -125,6 +126,7 @@ const ListeEvenement = () => {
           </table>
         </div>
       </div>
+      {/* <Test/> */}
     </>
   );
 };

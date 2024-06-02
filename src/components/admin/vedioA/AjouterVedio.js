@@ -1,28 +1,47 @@
-import React, { useEffect } from "react";
-import BarheaderAdmin from "../BarheaderAdmin";
-import NavBarAdmin from "../NavBarAdmin";
-import "./css/ajoutervedio.css";
-import image from "../../../images/big_image_2.jpg";
-import { Link } from "react-router-dom";
-import { IoPowerOutline } from "react-icons/io5";
-import { useDispatch, useSelector } from "react-redux";
-import { RiDeleteBin6Line } from "react-icons/ri";
-import { CiEdit } from "react-icons/ci";
-import { GetEvenement, deleteEvenement } from "../../../Redux/Slice/EvenementSlice";
+import React, { useRef, useState } from 'react';
+import image from '../../../images/big_image_2.jpg';
+import { IoPowerOutline } from 'react-icons/io5';
+import { useDispatch } from 'react-redux';
+import './css/ajoutervedio.css';
+import BarheaderAdmin from '../BarheaderAdmin';
+import NavBarAdmin from '../NavBarAdmin';
+import { AddEvenement } from '../../../Redux/Slice/EvenementSlice';
+import { useNavigate } from 'react-router-dom';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { addVedio } from '../../../Redux/Slice/VedioSlice';
 
 const AjouterVedio = () => {
   const dispatch = useDispatch();
-  const { Evenement } = useSelector((state) => state.evenement);
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    titre: '',
+  
+    lien: '',
+  
+  });
 
-  useEffect(() => {
-    dispatch(GetEvenement());
-  }, [dispatch]);
+  const photoRef = useRef();
 
-//   const handleDelete = (id) => {
-//     if (window.confirm("Are you sure you want to delete this event?")) {
-//       dispatch(deleteEvenement({ id }));
-//     }
-//   };
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData(prevData => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+
+  const handleVedio = (event) => {
+    event.preventDefault();
+    const formDataToSend = new FormData();
+    formDataToSend.append('titre', formData.titre);
+    formDataToSend.append('lien', formData.lien);
+    formDataToSend.append('images', photoRef.current.files[0]);
+
+    dispatch(addVedio(formDataToSend));
+    navigate('/admin/VedioCoching');
+  };
 
   return (
     <>
@@ -31,93 +50,51 @@ const AjouterVedio = () => {
       <div
         className="ImagePlatforme"
         style={{
-          position: "relative",
-          textAlign: "center",
-          height: "300px",
+          position: 'relative',
+          textAlign: 'center',
+          height: '300px',
           backgroundImage: `url(${image})`,
-          backgroundSize: "cover",
-          overflow: "hidden",
+          backgroundSize: 'cover',
+          overflow: 'hidden',
         }}
       >
-        <div style={{ paddingTop: "100px" }}>
-          <IoPowerOutline style={{ fontSize: "35px", fontWeight: "700" }} />
-          <h2 style={{ fontSize: "30px" }}>
-            Bienvenue sur votre espace administration
-          </h2>
+        <div style={{ paddingTop: '100px' }}>
+          <IoPowerOutline style={{ fontSize: '35px', fontWeight: '700' }} />
+          <h2 style={{ fontSize: '30px' }}>Bienvenue sur votre espace administration</h2>
         </div>
       </div>
+      <div className="VedioAjouter">
+        <form className="VedioAjouterContainer" onSubmit={handleVedio}>
+          <label>Titre :</label>
+          <input
+            type="text"
+            name="titre"
+            value={formData.titre}
+            onChange={handleInputChange}
+            className='styleinput'
+          />
+          
+               
+          <label>Photo :</label>
+          <input type="file" ref={photoRef} className='styleinput'  name='images'/>
+          <label>Lien :</label>
+          <input
+            type="text"
+            name="lien"
+            value={formData.lien}
+            onChange={handleInputChange}
+            className='styleinput'
+          />
+          
+       
+         
+          
+       
 
-      <div className="ConsultEvenement">
-        <div className="ConsultEvenementContainer">
-          <Link to="/admin/Accueil">
-            <button className="AccueilEvenement">Accueil</button>
-          </Link>
-          <table
-            className="TableEvenement"
-            style={{
-              borderCollapse: "collapse",
-              width: "100%",
-              textAlign: "center",
-            }}
-          >
-            <thead>
-              <tr>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
-                  Image
-                </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
-                  Titre
-                </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
-                  Description
-                </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
-                  Date
-                </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
-                  Modifier
-                </th>
-              </tr>
-            </thead>
-            {/* <tbody>
-              {Evenement.map((evt, index) => (
-                <tr key={index}>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    <img
-                      src={`http://localhost:8000/${evt.photo}`}
-                      width="100px"
-                      height="70px"
-
-                      alt="Event"
-                    />
-                  </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    {evt.titre}
-                  </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    {evt.texte.substring(0, 49)}...
-                  </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    {evt.dates}
-                  </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    <RiDeleteBin6Line
-                      style={{
-                        fontSize: "25px",
-                        color: "black",
-                        marginRight: "20px",
-                      }}
-                      onClick={() => handleDelete(evt._id)}
-                    />
-                    <Link to={`/admin/Evenement/visible/edit/${evt._id}`}>
-                      <CiEdit style={{ fontSize: "25px", color: "black" }} />
-                    </Link>
-                  </td>
-                </tr>
-              ))}
-            </tbody> */}
-          </table>
-        </div>
+          <button type="submit">
+            Envoyer
+          </button> 
+        </form>
       </div>
     </>
   );
