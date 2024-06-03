@@ -1,0 +1,57 @@
+.edit-Article {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+
+.FormContainer {
+    width: 50%;
+    height: 100vh;
+
+    margin: 0 auto;
+
+}
+
+.container-Edit-Article {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.TitleArticle,
+.LienArticle,
+.AuteurArticle {
+    width: 600px;
+    margin-bottom: 15px;
+    padding: 5px;
+}
+
+.ck-editor__editable {
+    height: 300px;
+}
+
+.form-group-Article {
+    width: 600px;
+    margin-bottom: 15px;
+}
+
+.imageEdit-Article {
+    display: block;
+    width: 30%;
+    margin: 0 auto;
+}
+
+/* .edit-modifier-Article {
+    margin-left: 50px;
+} */
+
+.Bouton-Edit-Article {
+    /* width: 60%;
+    margin: 30px auto;*/
+     display: flex; 
+    gap: 20px;
+}

@@ -7,6 +7,7 @@ import './css/TrouverCoach.css';
 import { FaPlay } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchInterface } from '../../Redux/Slice/InterfaceSlice';
+import { getImageUrl } from '../..';
 
 const TrouverCoach = () => {
   const { interfaceData } = useSelector((state) => state.interface); 
@@ -49,7 +50,9 @@ const TrouverCoach = () => {
           </div>
           <div className='Temaignage-image'> 
             <h3>Parcourez les témoignages !</h3>
-            <img src={`http://localhost:8000/${interfaceData[0].image}`} alt="Image placeholder" height={'400px'} />
+            src={getImageUrl(interfaceData[0].image)}
+
+            <img   src={getImageUrl(interfaceData[0].image)} alt="Image placeholder" height={'400px'} />
             <FaPlay className='icon-play'/>
           </div>
         </div>

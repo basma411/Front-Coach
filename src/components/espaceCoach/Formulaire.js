@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { addCoach, getCoachVisivble } from "../../Redux/Slice/CoachSlice";
 import "./css/formulaire.css";
 import image from "../../images/big_image_2.jpg";
+import { getImageUrl } from "../..";
 
 const Formulaire = () => {
   const dispatch = useDispatch();
@@ -185,7 +186,7 @@ const Formulaire = () => {
             {latestCoach.map((CoachVisible, index) => (
               <div key={index} className="formulaire-Coach">
                 <img
-                  src={`http://localhost:8000/${CoachVisible.image}`}
+           src={getImageUrl(CoachVisible.image)}
                   alt="coach"
                 />
                 <h1 style={{ color: "#000" }}>{CoachVisible.nom}</h1>

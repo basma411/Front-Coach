@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getdomaine } from "../../Redux/Slice/DomainSlice";
 import { UpdateCoach, getCoach } from "../../Redux/Slice/CoachSlice";
 import { useNavigate, useParams } from "react-router-dom";
+import { getImageUrl } from "../..";
 
 const Edit = () => {
   const dispatch = useDispatch();
@@ -429,8 +430,8 @@ const Edit = () => {
           <label htmlFor="otherFileInput:">Photo:</label>
           <div className="updateimage">
             <img
-              src={`http://localhost:8000/${coachdata.image}`}
-              style={{ width: "150px", height: "150px" }}
+           src={getImageUrl(coachdata.photo)}
+           style={{ width: "150px", height: "150px" }}
               name="imagee"
             />
             <input type="file" name="imagee" onChange={handleFileChange} />

@@ -15,6 +15,7 @@ import { GrView } from "react-icons/gr";
 import { FiSend } from "react-icons/fi";
 
 import "./css/coachVisib.css";
+import { getImageUrl } from "../../..";
 const CoachVisib = () => {
   const dispatch = useDispatch();
   const { coachVisible } = useSelector((state) => state.coach);
@@ -103,8 +104,8 @@ const CoachVisib = () => {
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
                     <img
-                      src={`http://localhost:8000/${coachV.image}`}
-                      width="100px"
+   src={getImageUrl(coachV.image)}
+   width="100px"
                       alt="Article"
                     />
                   </td>

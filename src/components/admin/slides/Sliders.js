@@ -1,26 +1,31 @@
-import React, { useEffect } from 'react'
-import BarheaderAdmin from '../BarheaderAdmin'
-import NavBarAdmin from '../NavBarAdmin'
+import React, { useEffect } from "react";
+import BarheaderAdmin from "../BarheaderAdmin";
+import NavBarAdmin from "../NavBarAdmin";
 import image from "../../../images/big_image_2.jpg";
-import { IoPowerOutline } from 'react-icons/io5';
-import { GetSlides } from '../../../Redux/Slice/SlidesSlice';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { IoPowerOutline } from "react-icons/io5";
+import { GetSlides, deleteSlider } from "../../../Redux/Slice/SlidesSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { CiEdit } from "react-icons/ci";
 
-import './CSS/EditerSlide.css'
+import "./CSS/EditerSlide.css";
 const Sliders = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const { Slide } = useSelector((state) => state.slide);
-    useEffect(() => {
-      dispatch(GetSlides());
-    }, [dispatch]);
-    console.log(Slide);
+  const { Slide } = useSelector((state) => state.slide);
+  useEffect(() => {
+    dispatch(GetSlides());
+  }, [dispatch]);
+  console.log(Slide);
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this slider?")) {
+      dispatch(deleteSlider({ id }));
+    }
+  };
   return (
-<>
-<BarheaderAdmin />
+    <>
+      <BarheaderAdmin />
       <NavBarAdmin />
       <div
         className="ImagePlatforme"
@@ -43,13 +48,11 @@ const Sliders = () => {
 
       <div className="ConsultSlide">
         <div className="ConsultSlideContainer">
-          <Link to='/admin/Accueil'>
-          <button className="AccueilSlide">Accueil</button>
-          
+          <Link to="/admin/Accueil">
+            <button className="AccueilSlide">Accueil</button>
           </Link>
-          <Link to='/admin/ajouter_slider'>
-          <button className="AccueilSlide">Ajouter Slider</button>
-          
+          <Link to="/admin/ajouter_slider">
+            <button className="AccueilSlide">Ajouter Slider</button>
           </Link>
           <table
             className="TableSlide"
@@ -65,13 +68,13 @@ const Sliders = () => {
                   Photo:
                 </th>
                 <th style={{ border: "1px solid gray", padding: "8px" }}>
-                titre1
+                  titre1
                 </th>
                 <th style={{ border: "1px solid gray", padding: "8px" }}>
-                titre2
+                  titre2
                 </th>
                 <th style={{ border: "1px solid gray", padding: "8px" }}>
-                supprimer
+                  supprimer
                 </th>
                 <th style={{ border: "1px solid gray", padding: "8px" }}>
                   Modifier
@@ -81,8 +84,17 @@ const Sliders = () => {
             <tbody>
               {Slide.map((slide, index) => (
                 <tr key={index}>
-                     <td style={{ border: "1px solid gray", padding: "10px" ,width:'100px'}}>
-                    <img src={`http://localhost:8000/${slide.photo}`} className='imgSlide' />
+                  <td
+                    style={{
+                      border: "1px solid gray",
+                      padding: "10px",
+                      width: "100px",
+                    }}
+                  >
+                    <img
+                      src={`http://localhost:8000/${slide.photo}`}
+                      className="imgSlide"
+                    />
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
                     {slide.titre1}
@@ -90,14 +102,16 @@ const Sliders = () => {
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
                     {slide.titre2}
                   </td>
-                 
 
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                      <RiDeleteBin6Line  style={{ fontSize: "20px",  color:'black'}} />
+                    <RiDeleteBin6Line
+                      style={{ fontSize: "20px", color: "black" }}
+                      onClick={() => handleDelete(slide._id)}
+                    />
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    <Link to={`/admin/slide/edit/${slide._id}`}>
-                      <CiEdit  style={{ fontSize: "25px",  color:'black'}} />
+                    <Link to={`/admin/edit_slider/${slide._id}`}>
+                      <CiEdit style={{ fontSize: "25px", color: "black" }} />
                     </Link>
                   </td>
                 </tr>
@@ -106,7 +120,8 @@ const Sliders = () => {
           </table>
         </div>
       </div>
-</>  )
-}
+    </>
+  );
+};
 
-export default Sliders
+export default Sliders;

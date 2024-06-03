@@ -7,6 +7,7 @@ import Card from "react-bootstrap/Card";
 import "./css/article.css"; 
 import Newsletter from "../coach/Newsletter";
 import Footer from "../coach/Footer";
+import { getImageUrl } from "../..";
 
 const Articles = () => {
   const dispatch = useDispatch();
@@ -50,8 +51,8 @@ console.log("article",Articles)
             <Card>
               <Card.Img
                 variant="top"
-                src={`http://localhost:8000/${article.photo}`}
-              />
+                src={getImageUrl(article.photo)}
+                />
               <Card.Body>
                 <Card.Title className="article-card-title">{article.titre}</Card.Title>
                 <Card.Text>

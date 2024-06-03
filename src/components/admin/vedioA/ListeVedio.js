@@ -10,6 +10,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { CiEdit } from "react-icons/ci";
 import { GetEvenement, deleteEvenement } from "../../../Redux/Slice/EvenementSlice";
 import { GetVedio, deleteVedio } from "../../../Redux/Slice/VedioSlice";
+import { getImageUrl } from "../../..";
 
 const ListeVedio = () => {
   const dispatch = useDispatch();
@@ -86,8 +87,8 @@ const ListeVedio = () => {
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
                     <img
-                      src={`http://localhost:8000/${vedio.images}`}
-                      width="100px"
+           src={getImageUrl(vedio.images)}
+           width="100px"
                       height="70px"
 
                       alt="Event"
@@ -107,7 +108,7 @@ const ListeVedio = () => {
                       }}
                       onClick={() => handleDelete(vedio._id)}
                     />
-                    <Link to={`/admin/Evenement/visible/edit/${vedio._id}`}>
+                    <Link to={`/admin/VedioCoching/edit/${vedio._id}`}>
                       <CiEdit style={{ fontSize: "25px", color: "black" }} />
                     </Link>
                   </td>

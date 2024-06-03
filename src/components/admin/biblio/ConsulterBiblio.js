@@ -10,6 +10,7 @@ import NavBarAdmin from '../NavBarAdmin';
 import { GetBiblio } from '../../../Redux/Slice/BiblioSlice';
 
 import './css/consulterbiblio.css'
+import { getImageUrl } from '../../..';
 const ConsulterBiblio = () => {
   const dispatch = useDispatch();
 
@@ -80,7 +81,8 @@ const ConsulterBiblio = () => {
               {Biblios.map((Biblio, index) => (
                 <tr key={index}>
                     <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    <img src={`http://localhost:8000/${Biblio.image}`}  height={"100px"}/>
+                    <img    src={getImageUrl(Biblio.photo)}
+  height={"100px"}/>
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
                     {Biblio.texte.substring(0, 50)}

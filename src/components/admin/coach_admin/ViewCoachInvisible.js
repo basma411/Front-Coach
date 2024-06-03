@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import "./css/viewcoach.css";
-import { getCoachInVisivble, getCoachVisivble } from "../../../Redux/Slice/CoachSlice";
+import {
+  getCoachInVisivble,
+  getCoachVisivble,
+} from "../../../Redux/Slice/CoachSlice";
+import { getImageUrl } from "../../..";
 
 const ViewCoachInvisible = () => {
   const navigate = useNavigate();
@@ -26,9 +30,16 @@ const ViewCoachInvisible = () => {
 
   return (
     <div className="ViewCoach">
-          <h1           style={{ width:'30%',color: "gray",display:'block', margin:'0 auto' }}
->Voir Enregistrement
-</h1>
+      <h1
+        style={{
+          width: "30%",
+          color: "gray",
+          display: "block",
+          margin: "0 auto",
+        }}
+      >
+        Voir Enregistrement
+      </h1>
       <div className="viewCoachContainer">
         <div
           style={{
@@ -81,63 +92,66 @@ const ViewCoachInvisible = () => {
           <label>Adresse Email</label>
           <p className="styletexte">{formData.email}</p>
         </div>
-        <div style={{ width: "100%", padding: "5px" ,
-        borderBottom: "solid 1px rgb(194, 192, 192)"
-}}>
+        <div
+          style={{
+            width: "100%",
+            padding: "5px",
+            borderBottom: "solid 1px rgb(194, 192, 192)",
+          }}
+        >
           <label> Bréve Bio</label>
-          <p className="styletexteCoach"  >{formData.bio}</p>
+          <p className="styletexteCoach">{formData.bio}</p>
         </div>
 
-        <label>Méthode de Coaching
-</label>
-          <div className="styletexteCoach"  style={{
+        <label>Méthode de Coaching</label>
+        <div
+          className="styletexteCoach"
+          style={{
             width: "100%",
             padding: "5px",
             borderBottom: "solid 1px rgb(194, 192, 192)",
-          }}>
-            {formData.method?.map((methode, index) => (
-              <p key={index} className="styletexteCoach">
-                * {methode}{" "}
-              </p>
-            ))}
-        
-          </div>
-        
+          }}
+        >
+          {formData.method?.map((methode, index) => (
+            <p key={index} className="styletexteCoach">
+              * {methode}{" "}
+            </p>
+          ))}
+        </div>
 
-          <label>Langue
-</label>
-          <div className="styletexteCoach"  style={{
+        <label>Langue</label>
+        <div
+          className="styletexteCoach"
+          style={{
             width: "100%",
             padding: "5px",
             borderBottom: "solid 1px rgb(194, 192, 192)",
-          }}>
-            {formData.langue?.map((Langue, index) => (
-              <p key={index} className="styletexteCoach">
-                * {Langue}{" "}
-              </p>
-            ))}
-        
-          </div>
+          }}
+        >
+          {formData.langue?.map((Langue, index) => (
+            <p key={index} className="styletexteCoach">
+              * {Langue}{" "}
+            </p>
+          ))}
+        </div>
 
-
-          <label>Type_Client
-
-</label>
-          <div className="styletexteCoach"  style={{
+        <label>Type_Client</label>
+        <div
+          className="styletexteCoach"
+          style={{
             width: "100%",
             padding: "5px",
             borderBottom: "solid 1px rgb(194, 192, 192)",
-          }}>
-            {formData.type_client?.map((TC, index) => (
-              <p key={index} className="styletexteCoach">
-                * {TC}{" "}
-              </p>
-            ))}
-        
-          </div>
+          }}
+        >
+          {formData.type_client?.map((TC, index) => (
+            <p key={index} className="styletexteCoach">
+              * {TC}{" "}
+            </p>
+          ))}
+        </div>
 
-
-          <div
+        <div
           style={{
             borderBottom: "solid 1px rgb(194, 192, 192)",
             width: "100%",
@@ -145,11 +159,13 @@ const ViewCoachInvisible = () => {
           }}
         >
           <label>Photo</label>
-<img           src={`http://localhost:8000/${formData.image}`} style={{display:'block', margin:'auto',width:'100px'}}
-/>
-      </div>
+          <img
+            src={getImageUrl(formData.image)}
+            style={{ display: "block", margin: "auto", width: "100px" }}
+          />
+        </div>
 
-  <div
+        <div
           style={{
             borderBottom: "solid 1px rgb(194, 192, 192)",
             width: "100%",
@@ -159,8 +175,6 @@ const ViewCoachInvisible = () => {
           <label>Site</label>
           <p className="styletexte">{formData.site}</p>
         </div>
-
-
 
         <div
           style={{
@@ -191,8 +205,7 @@ const ViewCoachInvisible = () => {
             padding: "5px",
           }}
         >
-          <label>You Tube
-</label>
+          <label>You Tube</label>
           <p className="styletexte">{formData.yt}</p>
         </div>
         <div
@@ -202,11 +215,9 @@ const ViewCoachInvisible = () => {
             padding: "5px",
           }}
         >
-          <label>Piéce Jointe
-</label>
+          <label>Piéce Jointe</label>
           <p className="styletexte">{formData.piece}</p>
         </div>
-
 
         <div
           style={{
@@ -215,8 +226,7 @@ const ViewCoachInvisible = () => {
             padding: "5px",
           }}
         >
-          <label>Gouvernerats
-</label>
+          <label>Gouvernerats</label>
           <p className="styletexte">{formData.gouv}</p>
         </div>
         <div
@@ -225,22 +235,23 @@ const ViewCoachInvisible = () => {
             padding: "5px",
           }}
         >
-          <label>Tarif
-</label>
-          <p className="styletexte">{formData.tarif?"oui":"non"}</p>
+          <label>Tarif</label>
+          <p className="styletexte">{formData.tarif ? "oui" : "non"}</p>
         </div>
-     
       </div>
       <button
-          style={{ backgroundColor: "blue", color: "white",display:'block', margin:' 10px auto' }}
-          onClick={() => navigate("/admin/Coachs/invisible")}
-        >
-          Retour
-        </button>
+        style={{
+          backgroundColor: "blue",
+          color: "white",
+          display: "block",
+          margin: " 10px auto",
+        }}
+        onClick={() => navigate("/admin/Coachs/invisible")}
+      >
+        Retour
+      </button>
     </div>
   );
 };
 
-
-
-export default ViewCoachInvisible
+export default ViewCoachInvisible;

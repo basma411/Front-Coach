@@ -9,6 +9,23 @@ export const GetSlides = createAsyncThunk('Slide/get', async (data, { rejectWith
     return rejectWithValue(error);
   }
 });
+export const PutSlider= createAsyncThunk('slider/put', async ({id, data}, { rejectWithValue }) => {
+  try {
+    const res = await axios.put(`/api/update-slide/${id}`, data, { headers: { token: localStorage.getItem('token1') } });
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
+export const deleteSlider = createAsyncThunk('slider/delete', async ({ id }, { rejectWithValue, dispatch }) => {
+  try {
+    const res = await axios.delete(`/api/delete-slide/${id}`, { headers: { token: localStorage.getItem('token1') } });
+    dispatch(GetSlides());
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
 
 const SlidesSlice = createSlice({
   name: "Slide",
@@ -40,7 +57,40 @@ const SlidesSlice = createSlice({
         state.token = null;
         state.isAuth = false;
         state.error = action.payload.error;
-      });
+      })
+      .addCase(PutSlider.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(PutSlider.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.isAuth = true;
+     
+      })
+      .addCase(PutSlider.rejected, (state, action) => {
+        state.isLoading = false;
+        state.token = null;
+        state.isAuth = false;
+        state.error = action.payload.error;
+      })
+      .addCase(deleteSlider.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(deleteSlider.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.isAuth = true;
+     
+      })
+      .addCase(deleteSlider.rejected, (state, action) => {
+        state.isLoading = false;
+        state.token = null;
+        state.isAuth = false;
+        state.error = action.payload.error;
+      })
+      ;
   },
 });
 

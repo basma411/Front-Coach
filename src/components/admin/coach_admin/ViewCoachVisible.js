@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import "./css/viewcoach.css";
 import { getCoachVisivble } from "../../../Redux/Slice/CoachSlice";
+import { getImageUrl } from "../../..";
 
 const ViewCoachVisible = () => {
   const navigate = useNavigate();
@@ -145,7 +146,8 @@ const ViewCoachVisible = () => {
           }}
         >
           <label>Photo</label>
-<img           src={`http://localhost:8000/${formData.image}`} style={{display:'block', margin:'auto',width:'100px'}}
+<img              src={getImageUrl(formData.image)}
+ style={{display:'block', margin:'auto',width:'100px'}}
 />
       </div>
 

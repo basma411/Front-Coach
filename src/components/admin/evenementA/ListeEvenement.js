@@ -18,7 +18,7 @@ const ListeEvenement = () => {
   useEffect(() => {
     dispatch(GetEvenement());
   }, [dispatch]);
-
+console.log(Evenement)
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this event?")) {
       dispatch(deleteEvenement({ id }));

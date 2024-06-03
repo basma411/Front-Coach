@@ -14,6 +14,7 @@ import {
   delArticleInv,
 } from "../../../Redux/Slice/ArticleSlice";
 import { GrView } from "react-icons/gr";
+import { getImageUrl } from "../../..";
 
 const ArticleInvisible = () => {
   const dispatch = useDispatch();
@@ -92,8 +93,8 @@ const ArticleInvisible = () => {
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
                     <img
-                      src={`http://localhost:8000/${artV.photo}`}
-                      width="100px"
+   src={getImageUrl(artV.photo)}
+                         width="100px"
                       alt="Article"
                     />
                   </td>
@@ -103,7 +104,7 @@ const ArticleInvisible = () => {
                   </td>
 
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    <Link to={`/admin/Coachs/invisible/view/${artV._id}`}>
+                    <Link to={`/admin/article/invisible/view/${artV._id}`}>
                       <GrView style={{ fontSize: "25px", color: "black" }} />
                     </Link>
                     <FaCheck

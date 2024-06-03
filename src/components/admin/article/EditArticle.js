@@ -7,6 +7,7 @@ import './css/editArticle.css';
 import { GetArticle, PutArticle } from '../../../Redux/Slice/ArticleSlice';
 import { useEffect, useState } from 'react';
 import loadingGif from './../../../images/loading.gif'
+import { getImageUrl } from '../../..';
 const EditArticle = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -115,7 +116,8 @@ const EditArticle = () => {
                     </div>
                     <div className="form-group-Article">
                         <label>Image</label>
-                        {formData.photo && <img src={`http://localhost:8000/${formData.photo}`} alt="Icone" className='imageEdit-Article' />}
+                        {formData.photo && <img    src={getImageUrl(formData.photo)}
+ alt="Icone" className='imageEdit-Article' />}
                     </div>
                     <div className='Bouton-Edit-Article'>
                         <button type="submit" className='btn btn-primary edit-modifier-Article'>Modifier</button>

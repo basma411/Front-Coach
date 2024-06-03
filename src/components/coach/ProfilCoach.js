@@ -14,6 +14,7 @@ import { SiRss } from "react-icons/si";
 import { FaFacebookF } from "react-icons/fa";
 import { BiLogoLinkedin } from "react-icons/bi";
 import { ImYoutube2 } from "react-icons/im";
+import { getImageUrl } from "../..";
 
 const ProfilCoach = () => {
   const dispatch = useDispatch();
@@ -55,8 +56,8 @@ const ProfilCoach = () => {
           <div className="Photo">
             <p>{coachdata.nom}</p>
             <img
-              src={`http://localhost:8000/${coachdata.image}`}
-              alt="Photo de profil"
+           src={getImageUrl(coachdata.photo)}
+           alt="Photo de profil"
               style={{
                 width: "220px",
                 height: "207px",

@@ -8,6 +8,7 @@ import { BsTypeBold } from "react-icons/bs";
 import { MdOutlineFormatItalic } from "react-icons/md";
 import { BsListOl, BsListUl } from "react-icons/bs";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
+import { getImageUrl } from "../..";
 
 const AjoutArticle = () => {
   const dispatch = useDispatch();
@@ -104,8 +105,8 @@ const AjoutArticle = () => {
           {latestArticles.map((article, index) => (
             <div key={index}>
               <img
-                src={`http://localhost:8000/${article.photo}`}
-                alt="Article"
+           src={getImageUrl(article.photo)}
+           alt="Article"
               />
               <h1>{article.titre}</h1>
               <h2>{article.auteur}</h2>

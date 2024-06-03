@@ -7,6 +7,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import loadingGif from './../../../images/loading.gif'
 
 import './css/edit.css';
+import { getImageUrl } from '../../..';
 
 const Edit = () => {
     const dispatch = useDispatch();
@@ -36,7 +37,7 @@ const Edit = () => {
     }, [Icon, id]);
 
     const handleEditorChange = (event, editor, name) => {
-        const data = editor.getData().replace(/<\/?p>|<\/?strong>/g, ' ').trim();
+        const data = editor.getData();
         setFormData(prevData => ({
             ...prevData,
             [name]: data,
@@ -91,7 +92,8 @@ const Edit = () => {
 
                     <div className="form-group">
                         <label>Icone</label>
-                        {formData.image && <img src={`http://localhost:8000/${formData.image}`} alt="Icone" className='imageEdit' />}
+                        {formData.image && <img    src={getImageUrl(formData.image)}
+ alt="Icone" className='imageEdit' />}
                     </div>
 
                     <div className='Bouton-Edit'>

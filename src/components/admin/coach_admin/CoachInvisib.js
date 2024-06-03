@@ -9,6 +9,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { GrView } from "react-icons/gr";
 import { FaCheck } from "react-icons/fa6";
+import { getImageUrl } from '../../..';
 const CoachInvisib = () => {
   const dispatch = useDispatch();
   const { coacheInvisible } = useSelector((state) => state.coach);
@@ -108,8 +109,8 @@ const CoachInvisib = () => {
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
                     <img
-                      src={`http://localhost:8000/${coachI.image}`}
-                      width="100px"
+   src={getImageUrl(coachI.image)}
+   width="100px"
                       alt="Article"
                     />
                   </td>

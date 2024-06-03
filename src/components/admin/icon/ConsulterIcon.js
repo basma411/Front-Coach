@@ -8,6 +8,7 @@ import { GetIcon } from "../../../Redux/Slice/IconSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { CiEdit } from "react-icons/ci";
 import { Link } from "react-router-dom";
+import { getImageUrl } from "../../..";
 
 const ConsulterIcon = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,12 @@ const ConsulterIcon = () => {
     dispatch(GetIcon());
   }, [dispatch]);
   console.log(Icon);
-
+  const truncateText = (htmlText, maxLength) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlText, 'text/html');
+    const textContent = doc.body.textContent || "";
+    return textContent.length > maxLength ? textContent.substring(0, maxLength) + '...' : textContent;
+  };
   return (
     <>
       <BarheaderAdmin />
@@ -73,13 +79,14 @@ const ConsulterIcon = () => {
               {Icon.map((icon, index) => (
                 <tr key={index}>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    {icon.Titre.replace(/<p>(.*?)&nbsp;<\/p>$/, '$1').replace(/<p>(.*?)<\/p>/, '$1')}
+                  {truncateText(icon.Titre, 49)}
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    {icon.Texte.replace(/<p>(.*?)&nbsp;<\/p>$/, '$1').replace(/<p>(.*?)<\/p>/, '$1').substring(0, 50)}
+                  {truncateText(icon.Texte, 49)}
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    <img src={`http://localhost:8000/${icon.image}`} />
+                    <img    src={getImageUrl(icon.image)}
+ />
                   </td>
 
                   <td style={{ border: "1px solid gray", padding: "10px" }}>

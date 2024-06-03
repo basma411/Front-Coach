@@ -4,6 +4,7 @@ import { UpdateCoachVisibleAdmin, getCoachVisivble } from '../../../Redux/Slice/
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getdomaine } from '../../../Redux/Slice/DomainSlice';
+import { getImageUrl } from '../../..';
 
 const EditCoach = () => {
   const dispatch = useDispatch();
@@ -268,8 +269,8 @@ console.log(selectedDomaines)
 
           <label>Image</label>
           <img
-            src={`http://localhost:8000/${formData.image}`}
-            style={{ width: "150px", height: "150px" }}
+   src={getImageUrl(formData.image)}
+   style={{ width: "150px", height: "150px" }}
             alt="Coach"
           />
 

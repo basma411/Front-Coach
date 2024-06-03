@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { CiEdit } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { fetchInterface } from "../../../Redux/Slice/InterfaceSlice";
+import { getImageUrl } from "../../..";
 const ConsulterInterface = () => {
     const dispatch = useDispatch();
 
@@ -85,7 +86,8 @@ const ConsulterInterface = () => {
              {interfaceData[0].texte.substring(0, 50)}...
            </td>
            <td style={{ border: "1px solid gray", padding: "10px" }}>
-           <img src={`http://localhost:8000/${interfaceData[0].image}`} width={'100px'} />
+           <img            src={getImageUrl(interfaceData[0].photo)}
+ width={'100px'} />
 
            </td>
            <td style={{ border: "1px solid gray", padding: "10px" }}>

@@ -56,6 +56,8 @@ import ViewCoachInvisible from './components/admin/coach_admin/ViewCoachInvisibl
 import ViewCoachVisible from './components/admin/coach_admin/ViewCoachVisible';
 import AjouterPartenaires from './components/admin/partenairesAdmin/AjouterPartenaires';
 import EditEvenement from './components/admin/evenementA/EditEvenement';
+import EditVedio from './components/admin/vedioA/EditVedio';
+import EditSlider from './components/admin/slides/EditSlider';
 
 function App() {
   const isLoading = useSelector(state => state.loading.isLoading);
@@ -118,6 +120,8 @@ function App() {
 
           <Route path="/admin/editer_slider" element={<Sliders />} />
           <Route path="/admin/ajouter_slider" element={<AjouterSlider />} />
+          <Route path="/admin/edit_slider/:id" element={<EditSlider />} />
+
           <Route path="/admin/consulter_biblio" element={<ConsulterBiblio />} />
           <Route path="/admin/consulter_domaine" element={<ConsulterDomaine />} />
           <Route path="/admin/consulter_interface" element={<ConsulterInterface />} />
@@ -129,6 +133,7 @@ function App() {
 
           <Route path="/admin/article/visible" element={<ArticleVisible />} />
           <Route path="/admin/article/visible/edit/:id" element={<EditArticle />} />
+          <Route path="/admin/article/invisible/view/:id" element={<ViewArticle />} />
 
           <Route path="/admin/Coachs" element={<CoachA />} />
           <Route path="/admin/Coachs/invisible" element={<CoachInvisib />} />
@@ -151,6 +156,7 @@ function App() {
 
           <Route path="/admin/VedioCoching" element={<VedioA />} />
           <Route path="/admin/VedioCoching/ajouter" element={<AjouterVedio />} />
+          <Route path="/admin/VedioCoching/edit/:id" element={<EditVedio />} />
 
           <Route path="/admin/VedioCoching/liste" element={<ListeVedio />} />
 

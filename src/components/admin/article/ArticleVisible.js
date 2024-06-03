@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { GetArticle, delArticle } from "../../../Redux/Slice/ArticleSlice";
 import { CiEdit } from "react-icons/ci";
+import { getImageUrl } from "../../..";
 
 const ArticleVisible = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,12 @@ const ArticleVisible = () => {
       dispatch(delArticle({ id }));
     }
   };
-
+  const truncateText = (htmlText, maxLength) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlText, 'text/html');
+    const textContent = doc.body.textContent || "";
+    return textContent.length > maxLength ? textContent.substring(0, maxLength) + '...' : textContent;
+  };
   return (
     <>
       <BarheaderAdmin />
@@ -84,14 +90,14 @@ const ArticleVisible = () => {
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
                     <img
-                      src={`http://localhost:8000/${artV.photo}`}
-                      width="100px"
+   src={getImageUrl(artV.photo)}
+   width="100px"
                       alt="Article"
                     />
                   </td>
 
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                  {artV.texte.replace(/<p>(.*?)&nbsp;<\/p>$/, '$1').replace(/<p>(.*?)<\/p>/, '$1').substring(0, 49)}...
+                  {truncateText(artV.texte, 49)}
                   </td>
 
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
