@@ -8,6 +8,7 @@ import { IoPowerOutline } from 'react-icons/io5';
 import { GetPartenaire, deletePartenaire } from "../../../Redux/Slice/PartenaireSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { getImageUrl } from "../../../index.js";
 
 const PartenairesA = () => {
   const dispatch = useDispatch();
@@ -66,7 +67,7 @@ const PartenairesA = () => {
               {Partenaire.map((partenaire, index) => (
                 <tr key={index}>
                     <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    <img src={`http://localhost:8000/${partenaire.photo}`} width="100px" alt="Partenaire" />
+                    <img  src={getImageUrl(partenaire.photo)} width="100px" alt="Partenaire" />
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
                     {partenaire.nom}

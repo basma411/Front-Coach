@@ -1,24 +1,29 @@
-import NavBarAdmin from "../NavBarAdmin";
-import "./css/consulterdomaine.css";
-import image from "../../../images/big_image_2.jpg";
-import { IoPowerOutline } from "react-icons/io5";
-import { RiDeleteBin6Line } from "react-icons/ri";
-
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { CiEdit } from "react-icons/ci";
 import { Link } from "react-router-dom";
-import { getdomaine } from "../../../Redux/Slice/DomainSlice";
+import { IoPowerOutline } from "react-icons/io5";
+import { CiEdit } from "react-icons/ci";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import NavBarAdmin from "../NavBarAdmin";
 import BarheaderAdmin from "../BarheaderAdmin";
-import { useEffect } from "react";
-const ConsulterDomaine = () => {
-    const dispatch = useDispatch();
+import { delDomaine, getdomaine } from "../../../Redux/Slice/DomainSlice";
+import image from "../../../images/big_image_2.jpg";
+import "./css/consulterdomaine.css";
 
-    const { domaines } = useSelector((state) => state.domaine);
-    useEffect(() => {
-      dispatch(getdomaine());
-    }, [dispatch]);
+const ConsulterDomaine = () => {
+  const dispatch = useDispatch();
+  const { domaines } = useSelector((state) => state.domaine);
+
+  useEffect(() => {
+    dispatch(getdomaine());
+  }, [dispatch]);
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this Domaine?")) {
+      dispatch(delDomaine({ id }));
+    }
+  };
   return (
-<>
+    <>
       <BarheaderAdmin />
       <NavBarAdmin />
       <div
@@ -41,11 +46,11 @@ const ConsulterDomaine = () => {
       </div>
       <div className="ConsultDomaine">
         <div className="ConsultDomaineContainer">
-          <Link to='/admin/Accueil'>
-          <button className="AccueilDomaine">Accueil</button>
+          <Link to="/admin/Accueil">
+            <button className="AccueilDomaine">Accueil</button>
           </Link>
-          <Link to='/admin/ajouter_domaine'>
-          <button className="AccueilDomaine">Ajouter Domaine</button>
+          <Link to="/admin/consulter_domaine/ajouter">
+            <button className="AccueilDomaine">Ajouter Domaine</button>
           </Link>
           <table
             className="TableDomaine"
@@ -58,35 +63,54 @@ const ConsulterDomaine = () => {
             <thead>
               <tr>
                 <th style={{ border: "1px solid gray", padding: "8px" }}>
-                Domaines D'interventions	
+                  Domaines D'interventions
                 </th>
-              
                 <th style={{ border: "1px solid gray", padding: "8px" }}>
-                Action
+                  Action
                 </th>
               </tr>
             </thead>
             <tbody>
-              {domaines.map((domaine, index) => (
-                <tr key={index}>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    {domaine.domaines}
-                  </td>
-                  
+              {Array.isArray(domaines) && domaines.length > 0 ? (
+                domaines.map((domaine, index) => (
+                  <tr key={index}>
+                    <td style={{ border: "1px solid gray", padding: "10px" }}>
+                      {domaine.domaines}
+                    </td>
+                    <td style={{ border: "1px solid gray", padding: "10px" }}>
+                      <Link to={`/admin/domaine/edit/${domaine._id}`}>
+                        <CiEdit
+                          style={{
+                            fontSize: "25px",
+                            color: "black",
+                            marginRight: "40px",
+                          }}
+                        />
+                      </Link>
+                      <RiDeleteBin6Line
+                        style={{ fontSize: "20px", color: "black" }}
+                        onClick={() => handleDelete(domaine._id)}
 
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    <Link to={`/admin/domaine/edit/${domaine._id}`}>
-                      <CiEdit style={{ fontSize: "25px",  color:'black', marginRight:'40px'}} />
-                    </Link>
-                      <RiDeleteBin6Line  style={{ fontSize: "20px",  color:'black'}} />
+                      />
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td
+                    colSpan="2"
+                    style={{ border: "1px solid gray", padding: "10px" }}
+                  >
+                    Aucun domaine trouvé.
                   </td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>
       </div>
-    </>  )
-}
+    </>
+  );
+};
 
-export default ConsulterDomaine
+export default ConsulterDomaine;

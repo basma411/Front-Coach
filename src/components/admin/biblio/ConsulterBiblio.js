@@ -78,17 +78,17 @@ const ConsulterBiblio = () => {
               </tr>
             </thead>
             <tbody>
-              {Biblios.map((Biblio, index) => (
+              {Biblios && Biblios.map((Biblio, index) => (
                 <tr key={index}>
                     <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    <img    src={getImageUrl(Biblio.photo)}
+                    <img    src={getImageUrl(Biblio.photo_c)}
   height={"100px"}/>
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    {Biblio.texte.substring(0, 50)}
+                    {Biblio.descrip.substring(0, 50)}
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    {Biblio.editeur}
+                    {Biblio.auteur1}
                   </td>
                 
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
@@ -96,7 +96,7 @@ const ConsulterBiblio = () => {
                   </td>
 
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    <Link to={`/admin/Biblio/edit/${Biblio._id}`}>
+                    <Link to={`/admin/consulter_biblio/Edit/${Biblio._id}`}>
                       <MdOutlineModeEdit style={{ fontSize: "30px",  color:'black'}} />
                     </Link>
                    

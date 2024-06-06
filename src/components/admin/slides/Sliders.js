@@ -10,6 +10,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { CiEdit } from "react-icons/ci";
 
 import "./CSS/EditerSlide.css";
+import { getImageUrl } from "../../../index.js";
 const Sliders = () => {
   const dispatch = useDispatch();
 
@@ -17,11 +18,16 @@ const Sliders = () => {
   useEffect(() => {
     dispatch(GetSlides());
   }, [dispatch]);
-  console.log(Slide);
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this slider?")) {
       dispatch(deleteSlider({ id }));
     }
+  };
+  const truncateText = (htmlText, maxLength) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlText, 'text/html');
+    const textContent = doc.body.textContent || "";
+    return textContent.length > maxLength ? textContent.substring(0, maxLength) + '...' : textContent;
   };
   return (
     <>
@@ -92,15 +98,15 @@ const Sliders = () => {
                     }}
                   >
                     <img
-                      src={`http://localhost:8000/${slide.photo}`}
-                      className="imgSlide"
+src={getImageUrl(slide.photo)} style={{width:'70px' ,height:'70px'}}                     className="imgSlide"
                     />
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    {slide.titre1}
+                  {truncateText(slide.titre1)}
+
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    {slide.titre2}
+                  {truncateText(slide.titre2)}
                   </td>
 
                   <td style={{ border: "1px solid gray", padding: "10px" }}>

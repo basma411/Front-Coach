@@ -9,7 +9,15 @@ export const GetBiblio= createAsyncThunk('Biblio/get', async (data, { rejectWith
     return rejectWithValue(error);
   }
 });
-
+export const PutBiblio = createAsyncThunk('Biblio/put', async ({ id, data }, { rejectWithValue, dispatch }) => {
+  try {
+    const res = await axios.put(`/api/put-biblios/${id}`, data, { headers: { token: localStorage.getItem('token1') } });
+    dispatch(GetBiblio());
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error.response.data);
+  }
+});
 const  BiblioSlice = createSlice({
   name: " Biblio",
   initialState: {
@@ -36,6 +44,23 @@ const  BiblioSlice = createSlice({
      
       })
       .addCase(GetBiblio.rejected, (state, action) => {
+        state.isLoading = false;
+        state.token = null;
+        state.isAuth = false;
+        state.error = action.payload.error;
+      })
+      .addCase(PutBiblio.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(PutBiblio.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.isAuth = true;
+        state.Biblios = action.payload.Biblios;
+     
+      })
+      .addCase(PutBiblio.rejected, (state, action) => {
         state.isLoading = false;
         state.token = null;
         state.isAuth = false;

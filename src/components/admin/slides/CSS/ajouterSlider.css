@@ -1,0 +1,11 @@
+.PartenaireAjouter{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.ParteAjouterContainer{
+    width: 80%;
+    height: 100vh;
+    margin: 20px auto;
+
+}

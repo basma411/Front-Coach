@@ -1,0 +1,36 @@
+.FormContainerBiblio {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+
+.edit-Biblio  input {
+    width: 50%;
+    height: 40px;
+
+    margin: 0 auto;
+
+}
+.edit-Biblio  textarea {
+    width: 50%;
+ height: 200px;
+    margin: 0 auto;
+
+}
+.edit-Biblio  label {
+    width: 50%;
+    margin: 5px auto;
+
+}
+.Bouton-Edit-Article {
+ 
+    display: flex; 
+margin: 40px auto;
+gap: 20px;
+} 
+.imageEdit-Article {
+    width: 200px;
+    margin: 0 auto;
+}

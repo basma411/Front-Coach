@@ -58,6 +58,9 @@ import AjouterPartenaires from './components/admin/partenairesAdmin/AjouterParte
 import EditEvenement from './components/admin/evenementA/EditEvenement';
 import EditVedio from './components/admin/vedioA/EditVedio';
 import EditSlider from './components/admin/slides/EditSlider';
+import EditBiblio from './components/admin/biblio/EditBiblio';
+import EditDomaine from './components/admin/Domaine/EditDomaine';
+import AjouterDomaine from './components/admin/Domaine/AjouterDomaine';
 
 function App() {
   const isLoading = useSelector(state => state.loading.isLoading);
@@ -123,7 +126,12 @@ function App() {
           <Route path="/admin/edit_slider/:id" element={<EditSlider />} />
 
           <Route path="/admin/consulter_biblio" element={<ConsulterBiblio />} />
+          <Route path="/admin/consulter_biblio/Edit/:id" element={<EditBiblio />} />
+
           <Route path="/admin/consulter_domaine" element={<ConsulterDomaine />} />
+          <Route path="/admin/consulter_domaine/edit/:id" element={<EditDomaine />} />
+          <Route path="/admin/consulter_domaine/ajouter" element={<AjouterDomaine />} />
+
           <Route path="/admin/consulter_interface" element={<ConsulterInterface />} />
           <Route path="/admin/témoignages" element={<Temoignage />} />
           <Route path="/admin/témoignages/invisible" element={<TémignageInvisible />} />

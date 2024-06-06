@@ -77,11 +77,11 @@ const EditSlider = () => {
             <div className='FormContainer'>
                 <form onSubmit={handleSubmit} className='container-Edit-Article '>
                     <div>
-                        <label>Titre</label>
+                        <label>Titre1</label>
                         <CKEditor
                             editor={ClassicEditor}
                             data={formData.titre1 || ''}
-                            onChange={(event, editor) => handleEditorChange(event, editor, 'titre2')}
+                            onChange={(event, editor) => handleEditorChange(event, editor, 'titre1')}
                             config={{
                                 toolbar: ['bold', 'italic', '|', 'numberedList', 'bulletedList', '|', 'outdent', 'indent', '|', 'link', 'unlink'],
                                 language: 'en',
@@ -89,7 +89,7 @@ const EditSlider = () => {
                         />
                     </div>
                     <div>
-                        <label>Texte</label>
+                        <label>Titre2</label>
                         <CKEditor
                             editor={ClassicEditor}
                             data={formData.titre2 || ''}

@@ -9,8 +9,24 @@ export const getdomaine = createAsyncThunk('/get-domaine', async (data, { reject
     return rejectWithValue(error);
   }
 });
-
-
+export const AddDomaine = createAsyncThunk('Domaine/add', async (data, { rejectWithValue,dispatch }) => {
+  try {
+    const res = await axios.post("/api/Domaine", data, { headers: { token: localStorage.getItem('token1') } });
+    dispatch(getdomaine())
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
+export const delDomaine = createAsyncThunk('Domaine/del', async ({ id }, { rejectWithValue, dispatch }) => {
+  try {
+    const res = await axios.delete(`/api/Domaine/delete/${id}`, { headers: { token: localStorage.getItem('token1') } });
+    dispatch(getdomaine());
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error.response.data);
+  }
+});
 const DomaineSlice = createSlice({
     name: "domaine",
     initialState: {
@@ -39,7 +55,38 @@ const DomaineSlice = createSlice({
         .addCase(getdomaine.rejected, (state, action) => {
           state.isLoading = false;
           state.error = action.payload.error;
-        });
+        })
+        .addCase(AddDomaine.pending, (state) => {
+          state.isLoading = true;
+          state.error = null;
+        })
+        .addCase(AddDomaine.fulfilled, (state, action) => {
+          state.isLoading = false;
+          state.error = null;
+       
+          state.domaines = action.payload.Domaine;
+         
+        })
+        .addCase(AddDomaine.rejected, (state, action) => {
+          state.isLoading = false;
+          state.error = action.payload.error;
+        })
+        .addCase(delDomaine.pending, (state) => {
+          state.isLoading = true;
+          state.error = null;
+        })
+        .addCase(delDomaine.fulfilled, (state, action) => {
+          state.isLoading = false;
+          state.error = null;
+       
+          state.domaines = action.payload.Domaine;
+         
+        })
+        .addCase(delDomaine.rejected, (state, action) => {
+          state.isLoading = false;
+          state.error = action.payload.error;
+        })
+        ;
     },
   });
   export default DomaineSlice.reducer;

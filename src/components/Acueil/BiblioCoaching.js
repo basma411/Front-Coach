@@ -41,7 +41,7 @@ const BiblioCoaching = () => {
                   <Card>
                     <Card.Img
                       variant="top"
-                      src={`http://localhost:8000/${Biblio.image}`}
+                      src={`http://localhost:8000/${Biblio.photo_c}`}
                       style={{ width: "370px", height: "427px" }}
                     />
                   </Card>
@@ -62,17 +62,17 @@ const BiblioCoaching = () => {
                         }}
                       >
                         {" "}
-                        {Biblio.texte}
+                        {Biblio.descrip}
                       </p>
                       <div className="author d-flex">
                         <img
-                          src={`http://localhost:8000/${Biblio.image}`}
+                          src={`http://localhost:8000/${Biblio.photo_c}`}
                           width="60px"
                           height="80px"
                         />
                         <div className="name align-self-center">
                         
-<h3>{Biblio.editeur}</h3>
+<h3>{Biblio.auteur1}</h3>
 <h4>{Biblio.annee}</h4>
 
                         </div>
