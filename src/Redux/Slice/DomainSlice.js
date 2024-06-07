@@ -18,10 +18,19 @@ export const AddDomaine = createAsyncThunk('Domaine/add', async (data, { rejectW
     return rejectWithValue(error);
   }
 });
-export const delDomaine = createAsyncThunk('Domaine/del', async ({ id }, { rejectWithValue, dispatch }) => {
+export const delDomaine = createAsyncThunk('Domaine/del', async ({ id,data }, { rejectWithValue, dispatch }) => {
   try {
     const res = await axios.delete(`/api/Domaine/delete/${id}`, { headers: { token: localStorage.getItem('token1') } });
     dispatch(getdomaine());
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error.response.data);
+  }
+});
+export const putDomaine = createAsyncThunk('Domaine/put', async ({ id,data }, { rejectWithValue, dispatch }) => {
+  try {
+    const res = await axios.put(`/api/Domaine/update/${id}`,data, { headers: { token: localStorage.getItem('token1') } });
+    dispatch(getdomaine())
     return res.data;
   } catch (error) {
     return rejectWithValue(error.response.data);
@@ -79,10 +88,23 @@ const DomaineSlice = createSlice({
           state.isLoading = false;
           state.error = null;
        
-          state.domaines = action.payload.Domaine;
          
         })
         .addCase(delDomaine.rejected, (state, action) => {
+          state.isLoading = false;
+          state.error = action.payload.error;
+        })
+        .addCase(putDomaine.pending, (state) => {
+          state.isLoading = true;
+          state.error = null;
+        })
+        .addCase(putDomaine.fulfilled, (state, action) => {
+          state.isLoading = false;
+          state.error = null;
+       
+         
+        })
+        .addCase(putDomaine.rejected, (state, action) => {
           state.isLoading = false;
           state.error = action.payload.error;
         })

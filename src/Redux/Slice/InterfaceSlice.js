@@ -17,6 +17,15 @@ export const fetchInterface= createAsyncThunk('Partenaire/get', async (data, { r
     return rejectWithValue(error);
   }
 });
+export const putInterface= createAsyncThunk('Partenaire/put', async ({id,data}, { rejectWithValue ,dispatch}) => {
+  try {
+    const res = await axios.put(`/api/put-interfaces/${id}`,data, { headers: { token: localStorage.getItem('token1') } });
+   dispatch(fetchInterface())
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
 
 // Create a slice
 const InterfaceSlice = createSlice({

@@ -3,19 +3,31 @@ import BarheaderAdmin from "../BarheaderAdmin";
 import NavBarAdmin from "../NavBarAdmin";
 import "./css/coachvisible.css";
 import image from "../../../images/big_image_2.jpg";
-import { IoPowerOutline } from "react-icons/io5";
-import { GetIcon } from "../../../Redux/Slice/IconSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { CiEdit } from "react-icons/ci";
 import { Link } from "react-router-dom";
-import { getCoachInVisivble } from "../../../Redux/Slice/CoachSlice";
+import { IoPowerOutline } from "react-icons/io5";
+import { FaCheck } from "react-icons/fa6";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { GrView } from "react-icons/gr";
+
+import { GetTemoignageIn, PutTemoignagesInv, delTemoignageIn } from "../../../Redux/Slice/TemoignegeSlice";
 const TémignageInvisible = () => {
     const dispatch = useDispatch();
 
-    const { coachInvisible } = useSelector((state) => state.coach);
+    const { TemoignegeIv } = useSelector((state) => state.temoignage);
     useEffect(() => {
-      dispatch(getCoachInVisivble());
+      dispatch(GetTemoignageIn());
     }, [dispatch]);
+    const handleDelete = (id) => {
+      if (window.confirm("Are you sure you want to delete this Temoignage?")) {
+        dispatch(delTemoignageIn({ id }));
+      }
+    };
+    const handleValid = (id) => {
+      if (window.confirm("Are you sure you want to accept this Temoignage?")) {
+          dispatch(PutTemoignagesInv({ id,data: { Visible: true }})  ) 
+      }
+    };
   return (
 
     <>
@@ -68,7 +80,42 @@ const TémignageInvisible = () => {
               </th>
             </tr>
           </thead>
-        
+        <tbody>
+            {TemoignegeIv && TemoignegeIv.map((T_iV, index) => (
+              <tr key={index}>
+                <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  {T_iV.nom}
+                </td>
+                <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  {T_iV.texte}
+                </td>
+                <td style={{ border: "1px solid gray", padding: "10px" }}>
+{T_iV.Date}                </td>
+
+                <td style={{ border: "1px solid gray", padding: "10px" }}>
+                <Link to={`/admin/témoignages/invisible/view/${T_iV._id}`}>
+                      <GrView style={{ fontSize: "25px", color: "black" }} />
+                    </Link>
+                <FaCheck
+                      style={{
+                        fontSize: "25px",
+                        color: "black",
+                        marginRight: "20px",
+                      }}
+                      onClick={() => handleValid(T_iV._id)}
+                    />
+                  <RiDeleteBin6Line
+                      style={{
+                        fontSize: "25px",
+                        color: "black",
+                        marginRight: "20px",
+                      }}
+                      onClick={() => handleDelete(T_iV._id)}
+                    />
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
     </div>

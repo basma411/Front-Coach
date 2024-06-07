@@ -8,14 +8,27 @@ import { GetIcon } from "../../../Redux/Slice/IconSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { CiEdit } from "react-icons/ci";
 import { Link } from "react-router-dom";
-import { getCoachVisivble } from "../../../Redux/Slice/CoachSlice";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { GetTemoignageV, delTemoignageV } from "../../../Redux/Slice/TemoignegeSlice";
 const TémoignageVisible = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const { coachVisible } = useSelector((state) => state.coach);
-    useEffect(() => {
-      dispatch(getCoachVisivble());
-    }, [dispatch]);
+  const { TemoignegeV } = useSelector((state) => state.temoignage);
+  useEffect(() => {
+    dispatch(GetTemoignageV());
+  }, [dispatch]);
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this Temoignage?")) {
+      dispatch(delTemoignageV({ id }));
+    }
+  };
+  const truncateText = (htmlText, maxLength) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlText, 'text/html');
+    const textContent = doc.body.textContent || "";
+    return textContent.length > maxLength ? textContent.substring(0, maxLength) + '...' : textContent;
+  };
+
   return (
 
     <>
@@ -68,27 +81,35 @@ const TémoignageVisible = () => {
               </th>
             </tr>
           </thead>
-          {/* <tbody>
-            {Icon.map((icon, index) => (
+          <tbody>
+            {TemoignegeV && TemoignegeV.map((T_V, index) => (
               <tr key={index}>
                 <td style={{ border: "1px solid gray", padding: "10px" }}>
-                  {icon.Titre}
+                  {T_V.nom}
                 </td>
                 <td style={{ border: "1px solid gray", padding: "10px" }}>
-                  {icon.Texte.substring(0, 50)}
+                  {truncateText(T_V.texte, 49)}
                 </td>
                 <td style={{ border: "1px solid gray", padding: "10px" }}>
-                  <img src={`http://localhost:8000/${icon.image}`} />
-                </td>
+{T_V.Date}                </td>
 
                 <td style={{ border: "1px solid gray", padding: "10px" }}>
-                  <Link to={`/admin/icon/edit/${icon._id}`}>
-                  <CiEdit style={{ fontSize: "25px",  color:'black'}} />
-                  </Link>
+                <Link to={`/admin/témoignages/invisible/edit/${T_V._id}`}>
+                      <CiEdit style={{ fontSize: "25px", color: "black" }} />
+                    </Link>
+              
+                  <RiDeleteBin6Line
+                      style={{
+                        fontSize: "25px",
+                        color: "black",
+                        marginRight: "20px",
+                      }}
+                      onClick={() => handleDelete(T_V._id)}
+                    />
                 </td>
               </tr>
             ))}
-          </tbody> */}
+          </tbody>
         </table>
       </div>
     </div>

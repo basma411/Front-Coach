@@ -1,13 +1,12 @@
-// index.js
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import axios from "axios";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Store from './Redux/Store';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './Redux/Store';
 import { BrowserRouter as Router } from 'react-router-dom'; 
 
 axios.defaults.baseURL = "http://localhost:8000";
@@ -23,12 +22,14 @@ export function getImageUrl(imagePath) {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <Provider store={Store}>
-    <Router>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    </Router>
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <Router>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </Router>
+    </PersistGate>
   </Provider>
 );
 

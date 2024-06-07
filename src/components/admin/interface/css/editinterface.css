@@ -1,0 +1,55 @@
+.edit-Evenement {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+
+.FormContainerEvenement {
+    width: 50%;
+    height: 100vh;
+
+    margin: 0 auto;
+
+}
+
+.container-Edit-Evenement {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.TitreEvenement,
+.LienEvenement,
+.LieuEvenement ,.DateEvenement
+{
+    width: 600px;
+    margin-bottom: 15px;
+    padding: 5px;
+}
+
+.ck-editor__editable {
+    height: 300px;
+}
+
+.form-group-Evenement {
+    width: 600px;
+    margin-bottom: 15px;
+}
+
+.imageEdit-Article {
+    display: block;
+    width: 30%;
+    margin: 0 auto;
+}
+.custom-ckeditor-text {
+    color: #000 !important; /* Couleur du texte souhaitée */
+}
+.Bouton-Edit-Evenement {
+
+     display: flex; 
+    gap: 20px;
+}

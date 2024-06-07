@@ -78,7 +78,7 @@ const ConsulterDomaine = () => {
                       {domaine.domaines}
                     </td>
                     <td style={{ border: "1px solid gray", padding: "10px" }}>
-                      <Link to={`/admin/domaine/edit/${domaine._id}`}>
+                      <Link to={`/admin/consulter_domaine/edit/${domaine._id}`}>
                         <CiEdit
                           style={{
                             fontSize: "25px",

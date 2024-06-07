@@ -5,7 +5,6 @@ import "./css/ArticleVisible.css";
 import image from "../../../images/big_image_2.jpg";
 import { Link } from "react-router-dom";
 import { IoPowerOutline } from "react-icons/io5";
-import { GetPartenaire } from "../../../Redux/Slice/PartenaireSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { GetArticle, delArticle } from "../../../Redux/Slice/ArticleSlice";

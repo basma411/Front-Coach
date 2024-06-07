@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import './css/ajouterdomaine.css';
 import BarheaderAdmin from '../BarheaderAdmin';
 import NavBarAdmin from '../NavBarAdmin';
-import { AddEvenement } from '../../../Redux/Slice/EvenementSlice';
 import { useNavigate } from 'react-router-dom';
 import { AddDomaine } from '../../../Redux/Slice/DomainSlice';
 
@@ -32,28 +31,12 @@ const AjouterDomaine = () => {
 
   return (
     <>
-      <BarheaderAdmin />
-      <NavBarAdmin />
-      <div
-        className="ImagePlatforme"
-        style={{
-          position: 'relative',
-          textAlign: 'center',
-          height: '300px',
-          backgroundImage: `url(${image})`,
-          backgroundSize: 'cover',
-          overflow: 'hidden',
-        }}
-      >
-        <div style={{ paddingTop: '100px' }}>
-          <IoPowerOutline style={{ fontSize: '35px', fontWeight: '700' }} />
-          <h2 style={{ fontSize: '30px' }}>Bienvenue sur votre espace administration</h2>
-        </div>
-      </div>
-      <div className="EvenementAjouter">
-        <form className="EveAjouterContainer" onSubmit={handlePartenaire}>
-          <label>Nom :</label>
-          <input
+     
+ 
+      <div className="DomaineAjouter">
+        <form className="DomaineAjouterContainer" onSubmit={handlePartenaire}>
+          <label>Domaines D'interventions :</label>
+          <textarea
             type="text"
             name="domaines"
            ref={nomRef}
@@ -62,9 +45,13 @@ const AjouterDomaine = () => {
               
         
 
-          <button type="submit">
-            Envoyer
+      <div className='addDomaine'>
+      <button type="submit"  className='btn btn-secondary'>
+          Submit
           </button> 
+          <button type="button" className='btn btn-secondary' onClick={() => navigate('/admin/Accueil')}>Annuler</button>
+
+      </div>
         </form>
       </div>
     </>

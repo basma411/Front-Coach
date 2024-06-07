@@ -17,6 +17,13 @@ const ConsulterInterface = () => {
     useEffect(() => {
       dispatch(fetchInterface());
     }, [dispatch]);
+    const truncateText = (htmlText, maxLength) => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(htmlText, 'text/html');
+      const textContent = doc.body.textContent || "";
+      return textContent.length > maxLength ? textContent.substring(0, maxLength) + '...' : textContent;
+    };
+  
   return (
 
 <>
@@ -80,13 +87,13 @@ const ConsulterInterface = () => {
      <tbody>
          <tr >
            <td style={{ border: "1px solid gray", padding: "10px" }}>
-             {interfaceData[0].titre}
+             {truncateText(interfaceData[0].titre)}
            </td>
            <td style={{ border: "1px solid gray", padding: "10px" }}>
-             {interfaceData[0].texte.substring(0, 50)}...
+             {truncateText(interfaceData[0].texte, 50)}
            </td>
            <td style={{ border: "1px solid gray", padding: "10px" }}>
-           <img            src={getImageUrl(interfaceData[0].photo)}
+           <img            src={getImageUrl(interfaceData[0].image)}
  width={'100px'} />
 
            </td>
@@ -98,12 +105,12 @@ const ConsulterInterface = () => {
             TrouverCoach
            </td>
            <td style={{ border: "1px solid gray", padding: "10px" }}>
-             <Link to={`/admin/inteface/edit/${interfaceData[0]._id}`}>
+             <Link to={`/admin/consulter_interface/edit/${interfaceData[0]._id}`}>
              <CiEdit style={{ fontSize: "25px",  color:'black'}} />
              </Link>
            </td>
          </tr>
-       )
+       
      </tbody>
    </table>
  </div>

@@ -1,0 +1,23 @@
+.ViewTem{
+    width: 100%;
+    margin: 0;
+    padding:0 ;
+}
+.viewContainerTem{
+    width: 50%;
+    height:100%;
+    margin: 20px auto 80px auto;
+display: flex;
+align-items: start;
+flex-direction: column;
+border: solid 1px rgb(194, 192, 192);
+}
+.styletexteTem{
+    text-align: justify;
+    font-size: 16px;
+
+}
+.Retour_Tem{
+    display: block;
+    margin: 0 auto;
+}
