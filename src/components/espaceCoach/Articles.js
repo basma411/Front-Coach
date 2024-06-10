@@ -11,7 +11,7 @@ import { getImageUrl } from "../..";
 
 const Articles = () => {
   const dispatch = useDispatch();
-  const { Articles } = useSelector((state) => state.article); // Renommez cette variable
+  const { Articles } = useSelector((state) => state.article); 
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {

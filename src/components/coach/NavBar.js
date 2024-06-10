@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "../../images/logo.jpg";
 import { HiOutlineViewList } from "react-icons/hi";
-import { Link } from 'react-router-dom'; // Import the Link component
+import { Link } from 'react-router-dom'; 
 import '../coach/css/navbar.css';
 
 export const NavBar = () => {

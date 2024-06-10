@@ -64,6 +64,7 @@ import AjouterDomaine from './components/admin/Domaine/AjouterDomaine';
 import EditInterface from './components/admin/interface/EditInterface';
 import ViewTemoignage from './components/admin/temoignage/ViewTemoignage';
 import EditTemoignage from './components/admin/temoignage/EditTemoignage';
+import AjouterEvtt from './components/Evenement/AjouterEvtt';
 
 function App() {
   const isLoading = useSelector(state => state.loading.isLoading);
@@ -98,7 +99,8 @@ function App() {
     "/FormAtelier",
     "/articles",
     "/ajouter_article",
-    "/formulaire"
+    "/formulaire",
+    "/Evenement/ajouter"
   ];
   
 
@@ -193,6 +195,9 @@ function App() {
             <Route path="/TrouverCoach" element={<TrouverCoach />} />
             <Route path="/EspaceCoach" element={<EspaceCoach />} />
             <Route path="/Evenement" element={<Evenement />} />
+            <Route path="/Evenement" element={<Evenement />} />
+            <Route path="/Evenement/ajouter" element={<AjouterEvtt />} />
+
             <Route path="/Vedio" element={<Vediocoach />} />
             {/* <Route path="/CoNnact" element={<Contact />} /> */}
             <Route path="/coach" element={<Coach />} />

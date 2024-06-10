@@ -38,6 +38,7 @@ const LoginCoch = () => {
           textAlign: "center",
           backgroundImage: `url(${image})`,
           backgroundSize: "cover",
+          color:'white'
         }}
       >
         <div style={{ paddingTop: "40px" }}>
@@ -52,12 +53,10 @@ const LoginCoch = () => {
         <form className="FormLogin" onSubmit={handleLoginFormSubmit}>
           <label className="labelField">Connectez-vous:</label>
           <div>
-          <label className="labelField">Login:</label>
 
             <input type="email" name="email" ref={email} className="inputField" />
           </div>
           <div>
-          <label className="labelField ">Password:</label>
 
             <input type="password" name="password" ref={password} className="inputField" />
           </div>

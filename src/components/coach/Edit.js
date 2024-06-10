@@ -430,7 +430,7 @@ const Edit = () => {
           <label htmlFor="otherFileInput:">Photo:</label>
           <div className="updateimage">
             <img
-           src={getImageUrl(coachdata.photo)}
+           src={getImageUrl(coachdata.image)}
            style={{ width: "150px", height: "150px" }}
               name="imagee"
             />

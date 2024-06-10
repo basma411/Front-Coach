@@ -1,55 +1,88 @@
-import React, { useEffect, useState } from 'react';
-import { GetIcon } from '../../Redux/Slice/IconSlice';
-import { useDispatch, useSelector } from 'react-redux';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import './css/icon.css';
+import React, { useEffect, useState } from "react";
+import { GetIcon } from "../../Redux/Slice/IconSlice";
+import { useDispatch, useSelector } from "react-redux";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import "./css/icon.css";
+import { getImageUrl } from "../..";
 
 const Icon = () => {
-    const dispatch = useDispatch();
-    const { Icon } = useSelector((state) => state.icon);
-    const [openDialog, setOpenDialog] = useState(false); // État pour suivre l'ouverture de la boîte de dialogue
-    const [selectedIcon, setSelectedIcon] = useState(null); // État pour stocker l'icône sélectionnée
+  const dispatch = useDispatch();
+  const { Icon } = useSelector((state) => state.icon);
+  const [openDialog, setOpenDialog] = useState(false);
+  const [selectedIcon, setSelectedIcon] = useState(null);
 
-    useEffect(() => {
-        dispatch(GetIcon());
-    }, [dispatch]);
+  useEffect(() => {
+    dispatch(GetIcon());
+  }, [dispatch]);
 
-    const handleOpenDialog = (icon) => {
-        setSelectedIcon(icon); // Stocke l'icône sélectionnée dans l'état
-        setOpenDialog(true); // Ouvre la boîte de dialogue
-    };
+  const handleOpenDialog = (icon) => {
+    setSelectedIcon(icon);
+    setOpenDialog(true);
+  };
 
-    const handleCloseDialog = () => {
-        setOpenDialog(false); // Ferme la boîte de dialogue
-    };
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
 
-    return (
-      <div className='Icon'>
-          <div className="grid-container">
-            {Icon && Icon.map((icon, index) => (
-                <div key={index} className="grid-item">
-                    <div className="subgrid-item">
-                        <img src={`http://localhost:8000/${icon.image}`} alt={`icon ${index + 1}`} className='ImgIcon' />
-                        <h2>{icon.Titre}</h2>
-                        <p>{icon.Texte.substring(0, 100)}...</p>
-                        <h3 onClick={() => handleOpenDialog(icon)}>Afficher la suite...</h3> {/* Ouvre la boîte de dialogue */}
-                    </div>
-                </div>
-            ))}
-            {/* Boîte de dialogue */}
-            <Dialog open={openDialog} onClose={handleCloseDialog}>
-    <div style={{ textAlign: 'center' }}>
-        <img src={`http://localhost:8000/${selectedIcon && selectedIcon.image}`} alt={selectedIcon && selectedIcon.Titre} style={{ width: '100px',textAlign:'center' }} />
-    </div>
-    <DialogTitle style={{ textAlign: 'left',fontSize:'30px',fontWeight:'400' }}>{selectedIcon && selectedIcon.Titre}</DialogTitle>
-<DialogTitle style={{ textAlign: 'left',fontSize:'20px',fontWeight:'400',color:'gray' }}>    <p>{selectedIcon && selectedIcon.Texte}</p>
-</DialogTitle>
-</Dialog>
+  const truncateText = (htmlText, maxLength) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlText, "text/html");
+    const textContent = doc.body.textContent || "";
+    return textContent.length > maxLength
+      ? textContent.substring(0, maxLength) + "..."
+      : textContent;
+  };
 
-        </div>
+  return (
+    <div className="Icon">
+      <div className="grid-container">
+        {Icon &&
+          Icon.map((icon, index) => (
+            <div key={index} className="grid-item">
+              <div className="subgrid-item">
+                <img
+                  src={getImageUrl(icon.image)}
+                  alt={`icon ${index + 1}`}
+                  className="ImgIcon"
+                />
+                <h2>{truncateText(icon.Titre)}</h2>
+                <p>{truncateText(icon.Texte, 100)}</p>
+              </div>
+              <h3 onClick={() => handleOpenDialog(icon)} className="suit">
+                Afficher la suite...
+              </h3>
+            </div>
+          ))}
+        <Dialog open={openDialog} onClose={handleCloseDialog}>
+          <div style={{ textAlign: "center" }}>
+            <img
+              src={`http://localhost:8000/${
+                selectedIcon && selectedIcon.image
+              }`}
+              alt={selectedIcon && selectedIcon.Titre}
+              style={{ width: "100px", textAlign: "center" }}
+            />
+          </div>
+          <DialogTitle
+            style={{ textAlign: "left", fontSize: "30px", fontWeight: "400" }}
+          >
+            {selectedIcon && selectedIcon.Titre}
+          </DialogTitle>
+          <DialogTitle
+            style={{
+              textAlign: "left",
+              fontSize: "20px",
+              fontWeight: "400",
+              color: "gray",
+            }}
+          >
+            <p>{selectedIcon && selectedIcon.Texte}</p>
+          </DialogTitle>
+        </Dialog>
       </div>
-    );
-}
+    </div>
+  );
+};
 
 export default Icon;

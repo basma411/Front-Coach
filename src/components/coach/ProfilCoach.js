@@ -56,7 +56,7 @@ const ProfilCoach = () => {
           <div className="Photo">
             <p>{coachdata.nom}</p>
             <img
-           src={getImageUrl(coachdata.photo)}
+           src={getImageUrl(coachdata.image)}
            alt="Photo de profil"
               style={{
                 width: "220px",
