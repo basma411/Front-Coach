@@ -20,13 +20,13 @@ const Footer = () => {
             <h3>Liens rapides</h3>
             <ul className='footer-list-unstyled'>
               <li>
-                <Link to='/TrouverCoach'>Trouver un coach</Link>
+                <Link to='/TrouverCoach' className='footer-Pages' target='_blank' rel='noopener noreferrer'>Trouver un coach</Link>
               </li>
-              <li>
-                <Link to='/EspaceCoach'>Espace coach</Link>
-              </li>
-              <li>
-                <Link to='https://www.moncoach.tn/presentation'>Le salon de coaching</Link>
+              <li  >
+                <Link to='/EspaceCoach' className='footer-Pages' target='_blank' rel='noopener noreferrer'>Espace coach</Link>
+              </li >
+              <li  >
+                <Link to='https://www.moncoach.tn/presentation' className='footer-Pages'target='_blank' rel='noopener noreferrer'>Le salon de coaching</Link>
               </li>
             </ul>
           </div>
@@ -56,8 +56,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className='footer-float-md-left'>
-        <h3>Copyright ©2024 Tous les droits sont réservés | Mon coach.tn <FaHeart /> <span className='footer-span'>by Tounes Connect</span></h3>
+      <div className='footer-float-md-left' >
+        <h3>Copyright ©2024 Tous les droits sont réservés | Mon coach.tn <FaHeart /> <Link to ='https://www.facebook.com/tounes.connect/' className='TounesConnect'          target='_blank' rel='noopener noreferrer'
+        ><span className='footer-span'>by Tounes Connect</span></Link></h3>
       </div>
     </div>
   );

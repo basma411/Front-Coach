@@ -92,15 +92,15 @@ const EditVedio = () => {
     config={{
         toolbar: ['bold', 'italic', '|', 'numberedList', 'bulletedList', '|', 'outdent', 'indent', '|', 'link', 'unlink'],
         language: 'en',
-        styles: [
-            {
-                name: 'Custom Style',
-                element: 'p',
-                styles: {
-                    color: '#000' // Couleur du texte souhaitée
-                }
-            }
-        ]
+        // styles: [
+        //     {
+        //         name: 'Custom Style',
+        //         element: 'p',
+        //         styles: {
+        //             color: '#000' 
+        //         }
+        //     }
+        // ]
     }}
 />
                         

@@ -22,8 +22,9 @@ const Newsletter = () => {
                 <h2>Newsletters</h2>
                 <p>Vous voulez joindre notre communauté de coachs et coachés et être informés des nouveautés dans le métier</p>
             </div>
-
-            <form onSubmit={handleSubmit}>
+<div>
+    
+<form onSubmit={handleSubmit}>
                 <div className="input-wrapper">
                     <input
                         type="email"
@@ -35,6 +36,7 @@ const Newsletter = () => {
                     <button type="submit" className='EnvoyerNewsletter'>Envoyer</button>
                 </div>
             </form>
+</div>
         </div>
        </div>
     );

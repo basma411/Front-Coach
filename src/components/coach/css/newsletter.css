@@ -1,7 +1,7 @@
 .newsletter{
+  width: 100%;
   background-color: #275491;
 
-  /* width: 100%; */
   margin: 0;
   padding: 0;
 }
@@ -10,21 +10,22 @@ width: 80%;
 display: flex;
 justify-content: center;
 align-items: center;
-padding: 30px;
 margin: 10px auto;
-gap: 300PX;
+padding: 30px;
+gap: 50px;
+
 }
 .newsletterContainer h2 {
-    color: #D3C418; /* Couleur du texte */
-    margin: 0; /* Suppression des marges par défaut */
+    color: #D3C418; 
+    margin: 0; 
   }
   
   .newsletterContainer p {
     
-    color: rgba(255, 255, 255, 0.7)    ; /* Couleur du texte */
+    color: rgba(255, 255, 255, 0.7)    ;
     font-size: 20px;
-    margin-bottom: 20px; /* Espacement inférieur */
-    text-align: start;
+    margin-bottom: 20px;
+    text-align: justify;
   }
   
 
@@ -51,6 +52,6 @@ gap: 300PX;
     position: absolute; /* Position absolue pour positionner le bouton */
     right: 0; /* Alignement à droite */
     top: 0; /* Alignement au haut */
-    margin: 7px 20px 0px 0px;
+    margin: 4px 20px 0px 0px;
   }
   

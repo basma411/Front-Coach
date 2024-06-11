@@ -128,12 +128,12 @@
   outline-offset: 0; /* Set the outline width to 1px */
 }
 
-.editor{
+/* .editor{
   position: relative;
-  width: 100%; /* Ajuste la largeur en fonction du contenu */
+  width: 100%;
   margin: auto; 
 
-}
+} */
 .POLICE {
   position: relative;
   width: 100%;

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { Editor } from '@tinymce/tinymce-react'; // Import TinyMCE Editor
 import './css/editEvenement.css';
 import { GetEvenement, putEvenement } from '../../../Redux/Slice/EvenementSlice';
 import loadingGif from './../../../images/loading.gif';
@@ -14,6 +13,8 @@ const EditEvenement = () => {
     const { id } = useParams();
     const { Evenement } = useSelector((state) => state.evenement);
     const [image, setImage] = useState(null);
+    const [Texte, settexte] = useState(null)
+
     const [formData, setFormData] = useState({
         titre: '',
         texte: '',
@@ -37,17 +38,18 @@ const EditEvenement = () => {
             }
         }
     }, [Evenement, id]);
-
+    useEffect(() => {
+        if (formData.texte) {
+            settexte(formData.texte);
+        }
+    }, [formData.texte]);
+    
     const handleFileChange = (e) => {
         setImage(e.target.files[0]);
     };
 
-    const handleEditorChange = (event, editor, name) => {
-        const data = editor.getData();
-        setFormData(prevData => ({
-            ...prevData,
-            [name]: data,
-        }));
+    const handleEditorChange = (content, editor, name) => {
+        settexte(content);
     };
 
     const handleInputChange = (e) => {
@@ -62,7 +64,7 @@ const EditEvenement = () => {
         e.preventDefault();
         const formDataToSend = new FormData();
         formDataToSend.append('titre', formData.titre);
-        formDataToSend.append('texte', formData.texte);
+        formDataToSend.append('texte', Texte);
         formDataToSend.append('lien', formData.lien);
         formDataToSend.append('lieu', formData.lieu);
         formDataToSend.append('dates', formData.dates);
@@ -99,25 +101,25 @@ const EditEvenement = () => {
                     </div>
                     <div>
                         <label>Texte</label>
-                        <CKEditor
-    editor={ClassicEditor}
-    data={formData.texte || ''}
-    onChange={(event, editor) => handleEditorChange(event, editor, 'texte')}
-    config={{
-        toolbar: ['bold', 'italic', '|', 'numberedList', 'bulletedList', '|', 'outdent', 'indent', '|', 'link', 'unlink'],
-        language: 'en',
-        styles: [
-            {
-                name: 'Custom Style',
-                element: 'p',
-                styles: {
-                    color: '#000' // Couleur du texte souhaitée
-                }
-            }
-        ]
-    }}
-/>
-
+                        <Editor
+                            apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8" // Replace with your TinyMCE API Key
+                            initialValue={formData.texte}
+                            init={{
+                                height: 500,
+                                menubar: true,
+                                plugins: [
+                                    'advlist autolink lists link image charmap print preview anchor',
+                                    'searchreplace visualblocks code fullscreen',
+                                    'insertdatetime media table paste code help wordcount'
+                                ],
+                                toolbar:
+                                    'undo redo | formatselect | bold italic backcolor | \
+                                    alignleft aligncenter alignright alignjustify | \
+                                    bullist numlist outdent indent | removeformat | help'
+                            }}
+                            value={Texte}
+                            onEditorChange={handleEditorChange}
+                        />
                     </div>
                     <div>
                         <label>Lien</label>

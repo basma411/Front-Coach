@@ -1,30 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import image from "../../images/big_image_2.jpg";
-import logo from "../../images/logo.jpg";
-import { CiCalendarDate } from "react-icons/ci";
-import { GiPositionMarker } from "react-icons/gi";
+// AjouterEvtt.js
+import React, { useEffect, useRef, useState } from 'react';
+import { Editor } from '@tinymce/tinymce-react'; 
+import image1 from "../../images/big_image_2.jpg";
 import { getImageUrl } from '../..';
-import { GetEvenement } from '../../Redux/Slice/EvenementSlice';
+import { AddEvenement, GetEvenement } from '../../Redux/Slice/EvenementSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import "./css/ajouterEvnt.css";
-import { GrLinkedin } from "react-icons/gr";
-import { FaFacebook } from "react-icons/fa";
+import Model from './Model';
 
 const AjouterEvtt = () => {
   const dispatch = useDispatch();
   const { Evenement } = useSelector((state) => state.evenement);
   const [showModal, setShowModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const [formData, setFormData] = useState({
-    titre: '',
-    texte: '',
-    lien: '',
-    lieu: '',
-    dates: '',
-    photo: null,
-  });
+  const [Texte, settexte] = useState('');
+  const [image, setimage] = useState('');
+
+  const titreRef = useRef();
+  const lieuRef = useRef();
+  const dateRef = useRef();
+  const lienRef = useRef();
 
   useEffect(() => {
     dispatch(GetEvenement());
@@ -42,35 +37,34 @@ const AjouterEvtt = () => {
     setSelectedEvent(null);
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
   const handleFileChange = (e) => {
-    setFormData({ ...formData, photo: e.target.files[0] });
+    setimage(e.target.files[0]);
   };
 
-  const handleEditorChange = (event, editor) => {
-    const data = editor.getData();
-    setFormData({ ...formData, texte: data });
+  const handleEditorChange = (content, editor) => {
+    settexte(content);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Dispatch an action or perform an API call to submit the form data
-  };
+    const Titre = titreRef.current.value;
+    const Lien = lienRef.current.value;
+    const Lieu = lieuRef.current.value;
+    const Dates = dateRef.current.value;
+    const Photo = image;
 
-  const handleFacebookShare = () => {
-    if (selectedEvent) {
-      const shareUrl = `https://www.facebook.com/dialog/feed?app_id=332085763115778&display=popup&caption=Voici un événement intéressant : ${selectedEvent.titre}&link=${encodeURIComponent(window.location.href)}&redirect_uri=${encodeURIComponent(window.location.href)}`;
-      window.open(shareUrl, "_blank");
-    } else {
-      // Gérer le cas où aucun événement n'est sélectionné
-      console.error("Aucun événement sélectionné pour le partage sur Facebook.");
-    }
+    console.log(Titre, Texte, Lien, Lieu, Dates, Photo);
+
+    const formDataToSend = new FormData();
+    formDataToSend.append('titre', Titre);
+    formDataToSend.append('texte', Texte);
+    formDataToSend.append('lien', Lien);
+    formDataToSend.append('lieu', Lieu);
+    formDataToSend.append('dates', Dates);
+    formDataToSend.append('photo', Photo);
+
+    dispatch(AddEvenement(formDataToSend));
   };
-  
 
   return (
     <>
@@ -80,7 +74,7 @@ const AjouterEvtt = () => {
           position: "relative",
           textAlign: "center",
           height: "300px",
-          backgroundImage: `url(${image})`,
+          backgroundImage: `url(${image1})`,
           backgroundSize: "cover",
           overflow: "hidden",
         }}
@@ -95,10 +89,7 @@ const AjouterEvtt = () => {
           <h3>Évènements déjà partagés</h3>
           {latestArticles.map((article, index) => (
             <div key={index}>
-              <img
-                src={getImageUrl(article.photo)}
-                alt="Article"
-              />
+              <img src={getImageUrl(article.photo)} alt="Article" />
               <h1 onClick={() => handleTitleClick(article)}>{article.titre}</h1>
               <h2>{article.dates}</h2>
               <hr />
@@ -106,85 +97,42 @@ const AjouterEvtt = () => {
           ))}
         </div>
         <div className="right-Evnt">
-          <h1>Pour partager un article, une offre, cet espace est pour vous!</h1>
+          <h1 style={{ margin: '20px 0  100px 0' }}>Pour partager un article, une offre, cet espace est pour vous!</h1>
           <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="titre"
-              placeholder="Titre"
-              value={formData.titre}
-              onChange={handleInputChange}
-              required
-            />
-            <CKEditor
-              editor={ClassicEditor}
-              data={formData.texte}
-              onChange={handleEditorChange}
-            />
-            <input
-              type="text"
-              name="lien"
-              placeholder="Lien"
-              value={formData.lien}
-              onChange={handleInputChange}
-              required
-            />
-            <input
-              type="text"
-              name="lieu"
-              placeholder="Lieu"
-              value={formData.lieu}
-              onChange={handleInputChange}
-              required
-            />
-            <input
-              type="text"
-              name="dates"
-              placeholder="Dates"
-              value={formData.dates}
-              onChange={handleInputChange}
-              required
-            />
-            <input
-              type="file"
-              name="photo"
-              onChange={handleFileChange}
-              required
-            />
-            <button type="submit">Envoyer</button>
+            <label>Titre:</label>
+            <input type="text" name="titre" placeholder="" required ref={titreRef} />
+            <label>Texte:</label>
+            <Editor
+  apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
+  init={{
+    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',
+    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+    tinycomments_mode: 'embedded',
+    tinycomments_author: 'Author name',
+    mergetags_list: [
+      { value: 'First.Name', title: 'First Name' },
+      { value: 'Email', title: 'Email' },
+    ],
+    toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
+  }}
+  value={Texte}
+  onEditorChange={handleEditorChange}
+/>
+            <label>Lien:</label>
+            <input type="text" name="lien" placeholder="" required ref={lienRef} />
+            <label>Lieu:</label>
+            <input type="text" name="lieu" placeholder="" required ref={lieuRef} />
+            <label>Date:</label>
+            <input type="date" name="dates" placeholder="" required ref={dateRef} />
+            <label>Photo:</label>
+            <input type="file" name="photo" onChange={handleFileChange} />
+            <button type="submit" className='AddEvnt'>Envoyer</button>
           </form>
         </div>
       </div>
 
       {showModal && (
-        <div className="modalBaghround">
-          <span className="close" onClick={closeModal}>&times;</span>
-          <div className="modalcontainer">
-            <img src={logo} alt="logo" width="220px" height="70" />
-            <hr />
-            <div className="modal-content">
-              <img src={getImageUrl(selectedEvent.photo)} alt="Event" className="modal-image" />
-              <div className="modal-text-content">
-                <h2 className="modal-title">{selectedEvent.titre}</h2>
-                <div dangerouslySetInnerHTML={{ __html: selectedEvent.texte }} />
-                <div className="modal-info">
-                  <CiCalendarDate />
-                  <h5>{selectedEvent.dates}</h5>
-                  <GiPositionMarker />
-                  <h5>{selectedEvent.lieu}</h5>
-                </div>
-              </div>
-            </div>
-            <div className='partage'>
-              <button className="linkedin-button" >
-                <GrLinkedin /> Partage
-              </button>
-              <button className="facebook-button" onClick={handleFacebookShare}>
-                <FaFacebook /> Partage
-              </button>
-            </div>
-          </div>
-        </div>
+        <Model selectedEvent={selectedEvent} closeModal={closeModal} />
       )}
     </>
   );

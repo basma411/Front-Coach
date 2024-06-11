@@ -46,7 +46,7 @@
     margin: 0 auto;
 }
 .custom-ckeditor-text {
-    color: #000 !important; /* Couleur du texte souhaitée */
+    color: #000 ; /* Couleur du texte souhaitée */
 }
 .Bouton-Edit-Evenement {
 

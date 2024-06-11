@@ -100,15 +100,15 @@ const EditInterface = () => {
                             config={{
                                 toolbar: ['bold', 'italic', '|', 'numberedList', 'bulletedList', '|', 'outdent', 'indent', '|', 'link', 'unlink'],
                                 language: 'en',
-                                styles: [
-                                    {
-                                        name: 'Custom Style',
-                                        element: 'p',
-                                        styles: {
-                                            color: '#000'
-                                        }
-                                    }
-                                ]
+                                // styles: [
+                                //     {
+                                //         name: 'Custom Style',
+                                //         element: 'p',
+                                //         styles: {
+                                //             color: '#000'
+                                //         }
+                                //     }
+                                // ]
                             }}
                         />
                     </div>
