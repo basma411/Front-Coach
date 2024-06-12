@@ -1,11 +1,68 @@
+.ChercheCoach{
+  width: 100%;
+  margin:0;
+  padding: 0;
+}
+.cherche{
+  width: 80%;
+margin: 0 auto;
 
+}
 .cherche-coach {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 20vh;
-    margin: 0 auto;
     gap: 20px;
+
+  }
+  .ChercheTitle {
+    width: 100%;
+    margin-top: 100px;
+    text-align: center;
+  
+    font-size: 47px;
+    color: #275491;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  margin: 100px auto 0  auto;
+  }
+  .DomainesCherche,
+  .coachcherche,
+  .gouvernoratCherche {
+    width: 400px;
+    font-size: 0.2rem;
+    font-family: "Rubik", arial, sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1;
+    color: gray;
+    border: solid 1px gray;
+    height: 40px;  
+
+  }
+  .DomainesCherche,
+  .gouvernoratCherche {
+    width: 200px;
+    height: 40px;
+    font-family: "Rubik", arial, sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 2;
+    color: gray;
+
+
+  }
+  .CherSubmit {
+  height: 60px;
+  width: 200px;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    background-color: #fdc900;
+    border-radius: 10px;
+    color: #fff;
+    border: 2px solid transparent;
+    font-weight: 400;
+    cursor: pointer;
   }
   /* .Trouver-coach {
     display: flex;
@@ -13,8 +70,8 @@
     justify-content: center;
     text-align: center;
   } */
-  .cherche h1 {
-    width: 75%;
+  /* .ChercheTitle {
+    width: 100%;
     margin-top: 100px;
     text-align: center;
   
@@ -24,9 +81,9 @@
   margin: 100px auto 0  auto;
   }
  
-  .Domaines,
+  .DomainesCherche,
   .coachcherche,
-  .gouvernorat {
+  .gouvernoratCherche {
     width: 400px;
     font-size: 0.2rem;
     font-family: "Rubik", arial, sans-serif;
@@ -42,7 +99,7 @@ height: 40px;
 .coachcherche:focus {
   border: transparent ;
   border:solid 2px red ;      }
-  .ChercheCoach {
+  .ChercheSubmit {
     width: 200px;
     height: 40px;
     font-size: 1.3rem;
@@ -66,6 +123,6 @@ height: 40px;
     line-height: 2;
     color: gray;
   }
- 
+  */
 
   

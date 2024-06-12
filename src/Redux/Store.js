@@ -17,6 +17,7 @@ import ContactSlice from "./Slice/ContactSlice";
 import EvenementSlice from "./Slice/EvenementSlice";
 import TemoignegeSlice from "./Slice/TemoignegeSlice";
 import videoSlice from "./Slice/videoSlice";
+import AtelierSlice from "./Slice/AtelierSlice";
 
 // Combine all slices into a root reducer
 const rootReducer = combineReducers({
@@ -35,6 +36,7 @@ const rootReducer = combineReducers({
   evenement: EvenementSlice,
   video: videoSlice,
   temoignage: TemoignegeSlice,
+  atelier:AtelierSlice,
 });
 
 // Configure persist

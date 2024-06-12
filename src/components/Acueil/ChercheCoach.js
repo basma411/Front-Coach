@@ -43,11 +43,12 @@ const navigator=useNavigate()
   };
 
   return (
+  <div className='ChercheCoach'>
     <form className='cherche'>
-      <h1>Trouvez un coach et prenez rendez-vous en ligne</h1>
+      <h1 className='ChercheTitle'>Trouvez un coach et prenez rendez-vous en ligne</h1>
       <div className='cherche-coach'>
      <div>
-     <select className='Domaines' ref={domaine}>
+     <select className='DomainesCherche' ref={domaine}>
           <option>Choisir un domaine de coaching</option>
           {domaines.map((domaine) => (
             <option key={domaine.id} value={domaine.domaines}>
@@ -64,7 +65,7 @@ const navigator=useNavigate()
             ref={Nom}
           />
         </div>
-       <div> <select className='gouvernorat' ref={gouvernorat}>
+       <div> <select className='gouvernoratCherche' ref={gouvernorat}>
           <option>Gouvernorat</option>
           {[
             "Tunis", "Ariana", "Ben Arous", "Manouba", "Nabeul", "Zaghouan", 
@@ -77,10 +78,11 @@ const navigator=useNavigate()
             </option>
           ))}
         </select></div>
-        <button type="submit" onClick={handleSubmit} className='ChercheCoach'>Recherche</button>
+        <button type="submit" onClick={handleSubmit} className='CherSubmit'>Recherche</button>
 
       </div>
     </form>
+    </div>
   );
 }
 

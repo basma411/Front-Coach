@@ -37,7 +37,7 @@ import Article from './components/admin/article/Article';
 import CoachA from './components/admin/coach_admin/CoachA';
 import PartenairesA from './components/admin/partenairesAdmin/PartenairesA';
 import EvenementA from './components/admin/evenementA/EvenementA';
-import VideoA from './components/admin/vedioA/VideoA';
+import VideoA from './components/admin/videoA/VideoA';
 import NewsletterA from './components/admin/newsletter/NewsletterA';
 import ContactA from './components/admin/contact/ContactA';
 import ContactEmailA from './components/admin/contact/ContactEmailA';
@@ -47,8 +47,8 @@ import CoachVisib from './components/admin/coach_admin/CoachVisib';
 import CoachInvisib from './components/admin/coach_admin/CoachInvisib';
 import AjouterEvenement from './components/admin/evenementA/AjouterEvenement';
 import ListeEvenement from './components/admin/evenementA/ListeEvenement';
-import Ajoutervideo from './components/admin/vedioA/Ajoutervideo';
-import Listevideo from './components/admin/vedioA/Listevideo';
+import Ajoutervideo from './components/admin/videoA/Ajoutervideo';
+import Listevideo from './components/admin/videoA/Listevideo';
 import EditArticle from './components/admin/article/EditArticle';
 import ViewArticle from './components/admin/article/ViewArticle';
 import EditCoach from './components/admin/coach_admin/EditCoach';
@@ -56,7 +56,7 @@ import ViewCoachInvisible from './components/admin/coach_admin/ViewCoachInvisibl
 import ViewCoachVisible from './components/admin/coach_admin/ViewCoachVisible';
 import AjouterPartenaires from './components/admin/partenairesAdmin/AjouterPartenaires';
 import EditEvenement from './components/admin/evenementA/EditEvenement';
-import Editvideo from './components/admin/vedioA/Editvideo';
+import Editvideo from './components/admin/videoA/Editvideo';
 import EditSlider from './components/admin/slides/EditSlider';
 import EditBiblio from './components/admin/biblio/EditBiblio';
 import EditDomaine from './components/admin/Domaine/EditDomaine';
@@ -66,6 +66,12 @@ import ViewTemoignage from './components/admin/temoignage/ViewTemoignage';
 import EditTemoignage from './components/admin/temoignage/EditTemoignage';
 import AjouterEvtt from './components/Evenement/AjouterEvtt';
 import ContactCoach from './components/ContactC/ContactCoach.js';
+import WorkshopList from './components/admin/AtelierA/Workshop.js';
+import WorkshopPage from './components/admin/AtelierA/WorkshopPage.js';
+import AddAtelier from './components/admin/AtelierA/AddAtelier.js';
+import AddPublication from './components/admin/AtelierA/AddPublication.js';
+import ListCoach from './components/admin/AtelierA/ListCoach.js';
+import ListProf from './components/admin/AtelierA/ListProf.js';
 
 
 function App() {
@@ -147,8 +153,17 @@ function App() {
           <Route path="/admin/témoignages/visible" element={<TémoignageVisible />} />
           <Route path="/admin/témoignages/invisible/view/:id" element={<ViewTemoignage />} />
           <Route path="/admin/témoignages/invisible/edit/:id" element={<EditTemoignage />} />
+          <Route path="/admin/atelier-A" element={<WorkshopList  />} />
+          <Route path="/admin/atelier-A/:id" element={<WorkshopPage/>} />
+          <Route path="/admin/atelier-A/ajouter" element={<AddAtelier/>} />
 
-     
+          <Route path="/admin/atelier-A/:id/add-PUB" element={<AddPublication/>} />
+          <Route path="/admin/atelier-A/:id/List-PROF" element={<ListProf/>} />
+
+          <Route path="/admin/atelier-A/:id/List-COACH" element={<ListCoach/>} />
+
+
+          
           <Route path="/admin/article" element={<Article />} />
           <Route path="/admin/article/invisible" element={<ArticleInvisible />} />
 

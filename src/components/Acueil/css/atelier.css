@@ -1,5 +1,5 @@
 .Atelier-container {
-    width: 80%;
+    width: 100%;
    display: flex;
    align-items: center;
    justify-content: space-around;
@@ -13,14 +13,18 @@
    margin: 120px auto;
   }
      .heading {
-        max-width: 480px;
+width: 80%;
         margin-bottom: 60px;
     }
-    .heading h2{
+    .TitleAtelier{
         font-size: 45px;
     margin: 0;
     padding: 0;
     color: #275491;
+    }
+    .TextAtelier{
+
+      text-align: justify;
     }
     .atelier-image{
         display: flex;
@@ -39,7 +43,7 @@
   color: #e3d80a;
   ;
     }
-    .atelier-image button{
+    .AtelierInscri{
         width: 50%;
     padding: 10px 20px;
     background-color: #275491;

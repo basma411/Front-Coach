@@ -1,0 +1,76 @@
+.addAtelier {
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+}
+
+.addAtelierContainer {
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.addAtelierContainer  {
+    display: flex;
+    flex-direction: column;
+}
+
+.addAtelierContainer label {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.addAtelierContainer input[type="number"],
+.addAtelierContainer input[type="file"] {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.addAtelierContainer button {
+    padding: 10px 20px;
+    background-color: #0D3C68;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.addAtelierContainer button:hover {
+    background-color: #0056b3;
+}
+
+.ImagePlatforme {
+    position: relative;
+    text-align: center;
+    height: 300px;
+    background-size: cover;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.LabelAtelier{
+    font-family: "Rubik", arial, sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 2;
+    color: gray;
+}
+
+.ImagePlatforme h2 {
+    font-size: 30px;
+}
+
+.ImagePlatforme svg {
+    font-size: 35px;
+    font-weight: 400;
+}

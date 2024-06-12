@@ -8,8 +8,8 @@ const Atelier = () => {
     <div className="Atelier-container">
       
       <div className='heading'>
-        <h2>Bienvenue à notre Plateforme</h2>
-        <p className="text">
+        <h2 className='TitleAtelier'>Bienvenue à notre Plateforme</h2>
+        <p className="TextAtelier">
           Plateforme grand public qui ambitionne de donner à tous les coachs les mêmes chances de se faire connaître et aux personnes à la recherche de coach, un accès facile et des informations complètes sur les professionnels du métier. Elle rassemble les professionnels francophones du coaching dans le respect des différentes pratiques et champs d’intervention propres à chacun. Fondée sur l’échange, elle permet aux coachs de se définir dans leur pratique et aux coachés d’échanger sur leurs expériences.
         </p>
       </div>
@@ -18,10 +18,10 @@ const Atelier = () => {
         <Link to="/atelier_degustation">
             <FaPlay className='icon-play' />
           </Link>
-        <div className="play-button">
+        <div >
 
         <Link to="/FormAtelier">
-            <button>Je m'inscris</button>
+            <button className="AtelierInscri">Je m'inscris</button>
           </Link>        </div>
       </div>
     </div>
