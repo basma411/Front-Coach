@@ -2,13 +2,13 @@ import React, { useRef, useState } from "react";
 import image from "../../../images/big_image_2.jpg";
 import { IoPowerOutline } from "react-icons/io5";
 import { useDispatch } from "react-redux";
-import "./css/ajoutervedio.css";
+import "./css/ajoutervideo.css";
 import BarheaderAdmin from "../BarheaderAdmin";
 import NavBarAdmin from "../NavBarAdmin";
 import { useNavigate } from "react-router-dom";
-import { addVedio } from "../../../Redux/Slice/VedioSlice";
+import { addvideo } from "../../../Redux/Slice/videoSlice";
 
-const AjouterVedio = () => {
+const Ajoutervideo = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -27,15 +27,15 @@ const AjouterVedio = () => {
     }));
   };
 
-  const handleVedio = (event) => {
+  const handlevideo = (event) => {
     event.preventDefault();
     const formDataToSend = new FormData();
     formDataToSend.append("titre", formData.titre);
     formDataToSend.append("lien", formData.lien);
     formDataToSend.append("images", photoRef.current.files[0]);
 
-    dispatch(addVedio(formDataToSend));
-    navigate("/admin/VedioCoching");
+    dispatch(addvideo(formDataToSend));
+    navigate("/admin/videoCoching");
   };
 
   return (
@@ -60,8 +60,8 @@ const AjouterVedio = () => {
           </h2>
         </div>
       </div>
-      <div className="VedioAjouter">
-        <form className="VedioAjouterContainer" onSubmit={handleVedio}>
+      <div className="videoAjouter">
+        <form className="videoAjouterContainer" onSubmit={handlevideo}>
           <label>Titre :</label>
           <input
             type="text"
@@ -94,4 +94,4 @@ const AjouterVedio = () => {
   );
 };
 
-export default AjouterVedio;
+export default Ajoutervideo;

@@ -1,14 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import BarheaderAdmin from "../BarheaderAdmin";
 import NavBarAdmin from "../NavBarAdmin";
-import "./css/vedio.css";
+import "./css/video.css";
 import image from "../../../images/big_image_2.jpg";
-import { IoPowerOutline } from "react-icons/io5";
-import { GetIcon } from "../../../Redux/Slice/IconSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { CiEdit } from "react-icons/ci";
+
 import { Link, useNavigate } from "react-router-dom";
-const VedioA = () => {
+const VideoA = () => {
   const navigator=useNavigate()
   const handleLogout = () => {
  navigator("/admin/login")
@@ -40,13 +37,13 @@ const VedioA = () => {
           </h4>
         </div>
       </div>
-      <div className="ConsultVedio">
-        <div className="ConsultVedioContainer">
-          <Link to='/admin/VedioCoching/ajouter'>
-          <button className="AccueilVedio">Ajouter une Vidéo</button>
+      <div className="Consultvideo">
+        <div className="ConsultvideoContainer">
+          <Link to='/admin/videoCoching/ajouter'>
+          <button className="Accueilvideo">Ajouter une Vidéo</button>
           </Link>
-          <Link to='/admin/VedioCoching/liste'>
-          <button className="AccueilVedio">Liste des Vidéos </button>
+          <Link to='/admin/videoCoching/liste'>
+          <button className="Accueilvideo">Liste des Vidéos </button>
           </Link>
          
         </div>
@@ -55,4 +52,4 @@ const VedioA = () => {
 }
 
 
-export default VedioA
+export default VideoA

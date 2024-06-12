@@ -12,7 +12,7 @@ import { NavBar } from './components/coach/NavBar';
 import TrouverCoach from './components/TrouverCoach/TrouverCoach';
 import EspaceCoach from './components/espaceCoach/EspaceCoach';
 import Evenement from './components/Evenement/Evenement';
-import Vediocoach from './components/vedioCoach/Vediocoach';
+import Videocoach from './components/videoCoach/Videocoach';
 import Coach from './components/Acueil/Coach';
 import { setLoading } from './Redux/Slice/LodingSlice';
 import loading from './images/loading.gif';
@@ -37,7 +37,7 @@ import Article from './components/admin/article/Article';
 import CoachA from './components/admin/coach_admin/CoachA';
 import PartenairesA from './components/admin/partenairesAdmin/PartenairesA';
 import EvenementA from './components/admin/evenementA/EvenementA';
-import VedioA from './components/admin/vedioA/VedioA';
+import VideoA from './components/admin/vedioA/VideoA';
 import NewsletterA from './components/admin/newsletter/NewsletterA';
 import ContactA from './components/admin/contact/ContactA';
 import ContactEmailA from './components/admin/contact/ContactEmailA';
@@ -47,8 +47,8 @@ import CoachVisib from './components/admin/coach_admin/CoachVisib';
 import CoachInvisib from './components/admin/coach_admin/CoachInvisib';
 import AjouterEvenement from './components/admin/evenementA/AjouterEvenement';
 import ListeEvenement from './components/admin/evenementA/ListeEvenement';
-import AjouterVedio from './components/admin/vedioA/AjouterVedio';
-import ListeVedio from './components/admin/vedioA/ListeVedio';
+import Ajoutervideo from './components/admin/vedioA/Ajoutervideo';
+import Listevideo from './components/admin/vedioA/Listevideo';
 import EditArticle from './components/admin/article/EditArticle';
 import ViewArticle from './components/admin/article/ViewArticle';
 import EditCoach from './components/admin/coach_admin/EditCoach';
@@ -56,7 +56,7 @@ import ViewCoachInvisible from './components/admin/coach_admin/ViewCoachInvisibl
 import ViewCoachVisible from './components/admin/coach_admin/ViewCoachVisible';
 import AjouterPartenaires from './components/admin/partenairesAdmin/AjouterPartenaires';
 import EditEvenement from './components/admin/evenementA/EditEvenement';
-import EditVedio from './components/admin/vedioA/EditVedio';
+import Editvideo from './components/admin/vedioA/Editvideo';
 import EditSlider from './components/admin/slides/EditSlider';
 import EditBiblio from './components/admin/biblio/EditBiblio';
 import EditDomaine from './components/admin/Domaine/EditDomaine';
@@ -65,6 +65,7 @@ import EditInterface from './components/admin/interface/EditInterface';
 import ViewTemoignage from './components/admin/temoignage/ViewTemoignage';
 import EditTemoignage from './components/admin/temoignage/EditTemoignage';
 import AjouterEvtt from './components/Evenement/AjouterEvtt';
+import ContactCoach from './components/ContactC/ContactCoach.js';
 
 
 function App() {
@@ -93,7 +94,7 @@ function App() {
     "/TrouverCoach",
     "/EspaceCoach",
     "/Evenement",
-    "/Vedio",
+    "/video",
     "/CoNtact",
     "/coach",
     "/atelier_degustation",
@@ -101,7 +102,8 @@ function App() {
     "/articles",
     "/ajouter_article",
     "/formulaire",
-    "/Evenement/ajouter"
+    "/Evenement/ajouter",
+   "/Contact-coach"
   ];
   
 
@@ -116,7 +118,6 @@ function App() {
         </div>
       ) : (
         <>
-          {/* Afficher le Header et la NavBar si la route est valide */}
           {isRouteValid && (
             <>
               <Header />
@@ -174,11 +175,11 @@ function App() {
           <Route path="/admin/Evenements/liste/edit/:id" element={<EditEvenement />} />
 
 
-          <Route path="/admin/VedioCoching" element={<VedioA />} />
-          <Route path="/admin/VedioCoching/ajouter" element={<AjouterVedio />} />
-          <Route path="/admin/VedioCoching/edit/:id" element={<EditVedio />} />
+          <Route path="/admin/videoCoching" element={<VideoA />} />
+          <Route path="/admin/videoCoching/ajouter" element={<Ajoutervideo />} />
+          <Route path="/admin/videoCoching/edit/:id" element={<Editvideo />} />
 
-          <Route path="/admin/VedioCoching/liste" element={<ListeVedio />} />
+          <Route path="/admin/videoCoching/liste" element={<Listevideo />} />
 
           <Route path="/admin/Contact" element={<ContactA />} />
                     <Route path="/admin/Contact/Email/:id" element={<ContactEmailA />} />
@@ -196,13 +197,12 @@ function App() {
             <Route path="/TrouverCoach" element={<TrouverCoach />} />
             <Route path="/EspaceCoach" element={<EspaceCoach />} />
             <Route path="/Evenement" element={<Evenement />} />
-            <Route path="/Evenement" element={<Evenement />} />
             <Route path="/Evenement/ajouter" element={<AjouterEvtt />} />
 
-            <Route path="/Vedio" element={<Vediocoach />} />
-            {/* <Route path="/CoNnact" element={<Contact />} /> */}
+            <Route path="/video" element={<Videocoach />} />
+            <Route path="/Contact-coach" element={<ContactCoach />} />
+
             <Route path="/coach" element={<Coach />} />
-            {/* Route pour la page non trouvée */}
             <Route path="*" element={<NotFound />} />
             <Route path="/atelier_degustation" element={<Atelier_Degustation />} />
             <Route path="/formatelier" element={<FormAtelier />} />

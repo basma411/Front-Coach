@@ -1,4 +1,4 @@
-.ConsultVedio{
+.Consultvideo{
     width: 100%;
     margin: 0;
     padding: 0;
@@ -9,7 +9,7 @@
     color: gray;
     
 }
-.ConsultVedioContainer{
+.ConsultvideoContainer{
     width: 70%;
     display: flex;
     flex-direction: column;
@@ -18,7 +18,7 @@
     margin: 20px auto;
     gap: 50px;
 }
-.AccueilVedio{
+.Accueilvideo{
     width: 400px;
     margin:auto;
      margin-top:10px; 

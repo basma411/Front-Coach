@@ -23,8 +23,8 @@ export const NavBar = () => {
             <Link to="/TrouverCoach" className="nav-link-coach">Trouver un coach</Link>
             <Link to="/EspaceCoach" className="nav-link-coach">Espace Coach</Link>
             <Link to="/Evenement" className="nav-link-coach">Évènements</Link>
-            <Link to="/Vedio" className="nav-link-coach">VidéoCoaching</Link>
-            <Link to="/Coatact" className="nav-link-coach">Contact</Link>
+            <Link to="/video" className="nav-link-coach">VidéoCoaching</Link>
+            <Link to="/Contact-coach" className="nav-link-coach">Contact</Link>
           </Nav>
         </div>
       </Container>

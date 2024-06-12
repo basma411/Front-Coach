@@ -34,18 +34,22 @@ const Model = ({ selectedEvent, closeModal }) => {
             quote={shareTitle}
             hashtag='#evenement'
           >
-         <div style={{display:'flex',alignItems:'centre',backgroundColor:'#0965FE' ,paddingRight:'5px'}}>
-         <FacebookIcon size={32}  />
-         Partage         </div>
+         <div style={{display:'flex',alignItems:'centre',justifyContent:'center',backgroundColor:'#0965FE' ,paddingRight:'5px'}}>
+         <FacebookIcon size={20}  />
+         <h3 style={{fontSize:'15px'}}>Partage</h3>
+              
+             </div>
 
           </FacebookShareButton></div>
 <div>
           < LinkedinShareButton  url={shareURL}>
-        <div  style={{display:'flex',alignItems:'centre', backgroundColor:"#0077B5" ,paddingRight:'5px'}}>
+        <div  style={{display:'flex',alignItems:'centre',justifyContent:'center',backgroundColor:'#0077B5' ,paddingRight:'5px'}}>
 
 
-        <LinkedinIcon  size={32} />
-Partage        </div>
+        <LinkedinIcon  size={20} />
+         <h3 style={{fontSize:'15px'}}>Partage</h3>
+
+        </div>
  
 
           </LinkedinShareButton></div>

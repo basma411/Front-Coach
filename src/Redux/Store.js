@@ -15,8 +15,8 @@ import loadingSlice from "./Slice/LodingSlice";
 import ArticleSlice from "./Slice/ArticleSlice";
 import ContactSlice from "./Slice/ContactSlice";
 import EvenementSlice from "./Slice/EvenementSlice";
-import VedioSlice from "./Slice/VedioSlice";
 import TemoignegeSlice from "./Slice/TemoignegeSlice";
+import videoSlice from "./Slice/videoSlice";
 
 // Combine all slices into a root reducer
 const rootReducer = combineReducers({
@@ -33,7 +33,7 @@ const rootReducer = combineReducers({
   article: ArticleSlice,
   contact: ContactSlice,
   evenement: EvenementSlice,
-  vedio: VedioSlice,
+  video: videoSlice,
   temoignage: TemoignegeSlice,
 });
 

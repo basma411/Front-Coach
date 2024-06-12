@@ -1,0 +1,20 @@
+.Contact-coach{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.Contact-coach-Container{
+    width: 80%;
+    margin: 100px auto;
+    display: flex ;
+    align-items: center;
+    /* justify-content: center; */
+    gap: 20px;
+}
+.left-coach{
+    width: 70%;
+}
+.right-coach{
+    width: 30%;
+
+}

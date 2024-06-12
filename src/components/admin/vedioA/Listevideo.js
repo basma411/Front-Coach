@@ -1,28 +1,28 @@
 import React, { useEffect } from "react";
 import BarheaderAdmin from "../BarheaderAdmin";
 import NavBarAdmin from "../NavBarAdmin";
-import "./css/listevedio.css";
+import "./css/listevideo.css";
 import image from "../../../images/big_image_2.jpg";
 import { Link } from "react-router-dom";
 import { IoPowerOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { CiEdit } from "react-icons/ci";
-import { GetEvenement, deleteEvenement } from "../../../Redux/Slice/EvenementSlice";
-import { GetVedio, deleteVedio } from "../../../Redux/Slice/VedioSlice";
 import { getImageUrl } from "../../..";
+import { Getvideo, deletevideo } from "../../../Redux/Slice/videoSlice";
 
-const ListeVedio = () => {
+const Listevideo = () => {
   const dispatch = useDispatch();
-  const { Vedio } = useSelector((state) => state.vedio);
+  const { video } = useSelector((state) => state.video);
 
   useEffect(() => {
-    dispatch(GetVedio());
+
+    dispatch(Getvideo());
   }, [dispatch]);
 
   const handleDelete = (id) => {
-    if (window.confirm("Are you sure you want to delete this vedio?")) {
-      dispatch(deleteVedio({ id }));
+    if (window.confirm("Are you sure you want to delete this video?")) {
+      dispatch(deletevideo({ id }));
     }
   };
 
@@ -80,14 +80,14 @@ const ListeVedio = () => {
               </tr>
             </thead>
             <tbody>
-              {Vedio.map((vedio, index) => (
+              {video.map((video, index) => (
                 <tr key={index}>
                      <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    {vedio.titre}
+                    {video.titre}
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
                     <img
-           src={getImageUrl(vedio.images)}
+           src={getImageUrl(video.images)}
            width="100px"
                       height="70px"
 
@@ -96,7 +96,7 @@ const ListeVedio = () => {
                   </td>
                  
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    {vedio.lien}
+                    {video.lien}
                   </td>
                 
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
@@ -106,9 +106,9 @@ const ListeVedio = () => {
                         color: "black",
                         marginRight: "20px",
                       }}
-                      onClick={() => handleDelete(vedio._id)}
+                      onClick={() => handleDelete(video._id)}
                     />
-                    <Link to={`/admin/VedioCoching/edit/${vedio._id}`}>
+                    <Link to={`/admin/videoCoching/edit/${video._id}`}>
                       <CiEdit style={{ fontSize: "25px", color: "black" }} />
                     </Link>
                   </td>
@@ -123,4 +123,4 @@ const ListeVedio = () => {
 };
 
 
-export default ListeVedio
+export default Listevideo

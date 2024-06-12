@@ -24,7 +24,7 @@ const NavBarAdmin = () => {
             <Link to="/admin/Partenaires" className="nav-link">Partenaires</Link>
             <Link to="/admin/Salon" className="nav-link">Les Salon de coaching</Link>
             <Link to="/admin/Evenements" className="nav-link">Evenements</Link>
-            <Link to="/admin/VedioCoching" className="nav-link">VedioCoching</Link>
+            <Link to="/admin/videoCoching" className="nav-link">VidéoCoching</Link>
             <Link to="/admin/Contact" className="nav-link">Contact</Link>
             <Link to="/admin/Newsletter" className="nav-link">Newsletter</Link>
 

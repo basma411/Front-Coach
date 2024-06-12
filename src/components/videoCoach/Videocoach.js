@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 import image from "../../images/big_image_2.jpg";
-import "./css/vediocoach.css";
-import { GetVedio } from "../../Redux/Slice/VedioSlice";
+import "./css/videocoach.css";
 import { useDispatch, useSelector } from "react-redux";
 import VideoCard from "./VideoCard";
 import Newsletter from "../coach/Newsletter";
 import Footer from "../coach/Footer";
-const Vediocoach = () => {
+import { Getvideo } from "../../Redux/Slice/videoSlice";
+const Videocoach = () => {
   const dispatch = useDispatch();
 
-  const { Vedio } = useSelector((state) => state.vedio);
+  const { video } = useSelector((state) => state.video);
   useEffect(() => {
-    dispatch(GetVedio());
+    dispatch(Getvideo());
   }, [dispatch]);
   return (
     <>
@@ -31,13 +31,13 @@ const Vediocoach = () => {
         </div>
       </div>
 
-      <div className="vedioCoach">
-        <div className="vedioCoachContainer">
-          <h1 className="vedioTitre">
+      <div className="videoCoach">
+        <div className="videoCoachContainer">
+          <h1 className="videoTitre">
             Parcourez nos vidéos sur la chaîne YouTube : MonCoach.tn
           </h1>
           <div className="video-list">
-            {Vedio && Vedio.map((VD) => <VideoCard key={VD.id} video={VD} />)}
+            {video && video.map((VD) => <VideoCard key={VD.id} video={VD} />)}
           </div>
         </div>
       </div>
@@ -47,4 +47,4 @@ const Vediocoach = () => {
   );
 };
 
-export default Vediocoach;
+export default Videocoach;

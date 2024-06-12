@@ -3,17 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import './css/editVedio.css';
-import { putEvenement } from '../../../Redux/Slice/EvenementSlice';
+import './css/editvideo.css';
 import loadingGif from './../../../images/loading.gif';
 import { getImageUrl } from '../../../index.js';
-import { GetVedio, putVedio } from '../../../Redux/Slice/VedioSlice.js';
+import { Getvideo, putvideo } from '../../../Redux/Slice/videoSlice.js';
 
-const EditVedio = () => {
+const Editvideo = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { id } = useParams();
-    const { Vedio } = useSelector((state) => state.vedio);
+    const { video } = useSelector((state) => state.video);
     const [image, setImage] = useState(null);
     const [formData, setFormData] = useState({
         titre: '',
@@ -24,17 +23,17 @@ const EditVedio = () => {
 
     useEffect(() => {
         setEditorLoaded(true);
-        dispatch(GetVedio());
+        dispatch(Getvideo());
     }, [dispatch]);
 
     useEffect(() => {
-        if (Vedio && id) {
-            const VedioEdit = Vedio.find(vedio => vedio._id === id);
-            if (VedioEdit) {
-                setFormData(VedioEdit);
+        if (video && id) {
+            const videoEdit = video.find(video => video._id === id);
+            if (videoEdit) {
+                setFormData(videoEdit);
             }
         }
-    }, [Vedio, id]);
+    }, [video, id]);
 
     const handleFileChange = (e) => {
         setImage(e.target.files[0]);
@@ -67,8 +66,8 @@ const EditVedio = () => {
             formDataToSend.append('images', image);
         }
 
-        dispatch(putVedio({ id, data: formDataToSend }));
-        navigate('/admin/VedioCoching');
+        dispatch(putvideo({ id, data: formDataToSend }));
+        navigate('/admin/videoCoching');
     };
 
     if (!editorLoaded) {
@@ -135,4 +134,4 @@ const EditVedio = () => {
 };
 
 
-export default EditVedio
+export default Editvideo

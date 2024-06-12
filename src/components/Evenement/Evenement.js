@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GetEvenement } from '../../Redux/Slice/EvenementSlice';
 import Card from "react-bootstrap/Card";
 import { MdPerson } from "react-icons/md";
-import { getImageUrl } from '../..';
+import { getImageUrl } from '../../index.js';
 import Newsletter from '../coach/Newsletter';
 import Footer from '../coach/Footer';
 import { Link } from 'react-router-dom';

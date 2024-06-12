@@ -1,6 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
+export const addContact= createAsyncThunk('Contact/add', async (data, { rejectWithValue }) => {
+  try {
+    const res = await axios.post('/api/Contact',data);
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
 export const GetContact= createAsyncThunk('Contact/get', async (data, { rejectWithValue }) => {
   try {
     const res = await axios.get('/api/Contact/get',{ headers: { token: localStorage.getItem('token1') } });
@@ -59,6 +66,22 @@ export const DeleteContact= createAsyncThunk('Contact/delete', async ({id,data},
      
       })
       .addCase(DeleteContact.rejected, (state, action) => {
+        state.isLoading = false;
+        state.token = null;
+        state.isAuth = false;
+        state.error = action.payload.error;
+      })
+      .addCase(addContact.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(addContact.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.isAuth = true;
+     
+      })
+      .addCase(addContact.rejected, (state, action) => {
         state.isLoading = false;
         state.token = null;
         state.isAuth = false;
