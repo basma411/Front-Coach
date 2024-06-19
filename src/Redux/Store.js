@@ -18,6 +18,9 @@ import EvenementSlice from "./Slice/EvenementSlice";
 import TemoignegeSlice from "./Slice/TemoignegeSlice";
 import videoSlice from "./Slice/videoSlice";
 import AtelierSlice from "./Slice/AtelierSlice";
+import PubAtelierSlice from "./Slice/PubAtelierSlice";
+import emailSlice from "./Slice/emailSlice";
+import FaqSlice from "./Slice/FaqSlice";
 
 // Combine all slices into a root reducer
 const rootReducer = combineReducers({
@@ -37,6 +40,9 @@ const rootReducer = combineReducers({
   video: videoSlice,
   temoignage: TemoignegeSlice,
   atelier:AtelierSlice,
+  pubatelie:PubAtelierSlice,
+  email:emailSlice,
+  faq:FaqSlice
 });
 
 // Configure persist

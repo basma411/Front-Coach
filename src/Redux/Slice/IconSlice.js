@@ -10,9 +10,10 @@ export const GetIcon= createAsyncThunk('Icon/get', async (data, { rejectWithValu
   }
 });
 
-export const PutIcon= createAsyncThunk('Icon/put', async ({id, data}, { rejectWithValue }) => {
+export const PutIcon = createAsyncThunk('Icon/put', async ({ id, data }, { rejectWithValue, dispatch }) => {
   try {
     const res = await axios.put(`/api/Icon/update/${id}`, data, { headers: { token: localStorage.getItem('token1') } });
+    dispatch(GetIcon()); 
     return res.data;
   } catch (error) {
     return rejectWithValue(error);

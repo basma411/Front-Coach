@@ -59,13 +59,13 @@ function WorkshopList() {
                   <td>
                     <img 
                       src={getImageUrl(workshop.photo)}
-                      alt={workshop.atelier} 
+                      alt={`Théme${workshop.num}`} 
                     />
                   </td>
-                  <td>{workshop.atelier}</td>
+                  <td>{`Théme${workshop.num}`}</td>
                   <td>
                     <button onClick={() => navigate(`/admin/atelier-A/${workshop._id}`)}>
-                      {`Atelier ${workshop.atelier}`}
+                      {`Atelier ${workshop.num}`}
                     </button>
                   </td>
                 </tr>

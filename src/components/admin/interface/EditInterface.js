@@ -1,19 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import './css/editinterface.css';
 import { fetchInterface, putInterface } from '../../../Redux/Slice/InterfaceSlice';
 import loadingGif from './../../../images/loading.gif';
 import { getImageUrl } from '../../../index.js';
+import { Editor } from '@tinymce/tinymce-react';
 
 const EditInterface = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { id } = useParams();
+    const editorRef1 = useRef();
+
+    const editorRef2 = useRef();
+
     const { interfaceData } = useSelector((state) => state.interface);
-    const [image, setImage] = useState(null);
+    const [image, setImage] = useState(" ");
+    const [Texte, settexte] = useState(" ")
+    const [Titre, settitre] = useState(" ")
+
     const [formData, setFormData] = useState({
         titre: '',
         texte: '',
@@ -36,19 +42,30 @@ const EditInterface = () => {
             }
         }
     }, [interfaceData, id]);
-
+    useEffect(() => {
+        return () => {
+            if (editorRef1.current) {
+                editorRef1.current.destroy();
+                editorRef1.current = null;
+            }
+            if (editorRef2.current) {
+                editorRef2.current.destroy();
+                editorRef2.current = null;
+            }
+        };
+    }, []);
     const handleFileChange = (e) => {
         setImage(e.target.files[0]);
     };
 
-    const handleEditorChange = (event, editor, name) => {
-        const data = editor.getData();
-        setFormData(prevData => ({
-            ...prevData,
-            [name]: data,
-        }));
-    };
+    const handleEditorChange = (content, editor, name) => {
+        settexte(content);
 
+    };
+    const handleTitreChange = (content, editor, name) => {
+        settitre(content);
+
+    };
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prevData => ({
@@ -60,8 +77,8 @@ const EditInterface = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const formDataToSend = new FormData();
-        formDataToSend.append('titre', formData.titre);
-        formDataToSend.append('texte', formData.texte);
+        formDataToSend.append('titre', Titre);
+        formDataToSend.append('texte',Texte);
         formDataToSend.append('page', formData.page);
         formDataToSend.append('lien', formData.lien);
         
@@ -93,43 +110,57 @@ const EditInterface = () => {
                 <form onSubmit={handleSubmit} className='container-Edit-Evenement'>
                     <div>
                         <label>Titre</label>
-                        <CKEditor
-                            editor={ClassicEditor}
-                            data={formData.titre || ''}
-                            onChange={(event, editor) => handleEditorChange(event, editor, 'titre')}
-                            config={{
-                                toolbar: ['bold', 'italic', '|', 'numberedList', 'bulletedList', '|', 'outdent', 'indent', '|', 'link', 'unlink'],
-                                language: 'en',
-                                // styles: [
-                                //     {
-                                //         name: 'Custom Style',
-                                //         element: 'p',
-                                //         styles: {
-                                //             color: '#000'
-                                //         }
-                                //     }
-                                // ]
+                        <Editor
+  apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
+  onInit={(evt, editor) => {
+                                editorRef1.current = editor;
+                                editor.setContent(formData.titre);
+                            }}
+                            initialValue={formData.titre} // Assurez-vous que cette ligne est utilisée pour initialiser également
+                            init={{
+                                height: 500,
+                                menubar: false,
+                                plugins: [
+                                    'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                                    'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                                    'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
+                                ],
+                                toolbar: 'undo redo | blocks | ' +
+                                    'bold italic forecolor | alignleft aligncenter ' +
+                                    'alignright alignjustify | bullist numlist outdent indent | ' +
+                                    'removeformat | help',
+                                content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+                                setup: (editor) => {
+                                    editor.on('change', () => handleTitreChange(editor.getContent()));
+                                }
                             }}
                         />
                     </div>
                     <div>
                         <label>Texte</label>
-                        <CKEditor
-                            editor={ClassicEditor}
-                            data={formData.texte || ''}
-                            onChange={(event, editor) => handleEditorChange(event, editor, 'texte')}
-                            config={{
-                                toolbar: ['bold', 'italic', '|', 'numberedList', 'bulletedList', '|', 'outdent', 'indent', '|', 'link', 'unlink'],
-                                language: 'en',
-                                styles: [
-                                    {
-                                        name: 'Custom Style',
-                                        element: 'p',
-                                        styles: {
-                                            color: '#000'
-                                        }
-                                    }
-                                ]
+                        <Editor
+  apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
+  onInit={(evt, editor) => {
+                                editorRef2.current = editor;
+                                editor.setContent(formData.texte);
+                            }}
+                            initialValue={formData.texte} // Assurez-vous que cette ligne est utilisée pour initialiser également
+                            init={{
+                                height: 500,
+                                menubar: false,
+                                plugins: [
+                                    'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                                    'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                                    'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
+                                ],
+                                toolbar: 'undo redo | blocks | ' +
+                                    'bold italic forecolor | alignleft aligncenter ' +
+                                    'alignright alignjustify | bullist numlist outdent indent | ' +
+                                    'removeformat | help',
+                                content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+                                setup: (editor) => {
+                                    editor.on('change', () => handleEditorChange(editor.getContent()));
+                                }
                             }}
                         />
                     </div>

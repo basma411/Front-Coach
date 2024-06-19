@@ -72,6 +72,11 @@ import AddAtelier from './components/admin/AtelierA/AddAtelier.js';
 import AddPublication from './components/admin/AtelierA/AddPublication.js';
 import ListCoach from './components/admin/AtelierA/ListCoach.js';
 import ListProf from './components/admin/AtelierA/ListProf.js';
+import BaseCoach from './components/admin/BaseCoach/BaseCoach.js';
+import Faq from './components/admin/FAQ/Faq.js';
+import EmailingCoach from './components/admin/BaseCoach/EmailingCoach.js';
+import AddFaq from './components/admin/FAQ/AddFaq.js';
+import ListFaq from './components/admin/FAQ/ListFaq.js';
 
 
 function App() {
@@ -203,6 +208,13 @@ function App() {
 
             <Route path="/admin/login" element={<Login />} />
             <Route path="/admin/Accueil" element={<AccueilAdmin />} />
+                        <Route path="/admin/Base-Coach" element={<BaseCoach />} />
+                        <Route path="/admin/EmailingCoach" element={<EmailingCoach />} />
+
+                        <Route path="/admin/FAQ" element={<Faq />} />
+                        <Route path="/admin/add-faq" element={<AddFaq />} />
+                        <Route path="/admin/list-faq" element={<ListFaq />} />
+
             <Route path="/coach/login" element={<LoginCoch />} />
             <Route path="/coach/profil" element={<ProfilCoach />} />
             <Route path="/coach/setting/:id" element={<SettingProfil />} />

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Editor } from '@tinymce/tinymce-react'; // Import TinyMCE Editor
+import { Editor } from '@tinymce/tinymce-react';
 import './css/editEvenement.css';
 import { GetEvenement, putEvenement } from '../../../Redux/Slice/EvenementSlice';
 import loadingGif from './../../../images/loading.gif';
@@ -11,6 +11,8 @@ const EditEvenement = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { id } = useParams();
+    const editorRef = useRef(null);
+
     const { Evenement } = useSelector((state) => state.evenement);
     const [image, setImage] = useState(null);
     const [Texte, settexte] = useState(null)
@@ -44,6 +46,14 @@ const EditEvenement = () => {
         }
     }, [formData.texte]);
     
+    useEffect(() => {
+        return () => {
+            if (editorRef.current) {
+                editorRef.current.destroy();
+                editorRef.current = null;
+            }
+        };
+    }, []);
     const handleFileChange = (e) => {
         setImage(e.target.files[0]);
     };
@@ -102,24 +112,31 @@ const EditEvenement = () => {
                     <div>
                         <label>Texte</label>
                         <Editor
-                            apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8" // Replace with your TinyMCE API Key
-                            initialValue={formData.texte}
+  apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
+  onInit={(evt, editor) => {
+                                editorRef.current = editor;
+                                editor.setContent(formData.texte);
+                            }}
+                            initialValue={formData.texte} // Assurez-vous que cette ligne est utilisée pour initialiser également
                             init={{
                                 height: 500,
-                                menubar: true,
+                                menubar: false,
                                 plugins: [
-                                    'advlist autolink lists link image charmap print preview anchor',
-                                    'searchreplace visualblocks code fullscreen',
-                                    'insertdatetime media table paste code help wordcount'
+                                    'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                                    'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                                    'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
                                 ],
-                                toolbar:
-                                    'undo redo | formatselect | bold italic backcolor | \
-                                    alignleft aligncenter alignright alignjustify | \
-                                    bullist numlist outdent indent | removeformat | help'
+                                toolbar: 'undo redo | blocks | ' +
+                                    'bold italic forecolor | alignleft aligncenter ' +
+                                    'alignright alignjustify | bullist numlist outdent indent | ' +
+                                    'removeformat | help',
+                                content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+                                setup: (editor) => {
+                                    editor.on('change', () => handleEditorChange(editor.getContent()));
+                                }
                             }}
-                            value={Texte}
-                            onEditorChange={handleEditorChange}
                         />
+                     
                     </div>
                     <div>
                         <label>Lien</label>

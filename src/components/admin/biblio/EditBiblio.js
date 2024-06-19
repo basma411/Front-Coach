@@ -88,7 +88,7 @@ const EditBiblio = () => {
                     <img
                         src={getImageUrl(formData.photo_c)}
                         alt="Icone"
-                        className='imageEdit-Article'
+                        className='imageEditBiblio'
                     />
                 )}
                 <div className='Bouton-Edit-Article'>

@@ -1,20 +1,22 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import emailjs from '@emailjs/browser';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 import BarheaderAdmin from '../BarheaderAdmin';
 import NavBarAdmin from '../NavBarAdmin';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { Editor } from '@tinymce/tinymce-react';
+import { sendEmail } from '../../../Redux/Slice/emailSlice';
 import image from "../../../images/big_image_2.jpg";
-import './css/ContactEmailA.css';  // Import the CSS file
+import './css/ContactEmailA.css';
 
 const ContactEmailA = () => {
+  const dispatch = useDispatch();
+  const navigate=useNavigate()
   const { Contacts } = useSelector((state) => state.contact);
   const { id } = useParams();
   const [contact, setContact] = useState(null);
   const [message, setMessage] = useState('');
   const form = useRef();
+  const editorRef = useRef(null);
 
   useEffect(() => {
     if (Contacts.length > 0) {
@@ -22,12 +24,28 @@ const ContactEmailA = () => {
       setContact(foundContact);
     }
   }, [Contacts, id]);
-  const handleEditorChange = (event, editor, name) => {
-    const data = editor.getData().replace(/<\/?p>|<\/?strong>/g, ' ').trim();
-    setMessage(data);
-};
-console.log(message)
-  const sendEmail = (e) => {
+
+  const handleEditorChange = (content) => {
+    setMessage(content);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (editorRef.current) {
+        editorRef.current.destroy();
+        editorRef.current = null;
+      }
+    };
+  }, []);
+
+  const truncateText = (htmlText, maxLength) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlText, 'text/html');
+    const textContent = doc.body.textContent || "";
+    return textContent.length > maxLength ? textContent.substring(0, maxLength) + '...' : textContent;
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!contact) {
@@ -36,23 +54,23 @@ console.log(message)
     }
 
     const templateParams = {
-      sendername: "sowsen",
-      to_email: contact.email,
-      replyto: "basmas@live.fr",
+      email: contact.email,
       subject: form.current.subject.value,
-      message: message,
+      message: truncateText(message, 1000), // Limitez la longueur du message si nécessaire
     };
 
-    emailjs.send('service_cn9d7z9', 'template_3lmrczm', templateParams, 'xpjMmLN6NR1cy4Vqv')
-      .then(
-        () => {
-          alert('Email sent successfully!');
-        },
-        (error) => {
-          console.error('Failed to send email:', error);
-          alert('Failed to send email: ' + error.text);
-        },
-      );
+    dispatch(sendEmail(templateParams))
+      .then(() => {
+        alert('Email sent successfully!');
+        navigate("/admin/Contact")
+
+      })
+      .catch((error) => {
+        console.error('Failed to send email:', error);
+        alert('Failed to send email: ' + error.message);
+        navigate("/admin/Contact")
+
+      });
   };
 
   if (!contact) {
@@ -72,7 +90,7 @@ console.log(message)
         </div>
       </div>
       <div className='EmailContainer'>
-        <form ref={form} onSubmit={sendEmail} className='EmailForm'>
+        <form ref={form} onSubmit={handleSubmit} className='EmailForm'>
           <input type="hidden" name="to_email" value={contact.email} />
           <div>
             <label>Objet</label>
@@ -80,17 +98,33 @@ console.log(message)
           </div>
           <div>
             <label>Message</label>
-            <CKEditor
-              editor={ClassicEditor}
-              data=""
-              onChange={(event, editor) => handleEditorChange(event, editor, 'Titre')}
-              config={{
-                  toolbar: ['bold', 'italic', '|', 'numberedList', 'bulletedList', '|', 'outdent', 'indent', '|', 'link', 'unlink', 'language'],
-                  language: 'en',
+            <Editor
+              apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
+              onInit={(evt, editor) => {
+                editorRef.current = editor;
+                editor.setContent(message);
+              }}
+              initialValue={message}
+              init={{
+                height: 500,
+                menubar: false,
+                plugins: [
+                  'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                  'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                  'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
+                ],
+                toolbar: 'undo redo | blocks | ' +
+                  'bold italic forecolor | alignleft aligncenter ' +
+                  'alignright alignjustify | bullist numlist outdent indent | ' +
+                  'removeformat | help',
+                content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+                setup: (editor) => {
+                  editor.on('change', () => handleEditorChange(editor.getContent()));
+                }
               }}
             />
           </div>
-          <input type="submit" value="Send" />
+          <input type="submit" value="Send" className='sendemail' />
         </form>
       </div>
     </>

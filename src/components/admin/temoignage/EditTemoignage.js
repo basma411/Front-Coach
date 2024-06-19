@@ -1,20 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { GetIcon } from '../../../Redux/Slice/IconSlice';
 import { useParams, useNavigate } from 'react-router-dom';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { Editor } from '@tinymce/tinymce-react';
 import './css/editTemoignage.css';
-import { GetArticle, PutArticle } from '../../../Redux/Slice/ArticleSlice';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import loadingGif from './../../../images/loading.gif'
-import { getImageUrl } from '../../..';
 import { GetTemoignageV, PutTemoignagesV } from '../../../Redux/Slice/TemoignegeSlice';
 const EditTemoignage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { id } = useParams();
+    const editorRef = useRef(null);
+
     const { TemoignegeV } = useSelector((state) => state.temoignage);
-  
+    const [Texte, settexte] = useState()
+
         const [formData, setFormData] = useState({
         nom: '',
         texte: '',
@@ -37,15 +36,18 @@ const EditTemoignage = () => {
             }
         }
     }, [TemoignegeV, id]);
-
-    const handleEditorChange = (event, editor, name) => {
-        const data = editor.getData();
-        setFormData(prevData => ({
-            ...prevData,
-            [name]: data,
-        }));
+    useEffect(() => {
+        return () => {
+            if (editorRef.current) {
+                editorRef.current.destroy();
+                editorRef.current = null;
+            }
+        };
+    }, []);
+    const handleEditorChange = (content, editor, name) => {
+        settexte(content);
     };
-
+    
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prevData => ({
@@ -53,14 +55,17 @@ const EditTemoignage = () => {
             [name]: value
         }));
     };
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (id && formData) {
-            dispatch(PutTemoignagesV({ id, data: formData }));
-            navigate('/admin/témoignages/visible');
-        }
+        const formDataToSend = new FormData();
+        formDataToSend.append('nom', formData.nom);
+        formDataToSend.append('texte', Texte); 
+    
+        dispatch(PutTemoignagesV({ id, data:{nom:formData.nom,texte:Texte} }));
+        console.log(Texte)
+        navigate('/admin/témoignages/visible');
     };
+    
     if (!editorLoaded) {
         return (
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -84,15 +89,33 @@ const EditTemoignage = () => {
                     </div>
                     <div>
                         <label>Texte</label>
-                        <CKEditor
-                            editor={ClassicEditor}
-                            data={formData.texte || ''}
-                            onChange={(event, editor) => handleEditorChange(event, editor, 'texte')}
-                            config={{
-                                toolbar: ['bold', 'italic', '|', 'numberedList', 'bulletedList', '|', 'outdent', 'indent', '|', 'link', 'unlink'],
-                                language: 'en',
-                            }}
-                        />
+                        <Editor
+    apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
+    onInit={(evt, editor) => {
+        editorRef.current = editor;
+        editor.setContent(formData.texte);
+    }}
+    initialValue={formData.texte}
+    init={{
+        height: 500,
+        menubar: false,
+        plugins: [
+            'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+            'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+            'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
+        ],
+        toolbar: 'undo redo | blocks | ' +
+            'bold italic forecolor | alignleft aligncenter ' +
+            'alignright alignjustify | bullist numlist outdent indent | ' +
+            'removeformat | help',
+        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+        setup: (editor) => {
+            editor.on('change', () => handleEditorChange(editor.getContent()));
+        }
+    }}
+/>
+
+
                     </div>
                    
                     <div>

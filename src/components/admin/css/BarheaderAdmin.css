@@ -13,7 +13,7 @@
     background-color: #275491;
     display: flex;
     justify-content: flex-end;
-    align-items: center; /* Alignement vertical des éléments */
+    align-items: center; 
     color: #e3d80a;
     padding-right: 50px;
     gap: 5PX;
@@ -22,11 +22,15 @@
   .iconCompte {
     font-size: 24px; /* Taille de l'icône */
     margin-right: 10px; /* Espacement à droite de l'icône */
+   
   }
   
-  h5 {
+  .barheadericon {
     margin: 0;
     padding: 0;
+    cursor: pointer;
+    text-decoration: none;
+    color: #e3d80a;
     font-size: 18px; /* Taille du texte */
     font-weight: 400;
   }

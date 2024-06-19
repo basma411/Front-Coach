@@ -64,7 +64,7 @@ const PartenairesA = () => {
               </tr>
             </thead>
             <tbody>
-              {Partenaire.map((partenaire, index) => (
+              {Partenaire && Partenaire.map((partenaire, index) => (
                 <tr key={index}>
                     <td style={{ border: "1px solid gray", padding: "10px" }}>
                     <img  src={getImageUrl(partenaire.photo)} width="100px" alt="Partenaire" />

@@ -9,13 +9,33 @@ import { IoPowerOutline } from 'react-icons/io5';
 import './css/addatelier.css';
 
 const AddAtelier = () => {
-  const [title, setTitle] = useState('');
+  const [numThéme, setNumThéme] = useState('');
+  const [titre, setTitre] = useState('');
+  const [date, setDate] = useState('');
+  const [heure, setHeure] = useState('');
+  const [statut, setStatut] = useState('');
   const [photo, setPhoto] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleTitleChange = (e) => {
-    setTitle(e.target.value);
+  const handleNumThémeChange = (e) => {
+    setNumThéme(e.target.value);
+  };
+
+  const handleTitreChange = (e) => {
+    setTitre(e.target.value);
+  };
+
+  const handleDateChange = (e) => {
+    setDate(e.target.value);
+  };
+
+  const handleHeureChange = (e) => {
+    setHeure(e.target.value);
+  };
+
+  const handleStatutChange = (e) => {
+    setStatut(e.target.value);
   };
 
   const handlePhotoChange = (e) => {
@@ -26,12 +46,16 @@ const AddAtelier = () => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append('atelier', title);
+    formData.append('num', numThéme);
+    formData.append('titre', titre);
+    formData.append('date', date);
+    formData.append('heure', heure);
+    formData.append('statut', statut);
     formData.append('photo', photo);
-
-    dispatch(addAtelier({ data: formData })).then(() => {
+console.log(numThéme,titre,date)
+    dispatch(addAtelier({ data: formData }))
       navigate('/admin/atelier-A');
-    });
+    
   };
 
   return (
@@ -48,18 +72,32 @@ const AddAtelier = () => {
         <form onSubmit={handleSubmit} className="addAtelierContainer">
           <div>
             <label className='LabelAtelier'>Théme:</label>
-            <input type="number" value={title} onChange={handleTitleChange} required />
+            <input type="number" value={numThéme} onChange={handleNumThémeChange} required />
           </div>
           <div>
-            <label  className='LabelAtelier'>Photo de Théme :</label>
+            <label className='LabelAtelier'>Titre:</label>
+            <input type="text" value={titre} onChange={handleTitreChange} required />
+          </div>
+          <div>
+            <label className='LabelAtelier'>Date:</label>
+            <input type="text" value={date} onChange={handleDateChange} required />
+          </div>
+          <div>
+            <label className='LabelAtelier'>Heure:</label>
+            <input type="text" value={heure} onChange={handleHeureChange} required />
+          </div>
+          <div>
+            <label className='LabelAtelier'>Statut:</label>
+            <input type="text" value={statut} onChange={handleStatutChange} required />
+          </div>
+          <div>
+            <label className='LabelAtelier'>Photo de Théme :</label>
             <input type="file" onChange={handlePhotoChange} required />
           </div>
           <div style={{display:'flex', gap:'20px'}}>
-
-          <button type="submit">Ajouter</button>
-          <button type="button" onClick={() => navigate("/admin/atelier-A")}>Annuler</button>
+            <button type="submit">Ajouter</button>
+            <button type="button" onClick={() => navigate("/admin/atelier-A")}>Annuler</button>
           </div>
-
         </form>
       </div>
     </>

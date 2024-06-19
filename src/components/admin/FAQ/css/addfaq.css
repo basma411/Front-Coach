@@ -1,0 +1,29 @@
+.ConsultAddFaq{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Rubik", arial, sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 2;
+    color: gray;
+    
+}
+.ConsultAddFaqContainer{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+    gap: 50px;
+}
+.QUESTION{
+width: 100%;
+height: 40px; 
+
+}
+.RES{
+    width: 100%;
+height: 150px; 
+}

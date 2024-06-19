@@ -3,15 +3,17 @@ import { BsPersonBadgeFill } from "react-icons/bs";
 import { FaQuestion } from "react-icons/fa";
 
 import './css/BarheaderAdmin.css'; 
+import { Link } from 'react-router-dom';
 
 const BarheaderAdmin = () => {
   return (
     <div className="barheaderAdmin">
       <div className='barheaderContainer'>
         <BsPersonBadgeFill  className="iconCompte" />
-        <h5>Base des coachs  /</h5>
+        <Link to="/admin/Base-Coach" className='barheadericon'>Base des coachs  </Link>
         <FaQuestion/>
-        <h5>FAQ</h5>
+        <Link to="/admin/FAQ" className='barheadericon'>      FAQ
+        </Link>
       </div>
     </div>
   );

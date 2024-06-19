@@ -23,11 +23,17 @@ const VideoCard = ({ video }) => {
 
   const shareURL = 'http://example.com'; // Update with actual URL to be shared
   const shareTitle = video.titre;
+  const truncateText = (htmlText, maxLength) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlText, 'text/html');
+    const textContent = doc.body.textContent || "";
+    return textContent.length > maxLength ? textContent.substring(0, maxLength) + '...' : textContent;
+  };
 
   return (
     <>
-      <div className="video-card">
-        <h3 style={{ color: 'rgb(39, 84, 145)', fontSize: "16px", fontWeight: "300", lineHeight: '32px' }}>{video.titre}</h3>
+      <div className="video-card">                   
+        <h3 style={{ color: 'rgb(39, 84, 145)', fontSize: "16px", fontWeight: "300", lineHeight: '32px' }}>{truncateText(video.titre)}</h3>
         <div style={{ position: 'relative', width: '500px', height: '300px' }}>
           <img src={getImageUrl(video.images)} alt={video.titre} width="500px" height="300px" />
           <FaPlayCircle 

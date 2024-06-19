@@ -18,7 +18,12 @@ const TrouverCoach = () => {
     dispatch(fetchInterface());
   }, [dispatch]);
 
-  console.log("Interface data:", interfaceData);
+  const truncateText = (htmlText, maxLength) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlText, 'text/html');
+    const textContent = doc.body.textContent || "";
+    return textContent.length > maxLength ? textContent.substring(0, maxLength) + '...' : textContent;
+  };
 
   return (
     <>
@@ -42,15 +47,16 @@ const TrouverCoach = () => {
       {interfaceData && interfaceData.length > 0 && (
         <div className="Temaignage-container">
           <div className='heading'>
-            <h2>{interfaceData[0].titre}</h2>
-            <p className="text">{interfaceData[0].texte}</p> 
+            <h2>          {truncateText(interfaceData[0].titre)}
+            </h2>
+            <p className="text">          {truncateText(interfaceData[0].texte)}
+            </p> 
             <div className="play-button">
               <button>Je m'inscris</button>
             </div>
           </div>
           <div className='Temaignage-image'> 
             <h3>Parcourez les témoignages !</h3>
-            src={getImageUrl(interfaceData[0].image)}
 
             <img   src={getImageUrl(interfaceData[0].image)} alt="Image placeholder" height={'400px'} />
             <FaPlay className='icon-play'/>

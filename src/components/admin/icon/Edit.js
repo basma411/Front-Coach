@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetIcon, PutIcon } from '../../../Redux/Slice/IconSlice';
 import { useParams, useNavigate } from 'react-router-dom';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import loadingGif from './../../../images/loading.gif'
-
+import { Editor } from '@tinymce/tinymce-react';
+import loadingGif from './../../../images/loading.gif';
 import './css/edit.css';
 import { getImageUrl } from '../../..';
 
@@ -22,9 +20,8 @@ const Edit = () => {
     const [editorLoaded, setEditorLoaded] = useState(false);
 
     useEffect(() => {
-   dispatch(GetIcon());
-            setEditorLoaded(true);
-      
+        setEditorLoaded(true);
+        dispatch(GetIcon());
     }, [dispatch]);
 
     useEffect(() => {
@@ -36,20 +33,25 @@ const Edit = () => {
         }
     }, [Icon, id]);
 
-    const handleEditorChange = (event, editor, name) => {
-        const data = editor.getData();
+    const handleEditorChange = (content, editor) => {
         setFormData(prevData => ({
             ...prevData,
-            [name]: data,
+            Texte: content
+        }));
+    };
+
+    const handleTitreChange = (content, editor) => {
+        setFormData(prevData => ({
+            ...prevData,
+            Titre: content
         }));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (id && formData) {
-            dispatch(PutIcon({ id, data: formData }));
-            navigate('/admin/Accueil');
-        }
+        const formDataToSend = { Titre: formData.Titre, Texte: formData.Texte };
+        dispatch(PutIcon({ id, data: formDataToSend }));
+        navigate('/admin/consulter_icon');
     };
 
     if (!editorLoaded) {
@@ -66,34 +68,54 @@ const Edit = () => {
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label>Titre</label>
-                        <CKEditor
-                            editor={ClassicEditor}
-                            data={formData.Titre || ''}
-                            onChange={(event, editor) => handleEditorChange(event, editor, 'Titre')}
-                            config={{
-                                toolbar: ['bold', 'italic', '|', 'numberedList', 'bulletedList', '|', 'outdent', 'indent', '|', 'link', 'unlink', 'language'],
-                                language: 'en',
+                        <Editor
+                            apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8" // Replace with your TinyMCE API Key
+                            initialValue={formData.Titre}
+                            init={{
+                                height: 500,
+                                menubar: true,
+                                plugins: [
+                                    'advlist autolink  lists link image charmap print preview anchor',
+                                    'searchreplace visualblocks code fullscreen',
+                                    'insertdatetime media table paste code help wordcount'
+                                ],
+                                toolbar:
+                                    'undo redo | formatselect | bold italic backcolor | \
+                                    alignleft aligncenter alignright alignjustify | \
+                                    bullist numlist outdent indent | removeformat | help'
                             }}
+                            value={formData.Titre}
+                            onEditorChange={handleTitreChange}
                         />
                     </div>
 
                     <div>
                         <label>Texte</label>
-                        <CKEditor
-                            editor={ClassicEditor}
-                            data={formData.Texte || ''}
-                            onChange={(event, editor) => handleEditorChange(event, editor, 'Texte')}
-                            config={{
-                                toolbar: ['bold', 'italic', '|', 'numberedList', 'bulletedList', '|', 'outdent', 'indent', '|', 'link', 'unlink', 'language'],
-                                language: 'en',
+                        <Editor
+                            apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8" // Replace with your TinyMCE API Key
+                            initialValue={formData.Texte}
+                            init={{
+                                height: 500,
+                                width:500,
+                                menubar: true,
+                                plugins: [
+                                    'advlist autolink lists link image charmap print preview anchor',
+                                    'searchreplace visualblocks code fullscreen',
+                                    'insertdatetime media table paste code help wordcount'
+                                ],
+                                toolbar:
+                                    'undo redo | formatselect | bold italic backcolor | \
+                                    alignleft aligncenter alignright alignjustify | \
+                                    bullist numlist outdent indent | removeformat | help'
                             }}
+                            value={formData.Texte}
+                            onEditorChange={handleEditorChange}
                         />
                     </div>
 
                     <div className="form-group">
                         <label>Icone</label>
-                        {formData.image && <img    src={getImageUrl(formData.image)}
- alt="Icone" className='imageEdit' />}
+                        {formData.image && <img src={getImageUrl(formData.image)} alt="Icone" className='imageEdit' />}
                     </div>
 
                     <div className='Bouton-Edit'>

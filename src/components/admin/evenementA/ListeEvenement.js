@@ -10,7 +10,6 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { CiEdit } from "react-icons/ci";
 import { GetEvenement, deleteEvenement } from "../../../Redux/Slice/EvenementSlice";
 import { getImageUrl } from '../../../index.js';
-import Test from "./Test.js";
 const ListeEvenement = () => {
   const dispatch = useDispatch();
   const { Evenement } = useSelector((state) => state.evenement);

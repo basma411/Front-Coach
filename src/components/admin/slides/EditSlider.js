@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { Editor } from '@tinymce/tinymce-react';
 import './CSS/editslider.css';
 import { GetSlides, PutSlider } from '../../../Redux/Slice/SlidesSlice';
 import loadingGif from './../../../images/loading.gif';
@@ -12,7 +11,11 @@ const EditSlider = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { id } = useParams();
+    const editorRef1 = useRef(null);
+    const editorRef2 = useRef(null);
+
     const { Slide } = useSelector((state) => state.slide);
+
     const [formData, setFormData] = useState({
         titre1: '',
         titre2: '',
@@ -38,31 +41,39 @@ const EditSlider = () => {
         }
     }, [Slide, id]);
 
-    const handleEditorChange = (event, editor, name) => {
-        const data = editor.getData();
+    const handleTitre1Change = (content) => {
         setFormData(prevData => ({
             ...prevData,
-            [name]: data,
+            titre1: content
         }));
     };
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
+    const handleTitre2Change = (content) => {
         setFormData(prevData => ({
             ...prevData,
-            [name]: value
+            titre2: content
         }));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const { titre1, titre2 } = formData;
 
-        if (id) {
-            dispatch(PutSlider({ id, data: { titre1, titre2 } }));
-            navigate('/admin/editer_slider');
-        }
+        dispatch(PutSlider({ id, data: formData }));
+        navigate('/admin/editer_slider');
     };
+
+    useEffect(() => {
+        return () => {
+            if (editorRef1.current) {
+                editorRef1.current.destroy();
+                editorRef1.current = null;
+            }
+            if (editorRef2.current) {
+                editorRef2.current.destroy();
+                editorRef2.current = null;
+            }
+        };
+    }, []);
 
     if (!editorLoaded) {
         return (
@@ -75,28 +86,60 @@ const EditSlider = () => {
     return (
         <div className='edit-Article'>
             <div className='FormContainer'>
-                <form onSubmit={handleSubmit} className='container-Edit-Article '>
+                <form onSubmit={handleSubmit} className='container-Edit-Article'>
                     <div>
                         <label>Titre1</label>
-                        <CKEditor
-                            editor={ClassicEditor}
-                            data={formData.titre1 || ''}
-                            onChange={(event, editor) => handleEditorChange(event, editor, 'titre1')}
-                            config={{
-                                toolbar: ['bold', 'italic', '|', 'numberedList', 'bulletedList', '|', 'outdent', 'indent', '|', 'link', 'unlink'],
-                                language: 'en',
+                        <Editor
+                            apiKey="votre-cle-api-tinymce"
+                            onInit={(evt, editor) => {
+                                editorRef1.current = editor;
+                                editor.setContent(formData.titre1);
+                            }}
+                            initialValue={formData.titre1}
+                            init={{
+                                height: 500,
+                                menubar: false,
+                                plugins: [
+                                    'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                                    'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                                    'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
+                                ],
+                                toolbar: 'undo redo | blocks | ' +
+                                    'bold italic forecolor | alignleft aligncenter ' +
+                                    'alignright alignjustify | bullist numlist outdent indent | ' +
+                                    'removeformat | help',
+                                content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+                                setup: (editor) => {
+                                    editor.on('change', () => handleTitre1Change(editor.getContent()));
+                                }
                             }}
                         />
                     </div>
                     <div>
                         <label>Titre2</label>
-                        <CKEditor
-                            editor={ClassicEditor}
-                            data={formData.titre2 || ''}
-                            onChange={(event, editor) => handleEditorChange(event, editor, 'titre2')}
-                            config={{
-                                toolbar: ['bold', 'italic', '|', 'numberedList', 'bulletedList', '|', 'outdent', 'indent', '|', 'link', 'unlink'],
-                                language: 'en',
+                        <Editor
+                            apiKey="votre-cle-api-tinymce"
+                            onInit={(evt, editor) => {
+                                editorRef2.current = editor;
+                                editor.setContent(formData.titre2);
+                            }}
+                            initialValue={formData.titre2}
+                            init={{
+                                height: 500,
+                                menubar: false,
+                                plugins: [
+                                    'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                                    'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                                    'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
+                                ],
+                                toolbar: 'undo redo | blocks | ' +
+                                    'bold italic forecolor | alignleft aligncenter ' +
+                                    'alignright alignjustify | bullist numlist outdent indent | ' +
+                                    'removeformat | help',
+                                content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+                                setup: (editor) => {
+                                    editor.on('change', () => handleTitre2Change(editor.getContent()));
+                                }
                             }}
                         />
                     </div>

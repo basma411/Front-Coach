@@ -129,13 +129,27 @@ const coachSlice = createSlice({
     coachfiltre: [], 
     coachVisible: [], 
     coacheInvisible: [],
+    selectedCoaches: [], 
     isLoading: false,
     error: null,
     token: localStorage.getItem("token") || null,
     isAuth: localStorage.getItem("isAuth") || false,
   },
-  reducers: {},
-  extraReducers: (builder) => {
+  reducers: {
+    getCoachVisivble(state, action) {
+      state.coachVisible = action.payload;
+    },
+    selectCoach(state, action) {
+      state.selectedCoaches.push(action.payload);
+    },
+    deselectCoach(state, action) {
+      state.selectedCoaches = state.selectedCoaches.filter(id => id !== action.payload);
+    },
+    clearSelectedCoaches(state) {
+      state.selectedCoaches = [];
+    },
+  },
+    extraReducers: (builder) => {
     builder
       .addCase(login.pending, (state) => {
         state.isLoading = true;
@@ -312,5 +326,6 @@ const coachSlice = createSlice({
       ;
   },
 });
+export const { selectCoach, deselectCoach, clearSelectedCoaches } = coachSlice.actions;
 
 export default coachSlice.reducer;

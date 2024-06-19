@@ -23,7 +23,7 @@ const Slide = () => {
   
   return (
     <Carousel>
-    {Slide.map((slide, index) => (
+    {Slide && Slide.map((slide, index) => (
       <Carousel.Item key={slide.id} >
         <img
           className="d-block w-700"

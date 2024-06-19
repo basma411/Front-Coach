@@ -23,6 +23,13 @@
     width: 70%;
  margin: 0 auto;
   }
+  .sendemail{
+    width: 20%;
+    margin: 20px auto;
+    background-color: #0D406D;
+    color: #fff;
+    padding: 10px;
+  }
 /*   
   .EmailForm div {
     margin-bottom: 10px;

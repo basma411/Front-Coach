@@ -1,0 +1,185 @@
+.navigation-arrows {
+    width: 70%;
+  
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin: 20px auto;
+  }
+  
+  .left-Article {
+    width: 40%;
+    height: 100% !important;
+    padding: 30px 50px 20px 20px ;
+  
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  }
+  
+  .right-Article {
+    width: 70%;
+    height: 100% !important;
+    padding: 100px 30px !important;
+    margin:  0;
+  
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
+  }
+  
+  .formulaireAtelier {
+    margin-bottom: 20px;
+    color: rgb(39, 84, 145);
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 40px;
+    text-align: center;
+  }
+  
+  .left-Article img {
+    width: 250px;
+    height: 150px;
+    border-radius: 5px;
+  }
+  
+  .left-Article h1 {
+    font-size: 20px;
+    margin-top: 10px;
+    color: rgb(227, 216, 10);
+    font-weight: 300;
+    line-height: 24px;
+    cursor: pointer;
+  }
+  
+  .left-Article h2 {
+    font-size: 16px;
+    margin-top: 5px;
+    font-weight: 300;
+    line-height: 32px;
+    color: rgb(128, 128, 128);
+  }
+  
+  .right-Article {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .right-Article h1 {
+    margin-bottom: 20px;
+    font-size: 25px;
+    font-weight: 400;
+    color: gray;
+  }
+  
+  .right-Article form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .inputArticle {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #535252;
+    cursor: pointer;
+  }
+  .TextareaArticle{
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #535252;
+  
+    cursor: pointer;
+  
+  }
+  .LabelArticle{
+    margin: 10px 0;
+  }
+  .FileArticle{
+  
+    margin: 10px;
+    font-size: 20px; 
+  }
+  .BoutonArticle{
+  
+    background-color: yellow;
+    width: 150px;
+    height: 50px;
+    margin: 20px auto;
+    border: none;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); 
+    border-radius: 2%; 
+    font-size: 20px;
+    color: #000;
+  
+  }
+  
+  .inputArticle:focus,
+  .TextareaArticle:focus,
+  .FileArticle:focus {
+    outline-color: rgb(36, 233, 233);
+    outline-style: solid; /* Set the outline style to solid */
+    outline-offset: 0; /* Set the outline width to 1px */
+  }
+  
+  /* .editor{
+    position: relative;
+    width: 100%;
+    margin: auto; 
+  
+  } */
+  .POLICE {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+    background-color: #F8F8F8;
+    padding: 2px;
+    border: 1px solid #ccc; /* Ajoute une bordure */
+  }
+  
+  
+  .bold-icon,
+  .italic-icon,
+  .list-icon,
+  .arrow-icon {
+    font-size: 25px; /* Taille de la police */
+    cursor: pointer; /* Curseur au survol */
+    color: #333; /* Couleur de l'icône */
+  }
+  
+  .bold-icon,
+  .italic-icon,
+  .list-icon {
+    margin-right: 10px; /* Espacement à droite de chaque icône, sauf la dernière */
+  }
+  
+  .arrow-icon {
+    margin-left: 10px; /* Espacement à gauche de l'icône de flèche */
+  }
+  
+  .separator {
+    width: 1px; /* Largeur de la ligne */
+    height: 25px; /* Hauteur de la ligne, ajustez selon vos besoins */
+    background-color: #ccc; /* Couleur de la ligne */
+  }
+  
+  
+  
+  
+  
+  
+  #article-button {
+    background-color: rgb(229, 255, 0);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    width: 100px;
+    margin: 0 auto;
+    border-radius: 5px;
+  }

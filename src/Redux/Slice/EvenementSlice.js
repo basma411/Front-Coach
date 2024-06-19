@@ -18,9 +18,10 @@ export const deleteEvenement= createAsyncThunk('Evenement/delete', async ({id,da
     return rejectWithValue(error);
   }
 });
-export const AddEvenement = createAsyncThunk('Evenement/add', async (data, { rejectWithValue }) => {
+export const AddEvenement = createAsyncThunk('Evenement/add', async (data, { rejectWithValue,dispatch }) => {
   try {
     const res = await axios.post("/api/Evenements", data, { headers: { token: localStorage.getItem('token1') } });
+    dispatch(GetEvenement())
     return res.data;
   } catch (error) {
     return rejectWithValue(error);

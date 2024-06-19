@@ -10,7 +10,7 @@ import "./css/navbarAdmin.css";
 
 const NavBarAdmin = () => {
   return (
-    <Navbar bg="light" expand="lg" data-bs-theme="light" style={{ display: 'flex', flexDirection: 'column', margin: '80px' }} className="m-0 p-0">
+    <Navbar  style={{ display: 'flex', flexDirection: 'column', margin: '80px' }} className="m-0 p-0">
       <Container style={{ display: "flex", justifyContent: "space-between" }} className="m-0 p-0">
         <div>
           <img src={logo} alt="Logo" style={{ padding: "0px" }} />

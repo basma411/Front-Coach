@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import image from '../../../images/big_image_2.jpg';
 import { IoPowerOutline } from 'react-icons/io5';
 import { useDispatch } from 'react-redux';
@@ -7,12 +7,16 @@ import BarheaderAdmin from '../BarheaderAdmin';
 import NavBarAdmin from '../NavBarAdmin';
 import { AddEvenement } from '../../../Redux/Slice/EvenementSlice';
 import { useNavigate } from 'react-router-dom';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { Editor } from '@tinymce/tinymce-react';
 
 const AjouterEvenement = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const editorRef = useRef(null);
+  const photoRef = useRef(null);
+
+  const [Texte, setTexte] = useState('');
+
   const [formData, setFormData] = useState({
     titre: '',
     texte: '',
@@ -21,7 +25,14 @@ const AjouterEvenement = () => {
     date: '',
   });
 
-  const photoRef = useRef();
+  useEffect(() => {
+    return () => {
+      if (editorRef.current) {
+        editorRef.current.destroy();
+        editorRef.current = null;
+      }
+    };
+  }, []);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -31,25 +42,23 @@ const AjouterEvenement = () => {
     }));
   };
 
-  const handleEditorChange = (event, editor) => {
-    const data = editor.getData();
-    setFormData(prevData => ({
-      ...prevData,
-      texte: data,
-    }));
+  const handleEditorChange = (content) => {
+    setTexte(content);
   };
 
   const handlePartenaire = (event) => {
     event.preventDefault();
+
     const formDataToSend = new FormData();
+    console.log(formData.titre,Texte,formData.lien,photoRef.current.files[0])
     formDataToSend.append('titre', formData.titre);
-    formDataToSend.append('texte', formData.texte);
+    formDataToSend.append('texte', Texte);
     formDataToSend.append('lien', formData.lien);
     formDataToSend.append('lieu', formData.lieu);
     formDataToSend.append('dates', formData.date);
     formDataToSend.append('photo', photoRef.current.files[0]);
 
-    dispatch(AddEvenement(formDataToSend));
+    dispatch(AddEvenement({data:formDataToSend}));
     navigate('/admin/Evenements');
   };
 
@@ -83,22 +92,34 @@ const AjouterEvenement = () => {
             onChange={handleInputChange}
             className='styleinput'
           />
-          
-          <label>Texte :</label>
-          <div             className='styleinput'
->
 
-          </div>
-          <CKEditor
-            editor={ClassicEditor}
-            data={formData.texte}
-            onChange={handleEditorChange}
-            config={{
-              toolbar: ['bold', 'italic', '|', 'numberedList', 'bulletedList', '|', 'outdent', 'indent', '|', 'link', 'unlink'],
-              language: 'en',
+          <label>Texte :</label>
+          <Editor
+            apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
+            onInit={(evt, editor) => {
+              editorRef.current = editor;
+              editor.setContent(formData.texte);
             }}
-          />          
-          
+            initialValue={formData.texte}
+            init={{
+              height: 500,
+              menubar: false,
+              plugins: [
+                'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
+              ],
+              toolbar: 'undo redo | blocks | ' +
+                'bold italic forecolor | alignleft aligncenter ' +
+                'alignright alignjustify | bullist numlist outdent indent | ' +
+                'removeformat | help',
+              content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+              setup: (editor) => {
+                editor.on('change', () => handleEditorChange(editor.getContent()));
+              }
+            }}
+          />
+
           <label>Lien :</label>
           <input
             type="text"
@@ -107,7 +128,7 @@ const AjouterEvenement = () => {
             onChange={handleInputChange}
             className='styleinput'
           />
-          
+
           <label>Lieu :</label>
           <input
             type="text"
@@ -116,7 +137,7 @@ const AjouterEvenement = () => {
             onChange={handleInputChange}
             className='styleinput'
           />
-          
+
           <label>Date :</label>
           <input
             type="text"
@@ -125,13 +146,13 @@ const AjouterEvenement = () => {
             onChange={handleInputChange}
             className='styleinput'
           />
-          
+
           <label>Photo :</label>
           <input type="file" ref={photoRef} className='styleinput' />
 
           <button type="submit">
             Envoyer
-          </button> 
+          </button>
         </form>
       </div>
     </>

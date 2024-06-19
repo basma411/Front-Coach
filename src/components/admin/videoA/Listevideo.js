@@ -25,7 +25,12 @@ const Listevideo = () => {
       dispatch(deletevideo({ id }));
     }
   };
-
+  const truncateText = (htmlText, maxLength) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlText, 'text/html');
+    const textContent = doc.body.textContent || "";
+    return textContent.length > maxLength ? textContent.substring(0, maxLength) + '...' : textContent;
+  };
   return (
     <>
       <BarheaderAdmin />
@@ -80,10 +85,11 @@ const Listevideo = () => {
               </tr>
             </thead>
             <tbody>
-              {video.map((video, index) => (
+              {video && video.map((video, index) => (
                 <tr key={index}>
                      <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    {video.titre}
+                    {truncateText(video.titre)}
+
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
                     <img
