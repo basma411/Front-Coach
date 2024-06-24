@@ -1,25 +1,33 @@
+.atelier-Degus{
+  width: 100%;
+margin: 0;
+padding: 0;
+
+}
 .atelier-container {
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
     justify-content: center;
     padding: 20px;
+    margin: 0 auto;
+    gap:30px ;
   }
   
   .card {
     background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
     overflow: hidden;
     width: 500px;
-    text-align: center;
+    height: 400px;
+    text-align: left;
   }
   
   .card-image {
     width: 100%;
-    height: 150px;
+    height: 75%;
     object-fit: cover;
   }
   

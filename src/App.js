@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Header from './components/coach/Header'; 
+import Header from './components/coach/Header';
 import Accueil from './components/Acueil/Accueil';
 import Login from './components/admin/Login';
 import LoginCoch from './components/coach/LoginCoch';
@@ -78,7 +78,7 @@ import EmailingCoach from './components/admin/BaseCoach/EmailingCoach.js';
 import AddFaq from './components/admin/FAQ/AddFaq.js';
 import ListFaq from './components/admin/FAQ/ListFaq.js';
 import Temoignages from './components/TrouverCoach/Temoignages.js';
-
+import ListePub from './components/Acueil/ListePub.js';
 
 function App() {
   const isLoading = useSelector(state => state.loading.isLoading);
@@ -100,7 +100,6 @@ function App() {
   const validRoutes = [
     "/coach/login",
     "/coach/profil",
-    
     "/",
     "/Accueil",
     "/TrouverCoach",
@@ -115,13 +114,13 @@ function App() {
     "/ajouter_article",
     "/formulaire",
     "/Evenement/ajouter",
-   "/Contact-coach",
-   "/Temoignages"
+    "/Contact-coach",
+    "/Temoignages",
+    "/atelier_degustation/:id"
   ];
-  
 
   // Vérifie si l'URL actuelle correspond à une route valide
-  const isRouteValid = validRoutes.includes(location.pathname);
+  const isRouteValid = validRoutes.includes(location.pathname) || location.pathname.startsWith("/atelier_degustation");
 
   return (
     <div className="App">
@@ -138,85 +137,60 @@ function App() {
             </>
           )}
           <Routes>
-          <Route path="/admin/consulter_icon" element={<ConsulterIcon />} />
-          <Route path="/admin/icon/edit/:id" element={<Edit />} />
-
-          <Route path="/admin/editer_slider" element={<Sliders />} />
-          <Route path="/admin/ajouter_slider" element={<AjouterSlider />} />
-          <Route path="/admin/edit_slider/:id" element={<EditSlider />} />
-
-          <Route path="/admin/consulter_biblio" element={<ConsulterBiblio />} />
-          <Route path="/admin/consulter_biblio/Edit/:id" element={<EditBiblio />} />
-
-          <Route path="/admin/consulter_domaine" element={<ConsulterDomaine />} />
-          <Route path="/admin/consulter_domaine/edit/:id" element={<EditDomaine />} />
-          <Route path="/admin/consulter_domaine/ajouter" element={<AjouterDomaine />} />
-
-          <Route path="/admin/consulter_interface" element={<ConsulterInterface />} />
-          <Route path="/admin/consulter_interface/edit/:id" element={<EditInterface />} />
-
-          <Route path="/admin/témoignages" element={<Temoignage />} />
-          <Route path="/admin/témoignages/invisible" element={<TémignageInvisible />} />
-          <Route path="/admin/témoignages/visible" element={<TémoignageVisible />} />
-          <Route path="/admin/témoignages/invisible/view/:id" element={<ViewTemoignage />} />
-          <Route path="/admin/témoignages/invisible/edit/:id" element={<EditTemoignage />} />
-          <Route path="/admin/atelier-A" element={<WorkshopList  />} />
-          <Route path="/admin/atelier-A/:id" element={<WorkshopPage/>} />
-          <Route path="/admin/atelier-A/ajouter" element={<AddAtelier/>} />
-
-          <Route path="/admin/atelier-A/:id/add-PUB" element={<AddPublication/>} />
-          <Route path="/admin/atelier-A/:id/List-PROF" element={<ListProf/>} />
-
-          <Route path="/admin/atelier-A/:id/List-COACH" element={<ListCoach/>} />
-
-
-          
-          <Route path="/admin/article" element={<Article />} />
-          <Route path="/admin/article/invisible" element={<ArticleInvisible />} />
-
-          <Route path="/admin/article/visible" element={<ArticleVisible />} />
-          <Route path="/admin/article/visible/edit/:id" element={<EditArticle />} />
-          <Route path="/admin/article/invisible/view/:id" element={<ViewArticle />} />
-
-          <Route path="/admin/Coachs" element={<CoachA />} />
-          <Route path="/admin/Coachs/invisible" element={<CoachInvisib />} />
-          <Route path="/admin/Coachs/invisible/view/:id" element={<ViewCoachInvisible />} />
-
-          <Route path="/admin/Coachs/visible" element={<CoachVisib />} />
-          <Route path="/admin/Coachs/visible/edit/:id" element={<EditCoach />} />
-          <Route path="/admin/Coachs/visible/view/:id" element={<ViewCoachVisible />} />
-
-          <Route path="/admin/Partenaires" element={<PartenairesA />} />
-          <Route path="/admin/Partenaires/ajouter" element={<AjouterPartenaires />} />
-
-          {/* <Route path="/admin/Salon" element={<Article />} /> */}
-          <Route path="/admin/Evenements" element={<EvenementA />} />
-          <Route path="/admin/Evenements/AjouterEvenement" element={<AjouterEvenement />} />
-
-          <Route path="/admin/Evenements/Liste" element={<ListeEvenement />} />
-          <Route path="/admin/Evenements/liste/edit/:id" element={<EditEvenement />} />
-
-
-          <Route path="/admin/videoCoching" element={<VideoA />} />
-          <Route path="/admin/videoCoching/ajouter" element={<Ajoutervideo />} />
-          <Route path="/admin/videoCoching/edit/:id" element={<Editvideo />} />
-
-          <Route path="/admin/videoCoching/liste" element={<Listevideo />} />
-
-          <Route path="/admin/Contact" element={<ContactA />} />
-                    <Route path="/admin/Contact/Email/:id" element={<ContactEmailA />} />
-
-          <Route path="/admin/Newsletter" element={<NewsletterA />} />
-
+            <Route path="/admin/consulter_icon" element={<ConsulterIcon />} />
+            <Route path="/admin/icon/edit/:id" element={<Edit />} />
+            <Route path="/admin/editer_slider" element={<Sliders />} />
+            <Route path="/admin/ajouter_slider" element={<AjouterSlider />} />
+            <Route path="/admin/edit_slider/:id" element={<EditSlider />} />
+            <Route path="/admin/consulter_biblio" element={<ConsulterBiblio />} />
+            <Route path="/admin/consulter_biblio/Edit/:id" element={<EditBiblio />} />
+            <Route path="/admin/consulter_domaine" element={<ConsulterDomaine />} />
+            <Route path="/admin/consulter_domaine/edit/:id" element={<EditDomaine />} />
+            <Route path="/admin/consulter_domaine/ajouter" element={<AjouterDomaine />} />
+            <Route path="/admin/consulter_interface" element={<ConsulterInterface />} />
+            <Route path="/admin/consulter_interface/edit/:id" element={<EditInterface />} />
+            <Route path="/admin/témoignages" element={<Temoignage />} />
+            <Route path="/admin/témoignages/invisible" element={<TémignageInvisible />} />
+            <Route path="/admin/témoignages/visible" element={<TémoignageVisible />} />
+            <Route path="/admin/témoignages/invisible/view/:id" element={<ViewTemoignage />} />
+            <Route path="/admin/témoignages/invisible/edit/:id" element={<EditTemoignage />} />
+            <Route path="/admin/atelier-A" element={<WorkshopList />} />
+            <Route path="/admin/atelier-A/:id" element={<WorkshopPage />} />
+            <Route path="/admin/atelier-A/ajouter" element={<AddAtelier />} />
+            <Route path="/admin/atelier-A/:id/add-PUB" element={<AddPublication />} />
+            <Route path="/admin/atelier-A/:id/List-PROF" element={<ListProf />} />
+            <Route path="/admin/atelier-A/:id/List-COACH" element={<ListCoach />} />
+            <Route path="/admin/article" element={<Article />} />
+            <Route path="/admin/article/invisible" element={<ArticleInvisible />} />
+            <Route path="/admin/article/visible" element={<ArticleVisible />} />
+            <Route path="/admin/article/visible/edit/:id" element={<EditArticle />} />
+            <Route path="/admin/article/invisible/view/:id" element={<ViewArticle />} />
+            <Route path="/admin/Coachs" element={<CoachA />} />
+            <Route path="/admin/Coachs/invisible" element={<CoachInvisib />} />
+            <Route path="/admin/Coachs/invisible/view/:id" element={<ViewCoachInvisible />} />
+            <Route path="/admin/Coachs/visible" element={<CoachVisib />} />
+            <Route path="/admin/Coachs/visible/edit/:id" element={<EditCoach />} />
+            <Route path="/admin/Coachs/visible/view/:id" element={<ViewCoachVisible />} />
+            <Route path="/admin/Partenaires" element={<PartenairesA />} />
+            <Route path="/admin/Partenaires/ajouter" element={<AjouterPartenaires />} />
+            <Route path="/admin/Evenements" element={<EvenementA />} />
+            <Route path="/admin/Evenements/AjouterEvenement" element={<AjouterEvenement />} />
+            <Route path="/admin/Evenements/Liste" element={<ListeEvenement />} />
+            <Route path="/admin/Evenements/liste/edit/:id" element={<EditEvenement />} />
+            <Route path="/admin/videoCoching" element={<VideoA />} />
+            <Route path="/admin/videoCoching/ajouter" element={<Ajoutervideo />} />
+            <Route path="/admin/videoCoching/edit/:id" element={<Editvideo />} />
+            <Route path="/admin/videoCoching/liste" element={<Listevideo />} />
+            <Route path="/admin/Contact" element={<ContactA />} />
+            <Route path="/admin/Contact/Email/:id" element={<ContactEmailA />} />
+            <Route path="/admin/Newsletter" element={<NewsletterA />} />
             <Route path="/admin/login" element={<Login />} />
             <Route path="/admin/Accueil" element={<AccueilAdmin />} />
-                        <Route path="/admin/Base-Coach" element={<BaseCoach />} />
-                        <Route path="/admin/EmailingCoach" element={<EmailingCoach />} />
-
-                        <Route path="/admin/FAQ" element={<Faq />} />
-                        <Route path="/admin/add-faq" element={<AddFaq />} />
-                        <Route path="/admin/list-faq" element={<ListFaq />} />
-
+            <Route path="/admin/Base-Coach" element={<BaseCoach />} />
+            <Route path="/admin/EmailingCoach" element={<EmailingCoach />} />
+            <Route path="/admin/FAQ" element={<Faq />} />
+            <Route path="/admin/add-faq" element={<AddFaq />} />
+            <Route path="/admin/list-faq" element={<ListFaq />} />
             <Route path="/coach/login" element={<LoginCoch />} />
             <Route path="/coach/profil" element={<ProfilCoach />} />
             <Route path="/coach/setting/:id" element={<SettingProfil />} />
@@ -225,22 +199,19 @@ function App() {
             <Route path="/Accueil" element={<Accueil />} />
             <Route path="/TrouverCoach" element={<TrouverCoach />} />
             <Route path="/Temoignages" element={<Temoignages />} />
-
             <Route path="/EspaceCoach" element={<EspaceCoach />} />
             <Route path="/Evenement" element={<Evenement />} />
             <Route path="/Evenement/ajouter" element={<AjouterEvtt />} />
-
             <Route path="/video" element={<Videocoach />} />
             <Route path="/Contact-coach" element={<ContactCoach />} />
-
             <Route path="/coach" element={<Coach />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/atelier_degustation" element={<Atelier_Degustation />} />
+            <Route path="/atelier_degustation/:id" element={<ListePub />} />
             <Route path="/formatelier" element={<FormAtelier />} />
             <Route path="/articles" element={<Articles />} />
             <Route path="/ajouter_article" element={<AjoutArticle />} />
             <Route path="/formulaire" element={<Formulaire />} />
-
           </Routes>
         </>
       )}

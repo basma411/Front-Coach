@@ -5,9 +5,11 @@ import { FaPlay } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 const Atelier = () => {
   return (
-    <div className="Atelier-container">
+    <div className="Atelier-con">
       
-      <div className='heading'>
+    <div className="Atelier-container">
+
+    <div className='heading'>
         <h2 className='TitleAtelier'>Bienvenue à notre Plateforme</h2>
         <p className="TextAtelier">
           Plateforme grand public qui ambitionne de donner à tous les coachs les mêmes chances de se faire connaître et aux personnes à la recherche de coach, un accès facile et des informations complètes sur les professionnels du métier. Elle rassemble les professionnels francophones du coaching dans le respect des différentes pratiques et champs d’intervention propres à chacun. Fondée sur l’échange, elle permet aux coachs de se définir dans leur pratique et aux coachés d’échanger sur leurs expériences.
@@ -24,6 +26,7 @@ const Atelier = () => {
             <button className="AtelierInscri">Je m'inscris</button>
           </Link>        </div>
       </div>
+    </div>
     </div>
   );
 }
