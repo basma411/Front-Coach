@@ -3,10 +3,7 @@ import BarheaderAdmin from "../BarheaderAdmin";
 import NavBarAdmin from "../NavBarAdmin";
 import "./css/articleA.css";
 import image from "../../../images/big_image_2.jpg";
-import { IoPowerOutline } from "react-icons/io5";
-import { GetIcon } from "../../../Redux/Slice/IconSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { CiEdit } from "react-icons/ci";
+
 import { Link, useNavigate } from "react-router-dom";
 const Article = () => {
   const navigator=useNavigate()

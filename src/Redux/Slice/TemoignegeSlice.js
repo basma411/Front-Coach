@@ -22,9 +22,10 @@ export const GetTemoignageIn = createAsyncThunk('temoignages/getInvisible', asyn
 });
 
 // Thunk to add an article
-export const AddTemoignages = createAsyncThunk('temoignages/add', async (formData, { rejectWithValue }) => {
+export const AddTemoignages = createAsyncThunk('temoignages/add', async (formData, { rejectWithValue ,dispatch}) => {
   try {
     const res = await axios.post('/api/add-temoignages', formData);
+    dispatch(GetTemoignageIn())
     return res.data;
   } catch (error) {
     return rejectWithValue(error.response.data);

@@ -1,8 +1,13 @@
+.Temaignage{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
 .Temaignage-container {
     width: 80%;
    display: flex;
-   align-items: center;
-   justify-content: space-around;
+   /* align-items: center;
+   justify-content: space-around; */
    gap: 50PX;
    background: #fff;
    font-family: "Rubik", arial, sans-serif;
@@ -13,16 +18,22 @@
    margin: 120px auto;
   }
      .heading {
-        max-width: 480px;
-        margin-bottom: 60px;
+        max-width: 50%;
+        margin-bottom: 0px;
     }
-    .heading h2{
+    .titreTemoignage{
         font-size: 45px;
     margin: 0;
     padding: 0;
     color: #275491;
     }
+    .text{
+        text-align: justify;
+        font-size: 18px;
+
+    }
     .Temaignage-image{
+        width: 50%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -32,7 +43,7 @@
     .Temaignage-image .icon-play{
 
         position: absolute;
-  top: 40%;
+  top: 54%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 80px;
@@ -79,3 +90,63 @@
     padding: 10px;
     font-weight: 300;
 }
+
+.modalBaghroundTemoignage {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2; 
+    margin: 0;
+    padding: 0;
+  
+  }
+  
+  .modaltemoignageContainer {
+    width: 50%;
+    height: 500px;
+    background-color: #FFF;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+  overflow-y: auto;
+  
+  }
+  
+  
+  
+.editorContainer {
+  width: 80%;
+  margin: 50px auto;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.editor {
+    width: 100%;
+
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+ .addTemoign{
+display: block;
+margin: 20px auto;
+    background-color: rgb(39, 84, 145);
+    color: #fff;
+    border-radius: 10px;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+ }

@@ -25,6 +25,12 @@ const ViewTemoignage = () => {
       }
     }
   }, [TemoignegeIv, id]);
+  const truncateText = (htmlText, maxLength) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlText, 'text/html');
+    const textContent = doc.body.textContent || "";
+    return textContent.length > maxLength ? textContent.substring(0, maxLength) + '...' : textContent;
+  };
   return (
     <div className="ViewTem">
       <div className="viewContainerTem">
@@ -47,7 +53,11 @@ const ViewTemoignage = () => {
           }}
         >
           <label>Texte:</label>
-          <p className="styletexteTem">{formData.texte}</p>
+          <p className="styletexteTem">
+
+          {truncateText(formData.texte)}
+
+          </p>
         </div>
 
         <div style={{ width: "100%", padding: "5px" }}>

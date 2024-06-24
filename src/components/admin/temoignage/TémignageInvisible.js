@@ -28,6 +28,12 @@ const TémignageInvisible = () => {
           dispatch(PutTemoignagesInv({ id,data: { Visible: true }})  ) 
       }
     };
+    const truncateText = (htmlText, maxLength) => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(htmlText, 'text/html');
+      const textContent = doc.body.textContent || "";
+      return textContent.length > maxLength ? textContent.substring(0, maxLength) + '...' : textContent;
+    };
   return (
 
     <>
@@ -87,7 +93,8 @@ const TémignageInvisible = () => {
                   {T_iV.nom}
                 </td>
                 <td style={{ border: "1px solid gray", padding: "10px" }}>
-                  {T_iV.texte}
+                  {truncateText(T_iV.texte, 49)}
+
                 </td>
                 <td style={{ border: "1px solid gray", padding: "10px" }}>
 {T_iV.Date}                </td>

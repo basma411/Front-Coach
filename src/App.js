@@ -77,6 +77,7 @@ import Faq from './components/admin/FAQ/Faq.js';
 import EmailingCoach from './components/admin/BaseCoach/EmailingCoach.js';
 import AddFaq from './components/admin/FAQ/AddFaq.js';
 import ListFaq from './components/admin/FAQ/ListFaq.js';
+import Temoignages from './components/TrouverCoach/Temoignages.js';
 
 
 function App() {
@@ -114,7 +115,8 @@ function App() {
     "/ajouter_article",
     "/formulaire",
     "/Evenement/ajouter",
-   "/Contact-coach"
+   "/Contact-coach",
+   "/Temoignages"
   ];
   
 
@@ -222,6 +224,8 @@ function App() {
             <Route path="/" element={<Accueil />} />
             <Route path="/Accueil" element={<Accueil />} />
             <Route path="/TrouverCoach" element={<TrouverCoach />} />
+            <Route path="/Temoignages" element={<Temoignages />} />
+
             <Route path="/EspaceCoach" element={<EspaceCoach />} />
             <Route path="/Evenement" element={<Evenement />} />
             <Route path="/Evenement/ajouter" element={<AjouterEvtt />} />

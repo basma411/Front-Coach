@@ -1,29 +1,35 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const GetPublication = createAsyncThunk('Publication/get', async (id, { rejectWithValue }) => {
-    try {
-      const res = await axios.get('/api/pub-ateliers/get');
-      return res.data;
-    } catch (error) {
-      return rejectWithValue(error);
+export const GetList = createAsyncThunk(
+    'List/get',
+    async ({ id, entreprise }, { rejectWithValue }) => {
+      try {
+        const res = await axios.get(`/api/pub-List/get/${id}`, {
+          params: { entreprise }, // Pass 'entreprise' as a query parameter
+          headers: { token: localStorage.getItem('token1') }
+        });
+        return res.data;
+      } catch (error) {
+        return rejectWithValue(error);
+      }
     }
-  });
+  );
 
 
-export const AddPublic = createAsyncThunk('Publication/add', async ({data,id}, { rejectWithValue }) => {
+export const AddList = createAsyncThunk('List/add', async ({data,id}, { rejectWithValue }) => {
   try {
-    const res = await axios.post(`/api/pub-ateliers/${id}`, data, { headers: { token: localStorage.getItem('token1') } });
+    const res = await axios.post(`/api/pub-List/${id}`, data);
     return res.data;
   } catch (error) {
     return rejectWithValue(error);
   }
 });
 
-const pubatelierSlice = createSlice({
-  name: "pubatelier",
+const ListSlice = createSlice({
+  name: "List",
   initialState: {
-    pubatelier: [],
+    Lists: [],
     isLoading: false,
     error: null,
     token: localStorage.getItem("token") || null,
@@ -32,33 +38,33 @@ const pubatelierSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(GetPublication.pending, (state) => {
+      .addCase(GetList.pending, (state) => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(GetPublication.fulfilled, (state, action) => {
+      .addCase(GetList.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.isAuth = true;
-        state.pubatelier = action.payload.PubAteliers;
+        state.Lists = action.payload.Lists;
       })
-      .addCase(GetPublication.rejected, (state, action) => {
+      .addCase(GetList.rejected, (state, action) => {
         state.isLoading = false;
         state.token = null;
         state.isAuth = false;
         state.error = action.payload.error;
       })
      
-      .addCase(AddPublic.pending, (state) => {
+      .addCase(AddList.pending, (state) => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(AddPublic.fulfilled, (state) => {
+      .addCase(AddList.fulfilled, (state) => {
         state.isLoading = false;
         state.error = null;
         state.isAuth = true;
       })
-      .addCase(AddPublic.rejected, (state, action) => {
+      .addCase(AddList.rejected, (state, action) => {
         state.isLoading = false;
         state.token = null;
         state.isAuth = false;
@@ -67,4 +73,4 @@ const pubatelierSlice = createSlice({
   },
 });
 
-export default pubatelierSlice.reducer;
+export default ListSlice.reducer;

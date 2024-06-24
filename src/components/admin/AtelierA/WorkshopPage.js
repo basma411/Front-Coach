@@ -14,18 +14,21 @@ function WorkshopPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { pubatelier } = useSelector((state) => state.pubatelie);
-console.log(id)
+  const { pubatelier } = useSelector((state) => state.pubatelier);
+
   useEffect(() => {
     dispatch(GetPublication(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
+
   const truncateText = (htmlText, maxLength) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(htmlText, 'text/html');
     const textContent = doc.body.textContent || "";
     return textContent.length > maxLength ? textContent.substring(0, maxLength) + '...' : textContent;
   };
-console.log(pubatelier)
+
+  const filteredPubatelier = pubatelier.filter(pub => pub.ouner === id);
+
   return (
     <>  
       <BarheaderAdmin />
@@ -43,7 +46,7 @@ console.log(pubatelier)
           <button onClick={() => navigate(`/admin/atelier-A/${id}/List-COACH`)}>Liste des coachs</button>
         </div>
         <div className='ListpubAtelier'> 
-        <table
+          <table
             className="TableEvenement"
             style={{
               borderCollapse: "collapse",
@@ -62,49 +65,29 @@ console.log(pubatelier)
                 <th style={{ border: "1px solid gray", padding: "8px" }}>
                   Texte
                 </th>
-            
-                {/* <th style={{ border: "1px solid gray", padding: "8px" }}>
-                  Modifier
-                </th> */}
               </tr>
             </thead>
             <tbody>
-              {pubatelier && pubatelier.map((pub, index) => (
-                <tr key={index}>
-                    <td style={{ border: "1px solid gray", padding: "10px" }}>
+              {filteredPubatelier.map((pub) => (
+                <tr key={pub._id}>
+                  <td style={{ border: "1px solid gray", padding: "10px" }}>
                     {pub.titre}
                   </td>
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
-                  <img
-            src={getImageUrl(pub.img)}
-            width="100px"
-            height="70px"
-            alt="Event"
-        />
+                    <img
+                      src={getImageUrl(pub.img)}
+                      width="100px"
+                      height="70px"
+                      alt="Event"
+                    />
                   </td>
-                
                   <td style={{ border: "1px solid gray", padding: "10px" }}>
                     {truncateText(pub.texte, 49)}
                   </td>
-                 
-                  {/* <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    <RiDeleteBin6Line
-                      style={{
-                        fontSize: "25px",
-                        color: "black",
-                        marginRight: "20px",
-                      }}
-                      onClick={() => handleDelete(evt._id)}
-                    />
-                    <Link to={`/admin/Evenements/liste/edit/${evt._id}`}>
-                      <CiEdit style={{ fontSize: "25px", color: "black" }} />
-                    </Link>
-                  </td> */}
                 </tr>
               ))}
             </tbody>
           </table>
-
         </div>
       </div>
     </>

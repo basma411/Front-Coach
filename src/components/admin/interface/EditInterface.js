@@ -12,14 +12,10 @@ const EditInterface = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const editorRef1 = useRef();
-
     const editorRef2 = useRef();
 
     const { interfaceData } = useSelector((state) => state.interface);
-    const [image, setImage] = useState(" ");
-    const [Texte, settexte] = useState(" ")
-    const [Titre, settitre] = useState(" ")
-
+    const [image, setImage] = useState(null);
     const [formData, setFormData] = useState({
         titre: '',
         texte: '',
@@ -42,6 +38,7 @@ const EditInterface = () => {
             }
         }
     }, [interfaceData, id]);
+
     useEffect(() => {
         return () => {
             if (editorRef1.current) {
@@ -54,18 +51,18 @@ const EditInterface = () => {
             }
         };
     }, []);
+
     const handleFileChange = (e) => {
         setImage(e.target.files[0]);
     };
 
     const handleEditorChange = (content, editor, name) => {
-        settexte(content);
-
+        setFormData(prevData => ({
+            ...prevData,
+            [name]: content
+        }));
     };
-    const handleTitreChange = (content, editor, name) => {
-        settitre(content);
 
-    };
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prevData => ({
@@ -77,11 +74,11 @@ const EditInterface = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const formDataToSend = new FormData();
-        formDataToSend.append('titre', Titre);
-        formDataToSend.append('texte',Texte);
+        formDataToSend.append('titre', formData.titre);
+        formDataToSend.append('texte', formData.texte);
         formDataToSend.append('page', formData.page);
         formDataToSend.append('lien', formData.lien);
-        
+
         if (image) {
             formDataToSend.append('image', image);
         }
@@ -111,12 +108,12 @@ const EditInterface = () => {
                     <div>
                         <label>Titre</label>
                         <Editor
-  apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
-  onInit={(evt, editor) => {
+                            apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
+                            onInit={(evt, editor) => {
                                 editorRef1.current = editor;
                                 editor.setContent(formData.titre);
                             }}
-                            initialValue={formData.titre} // Assurez-vous que cette ligne est utilisée pour initialiser également
+                            initialValue={formData.titre}
                             init={{
                                 height: 500,
                                 menubar: false,
@@ -131,7 +128,7 @@ const EditInterface = () => {
                                     'removeformat | help',
                                 content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
                                 setup: (editor) => {
-                                    editor.on('change', () => handleTitreChange(editor.getContent()));
+                                    editor.on('change', () => handleEditorChange(editor.getContent(), editor, 'titre'));
                                 }
                             }}
                         />
@@ -139,12 +136,12 @@ const EditInterface = () => {
                     <div>
                         <label>Texte</label>
                         <Editor
-  apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
-  onInit={(evt, editor) => {
+                            apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
+                            onInit={(evt, editor) => {
                                 editorRef2.current = editor;
                                 editor.setContent(formData.texte);
                             }}
-                            initialValue={formData.texte} // Assurez-vous que cette ligne est utilisée pour initialiser également
+                            initialValue={formData.texte}
                             init={{
                                 height: 500,
                                 menubar: false,
@@ -159,7 +156,7 @@ const EditInterface = () => {
                                     'removeformat | help',
                                 content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
                                 setup: (editor) => {
-                                    editor.on('change', () => handleEditorChange(editor.getContent()));
+                                    editor.on('change', () => handleEditorChange(editor.getContent(), editor, 'texte'));
                                 }
                             }}
                         />
