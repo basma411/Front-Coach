@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./css/coach.css";
 import { GiPositionMarker } from "react-icons/gi";
 import image from '../../images/big_image_2.jpg'
-import { cherchecoach, getCoach } from "../../Redux/Slice/CoachSlice"; // Importez l'action cherchecoach
+import {  getCoach } from "../../Redux/Slice/CoachSlice"; // Importez l'action cherchecoach
 
 const Coach = () => {
   const { coachfiltre } = useSelector((state) => state.coach); // Accédez à l'état des coachs filtrés depuis le magasin Redux

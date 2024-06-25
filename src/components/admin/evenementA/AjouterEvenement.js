@@ -22,7 +22,7 @@ const AjouterEvenement = () => {
     texte: '',
     lien: '',
     lieu: '',
-    date: '',
+    dates: '', 
   });
 
   useEffect(() => {
@@ -49,17 +49,27 @@ const AjouterEvenement = () => {
   const handlePartenaire = (event) => {
     event.preventDefault();
 
+    // Vérification de la complétion de tous les champs requis
+    if (!formData.titre || !Texte || !formData.lien || !formData.lieu || !formData.dates || !photoRef.current.files[0]) {
+      alert("Tous les champs sont requis.");
+      return;
+    }
+
     const formDataToSend = new FormData();
-    console.log(formData.titre,Texte,formData.lien,photoRef.current.files[0])
     formDataToSend.append('titre', formData.titre);
     formDataToSend.append('texte', Texte);
     formDataToSend.append('lien', formData.lien);
     formDataToSend.append('lieu', formData.lieu);
-    formDataToSend.append('dates', formData.date);
+    formDataToSend.append('dates', formData.dates); // Modifié de 'date' à 'dates'
     formDataToSend.append('photo', photoRef.current.files[0]);
 
-    dispatch(AddEvenement({data:formDataToSend}));
-    navigate('/admin/Evenements');
+    dispatch(AddEvenement(formDataToSend))
+      .then(() => {
+        navigate('/admin/Evenements');
+      })
+      .catch((error) => {
+        console.error("Failed to add event: ", error);
+      });
   };
 
   return (
@@ -91,6 +101,7 @@ const AjouterEvenement = () => {
             value={formData.titre}
             onChange={handleInputChange}
             className='styleinput'
+            required // Champ requis
           />
 
           <label>Texte :</label>
@@ -127,6 +138,7 @@ const AjouterEvenement = () => {
             value={formData.lien}
             onChange={handleInputChange}
             className='styleinput'
+            required // Champ requis
           />
 
           <label>Lieu :</label>
@@ -136,19 +148,21 @@ const AjouterEvenement = () => {
             value={formData.lieu}
             onChange={handleInputChange}
             className='styleinput'
+            required // Champ requis
           />
 
           <label>Date :</label>
           <input
             type="text"
-            name="date"
-            value={formData.date}
+            name="dates" // Modifié de 'date' à 'dates'
+            value={formData.dates}
             onChange={handleInputChange}
             className='styleinput'
+            required // Champ requis
           />
 
           <label>Photo :</label>
-          <input type="file" ref={photoRef} className='styleinput' />
+          <input type="file" ref={photoRef} className='styleinput' required />
 
           <button type="submit">
             Envoyer

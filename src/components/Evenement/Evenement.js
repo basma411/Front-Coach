@@ -14,15 +14,18 @@ import { FaFacebook } from "react-icons/fa";
 import logo from "../../images/logo.jpg";
 import { CiCalendarDate } from "react-icons/ci";
 import { GiPositionMarker } from "react-icons/gi";
+
 const Evenement = () => {
   const dispatch = useDispatch();
-
   const { Evenement } = useSelector((state) => state.evenement); 
+
   useEffect(() => {
     dispatch(GetEvenement());
   }, [dispatch]);
+
   const [showModal, setShowModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
+
   const handleTitleClick = (article) => {
     setSelectedEvent(article);
     setShowModal(true);
@@ -32,6 +35,7 @@ const Evenement = () => {
     setShowModal(false);
     setSelectedEvent(null);
   };
+
   return (
     <>
       <div
@@ -51,9 +55,8 @@ const Evenement = () => {
       </div>
       <div className="Evnement">
         <div className="ContainerEvnement">
-        <Link to="/Evenement/ajouter">
-
-          <button className='partageEvnt'>Partagez votre évènement</button>
+          <Link to="/Evenement/ajouter">
+            <button className='partageEvnt'>Partagez votre évènement</button>
           </Link>
         </div>
         <div className="article-list">
@@ -81,40 +84,45 @@ const Evenement = () => {
         </div>
       </div>
       {showModal && (
-        <div className="modalBaghround">
+        <div className="modalBaghroundEvnt">
           <span className="close" onClick={closeModal}>&times;</span>
-          <div className="modalcontainer">
+          <div className="modalcontainerEvnt">
             <img src={logo} alt="logo" width="220px" height="70" />
             <hr />
-            <div className="modal-content">
-              <img src={getImageUrl(selectedEvent.photo)} alt="Event" className="modal-image" />
-              <div className="modal-text-content">
-                <h2 className="modal-title">{selectedEvent.titre}</h2>
+            <div >
+              <img src={getImageUrl(selectedEvent.photo)} alt="Event" className="Evnt-image" />
+              
+            </div>
+             <div className="modal-Evnt">
+                <h2 className="Evnt-titre">{selectedEvent.titre}</h2>
+                
                 <div dangerouslySetInnerHTML={{ __html: selectedEvent.texte }} />
                 <hr />
+                <div className="Evnt-info">
+  <div style={{ display: 'flex', alignItems: 'center' }}>
+    <CiCalendarDate style={{ color: 'gray' }} />
+    <h5 className="info">{selectedEvent.dates}</h5>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center' }}>
+    <GiPositionMarker style={{ color: 'gray' }} />
+    <h5 className="info">{selectedEvent.lieu}</h5>
+  </div>
+</div>
 
-                <div className="modal-info">
-                  <CiCalendarDate />
-                  <h5>{selectedEvent.dates}</h5>
-                  <GiPositionMarker />
-                  <h5>{selectedEvent.lieu}</h5>
-                </div>
               </div>
-            </div>
-
-            <div className='partage'>
-              <button className="linkedin-button" >
+             <div className='partage'>
+              <button className="linkedin-button">
                 <GrLinkedin /> Partage
               </button>
-              <button className="facebook-button" >
+              <button className="facebook-button">
                 <FaFacebook /> Partage
               </button>
-            </div>
+            </div> 
           </div>
         </div>
       )}
-      <Newsletter/>
-      <Footer/>
+      <Newsletter />
+      <Footer />
     </>
   )
 }

@@ -47,7 +47,7 @@ const NewsletterA = () => {
       </div>
       <div className="ConsultNewsLetter">
         <div className="ConsultNewsLetterContainer">
-          <Link to="/admin/Accueil">
+          <Link to="/admin/Newsletter/emailing">
             <button className="AccueilNewsLetter">Emailing Newsletter</button>
           </Link>
           <table

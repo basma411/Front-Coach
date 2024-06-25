@@ -11,8 +11,10 @@ const Barheader = () => {
     <Link to="/coach/login">
       <h5>Mon compte</h5>
 </Link>
+<Link to='/faq'>
 <h5>FAQ</h5>
-    </div>  )
+
+</Link>    </div>  )
 }
 
 export default Barheader

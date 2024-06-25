@@ -7,6 +7,7 @@ import { Editor } from '@tinymce/tinymce-react';
 import { sendEmail } from '../../../Redux/Slice/emailSlice';
 import image from "../../../images/big_image_2.jpg";
 import './css/ContactEmailA.css';
+import DOMPurify from 'dompurify';
 
 const ContactEmailA = () => {
   const dispatch = useDispatch();
@@ -56,7 +57,8 @@ const ContactEmailA = () => {
     const templateParams = {
       email: contact.email,
       subject: form.current.subject.value,
-      message: truncateText(message, 1000), // Limitez la longueur du message si nécessaire
+      
+      message: DOMPurify.sanitize(message), 
     };
 
     dispatch(sendEmail(templateParams))

@@ -5,18 +5,24 @@ import NavBarAdmin from "../NavBarAdmin";
 import image from "../../../images/big_image_2.jpg";
 import { IoPowerOutline } from 'react-icons/io5';
 import { sendEmail } from "../../../Redux/Slice/emailSlice";
-import "./css/emailcoach.css";
-import { Link } from "react-router-dom";
+import "./css/emailnewsletter.css";
+import { Link, useNavigate } from "react-router-dom";
 import { Editor } from '@tinymce/tinymce-react';
+import DOMPurify from 'dompurify';
+import Alert from '@mui/material/Alert';
+import CheckIcon from '@mui/icons-material/Check';
 
-const EmailingCoach = () => {
+const EmailingNewsletter = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const editorRef = useRef(null);
 
-  const { coachVisible, selectedCoaches } = useSelector((state) => state.coach);
+  const { NewsLetter } = useSelector((state) => state.newsletter);
 
   const [emailMessage, setEmailMessage] = useState("");
   const [subject, setSubject] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
     return () => {
@@ -31,11 +37,22 @@ const EmailingCoach = () => {
   };
 
   const handleSendEmail = () => {
-    const selectedCoachEmails = coachVisible
-      .filter((coach) => selectedCoaches.includes(coach._id))
-      .map((coach) => coach.email);
+    const NewsLetterEmail = NewsLetter.map((newsLetter) => newsLetter.email);
+    const cleanedHtml = DOMPurify.sanitize(emailMessage);
 
-    dispatch(sendEmail({ email: selectedCoachEmails, subject: subject, message: emailMessage }));
+    // Envoyer l'e-mail avec le contenu HTML nettoyé
+    dispatch(sendEmail({ email: NewsLetterEmail, subject: subject, message: cleanedHtml }));
+
+    // Afficher l'alerte
+    setShowAlert(true);
+
+    // Masquer l'alerte et naviguer après un délai
+    setTimeout(() => {
+      setShowAlert(false);
+      navigate('/admin/Newsletter');
+    }, 3000); // Délai de 3 secondes avant de naviguer
+
+    console.log(showAlert); // Ceci peut afficher false immédiatement après setShowAlert(true)
   };
 
   return (
@@ -51,9 +68,9 @@ const EmailingCoach = () => {
       <div className="ConsultEmail">
         <div className="ConsultEmailContainer">
           <Link to='/admin/Base-Coach'>
-            <button className="AccueilEmail">Base des coachs</button>
+            <button className="AccueilEmail">Newsletter</button>
           </Link>
-          <h3 style={{ textAlign: 'center', fontSize: '35px', color: 'gray' }}>Emailing Coachs</h3>
+          <h3 style={{ textAlign: 'center', fontSize: '35px', color: 'gray' }}> Emailing Newsletter </h3>
           <label>Objet:</label>
           <input type="text" value={subject} onChange={(e) => setSubject(e.target.value)} />
           <label>Message:</label>
@@ -67,7 +84,7 @@ const EmailingCoach = () => {
               height: 500,
               menubar: false,
               plugins: [
-                'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                'advlist', 'autolink', 'lists', 'link', 'image', 'charmap',
                 'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
                 'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
               ],
@@ -80,13 +97,15 @@ const EmailingCoach = () => {
             }}
           />
           <button onClick={handleSendEmail} style={{ padding: "10px 20px", fontSize: "16px" }}>Send Email</button>
-          {/* {isLoading && <p>Sending email...</p>}
-          {error && <p>Error: {error}</p>}
-          {success && <p>Email sent successfully!</p>} */}
         </div>
+        {showAlert && (
+          <Alert icon={<CheckIcon fontSize="inherit" />} severity="success" style={{ marginTop: '20px', textAlign: 'center' }}>
+            Email envoyé avec succès !
+          </Alert>
+        )}
       </div>
     </>
   );
 };
 
-export default EmailingCoach;
+export default EmailingNewsletter;

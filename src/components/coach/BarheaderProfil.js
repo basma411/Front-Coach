@@ -6,6 +6,7 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useNavigate } from 'react-router-dom';
 import { getCoach } from '../../Redux/Slice/CoachSlice';
+import { Link } from "react-router-dom";
 
 const BarheaderProfil = () => {
     const [isListOpen, setIsListOpen] = useState(false);
@@ -60,8 +61,10 @@ const BarheaderProfil = () => {
                     <Dropdown.Item onClick={() => handleMenuItemClick("Déconnexion")}>Déconnexion</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
+<Link to='/faq'>
+<h5>FAQ</h5>
 
-            <h5>FAQ</h5>
+</Link>
         </div>
     );
 };

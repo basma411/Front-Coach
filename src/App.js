@@ -79,6 +79,8 @@ import AddFaq from './components/admin/FAQ/AddFaq.js';
 import ListFaq from './components/admin/FAQ/ListFaq.js';
 import Temoignages from './components/TrouverCoach/Temoignages.js';
 import ListePub from './components/Acueil/ListePub.js';
+import Faq_Coach from './components/Acueil/Faq_Coach.js';
+import EmailingNewsletter from './components/admin/newsletter/EmailingNewsletter.js';
 
 function App() {
   const isLoading = useSelector(state => state.loading.isLoading);
@@ -116,7 +118,8 @@ function App() {
     "/Evenement/ajouter",
     "/Contact-coach",
     "/Temoignages",
-    "/atelier_degustation/:id"
+    "/atelier_degustation/:id",
+    "/faq"
   ];
 
   // Vérifie si l'URL actuelle correspond à une route valide
@@ -184,6 +187,8 @@ function App() {
             <Route path="/admin/Contact" element={<ContactA />} />
             <Route path="/admin/Contact/Email/:id" element={<ContactEmailA />} />
             <Route path="/admin/Newsletter" element={<NewsletterA />} />
+            <Route path="/admin/Newsletter/emailing" element={<EmailingNewsletter />} />
+
             <Route path="/admin/login" element={<Login />} />
             <Route path="/admin/Accueil" element={<AccueilAdmin />} />
             <Route path="/admin/Base-Coach" element={<BaseCoach />} />
@@ -195,6 +200,8 @@ function App() {
             <Route path="/coach/profil" element={<ProfilCoach />} />
             <Route path="/coach/setting/:id" element={<SettingProfil />} />
             <Route path="/coach/edit/:id" element={<EditProfile />} />
+            <Route path="/faq" element={<Faq_Coach />} />
+
             <Route path="/" element={<Accueil />} />
             <Route path="/Accueil" element={<Accueil />} />
             <Route path="/TrouverCoach" element={<TrouverCoach />} />
