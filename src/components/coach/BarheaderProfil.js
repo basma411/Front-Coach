@@ -10,61 +10,52 @@ import { Link } from "react-router-dom";
 
 const BarheaderProfil = () => {
     const [isListOpen, setIsListOpen] = useState(false);
-    const { isAuth,coachdata ,} = useSelector((state) => state.coach);
-    const navigator=useNavigate()
+    const { isAuth, coachdata } = useSelector((state) => state.coach);
+    const navigator = useNavigate();
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getCoach());
-
-      
-        
     }, [dispatch, navigator]);
+
     const toggleList = () => {
         setIsListOpen(!isListOpen);
     };
 
     const handleMenuItemClick = (option) => {
-        // Implement your logic for each menu item here
         console.log("Clicked on:", option);
         if (option === "Déconnexion") {
-            localStorage.removeItem("isAuth"); // Supprime l'état d'authentification du localStorage
-            localStorage.removeItem("token"); // Supprime l'état d'authentification du localStorage
-            navigator("/coach/login")
-
-     }
-        
-        if (option === "Settings") {
-            navigator(`/coach/setting/${coachdata._id}`); // Remplacez 'LoginPage' par le nom de la page de connexion dans votre application
+            localStorage.removeItem("isAuth");
+            localStorage.removeItem("token");
+            navigator("/coach/login");
+        } else if (option === "Settings") {
+            navigator(`/coach/setting/${coachdata._id}`);
+        } else if (option === "Modifier Profil") {
+            navigator(`/coach/edit/${coachdata._id}`);
+        } else if (option === "Profil") {
+            navigator('/coach/profil');
         }
-        if (option === "Modifier Profil") {
-            navigator(`/coach/edit/${coachdata._id}`); // Remplacez 'LoginPage' par le nom de la page de connexion dans votre application
-        }
-        if (option === "Profil") {
-            navigator('/coach/profil'); // Remplacez 'LoginPage' par le nom de la page de connexion dans votre application
-        }
-        // Close the dropdown menu after clicking on an option
         setIsListOpen(false);
     };
 
     return (
         <div className="barheader">
-            <GoPersonFill className="iconCompte" />
-            <h5>{coachdata.nom}</h5>
-            <RiArrowDropDownLine onClick={toggleList} style={{fontSize:'40px'}} />
-
-            <Dropdown show={isListOpen} align="end" onClose={() => setIsListOpen(false)}>
-                <Dropdown.Menu>
-                    <Dropdown.Item onClick={() => handleMenuItemClick("Profil")}>Profil</Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleMenuItemClick("Modifier Profil")}>Modifier Profil</Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleMenuItemClick("Settings")}>Settings</Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleMenuItemClick("Déconnexion")}>Déconnexion</Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown>
-<Link to='/faq'>
-<h5>FAQ</h5>
-
-</Link>
+            <div className="barheaderContainer">
+                <GoPersonFill className="iconCom" />
+                <h5 className='mocompte'>{coachdata.nom}</h5>
+                <RiArrowDropDownLine onClick={toggleList} style={{ fontSize: '20px' }} />
+                <Dropdown show={isListOpen} align="end" onClose={() => setIsListOpen(false)}>
+                    <Dropdown.Menu>
+                        <Dropdown.Item onClick={() => handleMenuItemClick("Profil")} className='selected'>Profil</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleMenuItemClick("Modifier Profil")} className='selected'>Modifier Profil</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleMenuItemClick("Settings")} className='selected'>Settings</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleMenuItemClick("Déconnexion")} className='selected'>Déconnexion</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+                <Link to='/faq'>
+                    <h5 className='faq'>FAQ</h5>
+                </Link>
+            </div>
         </div>
     );
 };

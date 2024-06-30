@@ -19,7 +19,6 @@
     "emoji-picker-react": "^4.9.4",
     "he": "^1.2.0",
     "html-entities": "^2.5.2",
-   
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
     "react-dom": "^18.2.0",
@@ -34,6 +33,7 @@
     "react-scripts": "5.0.1",
     "react-select": "^5.8.0",
     "react-share": "^5.1.0",
+    "react-toastify": "^10.0.5",
     "redux-persist": "^6.0.0",
     "resize-observer-polyfill": "^1.5.1",
     "utf8": "^3.0.0",

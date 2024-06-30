@@ -81,7 +81,7 @@ import Temoignages from './components/TrouverCoach/Temoignages.js';
 import ListePub from './components/Acueil/ListePub.js';
 import Faq_Coach from './components/Acueil/Faq_Coach.js';
 import EmailingNewsletter from './components/admin/newsletter/EmailingNewsletter.js';
-
+import './index.css';
 function App() {
   const isLoading = useSelector(state => state.loading.isLoading);
   const dispatch = useDispatch();
@@ -126,7 +126,7 @@ function App() {
   const isRouteValid = validRoutes.includes(location.pathname) || location.pathname.startsWith("/atelier_degustation");
 
   return (
-    <div className="App">
+    <div className="App"  style={{ fontFamily: '"Rubik", arial, sans-serif', fontWeight: 300 }}>
       {isLoading ? (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
           <img src={loading} alt="Chargement..." />

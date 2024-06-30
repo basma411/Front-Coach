@@ -23,8 +23,6 @@ padding: 0;
 
 .footer-column h3 {
   color: #000;
-  font-family: "Rubik", arial, sans-serif;
-  font-weight: 300;
   font-size: 1.75rem;
   margin-bottom: 0.5rem;
   box-sizing: border-box;
@@ -33,8 +31,7 @@ padding: 0;
 .footer-column p {
   margin-bottom: 1rem;
   line-height: 1.7;
-  font-family: "Rubik", arial, sans-serif;
-  font-weight: 300;
+
   font-size: 16px;
   color: gray;
   text-align: left;
@@ -56,8 +53,7 @@ padding: 0;
   color: rgb(227, 216, 10);
   cursor: pointer;
   line-height: 1.7;
-  font-family: "Rubik", arial, sans-serif;
-  font-weight: 500;
+
   font-size: 16px;
 }
 
@@ -87,8 +83,7 @@ padding: 0;
   width: 80%;
   margin: 6rem auto;
   line-height: 1.7;
-  font-family: "Rubik", arial, sans-serif;
-  font-weight: 400;
+
   font-size: 16px;
   color: gray;
   text-align: left;

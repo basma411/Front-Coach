@@ -1,17 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Select from "react-dropdown-select";
-import { getdomaine } from "../../Redux/Slice/DomainSlice";
-import { useForm } from "react-hook-form";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import { addCoach, getCoachVisivble } from "../../Redux/Slice/CoachSlice";
-import "./css/formulaire.css";
+import { getdomaine } from "../../Redux/Slice/DomainSlice";
 import image from "../../images/big_image_2.jpg";
 import { getImageUrl } from "../..";
+import "./css/formulaire.css";
+import { useNavigate } from "react-router-dom";
 
 const Formulaire = () => {
   const dispatch = useDispatch();
-  const { coachVisible } = useSelector((state) => state.coach);
+  const navigate=useNavigate()
 
+  const { coachVisible, error } = useSelector((state) => state.coach);
   const { domaines } = useSelector((state) => state.domaine);
   const [selectedDomaines, setSelectedDomaines] = useState([]);
   const [compte, setCompte] = useState(0);
@@ -47,26 +50,21 @@ const Formulaire = () => {
 
   const latestCoach = coachVisible.slice(-3);
 
-  const customContentRenderer = () => {
-    return (
-      <label>
-        <p
-          style={{
-            color: "#fff",
-            background: "blue",
-            fontSize: "25px",
-            padding: "2px",
-            marginLeft: "600px",
-          }}
-        >
-          {compte}
-        </p>
-      </label>
-    );
-  };
+  const customContentRenderer = () => (
+    <label>
+      <p style={{
+        color: "#fff",
+        background: "blue",
+        fontSize: "25px",
+        padding: "2px",
+        marginLeft: "600px",
+      }}>
+        {compte}
+      </p>
+    </label>
+  );
 
-  const isALLselected =
-    domaines.length > 0 && selectedDomaines.length === domaines.length;
+  const isALLselected = domaines.length > 0 && selectedDomaines.length === domaines.length;
 
   const handleDomaineChange = (selectedValues) => {
     if (selectedValues.includes("allDomaine")) {
@@ -83,54 +81,41 @@ const Formulaire = () => {
     }
   };
 
-  const handleGouvernoratChange = (e) => {
-    setGouvernorat(e.target.value);
-  };
+  const handleGouvernoratChange = (e) => setGouvernorat(e.target.value);
 
   const handleMethodeChange = (methode, checked) => {
-    if (checked) {
-      setSelectedMethodes((prevSelected) => [...prevSelected, methode]);
-    } else {
-      setSelectedMethodes((prevSelected) =>
-        prevSelected.filter((selected) => selected !== methode)
-      );
-    }
+    setSelectedMethodes((prevSelected) =>
+      checked
+        ? [...prevSelected, methode]
+        : prevSelected.filter((selected) => selected !== methode)
+    );
   };
 
   const handleLangueChange = (langue, checked) => {
-    if (checked) {
-      setSelectedLangues((prevSelected) => [...prevSelected, langue]);
-    } else {
-      setSelectedLangues((prevSelected) =>
-        prevSelected.filter((selected) => selected !== langue)
-      );
-    }
+    setSelectedLangues((prevSelected) =>
+      checked
+        ? [...prevSelected, langue]
+        : prevSelected.filter((selected) => selected !== langue)
+    );
   };
 
   const handleTypeClientChange = (typeClient, checked) => {
-    if (checked) {
-      setSelectedTypesClients((prevSelected) => [...prevSelected, typeClient]);
-    } else {
-      setSelectedTypesClients((prevSelected) =>
-        prevSelected.filter((selected) => selected !== typeClient)
-      );
-    }
-  };
-  const handleTarifChange = (value) => {
-    setTarifPreferentiel(value);
-  };
-  const handleFileChange = (e) => {
-    setImage(e.target.files[0]);
+    setSelectedTypesClients((prevSelected) =>
+      checked
+        ? [...prevSelected, typeClient]
+        : prevSelected.filter((selected) => selected !== typeClient)
+    );
   };
 
-  const handleLogoChange = (e) => {
-    setLogo(e.target.files[0]);
-  };
-  const handlePdfChange = (e) => {
-    setPdf(e.target.files[0]);
-  };
+  const handleTarifChange = (value) => setTarifPreferentiel(value);
 
-  const handleAddCoach = (e) => {
+  const handleFileChange = (e) => setImage(e.target.files[0]);
+
+  const handleLogoChange = (e) => setLogo(e.target.files[0]);
+
+  const handlePdfChange = (e) => setPdf(e.target.files[0]);
+
+  const handleAddCoach = async (e) => {
     e.preventDefault();
 
     const formData = new FormData();
@@ -145,11 +130,7 @@ const Formulaire = () => {
     formData.append("yt", Youtube.current.value);
     formData.append("In", linkedin.current.value);
     formData.append("gouv", gouvernorat);
-    formData.append(
-      "domain",
-      selectedDomaines.map((domaine) => domaine.label)
-    );
-
+    formData.append("domain", selectedDomaines.map((domaine) => domaine.label));
     formData.append("method", selectedMethodes.join(","));
     formData.append("langue", selectedLangues.join(","));
     formData.append("type_client", selectedTypesClients.join(","));
@@ -159,8 +140,18 @@ const Formulaire = () => {
     formData.append("imagee", imageCoach);
     formData.append("logo", LogoCoach);
     formData.append("piece", PdfCoach);
-    console.log(formData);
-    dispatch(addCoach(formData));
+
+    try {
+      const resultAction = await dispatch(addCoach(formData)).unwrap();
+      if (resultAction.msg === 'successfully') {
+        toast.success("Coach ajouté avec succès !");
+      } else {
+        toast.error(resultAction.error.msg  || 'Erreur lors de l\'ajout du coach.');
+      }
+    } catch (error) {
+      toast.error(error || 'Erreur lors de l\'ajout du coach.');
+    }
+    navigate('/EspaceCoach')
   };
 
   return (
@@ -349,8 +340,7 @@ const Formulaire = () => {
                 className="inputCoach"
               />
               <label>Brève Bio (maximum 5 lignes):</label>
-              <input
-                type="text"
+              <textarea
                 placeholder=""
                 style={{ height: "300px" }}
                 ref={bioRef}
@@ -531,6 +521,8 @@ const Formulaire = () => {
                 className="filecoach"
               />
               <input type="submit" className="AddCoach" />
+              <ToastContainer />
+
             </form>
           </div>
         </div>

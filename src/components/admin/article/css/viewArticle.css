@@ -5,7 +5,7 @@
 }
 .viewContainer{
     width: 50%;
-    height: 100vh;
+    height: 100%;
     margin: 20px auto 80px auto;
 display: flex;
 align-items: start;

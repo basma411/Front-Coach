@@ -28,6 +28,12 @@ const ViewArticle = () => {
           }
         }
       }, [ArticlesInv, id]);
+      const truncateText = (htmlText, maxLength) => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(htmlText, 'text/html');
+        const textContent = doc.body.textContent || "";
+        return textContent.length > maxLength ? textContent.substring(0, maxLength) + '...' : textContent;
+      };
   return (
 <div className='View'>
 <div className='viewContainer'>
@@ -37,13 +43,14 @@ const ViewArticle = () => {
 </div>
 
 <div style={{borderBottom:"solid 1px rgb(194, 192, 192)", width:'100%',padding:'5px'}}><label>Texte</label>
-<p  className='styletexte'>{formData.texte}</p></div>
+<p  className='styletexte'>                  {truncateText(formData.texte, 49)}
+</p></div>
 
 <div style={{ width:'100%',padding:'5px'}}><label>Auteur</label>
 <p className='styletexte'>{formData.auteur}</p></div>
-<button style={{backgroundColor:'blue' ,color:'white'}} onClick={()=>navigator('/admin/article/invisible')}>Annuler</button>
 
 </div>
+<button style={{backgroundColor:'blue' ,color:'white', display:'block',margin:'0 auto'}} onClick={()=>navigator('/admin/article/invisible')}>Annuler</button>
 
 </div>
 )

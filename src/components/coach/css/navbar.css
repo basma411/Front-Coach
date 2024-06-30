@@ -1,10 +1,21 @@
 /*NavBar*/
+.navbar{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  height: 82px;
+}
+.navbarcontainer{
+  width: 100%;
+  margin: 0 auto;
+  /* height: auto; */
+}
 .nav-link-coach {
-  font-weight: 300;
-  font-size: 18px;
-color: rgb(43, 43, 43);
+  font-size: 15px;
+  color: rgb(43, 43, 43);
   line-height: 30px;
-  padding: 18px 9px ;
+  padding: 27px 7px ;
 border-color: #fff;
 
 }
@@ -13,9 +24,9 @@ border-color: #fff;
   color: #fff;
 }
 
-.icon-LIST{
+.icon-navbar{
 
-  font-size:40px;
+  font-size:30px;
   color:gray ;
   display: none;
 }
@@ -26,3 +37,72 @@ border-color: #fff;
   text-decoration: none;
   
 }
+
+.nav-open {
+  display: flex;
+  flex-direction: column; /* Les liens s'affichent en colonne */
+  width: 100%;
+  background-color: #fff;
+  position: relative; /* Changez de absolute à relative */
+  z-index: 1000;
+  padding: 20px; /* Augmentez le padding du menu déroulant */
+}
+@media (max-width: 992px) {
+  .navbar{
+
+  height: auto;
+
+}
+  .icon-navbar {
+    display: block;
+    margin-left: auto;
+  }
+
+  .test {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+
+    
+  }
+
+  .navbar-logo {
+    padding-left: 15px;
+  }
+
+  .nav-closed {
+    display: none;
+  }
+
+  .nav-open {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #fff;
+    position: relative;
+    border-top: solid 1px gray;
+    padding: 5px;
+  }
+
+  .nav-link-coach {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .menu-Navba {
+    display: flex !important ;
+    flex-direction: column !important ;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navbarContainerStyle {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
