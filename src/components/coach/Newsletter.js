@@ -19,8 +19,8 @@ const Newsletter = () => {
        <div className='newsletter'>
          <div className="newsletterContainer">
             <div>
-                <h2>Newsletters</h2>
-                <p>Vous voulez joindre notre communauté de coachs et coachés et être informés des nouveautés dans le métier</p>
+                <h1 className='newTitle'>Newsletters</h1>
+                <p className='newsletterParagh'>Vous voulez joindre notre communauté de coachs et coachés et être informés des nouveautés dans le métier</p>
             </div>
 <div>
     

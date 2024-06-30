@@ -13,7 +13,7 @@
     border-radius: 8px;
 }
 
-.workshopContainer button {
+/* .workshopContainer button {
     background-color: #0C4270;
     color: white;
     padding: 10px 20px;
@@ -23,7 +23,7 @@
     display: block;
     margin: 0 auto;
 
-}
+} */
 
 .workshopContainer button:hover {
     background-color: #0C4270;

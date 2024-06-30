@@ -34,14 +34,14 @@
     width: 100%;
 }
 
-.addAtelierContainer button {
+/* .addAtelierContainer button {
     padding: 10px 20px;
     background-color: #0D3C68;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-}
+} */
 
 .addAtelierContainer button:hover {
     background-color: #0056b3;

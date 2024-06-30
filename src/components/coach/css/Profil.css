@@ -67,7 +67,7 @@ font-size: 40px;
     padding-bottom: 20px;
     color: #333;
     font-size: 18px;  }
-  .abonner button {
+  /* .abonner button {
     padding: 25px 50px;
     color: #fff;
     border: none;
@@ -79,7 +79,7 @@ font-size: 40px;
     border-left: 18px solid #295591;
     border-right: 18px solid #295591;
     border-top: 8px solid #295591;
-}
+} */
 .titre {
 background-color: #EFEFEF;
 margin-top: 15px ;

@@ -31,36 +31,37 @@ const LoginCoch = () => {
   return (
     <>
       <div
-        className="ImagePlatforme"
+        className="ImagePlatformeLogin"
         style={{
-          height: "300px",
+          height: "250px",
           position: "relative",
           textAlign: "center",
           backgroundImage: `url(${image})`,
           backgroundSize: "cover",
-          color:'white'
+          
         }}
       >
-        <div style={{ paddingTop: "40px" }}>
-          <h2>
+        <div style={{ paddingTop: "0px" }}>
+          <p        className='TitreLogin'
+          >
             Bienvenue sur votre
-            <br /> plateforme
-            <br /> MonCoach.tn
-          </h2>
+            plateforme
+       MonCoach.tn
+          </p>
         </div>
       </div>
       <div className="containerLogin">
-        <form className="FormLogin" onSubmit={handleLoginFormSubmit}>
-          <label className="labelField">Connectez-vous:</label>
+        <form className="Form-Login" onSubmit={handleLoginFormSubmit}>
+          <label className="labelLogin">Connectez-vous:</label>
           <div>
 
-            <input type="email" name="email" ref={email} className="inputField" />
+            <input type="email" name="email" ref={email} className="input-Login" placeholder="Login(Votre adresse mail)"/>
           </div>
           <div>
 
-            <input type="password" name="password" ref={password} className="inputField" />
+            <input type="password" name="password" ref={password} className="input-Login" placeholder="Mot de passe" />
           </div>
-          <label className="labelField ">Mot de passe oublié?</label>
+          <label className="labelLogin ">Mot de passe oublié?</label>
 
           <button type="submit" className="Connecter">Connecter</button>
         </form>

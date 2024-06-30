@@ -50,7 +50,7 @@
   color: #e3d80a;
   ;
     }
-    .Temaignage-image button{
+    /* .Temaignage-image button{
         width: 80%;
     padding: 10px 20px;
     background-color: #275491;
@@ -62,8 +62,8 @@
     border: none;
     margin: 20px 130px  ;
 
-    }
- .Temaignage-container .play-button button{
+    } */
+ /* .Temaignage-container .play-button button{
   width: 80%;
   padding: 10px 20px;
   background-color: #275491;
@@ -75,12 +75,12 @@
   border: none;
   margin: 20px 0px  ;
 
- }
+ } */
   
   
-  .button:hover {
+  /* .button:hover {
     background-color: #0261c7; 
-  }
+  } */
 
    
 .Temaignage-image h3 {
@@ -125,14 +125,14 @@
   margin: 50px auto;
 }
 
-input {
+/* input {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
-}
+} */
 
 .editor {
     width: 100%;

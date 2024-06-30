@@ -1,97 +1,111 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+.TitreLogin {
+  width: 40%;
+  font-size: 60px;
+  color: white;
+  margin: 0 auto;
+  line-height: 72px;
+  animation: fadeIn 1s ease-in-out; /* Ajouter l'animation */
+}
 
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+/* Autres styles existants */
+.ImagePlatformeLogin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
 
-/*section1*/
-.ImagePlatforme {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    color: white;
-  } 
-  .ImagePlatforme h2{ 
-    font-size: 60px;
- 
-    line-height: 72px;
-    }
-.containerLogin{
+.containerLogin {
   width: 100%;
   height: 500px;
 }
- 
-.FormLogin{
+
+.Form-Login {
+  position: absolute;
+  width: 45%; /* Ajuster la largeur à 100% */
+  left: 50%;
+  transform: translate(-50%, -5%);
+  background-color: #FFFFFF;
+  padding: 50px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.labelLogin {
+  width: 100%;
+  font-size: 16px;
+  line-height: 32px;
+  color: rgb(128, 128, 128);
+}
+
+.input-Login {
+  width: 500px;
+  height: 40px;
+  border: 1px solid #ccc;
+  color: #000;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.input-Login:focus {
+  outline-color: rgb(36, 233, 233);
+  outline-style: solid;
+  outline-width: 1.5px; /* Définir l'épaisseur de la bordure */
+  outline-offset: 0;
+}
+
+.Connecter {
   width: 40%;
+  padding: 10px;
+  background-color: #FDC900;
+  color: white;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -12%);
-    background-color: #FFFFFF;
-    padding:30px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+.Connecter:hover {
+  color: #000;
+  background: none;
+  border: 2px solid #275491;
+}
 
+.ImagePlatforme {
+  margin-bottom: 20px; /* Ajoute une marge en bas de l'image */
+}
+
+.FormSection {
+  margin-bottom: 40px; /* Ajoute une marge en bas du formulaire */
+}
+
+.NewsletterSection {
+  margin-bottom: 30px; /* Ajoute une marge en bas de la section newsletter */
+}
+@media (max-width: 992px) {
+  .TitreLogin {
+    font-size: 40px;
+    line-height: 72px;
   }
-  
-
-  
-  .labelField {
-    font-size: 18px;
-font-family: 'Rubik', Arial, sans-serif;
-font-weight: 400;
-line-height: 30px;
-    padding-bottom: 10px;
-  }
-  
-.inputField {
-    width: 500px;
-    padding: 10px;
-    margin-bottom: 15px;
+  .input-Login {
+    width: 350px;
+    height: 40px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box; 
-    transition: border-color 0.3s ease; 
+    color: #000;
+    margin-bottom: 15px;
+    font-size: 16px;
   }
-  
-  .inputField:focus {
-    border:solid 1px  #275491 !important;/* Couleur de la bordure lorsqu'un champ est en focus */
-  }
-  
-  
-  .Connecter {
-    width: 20%;
-    padding: 10px;
-    background-color: #FDC900;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .Connecter:hover {
-border: solid 1px rgb(7, 7, 59);
-background-color: transparent; 
-color: black; }
-/*   
-  /* .FormLogin label.forgot-password {
-    display: block;
-    text-align: right;
-  } */ 
-  
-  
-  .ImagePlatforme {
-    margin-bottom: 20px; /* Ajoute une marge en bas de l'image */
-  }
-  
-  .FormSection {
-    margin-bottom: 40px; /* Ajoute une marge en bas du formulaire */
-  }
-  
-  .NewsletterSection {
-    margin-bottom: 30px; /* Ajoute une marge en bas de la section newsletter */
-  }
-  
+}

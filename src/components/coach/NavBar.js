@@ -19,9 +19,9 @@ export const NavBar = () => {
     <div className="navbar">
       <div className="navbarcontainer">
         <Navbar className="m-0 p-0 ">
-          <Container style={{ display: "flex",width:'100%' }} className="me auto p-0 navbarContainerStyle" >
+          <Container style={{ display: "flex",width:'100%' ,justifyContent:'space-around' }} className="me auto p-0 navbarContainerStyle" >
             <div style={{ display: "flex", alignItems: "center" }} className="test">
-              <img src={logo} alt="Logo" style={{ paddingLeft: "30px" }} />
+              <img src={logo} alt="Logo" style={{ paddingLeft: "0" }} />
               <HiOutlineViewList className="icon-navbar" style={{ color: "gray" }} onClick={handleToggleMenu} />
             </div>
             <div className={menuOpen ? 'nav-open' : 'nav-closed'}>

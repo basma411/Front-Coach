@@ -38,7 +38,7 @@
     border-radius: 5px;
 }
 
-.left-Evnt h1 {
+.left-Evnt h5 {
     font-size: 20px;
     margin-top: 10px;
     color: rgb(227, 216, 10);
@@ -55,7 +55,7 @@
     color: rgb(128, 128, 128);
 }
 
-.right-Evnt h1 {
+.right-Evnt h5 {
     margin-bottom: 20px;
     font-size: 25px;
     font-weight: 400;
