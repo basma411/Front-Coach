@@ -84,7 +84,7 @@ const Formulaire = () => {
                   src={`http://localhost:8000/${CoachVisible.Photo}`}
                   alt="coach"
                 />
-                <h1 style={{ color: "#000" }}>{CoachVisible.NomPrenom}</h1>
+                <h1 >{CoachVisible.NomPrenom}</h1>
                 <h3 style={{ color: "gray" }}>Coach</h3>
                 <h3 style={{ color: "gary" }}>Brève bio</h3>
                 <p>{CoachVisible.Bio}</p>

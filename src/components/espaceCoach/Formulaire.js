@@ -180,7 +180,7 @@ const Formulaire = () => {
            src={getImageUrl(CoachVisible.image)}
                   alt="coach"
                 />
-                <h1 style={{ color: "#000" }}>{CoachVisible.nom}</h1>
+                <h1 >{CoachVisible.nom}</h1>
                 <h3 style={{ color: "gray" }}>Coach</h3>
                 <h3 style={{ color: "gary" }}>Brève bio</h3>
                 <p>{CoachVisible.bio}</p>

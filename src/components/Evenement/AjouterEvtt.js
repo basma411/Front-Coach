@@ -100,7 +100,7 @@ const AjouterEvtt = () => {
           ))}
         </div>
         <div className="right-Evnt">
-          <h1 style={{ margin: '20px 0  100px 0' }}>Pour partager un article, une offre, cet espace est pour vous!</h1>
+          <h1 >Pour partager un article, une offre, cet espace est pour vous!</h1>
           <form onSubmit={handleSubmit}>
             <label>Titre:</label>
             <input type="text" name="titre" placeholder="" required value={formData.titre} onChange={(e) => setFormData({ ...formData, titre: e.target.value })} />

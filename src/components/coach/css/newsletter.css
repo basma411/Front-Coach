@@ -11,15 +11,14 @@ display: flex;
 justify-content: center;
 align-items: center;
 margin: 10px auto;
-padding: 50px;
+padding: 40px;
 gap: 80px;
 
 }
 .newTitle {
     color: #fff; 
     font-size: 30px;
-    margin: 0; 
-    line-height:1.2;
+    margin-bottom: 7px; 
     font-weight: 300;
   }
   
@@ -29,32 +28,76 @@ gap: 80px;
     color: rgba(255, 255, 255, 0.7)    ;
     font-size: 16px;
     text-align: justify;
+    line-height:2;
+
   }
   
 
   .NewsleInput {
-    padding: 10px; /* Espacement interne */
+    padding: 13px; /* Espacement interne */
     border: none; /* Suppression de la bordure */
     border-radius: 5px; /* Bordures arrondies */
-    width: 500px; /* Largeur de l'input - largeur du bouton + marge */
+    width: 500px; 
+    
     background-color:#fff ;
   }
-  
+  .NewsleInput:focus {
+  outline-style: none; /* Set the outline style to solid */
+  outline-offset: 0; /* Set the outline width to 1px */
+}
   .newsletterContainer .input-wrapper {
     position: relative; /* Position relative pour positionner le bouton */
   }
   
   .EnvoyerNewsletter  {
-    width: 100px;
-    padding: 5px; /* Espacement interne */
-    background-color: #D3C418; /* Couleur de fond */
-    color: #275491; /* Couleur du texte */
+    width: 90px;
+    padding: 8px; /* Espacement interne */
+    background-color: rgb(253,202,6); /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
     border: none; /* Suppression de la bordure */
-    border-radius: 7px; /* Bordures arrondies */
+    border-radius: 9px; /* Bordures arrondies */
     cursor: pointer; /* Curseur pointer au survol */
     position: absolute; /* Position absolue pour positionner le bouton */
     right: 0; /* Alignement à droite */
     top: 0; /* Alignement au haut */
     margin: 4px 20px 0px 0px;
   }
+  @media (max-width: 992px) {
+    
+  .NewsleInput {
+
+    width: 390px;
+  }
+
   
+  }
+  @media (max-width: 814px) {
+    
+    .NewsleInput {
+  
+      width: 300px;
+    }
+  
+    
+    }
+      @media (max-width: 714px) {
+    
+    .NewsleInput {
+  
+      width: 270px;
+    }
+  
+    
+    }
+    @media (max-width: 681px) {
+    
+      .newsletterContainer {
+    
+        display: flex;
+        flex-direction: column;
+        margin: 0px auto;
+        gap: 0px;
+  }
+    
+      
+      }

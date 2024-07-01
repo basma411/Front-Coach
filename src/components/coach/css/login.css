@@ -10,12 +10,12 @@
 }
 
 .TitreLogin {
-  width: 40%;
-  font-size: 60px;
+  width: 50%;
+  font-size: 3.75rem; /* Equivalent à 60px si la base est 16px */
   color: white;
   margin: 0 auto;
-  line-height: 72px;
-  animation: fadeIn 1s ease-in-out; /* Ajouter l'animation */
+  line-height: 1.2;
+  animation: fadeIn 1s ease-in-out;
 }
 
 /* Autres styles existants */
@@ -33,11 +33,11 @@
 
 .Form-Login {
   position: absolute;
-  width: 45%; /* Ajuster la largeur à 100% */
+  width: 45%; 
   left: 50%;
   transform: translate(-50%, -5%);
   background-color: #FFFFFF;
-  padding: 50px;
+  padding: 3.125rem; /* Equivalent à 50px */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
@@ -46,18 +46,18 @@
 
 .labelLogin {
   width: 100%;
-  font-size: 16px;
-  line-height: 32px;
+  font-size: 1rem; /* Equivalent à 16px */
+  line-height: 2; /* Equivalent à 32px si la base est 16px */
   color: rgb(128, 128, 128);
 }
 
 .input-Login {
-  width: 500px;
-  height: 40px;
+  width: 100%; 
+  height: 2.5rem; /* Equivalent à 40px */
   border: 1px solid #ccc;
   color: #000;
-  margin-bottom: 15px;
-  font-size: 16px;
+  margin-bottom: 0.9375rem; /* Equivalent à 15px */
+  font-size: 1rem; /* Equivalent à 16px */
 }
 
 .input-Login:focus {
@@ -68,8 +68,8 @@
 }
 
 .Connecter {
-  width: 40%;
-  padding: 10px;
+  width: 40%; /* Specify the width of the button */
+  padding: 0.625rem; /* Equivalent à 10px */
   background-color: #FDC900;
   color: white;
   border: none;
@@ -85,27 +85,47 @@
 }
 
 .ImagePlatforme {
-  margin-bottom: 20px; /* Ajoute une marge en bas de l'image */
+  margin-bottom: 1.25rem; /* Equivalent à 20px */
 }
 
 .FormSection {
-  margin-bottom: 40px; /* Ajoute une marge en bas du formulaire */
+  margin-bottom: 2.5rem; /* Equivalent à 40px */
 }
 
 .NewsletterSection {
-  margin-bottom: 30px; /* Ajoute une marge en bas de la section newsletter */
+  margin-bottom: 1.875rem; /* Equivalent à 30px */
 }
+
 @media (max-width: 992px) {
   .TitreLogin {
-    font-size: 40px;
-    line-height: 72px;
+    font-size: 2.5rem; /* Equivalent à 40px */
+    line-height: 1.8; /* Adjust line height as necessary */
   }
   .input-Login {
-    width: 350px;
-    height: 40px;
-    border: 1px solid #ccc;
-    color: #000;
-    margin-bottom: 15px;
-    font-size: 16px;
+    width: 100%; /* Ensure it remains 100% */
+  }
+}
+
+@media (max-width: 768px) {
+  .input-Login {
+    width: 100%; /* Ensure it remains 100% */
+  }
+}
+
+@media (max-width: 576px) {
+  .containerLogin {
+    width: 100%;
+    height: 400px;
+  }
+  .Form-Login {
+    width: 80%; 
+  
+  }
+  .TitreLogin {
+    width: 90%;
+    padding-top: 1.875rem; /* Equivalent à 30px */
+  }
+  .input-Login {
+    width: 100%; /* Ensure it remains 100% */
   }
 }

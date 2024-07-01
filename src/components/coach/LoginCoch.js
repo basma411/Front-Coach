@@ -6,6 +6,7 @@ import image from "../../images/big_image_2.jpg";
 import Newsletter from "./Newsletter";
 import Footer from "./Footer";
 import './css/login.css'
+
 const LoginCoch = () => {
   const { isAuth } = useSelector((state) => state.coach);
 
@@ -16,7 +17,7 @@ const LoginCoch = () => {
 
   useEffect(() => {
     if (isAuth) navigator("/coach/profil"); 
-    else{
+    else {
       navigator("/coach/login"); 
     }
   }, [isAuth, navigator]);
@@ -38,31 +39,26 @@ const LoginCoch = () => {
           textAlign: "center",
           backgroundImage: `url(${image})`,
           backgroundSize: "cover",
-          
         }}
       >
         <div style={{ paddingTop: "0px" }}>
-          <p        className='TitreLogin'
-          >
+          <p className='TitreLogin'>
             Bienvenue sur votre
             plateforme
-       MonCoach.tn
+            MonCoach.tn
           </p>
         </div>
       </div>
       <div className="containerLogin">
         <form className="Form-Login" onSubmit={handleLoginFormSubmit}>
           <label className="labelLogin">Connectez-vous:</label>
-          <div>
-
-            <input type="email" name="email" ref={email} className="input-Login" placeholder="Login(Votre adresse mail)"/>
+          <div className="input-Login">
+            <input type="email" name="email" className="input-Login" ref={email}  placeholder="Login (Votre adresse mail)" />
           </div>
-          <div>
-
+          <div className="input-Login">
             <input type="password" name="password" ref={password} className="input-Login" placeholder="Mot de passe" />
           </div>
-          <label className="labelLogin ">Mot de passe oublié?</label>
-
+          <label className="labelLogin">Mot de passe oublié?</label>
           <button type="submit" className="Connecter">Connecter</button>
         </form>
       </div>

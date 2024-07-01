@@ -57,7 +57,7 @@ const Footer = () => {
         </div>
       </div>
       <div className='footer-float-md-left' >
-        <h3>Copyright ©2024 Tous les droits sont réservés | Mon coach.tn <FaHeart /> <Link to ='https://www.facebook.com/tounes.connect/' className='TounesConnect'          target='_blank' rel='noopener noreferrer'
+        <h3 className='Copyright'>Copyright ©2024 Tous les droits sont réservés | Mon coach.tn <FaHeart /> <Link to ='https://www.facebook.com/tounes.connect/' className='TounesConnect'          target='_blank' rel='noopener noreferrer'
         ><span className='footer-span'>by Tounes Connect</span></Link></h3>
       </div>
     </div>
