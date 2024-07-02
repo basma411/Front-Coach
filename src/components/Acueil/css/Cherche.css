@@ -1,128 +1,66 @@
-.ChercheCoach{
+/* Conteneur principal avec une largeur de 100%, sans marges ni padding */
+.ChercheCoach {
   width: 100%;
-  margin:0;
+  margin: 0;
   padding: 0;
 }
-.cherche{
+
+/* Conteneur centré avec une largeur de 80% */
+.cherche {
   width: 80%;
-margin: 0 auto;
-
+  margin: 0 auto;
 }
+
+/* Titre principal avec une largeur de 100%, marges, alignement centré, et style de police personnalisé */
+.ChercheTitle {
+  width: 100%;
+  margin-top: 100px;
+  text-align: center;
+  font-size: 47px;
+  color: #275491;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  margin: 100px auto 0 auto;
+}
+
+/* Conteneur flexible centré horizontalement et verticalement, avec un espace entre les éléments */
 .cherche-coach {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 20vh;
-    gap: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  gap: 20px;
+}
 
-  }
-  .ChercheTitle {
-    width: 100%;
-    margin-top: 100px;
-    text-align: center;
-  
-    font-size: 47px;
-    color: #275491;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  margin: 100px auto 0  auto;
-  }
-  .DomainesCherche,
-  .coachcherche,
-  .gouvernoratCherche {
-    width: 400px;
-    font-size: 0.2rem;
-    font-family: "Rubik", arial, sans-serif;
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 1;
-    color: gray;
-    border: solid 1px gray;
-    height: 40px;  
+/* Styles appliqués aux champs de recherche : Domaines, Coach, Gouvernorat */
+.DomainesCherche,
+.coachcherche,
+.gouvernoratCherche {
+  width: 100%;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  color: rgb(73, 80, 87);
+  border: solid 1px gray;
+  height: 40px;
+}
 
-  }
-  .DomainesCherche,
-  .gouvernoratCherche {
-    width: 200px;
-    height: 40px;
-    font-family: "Rubik", arial, sans-serif;
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 2;
-    color: gray;
+/* Bouton de soumission avec un style de fond, des bordures arrondies, et des couleurs personnalisées */
+.CherSubmit {
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: #fdc900;
+  border-radius: 10px;
+  color: #fff;
+  border: 2px solid transparent;
+  font-weight: 400;
+  cursor: pointer;
+  padding: 0.375rem 0.75rem;
+}
 
-
-  }
-  .CherSubmit {
-  height: 60px;
-  width: 200px;
-    font-size: 1.5rem;
-    line-height: 1.5;
-    background-color: #fdc900;
-    border-radius: 10px;
-    color: #fff;
-    border: 2px solid transparent;
-    font-weight: 400;
-    cursor: pointer;
-  }
-  /* .Trouver-coach {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  } */
-  /* .ChercheTitle {
-    width: 100%;
-    margin-top: 100px;
-    text-align: center;
-  
-    font-size: 47px;
-    color: #275491;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  margin: 100px auto 0  auto;
-  }
- 
-  .DomainesCherche,
-  .coachcherche,
-  .gouvernoratCherche {
-    width: 400px;
-    font-size: 0.2rem;
-    font-family: "Rubik", arial, sans-serif;
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 1;
-    color: gray;
-    border: solid 1px gray;
-  }
-  .coachcherche {
-height: 40px;  
-    }
-.coachcherche:focus {
-  border: transparent ;
-  border:solid 2px red ;      }
-  .ChercheSubmit {
-    width: 200px;
-    height: 40px;
-    font-size: 1.3rem;
-    line-height: 1.5;
-    background-color: #fdc900;
-    border-radius: 10px;
-    color: #fff;
-    border: 2px solid transparent;
-    display: inline-block;
-    font-weight: 400;
-    text-align: center;
-    cursor: pointer;
-  }
-  
-  .cherche-coach select {
-    width: 200px;
-    height: 40px;
-    font-family: "Rubik", arial, sans-serif;
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 2;
-    color: gray;
-  }
-  */
-
-  
+/* Style du bouton de soumission au survol : changement de couleur et de bordure */
+.CherSubmit:hover {
+  color: #000;
+  background: none;
+  border: 2px solid #275491;
+}

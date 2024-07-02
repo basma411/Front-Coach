@@ -47,7 +47,7 @@ const navigator=useNavigate()
     <form className='cherche'>
       <h1 className='ChercheTitle'>Trouvez un coach et prenez rendez-vous en ligne</h1>
       <div className='cherche-coach'>
-     <div>
+     <div style={{width:'30%'}}>
      <select className='DomainesCherche' ref={domaine}>
           <option>Choisir un domaine de coaching</option>
           {domaines && domaines.map((domaine) => (
@@ -57,7 +57,7 @@ const navigator=useNavigate()
           ))}
         </select>
      </div>
-        <div>
+        <div style={{width:'30%'}}>
           <input
             type="text"
             placeholder="Rechercher par nom et prénom du coach"
@@ -65,7 +65,7 @@ const navigator=useNavigate()
             ref={Nom}
           />
         </div>
-       <div> <select className='gouvernoratCherche' ref={gouvernorat}>
+       <div style={{width:'15%'}}> <select className='gouvernoratCherche' ref={gouvernorat}>
           <option>Gouvernorat</option>
           {[
             "Tunis", "Ariana", "Ben Arous", "Manouba", "Nabeul", "Zaghouan", 

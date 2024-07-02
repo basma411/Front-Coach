@@ -1,18 +1,26 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-.Atelier-con{
+.Platforme{
   width: 100%;
 padding: 0;
 margin: 0;
 }
-.Atelier-container {
+.Platforme-container {
     width: 80%;
    display: flex;
-   align-items: center;
-   justify-content: space-around;
-   gap: 50PX;
+   /* align-items: center;
+   justify-content: center; */
+   gap: 80PX;
    background: #fff;
-   font-family: "Rubik", arial, sans-serif;
-   font-weight: 300;
    font-size: 18px;
    line-height: 2;
    color: gray;
@@ -20,19 +28,22 @@ margin: 0;
   }
      .heading {
 width: 50%;
-        margin-bottom: 60px;
+        /* margin-bottom: 60px; */
     }
-    .TitleAtelier{
-        font-size: 45px;
-    margin: 0;
-    padding: 0;
-    color: #275491;
-    }
-    .TextAtelier{
-
+    .TitlePlateforme{
+      font-size: 45px;
+      margin: 0;
+      padding: 0;
+      color: #275491;
+/* line-height: 1.2;   */ } 
+    .TextPlatteforme{
+font-size: 16px;
+line-height: 32px;
+color: rgb(128, 128, 128);
       text-align: justify;
     }
     .atelier-image{
+      width: 50%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -47,52 +58,28 @@ width: 50%;
   transform: translate(-50%, -50%);
   font-size: 80px;
   color: #e3d80a;
-  ;
+  opacity: 0.8;  ;
     }
     .AtelierInscri{
         width: 50%;
-    padding: 10px 20px;
-    background-color: #275491;
-    color: #fff;
-    text-align: center;
-    border-radius: 5px;
     cursor: pointer;
-    text-decoration: none;
-    border: none;
     margin: 20px 130px  ;
+    
+
+    background-color: #275491;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
     }
- /* .Atelier-container .play-button button{
-  width: 80%;
-  padding: 10px 20px;
-  background-color: #275491;
-  color: #fff;
-  text-align: center;
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-  border: none;
-  margin: 20px 60px  ;
 
- }
-   */
   
 
  
-    
-  /* #button {
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    text-align: center;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-  } */
-  
-  .button:hover {
-    background-color: #0261c7; 
-  }
 
-   
+ 

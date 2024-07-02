@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { getImageUrl } from '../../index.js';
 import './css/atelierDegus.css';
 import image from '../../images/big_image_atelier.jpg';
+import Newsletter from '../coach/Newsletter.js';
+import Footer from '../coach/Footer.js';
 
 const Atelier_Degustation = () => {
   // Utilisation de useSelector pour récupérer les données des états Redux
@@ -36,16 +38,16 @@ const Atelier_Degustation = () => {
         }}
       >
         <div style={{ paddingTop: "30px", fontSize: '40px' }}>
-          <h2>Les Ateliers <br/> Dégustation Coaching</h2>
+          <h3 className='Titre-Ate-Duge'>Les Ateliers Dégustation Coaching</h3>
         </div>
       </div>
       <div className="atelier-Degus">
-        <div className="atelier-container">
+        <div className="atelierD-container">
           {ateliers.map((atelier) => {
             const imageUrl = getFirstPublicationImage(atelier._id);
             return (
               <div
-                className="card"
+                className="card-D"
                 key={atelier._id}
                 onClick={() => navigate(`/atelier_degustation/${atelier._id}`)} // Navigate on click
               >
@@ -53,17 +55,19 @@ const Atelier_Degustation = () => {
                   <img
                     src={imageUrl}
                     alt={`Première publication de ${atelier._id}`}
-                    className="card-image"
+                    className="card-D-image"
                   />
                 )}
-                <div className="card-content">
-                  <h3 className="card-title">{atelier.titre}</h3>
+                <div className="card-D-content">
+                  <h3 className="card-D-title">{atelier.titre}</h3>
                 </div>
               </div>
             );
           })}
         </div>
       </div>
+      <Newsletter/>
+      <Footer/>
     </>
   );
 };

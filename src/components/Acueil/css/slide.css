@@ -1,4 +1,8 @@
-/* accueil.css */
+.carousel-item {
+  height: 500px; /* Set your desired height */
+}
+
+/*  */
 .slide-title {
   position: absolute; /* Position the text relative to its parent */
   top: -200px; /* Position the text vertically at 50% of its parent */

@@ -29,9 +29,9 @@
 
 
 
-.modalcontainer h2 {
+/* .modalcontainer h2 {
     margin: 10px 0;
-}
+} */
 
 .modalcontainer p {
     margin: 5px 0;
@@ -90,9 +90,9 @@ padding: 20px 20px 20px 0;
     color: rgb(156, 155, 155);
 }
 
-.modal-info h2 {
+/* .modal-info h2 {
     margin: 0;
-}
+} */
 /* .linkedin-button  {
     padding: 2px;
     font-size: 14px;
