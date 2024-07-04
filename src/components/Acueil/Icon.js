@@ -46,28 +46,29 @@ const Icon = () => {
                   alt={`icon ${index + 1}`}
                   className="ImgIcon"
                 />
-                <h2>{truncateText(icon.Titre)}</h2>
-                <p>{truncateText(icon.Texte, 100)}</p>
+                <h3 className="IconTitle">{truncateText(icon.Titre)}</h3>
+                <p className="IconDescrip">{truncateText(icon.Texte, 170)}</p>
               </div>
-              <h3 onClick={() => handleOpenDialog(icon)} className="suit">
-                Afficher la suite...
+              <h3 onClick={() => handleOpenDialog(icon)} className="Affichersuit">
+                Afficher la suite... &#8594;
               </h3>
             </div>
           ))}
-        <Dialog open={openDialog} onClose={handleCloseDialog}>
+        <Dialog open={openDialog} onClose={handleCloseDialog}
+
+        >
           <div style={{ textAlign: "center" }}>
             <img
-              src={`http://localhost:8000/${
-                selectedIcon && selectedIcon.image
-              }`}
+              src={
+                selectedIcon && getImageUrl(selectedIcon.image)}
               alt={selectedIcon && selectedIcon.Titre}
-              style={{ width: "100px", textAlign: "center" }}
+              style={{ width: "60px", textAlign: "center",marginTop:"20px" }}
             />
           </div>
           <DialogTitle
             style={{ textAlign: "left", fontSize: "30px", fontWeight: "400" }}
           >
-            {selectedIcon && selectedIcon.Titre}
+            {selectedIcon && truncateText(selectedIcon.Titre)}
           </DialogTitle>
           <DialogTitle
             style={{
@@ -77,7 +78,9 @@ const Icon = () => {
               color: "gray",
             }}
           >
-            <p>{selectedIcon && selectedIcon.Texte}</p>
+            {selectedIcon && (
+              <div dangerouslySetInnerHTML={{ __html: selectedIcon.Texte }} />
+            )}
           </DialogTitle>
         </Dialog>
       </div>

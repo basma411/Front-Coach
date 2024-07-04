@@ -1,101 +1,104 @@
 /* biblio.css */
-.biblioAccueil{
+.biblioAccueil {
   width: 100%;
 }
-.ContainerBiblio{
+
+.ContainerBiblio {
   display: flex;
   flex-direction: column;
   width: 80%;
   height: 100vh;
   margin: 0 auto;
-       background: #fff;
-    font-family: "Rubik", arial, sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 2;
-    color: gray; 
+  background: #fff;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 2;
+  color: gray;
 }
 
-
-.ContainerBiblio h2{
+.titreBiblio {
   width: 80%;
   text-align: center;
-
-  font-size: 47px;
-  color: #fdc900;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-margin: 50px auto 50px  auto;
+  font-size: 45px;
+  color: rgb(253, 201, 0);
+  margin: 50px auto;
 }
 
 .site-section {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
 
-justify-content: center;
-align-items: center;
-gap: 20PX;
-  }
+.flip-container {
+  perspective: 1000px;
+}
 
-  .site-section img{
-    /* box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.4);  */
-    
-    }
-    .flip-container {
-      perspective: 1000px; /* Crée une perspective pour les enfants en 3D */
-    }
-    
-    .flipper {
-      transition: transform 1s; /* Ajoute une transition fluide lors du changement de transform */
-      transform-style: preserve-3d; /* Maintient la perspective du parent sur les enfants */
-    }
-    
-    .flipper.flipped {
-      transform: rotateY(180deg); /* Tourne l'élément de 180 degrés sur l'axe Y */
-      box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.4); 
-    
-    }
-    
-    .front,
-    .back {
-      position: absolute;
-      width: 100%; 
-      height: 100%;
-      backface-visibility: hidden; /* Cache l'arrière de l'élément */
-    
-    
-    }
-    
-    .back {
-      transform: rotateY(180deg); /* Retourne l'élément pour qu'il soit à l'envers */
-    }
-    
-    .author {
-    display: flex;
-    
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
-    
-    }
-    .author img {
-      border: none;
-      border-radius: 0 30%;
-    }
-    .name{
-      margin: 10px;
-    
-    }
-    .name h3{
-      color: #275491;
-      font-size: 18px;
-    }
-    .name h4{
-      color: #ffc107;
-      font-size: 16px;
-    }
-    p{
-        top: 30px;
-        left: 0;
-        right: 0;
-        text-align: center;
-    }
+.flipper {
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+.flipper.flipped {
+  transform: rotateY(180deg);
+  box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.4);
+}
+
+.front,
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+.author {
+  display: flex;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+}
+
+.author-img {
+  border: none;
+  border-radius: 0 30%;
+}
+
+.name {
+  margin: 10px;
+}
+
+.BiblioAut {
+  color: rgb(39, 84, 145);
+  font-size: 16px;
+}
+
+.BiblioAnne {
+  color: #e3d80a;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.BiblioAnne:hover {
+  color: rgb(253, 201, 0);
+}
+
+.BiblioDescrip {
+  top: 30px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 11px;
+}
+
+.custom-dialog {
+  width: 600px;
+  height: 400px;
+  margin: auto;
+}

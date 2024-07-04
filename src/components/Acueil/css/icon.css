@@ -26,33 +26,37 @@
   flex-direction: column;
   flex-grow: 1;
 }
-
-/* .subgrid-item h2 {
-  font-family: "Rubik", Arial, sans-serif;
-  font-weight: 300;
+.ImgIcon{
+  display: block;
+  margin: 0 auto;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.IconTitle {
+  display: block;
+  margin: 0 auto;
+ font-weight: 400;
   font-size: 20px;
+  
   line-height: 2;
   color: #000;
   margin: 0;
-} */
+}
 
-.subgrid-item p {
+.IconDescrip {
   font-family: "Rubik", Arial, sans-serif;
   font-weight: 300;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 2;
-  color: gray;
+  color: rgb(128, 128, 128)  ;
   text-align: start;
 }
 
-.suit{
+.Affichersuit{
   color: #e3d80a;
   font-size: 16px;
   cursor: pointer;
   margin-top: auto; /* Place l'élément en bas */
 }
 
-.ImgIcon {
-  width: 70px;
-  margin-bottom: 10px; /* Ajoute un espace en dessous de l'image */
-}
+

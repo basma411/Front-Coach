@@ -1,36 +1,64 @@
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .Platforme{
+    width: 100%;
+  padding: 0;
+  margin: 0;
+  }
+  
+  
+  .coachTitre {
+    width: 70%;
+    font-size: 40px; /* Equivalent à 60px si la base est 16px */
+    color: white;
+    margin: 0 auto;
+    line-height: 1.2;
+    animation: fadeIn 1s ease-in-out;
+  }
+
+
+
 .fields{
     background-color: #FEFEFE;
     margin: auto;
+    display: flex;
+    position: relative;
  
 }
-/* .fields h2 {
+ .formulairecoch {
     color:#999;
-    padding: 10px;
-    font-family: "Rubik", arial, sans-serif;
-    font-weight: 300;
+    padding: 0px 0px 0px 80px;
     font-size: 2rem;
     
-} */
+} 
 .remplir{
-    padding: 5px 20px;
+
+    padding: 25px 70px;
     background-color: #275491;
     color: #fff;
     border: none;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);  
-    font-size: 18px;
-    margin: 1px 20px 0px 80px;
+    font-size: 16px;
+    margin: 50px 20px 0px 80px;
 
 
 }
 .remplirArticle{
-    padding: 20px;
+    padding: 25px 70px;
     background-color: #275491;
     color: #fff;
     border: none;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);  
-    font-size: 20px;
-    margin: 1px 20px 0px 80px;
-
+    font-size: 16px;
+    margin: 50px 20px 0px 80px;
 
 }
 .AddArticle{

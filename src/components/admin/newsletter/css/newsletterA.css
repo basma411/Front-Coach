@@ -26,13 +26,13 @@
      margin-top:10px; 
     margin-bottom:10px; 
     background-color:#0D345A;
-    font-weight:bold; 
+    /* font-weight:bold;  */
     padding:10px 100px;
      text-align:center; 
      color: #e3d80a;
      cursor: pointer;
      line-height: 32px;
-     font-weight: 500;
+     /* font-weight: 500; */
      text-decoration-style:solid ;
      font-size: 20px;
 

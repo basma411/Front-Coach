@@ -3,8 +3,7 @@ import image from '../../images/atelier-01.jpg';
 import './css/atelier.css';
 import { FaRegCirclePlay } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
-import Newsletter from '../coach/Newsletter';
-import Footer from '../coach/Footer';
+
 
 const Atelier = () => {
   return (

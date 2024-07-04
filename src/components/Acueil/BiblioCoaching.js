@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { GetBiblio } from "../../Redux/Slice/BiblioSlice";
 import { Card } from "react-bootstrap"; // Importez le composant de carte Bootstrap
 import "./css/biblio.css"; // Importez le fichier CSS externe
+import { getImageUrl } from "../..";
 
 const BiblioCoaching = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ const BiblioCoaching = () => {
   return (
     <div className="biblioAccueil">
 <div className="ContainerBiblio">
-      <h2>BiblioCoaching</h2>
+      <h3 className="titreBiblio">BiblioCoaching</h3>
       <div className="site-section">
         {Biblios &&
           Biblios.map((Biblio, index) => (
@@ -41,8 +42,8 @@ const BiblioCoaching = () => {
                   <Card>
                     <Card.Img
                       variant="top"
-                      src={`http://localhost:8000/${Biblio.photo_c}`}
-                      style={{ width: "370px", height: "427px" }}
+                      src={getImageUrl(Biblio.photo_c)}
+                      style={{ width: "350px", height: "427px" }}
                     />
                   </Card>
                 </div>
@@ -50,7 +51,7 @@ const BiblioCoaching = () => {
                   className="back"
                 >
                   <Card.Body>
-                    <Card.Text                   style={{ width: "370px", height: "400px" }}
+                    <Card.Text                   style={{ width: "350px", height: "400px" }}
 >
                       <p
                         style={{
@@ -60,20 +61,22 @@ const BiblioCoaching = () => {
                           marginbottom: "1rem",
                           fontSize:"12px"
                         }}
+                        className="BiblioDescrip"
                       >
                         {" "}
                         {Biblio.descrip}
                       </p>
                       <div className="author d-flex">
                         <img
-                          src={`http://localhost:8000/${Biblio.photo_c}`}
+                          src={getImageUrl(Biblio.photo_c)}
                           width="60px"
                           height="80px"
+                          className="author-img"
                         />
                         <div className="name align-self-center">
                         
-<h3>{Biblio.auteur1}</h3>
-<h4>{Biblio.annee}</h4>
+<h3 className="BiblioAut">{Biblio.auteur1}</h3>
+<h3 className="BiblioAnne">{Biblio.annee}</h3>
 
                         </div>
                       </div>

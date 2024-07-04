@@ -33,16 +33,16 @@ color: #797979;
     margin-top: 30px;
     height:100vh;
   }
-  .Contact h1{
+  /* .Contact h1{
     color: rgb(255,205,51);
     padding-bottom: 30px;
 
 font-weight: 400;
 font-size: 40px;
 
-  }
+  } */
  
-  .information div{
+  /* .information div{
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -52,7 +52,7 @@ font-size: 40px;
     padding-left:10px;
     font-size: 20px;
     font-weight: 300;
-  }
+  } */
   /*right*/
   .abonner{
     width: 100%;

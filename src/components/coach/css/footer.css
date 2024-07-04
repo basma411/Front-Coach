@@ -14,67 +14,84 @@ padding: 0;
 .footer-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 columns with equal width */
-  gap: 80px; /* Adjust gap between columns as needed */
+  gap: 10px; /* Adjust gap between columns as needed */
 }
 
 .footer-column {
   text-align: start; /* Align content to start in each column */
 }
-
-.footer-column h3 {
+.footerTitre{
   color: #000;
   font-size: 1.75rem;
   margin-bottom: 0.5rem;
   box-sizing: border-box;
 }
-
-.footer-column p {
+.FooterCooach{
   margin-bottom: 1rem;
   line-height: 1.7;
 
   font-size: 16px;
-  color: gray;
+  color: rgb(128, 128, 128);
   text-align: left;
+  cursor: pointer;
 }
 
+.footerPages ,.TounesConnect{
+  text-decoration: none;
+  color: rgb(227, 216, 10)
+  ;
+  cursor: pointer;
+
+  font-size: 16px;
+  line-height: 27px;
+}
+.footerPages:hover,.footer-style-social:hover,.footecontact:hover{
+  color: rgb(253, 201, 0)
+  ;
+}
 .footer-list-unstyled {
   padding-left: 0;
   list-style: none;
 }
-
-/* .footer-list-unstyled  {
-  margin-top: 0;
+.FooterSalon{
   margin-bottom: 1rem;
-  padding-inline-start: 40px;
-} */
+  line-height: 27px;
 
-.footer-Pages ,.TounesConnect{
-  text-decoration: none;
-  color: rgb(227, 216, 10);
+  font-size: 18px;
+  color: rgb(7, 7, 7);
+  text-align: left;
   cursor: pointer;
-  line-height: 1.7;
-
-  font-size: 16px;
 }
+.FooterSalon:hover{
 
-.footer-contact {
+  color: rgb(39, 84, 145);
+}
+.footer-contact  {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 
-.footer-contact p {
-  padding: 0 10px;
-  color:rgb(227, 216, 10);
-  font-weight: 500;
+.footecontact {
+  text-decoration: none;
+  color: #e3d80a;
   cursor: pointer;
 
+  font-size: 16px;
+  margin-left:10px ;
+
 }
+
+
+
+
+
+
 
 .footer-style-social {
   font-weight: 500;
   margin: 0 10px;
-  color: rgb(227, 216, 10);
+  color: #ECE455;
   cursor: pointer;
 
 }
@@ -125,3 +142,5 @@ padding: 0;
     
     }
     }
+
+

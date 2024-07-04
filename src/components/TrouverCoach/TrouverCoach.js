@@ -1,26 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import image from '../../images/big_image_2.jpg';
-import ChercheCoach from '../Acueil/ChercheCoach';
-import Newsletter from '../coach/Newsletter';
-import Footer from '../coach/Footer';
-import './css/TrouverCoach.css'; 
-import { FaPlay } from "react-icons/fa";
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchInterface, addTemoignage } from '../../Redux/Slice/InterfaceSlice';
-import { getImageUrl } from '../..';
-import { Editor } from '@tinymce/tinymce-react'; 
-import { AddTemoignages } from '../../Redux/Slice/TemoignegeSlice';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import image from "../../images/big_image_2.jpg";
+import ChercheCoach from "../Acueil/ChercheCoach";
+import Newsletter from "../coach/Newsletter";
+import Footer from "../coach/Footer";
+import "./css/TrouverCoach.css"; // Assurez-vous que ce chemin est correct
+import { FaRegCirclePlay } from "react-icons/fa6";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchInterface, addTemoignage } from "../../Redux/Slice/InterfaceSlice";
+import { getImageUrl } from "../..";
+import { Editor } from "@tinymce/tinymce-react";
+import { AddTemoignages } from "../../Redux/Slice/TemoignegeSlice";
+import { useNavigate } from "react-router-dom";
+import DOMPurify from "dompurify";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+  TextField,
+  IconButton,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 const TrouverCoach = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const [Texte, setTexte] = useState('');
-  const [titre, setTitre] = useState('');
+  const [Texte, setTexte] = useState("");
+  const [titre, setTitre] = useState("");
 
-  const { interfaceData } = useSelector((state) => state.interface); 
+  const { interfaceData } = useSelector((state) => state.interface);
   const dispatch = useDispatch();
-const navigate=useNavigate()
+  const navigate = useNavigate();
+
   useEffect(() => {
     console.log("Fetching interface data...");
     dispatch(fetchInterface());
@@ -39,26 +51,59 @@ const navigate=useNavigate()
   const handleEditorChange = (content) => {
     setTexte(content);
   };
-const handleTemClick=()=>{
-  navigate("/Temoignages")
-}
+
+  const handleTemClick = () => {
+    navigate("/Temoignages");
+  };
+
   const handleSendTemoignage = () => {
     const temoignage = {
-      nom:titre,
+      nom: titre,
       texte: Texte,
     };
     dispatch(AddTemoignages(temoignage)).then(() => {
-      setTitre('');
-      setTexte('');
-      closeModal();    });
-  
+      setTitre("");
+      setTexte("");
+      closeModal();
+    });
   };
 
   const truncateText = (htmlText, maxLength) => {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(htmlText, 'text/html');
-    const textContent = doc.body.textContent || "";
-    return textContent.length > maxLength ? textContent.substring(0, maxLength) + '...' : textContent;
+    // Nettoyer le texte HTML pour éviter les injections
+    const cleanHtml = DOMPurify.sanitize(htmlText, {
+      ALLOWED_TAGS: ["p", "b", "i", "u", "strong", "em", "br", "span"],
+      ALLOWED_ATTR: ["style"],
+    });
+
+    // Créer un div pour contenir le contenu HTML
+    const div = document.createElement("div");
+    div.innerHTML = cleanHtml;
+
+    // Initialiser le compteur de caractères
+    let charCount = 0;
+
+    // Fonction pour tronquer les enfants récursivement
+    const truncateNode = (node) => {
+      if (charCount >= maxLength) return;
+
+      if (node.nodeType === Node.TEXT_NODE) {
+        const remainingChars = maxLength - charCount;
+        if (node.textContent.length > remainingChars) {
+          node.textContent = node.textContent.substring(0, remainingChars) + "...";
+          charCount = maxLength;
+        } else {
+          charCount += node.textContent.length;
+        }
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        node.childNodes.forEach(truncateNode);
+      }
+    };
+
+    // Appliquer la troncation sur les enfants du div
+    div.childNodes.forEach(truncateNode);
+
+    // Retourner le contenu HTML mis à jour
+    return div.innerHTML;
   };
 
   return (
@@ -74,88 +119,121 @@ const handleTemClick=()=>{
           overflow: "hidden",
         }}
       >
-        <div style={{ paddingTop: "100px" }}>
-          <h2>Rencontrez votre <br/> coach!</h2>
+        <div style={{ paddingTop: "0px" }}>
+          <h3 className="TrouveCoachTitre">Rencontrez votre coach!</h3>
         </div>
       </div>
-      <ChercheCoach/>
+      <ChercheCoach />
 
       {interfaceData && interfaceData.length > 0 && (
         <div className="Temaignage">
-          <div className='Temaignage-container'>
-            <div className='heading'>
-              <h2 className='titreTemoignage'>
-                {truncateText(interfaceData[0].titre, 100)}
-              </h2>
-              <p className="text">
-                {truncateText(interfaceData[0].texte, 300)}
-              </p> 
+          <div className="Temaignage-container">
+            <div className="heading">
+              <h3 className="titreTemoignage">
+                {truncateText(interfaceData[0].titre)}
+              </h3>
+              <div id="styledtext">
+                <div dangerouslySetInnerHTML={{ __html: interfaceData[0].texte }} />
+              </div>
+
               <div className="play-button">
-                <button onClick={() => handleClick(interfaceData[0])}>
+                <button className="PartageTem" onClick={() => handleClick(interfaceData[0])}>
                   Partagez votre Témoignage
                 </button>
               </div>
             </div>
-            <div className='Temaignage-image'> 
-              <h3>Parcourez les témoignages !</h3>
-              <img src={getImageUrl(interfaceData[0].image)} alt="Image placeholder" height={'400px'} />
-              <FaPlay className='icon-play' onClick={()=>handleTemClick()}/>
+            <div className="Temaignage-image">
+              <h3 className="ParcouTem">Parcourez les témoignages !</h3>
+              <img
+                src={getImageUrl(interfaceData[0].image)}
+                alt="Image placeholder"
+                className="ImageTem"
+                height={"300px"}
+              />
+              <FaRegCirclePlay className="icon-playTem" onClick={handleTemClick} />
             </div>
           </div>
         </div>
       )}
-      {showModal && selectedEvent && (
-        <div className="modalBaghroundTemoignage" >
-          <span className="close" onClick={closeModal} >&times;</span>
-          <div className="modaltemoignageContainer" >
-          <div
-        className="ImagePlatformeEvn"
-        style={{
-          position: "relative",
-          padding:'0',
-          margin:'0',
-          width:'100%',
-          // height: "300px",
-          top:'0',
-          backgroundImage: `url(${image})`,
-          backgroundSize: "cover",
-          overflow: "hidden",
-        }}
-      >
-        <div style={{ paddingTop: "100px" ,paddingLeft:'250px'}}>
-          <h5 style={{fontSize:'30px' }}>Ajoutez votre <br/>témoignage ici!</h5>
-        </div>
-      </div>  
-<div style={{width:'60%',height:'100px',margin:'50px auto'}}>
-  <input
-    type='text'
-    style={{ width: '100%', margin: '10px' }}
-    placeholder="Initiales nom et prénom (exemple A.S)"
-    value={titre}
-    onChange={(e) => setTitre(e.target.value)}
-  />
-<Editor
-  apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
-  init={{
-    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',
-    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-    tinycomments_mode: 'embedded',
-    tinycomments_author: 'Author name',
-    mergetags_list: [
-      { value: 'First.Name', title: 'First Name' },
-      { value: 'Email', title: 'Email' },
-    ],
-  }}
-  value={Texte}
-  onEditorChange={handleEditorChange}
-/>    
-  <button className='addTemoign' onClick={handleSendTemoignage}>Envoyer</button>
-  </div>      
+
+      <Dialog open={showModal} onClose={closeModal} fullWidth maxWidth="md">
+   
+        <DialogContent>
+          <div className="PlatformeEvn" style={{ backgroundImage: `url(${image})` }}>
+            <h3 className="AjouterTemTitre">Ajoutez votre témoignage ici!</h3>
           </div>
-        </div>
+          <input
+            type="text"
+            placeholder="Initiales nom et prénom (exemple A.S)"
+            value={titre}
+            onChange={(e) => setTitre(e.target.value)}
+            className="NomTem"
+          />
+
+          <Editor
+            apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
+            init={{
+              height: 500,
+              menubar: false,
+              plugins: [
+                "advlist",
+                "autolink",
+                "lists",
+                "link",
+                "image",
+                "charmap",
+                "preview",
+                "anchor",
+                "searchreplace",
+                "visualblocks",
+                "code",
+                "fullscreen",
+                "insertdatetime",
+                "media",
+                "table",
+                "code",
+                "help",
+                "wordcount",
+              ],
+              toolbar:
+                "undo redo  | " +
+                "fontselect fontsizeselect | bold italic forecolor | alignleft aligncenter " +
+                "alignright alignjustify | bullist numlist outdent indent | " +
+                "removeformat | help",
+              content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+              setup: (editor) => {
+                editor.on("change", () => handleEditorChange(editor.getContent()));
+              },
+            }}
+            value={Texte}
+            onEditorChange={handleEditorChange}
+          />
+          <button className="addTemoign" onClick={handleSendTemoignage}>
+            Envoyer
+          </button>
+        </DialogContent>
+      </Dialog>
+
+      {/* Close button outside the dialog */}
+      {showModal && (
+        <IconButton
+          aria-label="close"
+          onClick={closeModal}
+          sx={{
+            position: "fixed",
+            right: "calc(50% - 500px + 8px)", // Adjust based on Dialog maxWidth and desired offset
+            top: "calc(50% - 250px - 40px)", // Adjust based on Dialog maxHeight and desired offset
+            color: "gray",
+            fontWeight:'500',
+            zIndex: 1000, // Ensure it's above the dialog
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
       )}
-      <Newsletter/>
-      <Footer/>
+
+      <Newsletter />
+      <Footer />
     </>
   );
 };

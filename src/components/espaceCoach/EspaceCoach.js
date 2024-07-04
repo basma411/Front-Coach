@@ -21,18 +21,18 @@ const EspaceCoach = () => {
           overflow: "hidden",
         }}
       >
-        <div style={{ paddingTop: "100px" }}>
-          <h2>Vous êtes coach?</h2>
+        <div >
+          <h3 className="coachTitre">Vous êtes coach?</h3>
           <form class="d-block d-lg-flex mb-4">
             <div class="fields">
-              <h2>
+              <h3 className="formulairecoch">
                 Rejoignez votre plateforme
                 <Link to="/formulaire" >
 
                 <button className="remplir">Formulaire à remplir</button>
                 </Link>
 
-              </h2>
+              </h3>
             </div>
           </form>
         </div>
