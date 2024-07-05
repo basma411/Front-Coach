@@ -14,11 +14,7 @@ import { useNavigate } from "react-router-dom";
 import DOMPurify from "dompurify";
 import {
   Dialog,
-  DialogTitle,
   DialogContent,
-  DialogActions,
-  Button,
-  TextField,
   IconButton,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
@@ -157,7 +153,6 @@ const TrouverCoach = () => {
       )}
 
       <Dialog open={showModal} onClose={closeModal} fullWidth maxWidth="md">
-   
         <DialogContent>
           <div className="PlatformeEvn" style={{ backgroundImage: `url(${image})` }}>
             <h3 className="AjouterTemTitre">Ajoutez votre témoignage ici!</h3>
@@ -207,6 +202,7 @@ const TrouverCoach = () => {
             }}
             value={Texte}
             onEditorChange={handleEditorChange}
+            className="TemEditor"
           />
           <button className="addTemoign" onClick={handleSendTemoignage}>
             Envoyer
@@ -214,7 +210,6 @@ const TrouverCoach = () => {
         </DialogContent>
       </Dialog>
 
-      {/* Close button outside the dialog */}
       {showModal && (
         <IconButton
           aria-label="close"

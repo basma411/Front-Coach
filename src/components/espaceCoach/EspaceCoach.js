@@ -45,7 +45,7 @@ const EspaceCoach = () => {
         </Link>
 
         <div>
-          <h2>Parcourez les articles, les offres d'emploi!</h2>
+          <h2 className="ParcourArticle">Parcourez les articles, les offres d'emploi!</h2>
           <div className="ContainerArticle">
             <img src={image1} alt="image placeholder" />
             <Link to="/articles" className="icon-play">

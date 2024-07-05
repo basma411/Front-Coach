@@ -8,7 +8,7 @@
       transform: translateY(0);
     }
   }
-  .Platforme{
+  .ImagePlatforme{
     width: 100%;
   padding: 0;
   margin: 0;
@@ -37,7 +37,8 @@
     color:#999;
     padding: 0px 0px 0px 80px;
     font-size: 2rem;
-    
+    margin: 15px 0px;
+
 } 
 .remplir{
 
@@ -47,18 +48,23 @@
     border: none;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);  
     font-size: 16px;
-    margin: 50px 20px 0px 80px;
+    margin: 0px 20px 0px 80px;
 
 
 }
 .remplirArticle{
-    padding: 25px 70px;
     background-color: #275491;
-    color: #fff;
     border: none;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);  
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    margin: 50px 20px 0px 80px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 250px;
+    height: 70px;
+    font-weight: 300;
 
 }
 .AddArticle{
@@ -76,12 +82,11 @@
     font-size: 18px;
     
 } */
-.AddArticle h2{
+.ParcourArticle {
     background: #fff;
-    font-family: "Rubik", arial, sans-serif;
     font-weight: 300;
-    font-size: 20px;
-    line-height: 2;
+    font-size: 16px;
+    line-height: 32px;
     color: #275491;
 }
 .ContainerArticle {

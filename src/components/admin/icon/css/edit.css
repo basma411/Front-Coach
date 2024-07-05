@@ -17,12 +17,10 @@
     
 }
 
-.ck-editor__editable {
+/* .ck-editor__editable {
    height: 300px;
-  /* height: 300px; */
     width: 600px;
-    /* text-align: justify; */
-}
+} */
 .form-group{
     width: 100%;
 } 

@@ -48,69 +48,77 @@ const AjoutArticle = () => {
 
   return (
     <>
-      <div className="ImagePlatforme" style={{
+      <div className="PlatformeArticle" style={{
         position: "relative",
         textAlign: "center",
         height: "300px",
         backgroundImage: `url(${image})`,
         backgroundSize: "cover",
         overflow: "hidden",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}>
-        <div style={{ paddingTop: "100px" }}>
-          <h2>Partagez un article, une offre</h2>
+        <div>
+          <h3 className="ArtcTitre">Partagez un article, une offre</h3>
         </div>
       </div>
 
-      <div className="navigation-arrows">
-        <div className="left-Article">
-          <h3>Articles, offres déjà partagé(e)s</h3>
-          {latestArticles.map((article, index) => (
-            <div key={index}>
-              <img src={getImageUrl(article.photo)} alt="Article" />
-              <h1>{article.titre}</h1>
-              <h2>{article.auteur}</h2>
-              <hr />
-            </div>
-          ))}
-        </div>
-        <div className="right-Article">
-          <h1>Pour partager un article, une offre, cet espace est pour vous!</h1>
-          <form onSubmit={handleFormSubmit}>
-            <label className="LabelArticle">Auteur(e)/ Entreprise:</label>
-            <input type="text" placeholder="" ref={authorRef} className="inputArticle" />
-            <label className="LabelArticle">Titre:</label>
-            <input type="text" placeholder="" ref={titleRef} className="inputArticle" />
-            <label className="LabelArticle">Texte:</label>
+      <div className="ajouterArtc">
+        <div className="ajouterArtcContainer">
+          <div className="left-Article">
+            <h3>Articles, offres déjà partagé(e)s</h3>
+            {latestArticles.map((article, index) => (
+              <div key={index}>
+                <img src={getImageUrl(article.photo)} alt="Article" />
+                <h1>{article.titre}</h1>
+                <h2>{article.auteur}</h2>
+                <hr />
+              </div>
+            ))}
+          </div>
+          <div className="right-Article">
+            <h3 className="FormulaireCoach">Pour partager un article, une offre, cet espace est pour vous!</h3>
+            <form onSubmit={handleFormSubmit}>
+              <label className="LabelArticle">Auteur(e)/ Entreprise:</label>
+              <input type="text" placeholder="" ref={authorRef} className="inputArticle" />
+              <label className="LabelArticle">Titre:</label>
+              <input type="text" placeholder="" ref={titleRef} className="inputArticle" />
+              <label className="LabelArticle">Texte:</label>
 
-            <Editor
+              <Editor
   apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
   onInit={(evt, editor) => {
-                editorRef.current = editor;
-              }}
-              init={{
-                height: 500,
-                menubar: false,
-                plugins: [
-                  'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
-                  'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
-                  'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
-                ],
-                toolbar: 'undo redo | formatselect | ' +
-                  'bold italic forecolor | alignleft aligncenter ' +
-                  'alignright alignjustify | bullist numlist outdent indent | ' +
-                  'removeformat | help',
-                content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
-              }}
-            />
+    editorRef.current = editor;
+  }}
+  init={{
+    height: 500,
+    menubar: false,
+    plugins: [
+      'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+      'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+      'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
+    ],
+    toolbar: 'undo redo | blocks | ' +
+      'bold italic forecolor | alignleft aligncenter ' +
+      'alignright alignjustify | bullist numlist outdent indent | ' +
+      'removeformat | help',
+    setup: (editor) => {
+      editor.on('change', () => handleEditorChange(editor.getContent()));
+    },
+  }}
+/>
 
-            <label className="LabelArticle">Photo ou illustration:</label>
-            <input type="file" placeholder="" onChange={handleImageChange} name="imagee" className="FileArticle" />
 
-            <label className="LabelArticle">Lien (si votre texte est publié sur un site):</label>
-            <input type="text" placeholder="" ref={linkRef} className="inputArticle" />
+              <label className="LabelArticle">Photo ou illustration:</label>
+              <input type="file" placeholder="" onChange={handleImageChange} name="imagee" className="FileArticle" />
 
-            <input className="BoutonArticle" type="submit" />
-          </form>
+              <label className="LabelArticle">Lien (si votre texte est publié sur un site):</label>
+              <input type="text" placeholder="" ref={linkRef} className="inputArticle" />
+
+              <input className="BoutonArticle" type="submit" />
+            </form>
+          </div>
         </div>
       </div>
     </>
