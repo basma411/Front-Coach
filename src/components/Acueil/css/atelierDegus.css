@@ -16,6 +16,8 @@
   margin: 0 auto;
   line-height: 1.2;
   animation: fadeIn 1s ease-in-out;
+  font-weight: 300;
+
 }
 
 /* Autres styles existants */

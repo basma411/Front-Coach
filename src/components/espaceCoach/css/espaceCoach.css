@@ -15,13 +15,15 @@
   }
   
   
-  .coachTitre {
+  .coach_Titre {
     width: 70%;
     font-size: 40px; /* Equivalent à 60px si la base est 16px */
     color: white;
     margin: 0 auto;
     line-height: 1.2;
     animation: fadeIn 1s ease-in-out;
+    font-weight: 300;
+
   }
 
 

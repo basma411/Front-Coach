@@ -22,7 +22,7 @@ const EspaceCoach = () => {
         }}
       >
         <div >
-          <h3 className="coachTitre">Vous êtes coach?</h3>
+          <h3 className="coach_Titre">Vous êtes coach?</h3>
           <form class="d-block d-lg-flex mb-4">
             <div class="fields">
               <h3 className="formulairecoch">

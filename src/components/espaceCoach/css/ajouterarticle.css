@@ -25,6 +25,8 @@
   margin: 0 auto;
   line-height: 1.5;
   animation: fadeIn 1s ease-in-out;
+  font-weight: 300;
+
 }
 
 .ajouterArtc{

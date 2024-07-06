@@ -1,18 +1,123 @@
-.ImagePlatformeEvn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    color: white;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ImagePlatformeEvn {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.TitreEnvt {
+  width: 70%;
+  font-size: 40px; 
+  color: white;
+  line-height: 1.2;
+  animation: fadeIn 1s ease-in-out;
+  font-weight: 300;
+  text-align: center;
+  margin: 0;
+}
+
+
+
+
+.fields{
+  background-color: #FEFEFE;
+  margin: auto;
+  display: flex;
+  position: relative;
+
+}
+.formulairecoch {
+  color:#999;
+  padding: 0px 0px 0px 80px;
+  font-size: 2rem;
+  margin: 15px 0px;
+
+} 
+.remplir{
+
+  padding: 25px 70px;
+  background-color: #275491;
+  color: #fff;
+  border: none;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);  
+  font-size: 16px;
+  margin: 0px 20px 0px 80px;
+
+
+}
+.remplirArticle{
+  background-color: #275491;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 250px;
+  height: 70px;
+  font-weight: 300;
+
+}
+.AddArticle{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 100px 0;
+}
+/* .remplir{
+  padding: 6px 40px;
+  background-color: #275491;
+  color: #fff;
+  border: none;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);  
+  font-size: 18px;
   
-  /* .ImagePlatformeEvn h2 {
-    font-size: 60px;
-    font-family: 'Rubik', Arial, sans-serif;
-    font-weight: 400;
-    line-height: 72px;
-  } */
-  
+} */
+.ParcourArticle {
+  background: #fff;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 32px;
+  color: #275491;
+}
+.ContainerArticle {
+  position: relative;
+  display: inline-block;
+}
+
+.ContainerArticle img {
+  height: 300px; /* ajustez la hauteur de l'image selon vos besoins */
+}
+
+.icon-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  color: yellow;
+  font-size: 50px;
+}
+
   .Evnement {
     width: 100%;
     height: 100%;
@@ -25,8 +130,9 @@
   }
   
   .ContainerEvnement {
-    width: 100%;
-    display: flex;       
+    width: 90%;
+    display: flex;    
+    flex-direction: column;   
     justify-content: center;
     align-items: center;
     margin: 20px auto 0px auto;
@@ -38,7 +144,7 @@
     cursor: pointer;
   }
    */
-
+/* 
 .article-list {
     width: 100%;
   display: flex;
@@ -48,13 +154,97 @@
   gap: 20PX;
   background-color: #F9FAFB;
   padding-top: 60px;
-}
+} */
 .partageEvnt{
-
-background-color: #0C3B65;
-color: #fff;
-box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 20px;
+  background-color: #275491;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 70px;
 }
+.evnt-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 80px;
+
+}
+.card{
+  border-radius: 0 ;
+  border: none;
+
+}
+.evnt-card {
+  width: 49%;
+  height:435px;
+  margin-bottom: 80px;
+  background-color: #fff;
+  box-shadow: 0 5px 30px -10px rgba(0, 0, 0, 0.2);
+}
+
+.evnt-card-title {
+  color: #000;
+  font-size: 20px;
+  margin-bottom: 15px;
+  margin-top: 30px;
+
+  line-height: 1.5;
+  font-weight: 300;
+  cursor: pointer;
+}
+.evnt-card-title:hover{
+  color: rgb(39,116,188);
+}
+.Imageevnt{
+  width:100%;
+  height:250px;
+  border: solid 1px #C0C0C0;
+}
+.evnt-card-author{
+  /* display: flex;
+flex-direction: column; 
+ align-items: center;
+  margin-top: 20px;
+  color: #9b9898; */
+
+}
+
+.evnt-card-author-icon {
+  margin-right: 5px;
+  font-size: 18px;
+  color: #b3b3b3;
+}
+.Dateevnt{
+  color: #b3b3b3;
+cursor: pointer;
+font-size: 15px;
+line-height: 2;
+font-weight: 300;
+text-align: center;
+}
+.LieuEvnt {
+  display: flex;
+  align-items: center;
+  transition: color 0.3s;
+}
+
+.LieuEvnt:hover {
+  color: black;
+}
+
+.LieuEvnt:hover .Dateevnt {
+  color: black;
+}
+
+.LieuEvnt:hover .evnt-card-author-icon {
+  color: black;
+}
+
 /*css Modale*/
 
 .modalBaghroundEvnt {
@@ -98,16 +288,40 @@ box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 20px;
 
 
 .Evnt-image {
-  width: 200px;
+  width: 300px;
+  height:100px ;
   display: block;
-margin: 0 auto;
+margin: 30px auto;
 }
 .Evnt-titre {
-  color: rgb(227, 216, 10);
+  color: #e3d80a;
+cursor: pointer;
+line-height: 1.2;
+font-size: 2rem;
+text-align: justify;
+font-weight: 300;
+margin-bottom: 20px;
+
+
+}
+.Evnt-titre:hover {
+  color: #fdc900;
 }
 
 
+.Evnt-descri{
+  font-size: 16px;
+  color: gray;
+}
 
+.Evnt-descri a {
+  color: #e3d80a; 
+  text-decoration: none;
+}
+
+.Evnt-descri a:hover {
+  color: #fdc900; 
+}
 
 .Evnt-info {
   width: 100%;
@@ -115,17 +329,38 @@ margin: 0 auto;
   align-items: center;
 justify-content: left; 
  background-color: #fff;
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 20px;
-padding: 20px 2px 20px 2px;
-gap: 10px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 20px;
+padding: 20px ;
+box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 30px -10px;
+gap: 30px;
+
 }
-.info{
-  font-family: "Rubik", arial, sans-serif;
-  font-weight: 100;
-  font-size: 14px;
-  line-height: 1;
+
+
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.info-icon {
   color: rgb(156, 155, 155);
+  margin-right: 5px; /* Space between icon and text */
 }
+
+.info-lieu,.info-date {
+  font-family: "Rubik", arial, sans-serif;
+  font-size: 15px;
+  line-height: 1;
+  text-align: justify;
+  font-weight: 300;
+  color: rgb(179, 179, 179);
+  margin: 0;
+}
+
+
+
+
 
 .linkedin-button  {
   padding: 2px;
@@ -136,19 +371,17 @@ gap: 10px;
   color: #fff;
 
 }
-.facebook-button{
+.info-item{
   padding: 2px;
   font-size: 14px;
   margin: 2px;
   border: none;
-  background-color: rgb(24,119,242);
 border-radius: 5%;
   color: #fff;
 
 }
-.partage{
+.partagerEVNT{
   margin-top: 40px;
-  gap: 20px;
-  
-}
+display: flex;  
+gap: 20px;}
 

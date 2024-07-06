@@ -1,3 +1,39 @@
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .ImagePlatformeEvnAdd {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    background-size: cover;
+    overflow: hidden;
+  }
+  
+  .AddEvntTitre {
+    width: 30%;
+    font-size: 60px; 
+    color: white;
+    line-height: 1.2;
+    animation: fadeIn 1s ease-in-out;
+    font-weight: 300;
+    text-align: center;
+    margin: 0;
+  }
+  
 .ContainerEvnt {
     width: 80%;
     display: flex;
@@ -55,11 +91,11 @@
     color: rgb(128, 128, 128);
 } */
 
-.right-Evnt h5 {
-    margin-bottom: 20px;
-    font-size: 25px;
-    font-weight: 400;
-    color: gray;
+.formulaireEvnt {
+    margin-bottom: 0.5rem;
+    font-size: 24px;
+    font-weight: 300;
+    color: #000;
 }
 .AddEvnt{
     display: block;

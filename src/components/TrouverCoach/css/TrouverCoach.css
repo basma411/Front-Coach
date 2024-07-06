@@ -19,11 +19,13 @@ margin: 0;
 
 .TrouveCoachTitre {
   width: 70%;
-  font-size: 3.75rem; /* Equivalent à 60px si la base est 16px */
+  font-size: 3.75rem; 
   color: white;
   margin: 0 auto;
   line-height: 1.2;
   animation: fadeIn 1s ease-in-out;
+  font-weight: 300;
+
 }
 .Temaignage{
     width: 100%;
@@ -145,6 +147,8 @@ margin: 0;
     line-height: 1.2;
     text-align: center; /* Centrage horizontal du texte */
     animation: fadeIn 1s ease-in-out;
+    font-weight: 300;
+
   }
   
 .MuiDialogContent-root{

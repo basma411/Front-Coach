@@ -74,7 +74,7 @@ const AjouterEvtt = () => {
 
   return (
     <>
-      <div className="ImagePlatformeEvn" style={{
+      <div className="ImagePlatformeEvnAdd" style={{
         position: "relative",
         textAlign: "center",
         height: "300px",
@@ -82,14 +82,13 @@ const AjouterEvtt = () => {
         backgroundSize: "cover",
         overflow: "hidden",
       }}>
-        <div style={{ paddingTop: "100px" }}>
-          <h2>Partagez votre <br /> évènement</h2>
-        </div>
+                <h3 className='AddEvntTitre'>Partagez votre évènement</h3>
+
       </div>
 
       <div className="ContainerEvnt">
         <div className="left-Evnt">
-          <h3>Évènements déjà partagés</h3>
+          <h2>Évènements déjà partagés</h2>
           {latestArticles.map((article, index) => (
             <div key={index}>
               <img src={getImageUrl(article.photo)} alt="Article" />
@@ -100,7 +99,8 @@ const AjouterEvtt = () => {
           ))}
         </div>
         <div className="right-Evnt">
-          <h1 >Pour partager un article, une offre, cet espace est pour vous!</h1>
+          <h1 className='formulaireEvnt'>Pour partager un évènement, cet espace est pour vous !
+          </h1>
           <form onSubmit={handleSubmit}>
             <label>Titre:</label>
             <input type="text" name="titre" placeholder="" required value={formData.titre} onChange={(e) => setFormData({ ...formData, titre: e.target.value })} />

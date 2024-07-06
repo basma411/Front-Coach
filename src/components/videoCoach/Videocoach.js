@@ -16,7 +16,7 @@ const Videocoach = () => {
   return (
     <>
       <div
-        className="ImagePlatformeEvn"
+        className="ImagePlatformeVedio"
         style={{
           position: "relative",
           textAlign: "center",
@@ -26,8 +26,8 @@ const Videocoach = () => {
           overflow: "hidden",
         }}
       >
-        <div style={{ paddingTop: "100px" }}>
-          <h2>VidéoCoaching</h2>
+        <div >
+          <h3 className="Vedio-Titre">VidéoCoaching</h3>
         </div>
       </div>
 

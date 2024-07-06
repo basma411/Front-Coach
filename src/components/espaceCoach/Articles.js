@@ -46,7 +46,7 @@ const Articles = () => {
   return (
     <>
       <div
-        className="ImagePlatforme"
+        className="PlatformeArticle"
         style={{
           position: "relative",
           textAlign: "center",
@@ -56,8 +56,8 @@ const Articles = () => {
           overflow: "hidden",
         }}
       >
-        <div style={{ paddingTop: "100px" }}>
-          <h2>Articles</h2>
+        <div >
+          <h3 className="ArtcTitre">Articles</h3>
         </div>
       </div>
 
@@ -114,7 +114,7 @@ const Articles = () => {
               <h3>{selectedArticle.titre}</h3>
               <div dangerouslySetInnerHTML={{ __html: selectedArticle.texte }} />
                 <div className="Artc-info">
-               
+              
                 
               
                   <div className="Artc-author">
