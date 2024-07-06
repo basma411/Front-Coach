@@ -85,15 +85,15 @@ const AjouterEvtt = () => {
                 <h3 className='AddEvntTitre'>Partagez votre évènement</h3>
 
       </div>
-
+<div className='AjouterEVNT'>
       <div className="ContainerEvnt">
         <div className="left-Evnt">
-          <h2>Évènements déjà partagés</h2>
+          <h2 className='EvntPartager'>Évènements déjà partagés</h2>
           {latestArticles.map((article, index) => (
             <div key={index}>
-              <img src={getImageUrl(article.photo)} alt="Article" />
-              <h1 onClick={() => handleTitleClick(article)}>{article.titre}</h1>
-              <h2>{article.dates}</h2>
+              <img className='left-Evnt-img' src={getImageUrl(article.photo)} alt="Article" />
+              <h1  className="EvntTitre"onClick={() => handleTitleClick(article)}>{article.titre}</h1>
+              <h2 className="EvntDate">{article.dates}</h2>
               <hr />
             </div>
           ))}
@@ -142,7 +142,7 @@ const AjouterEvtt = () => {
           </form>
         </div>
       </div>
-
+      </div>
       {showModal && (
         <Model selectedEvent={selectedEvent} closeModal={closeModal} />
       )}

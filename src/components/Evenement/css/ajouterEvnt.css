@@ -21,6 +21,7 @@
     height: 300px;
     background-size: cover;
     overflow: hidden;
+
   }
   
   .AddEvntTitre {
@@ -33,48 +34,56 @@
     text-align: center;
     margin: 0;
   }
-  
+  .AjouterEVNT{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #F8F9FA;
+
+  }
 .ContainerEvnt {
     width: 80%;
     display: flex;
     flex-direction: row;
     gap: 20px;
-    margin: 20px auto;
+    margin: 0px auto;
+    padding-top: 80px;
+
 }
 
 .left-Evnt {
     width: 35%;
     padding: 30px 20px;
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .right-Evnt {
     width: 65%;
-    padding: 20px;
+    padding: 80px 20px;
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.left-Evnt h3 {
+.EvntPartager{
     margin-bottom: 20px;
-    color: rgb(39, 84, 145);
+    text-align: center;
+    color: #275491;
     font-size: 20px;
     font-weight: 300;
     line-height: 40px;
     text-align: center;
 }
 
-.left-Evnt img {
+.left-Evnt-img {
     width: 200px;
     height: 120px;
     border: solid 1px gray;
     border-radius: 5px;
+    display: block;
+    margin: 0 auto;
 }
 
-.left-Evnt h5 {
+.EvntTitre{
     font-size: 20px;
     margin-top: 10px;
     color: rgb(227, 216, 10);
@@ -83,13 +92,13 @@
     cursor: pointer;
 }
 
-/* .left-Evnt h2 {
+.EvntDate {
     font-size: 16px;
     margin-top: 5px;
     font-weight: 300;
     line-height: 32px;
     color: rgb(128, 128, 128);
-} */
+}
 
 .formulaireEvnt {
     margin-bottom: 0.5rem;
