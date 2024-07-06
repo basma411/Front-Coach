@@ -168,12 +168,14 @@ margin: 80px auto 40px auto;
 padding-left: 15px;
 border: solid 0.5px gray;
 }
-.tox-tinymce{
+.tox{
   width: 50%;
   height: 40px;
 display: block;
 margin: 0px auto 40px auto;
 }
+
+
 .NomTem:focus
  {
   border: solid 0.5px transparent;

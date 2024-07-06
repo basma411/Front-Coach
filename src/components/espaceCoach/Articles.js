@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import image from "../../images/big_image_2.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { GetArticle } from "../../Redux/Slice/ArticleSlice";
-import { MdPerson } from "react-icons/md";
 import Card from "react-bootstrap/Card";
 import "./css/article.css";
 import Newsletter from "../coach/Newsletter";
@@ -11,6 +10,8 @@ import { getImageUrl } from "../..";
 import logo from "../../images/logo.jpg";
 import { GrLinkedin } from "react-icons/gr";
 import { FaFacebook } from "react-icons/fa";
+import { MdPerson } from "react-icons/md";
+
 const Articles = () => {
   const dispatch = useDispatch();
   const { Articles } = useSelector((state) => state.article);

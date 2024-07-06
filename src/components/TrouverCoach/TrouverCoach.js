@@ -199,6 +199,8 @@ const TrouverCoach = () => {
               setup: (editor) => {
                 editor.on("change", () => handleEditorChange(editor.getContent()));
               },
+              body_class: 'TemEditor' // Apply the custom class to the editor's body
+
             }}
             value={Texte}
             onEditorChange={handleEditorChange}
