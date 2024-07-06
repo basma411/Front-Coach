@@ -157,7 +157,8 @@ const TrouverCoach = () => {
           <div className="PlatformeEvn" style={{ backgroundImage: `url(${image})` }}>
             <h3 className="AjouterTemTitre">Ajoutez votre témoignage ici!</h3>
           </div>
-          <input
+        <div style={{width:"50%" ,display:'block',margin:'0 auto'}}>
+        <input
             type="text"
             placeholder="Initiales nom et prénom (exemple A.S)"
             value={titre}
@@ -206,6 +207,7 @@ const TrouverCoach = () => {
             onEditorChange={handleEditorChange}
             className="TemEditor"
           />
+        </div>
           <button className="addTemoign" onClick={handleSendTemoignage}>
             Envoyer
           </button>

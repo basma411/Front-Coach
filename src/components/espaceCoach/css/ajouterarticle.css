@@ -90,20 +90,7 @@
   line-height: 32px;
   color: rgb(128, 128, 128);
 }
-.ArticleContai{
-  padding:40px ;
-}
-.titreARTDialo{
-  color: rgb(227, 216, 10);
-  cursor: pointer;
-  font-size: 2rem;
-  line-height: 1.2;
 
-}
-.textARTDialo{
-  color: gray;
-  font-size: 16px !important;
-}
 /*Right*/
 .right-Article {
   background-color: #fff;
@@ -120,13 +107,13 @@
   color: #000;
 }
 
-.right-Article form {
+/* .right-Article form {
   display: flex;
   flex-direction: column;
-}
+} */
 
 .inputArticle {
-  width: 80%;
+  width: 100%;
   height: 43px;
   margin-bottom: 10px;
   border: 1px solid #ced4da;
@@ -144,18 +131,7 @@ border-radius:0 ;
   margin: 0 ;
 }
 
-/* .TextareaArticle{
-  width: 100%;
-  height: 100px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-  color: #535252;
 
-  cursor: pointer;
-
-} */
 .LabelArticle{
   margin: 10px 0;
   font-size: 16px;
@@ -192,58 +168,54 @@ line-height: 32px;
 .inputArticle:focus,
 .TextareaArticle:focus,
 .FileArticle:focus {
+  border: solid 1px transparent;
   outline-color: rgb(36, 233, 233);
   outline-style: solid; /* Set the outline style to solid */
   outline-offset: 0; /* Set the outline width to 1px */
 }
 
-/* .editor{
-  position: relative;
-  width: 100%;
-  margin: auto; 
 
-} */
-.POLICE {
+/* .POLICE {
   position: relative;
   width: 100%;
   display: inline-block;
   background-color: #F8F8F8;
   padding: 2px;
-  border: 1px solid #ccc; /* Ajoute une bordure */
-}
+  border: 1px solid #ccc; 
+} */
 
 
-.bold-icon,
+/* .bold-icon,
 .italic-icon,
 .list-icon,
 .arrow-icon {
-  font-size: 25px; /* Taille de la police */
-  cursor: pointer; /* Curseur au survol */
-  color: #333; /* Couleur de l'icône */
-}
-
+  font-size: 25px; 
+  cursor: pointer;
+  color: #333; 
+} */
+/* 
 .bold-icon,
 .italic-icon,
 .list-icon {
-  margin-right: 10px; /* Espacement à droite de chaque icône, sauf la dernière */
-}
+  margin-right: 10px;
+} */
 
-.arrow-icon {
-  margin-left: 10px; /* Espacement à gauche de l'icône de flèche */
-}
+/* .arrow-icon {
+  margin-left: 10px; 
+} */
 
-.separator {
-  width: 1px; /* Largeur de la ligne */
-  height: 25px; /* Hauteur de la ligne, ajustez selon vos besoins */
-  background-color: #ccc; /* Couleur de la ligne */
-}
-
-
+/* .separator {
+  width: 1px; 
+  height: 25px; 
+  background-color: #ccc;
+} */
 
 
 
 
-#article-button {
+
+
+/* #article-button {
   background-color: rgb(229, 255, 0);
   color: white;
   border: none;
@@ -251,11 +223,25 @@ line-height: 32px;
   width: 100px;
   margin: 0 auto;
   border-radius: 5px;
-}
+} */
 
 
 /*dialogue*/
+.ArticleContai{
+  padding:40px ;
+}
+.ART-titre{
+  color: rgb(227, 216, 10);
+  cursor: pointer;
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 300;
 
+}
+.textARTDialo{
+  color: gray;
+  font-size: 16px !important;
+}
 
 .Artc-inf {
   width: 100%;
@@ -269,6 +255,20 @@ gap: 10px;
 margin-top: 5px;
 }
 
+.Art-Descrip{
+  font-size: 16px;
+  color: gray;
+  font-weight: 400;
+}
+
+.Art-Descrip a {
+  color: #e3d80a; 
+  text-decoration: none;
+}
+
+.Art-Descrip a:hover {
+  color: #fdc900; 
+}
 
 .artic-author-icon{
   color: #9b9898;

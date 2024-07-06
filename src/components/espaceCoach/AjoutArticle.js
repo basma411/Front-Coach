@@ -156,8 +156,8 @@ const AjoutArticle = () => {
         <img src={logo} alt="Article" style={{ width: '180px'}} />
         <hr />
         <img src={getImageUrl(currentArticle.photo)} alt="Article" style={{ display: "block", margin: "0 auto", width: '200px' }} />
-        <h3 className="titreARTDialo">{currentArticle.titre}</h3>
-        <div  className="textARTDialo" dangerouslySetInnerHTML={{ __html: currentArticle.texte }} />
+        <h3 className="ART-titre">{currentArticle.titre}</h3>
+        <div  className="Art-Descrip" dangerouslySetInnerHTML={{ __html: currentArticle.texte }} />
         <div className="Artc-inf">
                
                 
