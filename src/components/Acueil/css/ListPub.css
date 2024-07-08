@@ -16,6 +16,8 @@
     margin: 0 auto;
     line-height: 1.2;
     animation: fadeIn 1s ease-in-out;
+    font-weight: 300;
+
   }
   
   /* Autres styles existants */
@@ -73,3 +75,62 @@
     .cardPub-title:hover {
       color: #043F74;
   }
+
+
+/*dialogue*/
+.BubContai{
+  padding:40px ;
+}
+.Bub-titre{
+  color: rgb(227, 216, 10);
+  cursor: pointer;
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 300;
+
+}
+
+
+.Bub-inf {
+  width: 100%;
+  display: flex;
+  align-items: center;
+justify-content: left; 
+
+margin-top: 5px;
+}
+
+.Bub-Descrip{
+  font-size: 16px;
+  color: gray;
+  font-weight: 400;
+}
+
+.Bub-Descrip a {
+  color: #e3d80a; 
+  text-decoration: none;
+}
+
+.Bub-Descrip a:hover {
+  color: #fdc900; 
+}
+
+.info-item{
+  padding: 2px;
+  font-size: 14px;
+  margin: 2px;
+  border: none;
+border-radius: 5%;
+  color: #fff;
+
+}
+
+.partageBub{
+  display: flex;
+  justify-content: flex-start;
+margin-top: 20px;
+  gap: 10px;
+
+  
+}
+

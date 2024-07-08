@@ -4,7 +4,7 @@ import { getImageUrl } from '../..';
 import { FaRegCirclePlay } from "react-icons/fa6";
 import { Dialog, DialogContent, DialogTitle, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import './css/videocoach.css'; // Ensure you have this CSS file or include styles in your existing CSS file
+import './css/videocoach.css'; 
 
 const VideoCard = ({ video }) => {
   const [showModal, setShowModal] = useState(false);
