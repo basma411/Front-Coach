@@ -11,7 +11,7 @@
   
 .TitrePub{
     width: 70%;
-    font-size: 3.75rem; /* Equivalent à 60px si la base est 16px */
+    font-size: 3.75rem; 
     color: white;
     margin: 0 auto;
     line-height: 1.2;

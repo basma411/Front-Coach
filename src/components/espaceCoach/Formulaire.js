@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Select from "react-dropdown-select";
 import { toast, ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import { addCoach, getCoachVisivble } from "../../Redux/Slice/CoachSlice";
 import { getdomaine } from "../../Redux/Slice/DomainSlice";
 import image from "../../images/big_image_2.jpg";
@@ -13,7 +13,7 @@ import { FaYoutube, FaLinkedin, FaFacebook } from "react-icons/fa";
 
 const Formulaire = () => {
   const dispatch = useDispatch();
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   const { coachVisible, error } = useSelector((state) => state.coach);
   const { domaines } = useSelector((state) => state.domaine);
@@ -49,23 +49,28 @@ const Formulaire = () => {
     setCompte(selectedDomaines.length);
   }, [selectedDomaines]);
 
-  const latestCoach = coachVisible.slice(-3);
-
+  const randomCoach  = coachVisible
+  .slice()
+  .sort(() => Math.random() - 0.5)
+  .slice(0, 3);  
   const customContentRenderer = () => (
     <label>
-      <p style={{
-        color: "#fff",
-        background: "#ADD8E6",
-        fontSize: "15px",
-        marginTop: "18px",
-        marginLeft: "600px",
-      }}>
+      <p
+        style={{
+          color: "#fff",
+          background: "#ADD8E6",
+          fontSize: "15px",
+          marginTop: "18px",
+          marginLeft: "600px",
+        }}
+      >
         {compte}
       </p>
     </label>
   );
 
-  const isALLselected = domaines.length > 0 && selectedDomaines.length === domaines.length;
+  const isALLselected =
+    domaines.length > 0 && selectedDomaines.length === domaines.length;
 
   const handleDomaineChange = (selectedValues) => {
     if (selectedValues.includes("allDomaine")) {
@@ -131,7 +136,10 @@ const Formulaire = () => {
     formData.append("yt", Youtube.current.value);
     formData.append("In", linkedin.current.value);
     formData.append("gouv", gouvernorat);
-    formData.append("domain", selectedDomaines.map((domaine) => domaine.label));
+    formData.append(
+      "domain",
+      selectedDomaines.map((domaine) => domaine.label)
+    );
     formData.append("method", selectedMethodes.join(","));
     formData.append("langue", selectedLangues.join(","));
     formData.append("type_client", selectedTypesClients.join(","));
@@ -144,15 +152,17 @@ const Formulaire = () => {
 
     try {
       const resultAction = await dispatch(addCoach(formData)).unwrap();
-      if (resultAction.msg === 'successfully') {
+      if (resultAction.msg === "successfully") {
         toast.success("Coach ajouté avec succès !");
       } else {
-        toast.error(resultAction.error.msg  || 'Erreur lors de l\'ajout du coach.');
+        toast.error(
+          resultAction.error.msg || "Erreur lors de l'ajout du coach."
+        );
       }
     } catch (error) {
-      toast.error(error || 'Erreur lors de l\'ajout du coach.');
+      toast.error(error || "Erreur lors de l'ajout du coach.");
     }
-    navigate('/EspaceCoach')
+    navigate("/EspaceCoach");
   };
 
   return (
@@ -168,45 +178,52 @@ const Formulaire = () => {
           overflow: "hidden",
         }}
       >
-        <div >
+        <div>
           <h3 className="Coach_Titre ">Espace Coach</h3>
         </div>
       </div>
       <div className="Formulaire">
         <div className="Formulaire-container">
           <div className="formulaire-left">
-            {latestCoach.map((CoachVisible, index) => (
+            {randomCoach  && randomCoach .map((CoachVisible, index) => (
               <div key={index} className="formulaire-Coach">
                 <img
-           src={getImageUrl(CoachVisible.image)}
+                  src={getImageUrl(CoachVisible.image)}
                   alt="coach"
                   className="formulaire-left-img"
                 />
-                <h3 className="nomCOACH" >{CoachVisible.nom}</h3>
+                <h3 className="nomCOACH">{CoachVisible.nom}</h3>
                 <h3 className="COACH">Coach</h3>
 
                 <div className="social-icons">
                   {CoachVisible.yt && (
-                    <a href={CoachVisible.yt} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={CoachVisible.yt}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <FaYoutube className="iconCOACH" />
                     </a>
                   )}
                   {CoachVisible.In && (
-                    <a href={CoachVisible.In} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={CoachVisible.In}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <FaLinkedin className="iconCOACH" />
                     </a>
                   )}
                   {CoachVisible.fb && (
-                    <a href={CoachVisible.fb} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={CoachVisible.fb}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <FaFacebook className="iconCOACH" />
                     </a>
                   )}
-                                  </div>
-
-
-
-
-
+                </div>
 
                 <h3 className="bioCOACHtitre">Brève bio</h3>
                 <p className="bioCOACH">{CoachVisible.bio}</p>
@@ -222,10 +239,9 @@ const Formulaire = () => {
             <form onSubmit={handleAddCoach}>
               <label className="TITREcoach">Nom et prénom:</label>
               <input type="text" ref={nomPrenomRef} className="inputCoach" />
-              <label  className="TITREcoach">Domaines d’intervention:</label>
+              <label className="TITREcoach">Domaines d’intervention:</label>
               <Select
-                              className="domaine"
-
+                className="domaine"
                 options={
                   domaines && [
                     {
@@ -296,14 +312,14 @@ const Formulaire = () => {
                 style={{ width: "100%" }}
               />
 
-              <label  className="TITREcoach">Autres domaines:</label>
+              <label className="TITREcoach">Autres domaines:</label>
               <input
                 type="text"
                 placeholder=""
                 ref={autresDomainesRef}
                 className="inputCoach"
               />
-              <label  className="TITREcoach">Gouvernorats</label>
+              <label className="TITREcoach">Gouvernorats</label>
               <select
                 id="gouvernorat"
                 className="gouvernorat"
@@ -339,42 +355,44 @@ const Formulaire = () => {
                   <option key={index}>{gouvernorat}</option>
                 ))}
               </select>
-              <label  className="TITREcoach">Numéro de téléphone:</label>
+              <label className="TITREcoach">Numéro de téléphone:</label>
               <input
                 type="text"
                 placeholder=""
                 ref={telephoneRef}
                 className="inputCoach"
               />
-              <label  className="TITREcoach">Adresse mail:</label>
+              <label className="TITREcoach">Adresse mail:</label>
               <input
                 type="text"
                 placeholder=""
                 ref={adresseMailRef}
                 className="inputCoach"
               />
-              <label  className="TITREcoach">Mot de passe:</label>
+              <label className="TITREcoach">Mot de passe:</label>
               <input
                 type="password"
                 placeholder=""
                 ref={passwordRef}
                 className="inputCoach"
               />
-              <label  className="TITREcoach">Confirmer Mot de passe:</label>
+              <label className="TITREcoach">Confirmer Mot de passe:</label>
               <input
                 type="password"
                 placeholder=""
                 ref={confirmPasswordRef}
                 className="inputCoach"
               />
-              <label  className="TITREcoach">Brève Bio (maximum 5 lignes):</label>
+              <label className="TITREcoach">
+                Brève Bio (maximum 5 lignes):
+              </label>
               <textarea
                 placeholder=""
                 style={{ height: "300px" }}
                 ref={bioRef}
                 className="inputCoach"
               />
-              <label  className="TITREcoach">Méthodes de coaching:</label>
+              <label className="TITREcoach">Méthodes de coaching:</label>
               <div className="checkbox">
                 <div>
                   <input
@@ -399,10 +417,10 @@ const Formulaire = () => {
                     }
                   />
                 </div>
-                <label  htmlFor="en-ligne">En ligne</label>
+                <label htmlFor="en-ligne">En ligne</label>
               </div>
 
-              <label  className="TITREcoach">Langues</label>
+              <label className="TITREcoach">Langues</label>
               <div className="checkbox">
                 <input
                   type="checkbox"
@@ -438,7 +456,7 @@ const Formulaire = () => {
                 />
                 <label htmlFor="anglais">Anglais</label>
               </div>
-              <label  className="TITREcoach">Types de clients:</label>
+              <label className="TITREcoach">Types de clients:</label>
               <div className="checkbox">
                 <input
                   type="checkbox"
@@ -461,7 +479,7 @@ const Formulaire = () => {
                 />
                 <label htmlFor="organisation">Organisation</label>
               </div>
-              <label  className="TITREcoach">
+              <label className="TITREcoach">
                 Tarif préférentiel (réduction de 10% pour les clients de la
                 plateforme):
               </label>
@@ -486,7 +504,7 @@ const Formulaire = () => {
                   <label htmlFor="organisation-non">non</label>
                 </div>
               </div>
-              <label  className="TITREcoach">Photo</label>
+              <label className="TITREcoach">Photo</label>
               <input
                 type="file"
                 placeholder=""
@@ -494,14 +512,14 @@ const Formulaire = () => {
                 onChange={handleFileChange}
                 className="filecoach"
               />
-              <label  className="TITREcoach">Lien du site:</label>
+              <label className="TITREcoach">Lien du site:</label>
               <input
                 type="text"
                 placeholder=""
                 ref={siteRef}
                 className="inputCoach"
               />
-              <label  className="TITREcoach">Logo</label>
+              <label className="TITREcoach">Logo</label>
               <input
                 type="file"
                 placeholder=" "
@@ -509,9 +527,9 @@ const Formulaire = () => {
                 onChange={handleLogoChange}
                 className="filecoach"
               />
-              <label  className="TITREcoach">Réseaux sociaux :</label>
+              <label className="TITREcoach">Réseaux sociaux :</label>
               <br />
-              <label  className="TITREcoach">Facebook:</label>
+              <label className="TITREcoach">Facebook:</label>
 
               <input
                 type="text"
@@ -519,7 +537,7 @@ const Formulaire = () => {
                 ref={facebook}
                 className="inputCoach"
               />
-              <label  className="TITREcoach">Youtube:</label>
+              <label className="TITREcoach">Youtube:</label>
 
               <input
                 type="text"
@@ -528,7 +546,7 @@ const Formulaire = () => {
                 className="inputCoach"
               />
 
-              <label  className="TITREcoach">Linkedin:</label>
+              <label className="TITREcoach">Linkedin:</label>
 
               <input
                 type="text"
@@ -536,7 +554,7 @@ const Formulaire = () => {
                 ref={linkedin}
                 className="inputCoach"
               />
-              <label  className="TITREcoach">
+              <label className="TITREcoach">
                 Un fichier PDF contenant toute pièce justifiant l’expérience en
                 coaching et toutes autres compétences (diplômes, certificats,
                 formations):
@@ -550,7 +568,6 @@ const Formulaire = () => {
               />
               <input type="submit" className="AddCoach" />
               <ToastContainer />
-
             </form>
           </div>
         </div>

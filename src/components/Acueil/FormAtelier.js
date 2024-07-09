@@ -69,8 +69,10 @@ const FormAtelier = () => {
     });
   };
 
-  const recentPublications = pubatelier.slice(-5).reverse();
-
+  const recentPublications  = pubatelier
+  .slice()
+  .sort(() => Math.random() - 0.5)
+  .slice(0, 4); 
   return (
     <>
       <div
@@ -111,11 +113,11 @@ const FormAtelier = () => {
                   src={getImageUrl(lastAtelier.photo)}
                   alt="atelier"
                 />
-                <p>{`Théme ${lastAtelier.num}`}</p>
-                <p>{lastAtelier.titre}</p>
-                <p>{lastAtelier.date}</p>
-                <p>{lastAtelier.heure}</p>
-                <p>{lastAtelier.statut}</p>
+                <h3 className="AtelierTheme">{`Théme ${lastAtelier.num}`}</h3>
+                <h3 className="AtelierTitre">{lastAtelier.titre}</h3>
+                <h3 className="AtelierDate">{lastAtelier.date}</h3>
+                <h3 className="AtelierHeure">{lastAtelier.heure}</h3>
+                <h3 className="AtelierStatut">{lastAtelier.statut}</h3>
               </>
             )}
             <form onSubmit={handleAddAtelier} style={{marginTop:'50px'}}>

@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { IoPowerOutline } from "react-icons/io5";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import BarheaderAdmin from "../BarheaderAdmin";
 import NavBarAdmin from "../NavBarAdmin";
 import "./css/newsletterA.css";
-import image from "../../../images/big_image_2.jpg";
 import { GetNewletter, DeleteNewletter } from "../../../Redux/Slice/NewsLetterSlice";
+import OverlayA from "../OverlayA";
 
 const NewsletterA = () => {
   const dispatch = useDispatch();
@@ -27,24 +26,7 @@ const NewsletterA = () => {
     <>
       <BarheaderAdmin />
       <NavBarAdmin />
-      <div
-        className="ImagePlatforme"
-        style={{
-          position: "relative",
-          textAlign: "center",
-          height: "300px",
-          backgroundImage: `url(${image})`,
-          backgroundSize: "cover",
-          overflow: "hidden",
-        }}
-      >
-        <div style={{ paddingTop: "100px" }}>
-          <IoPowerOutline style={{ fontSize: "35px", fontWeight: "700" }} />
-          <h2 style={{ fontSize: "30px" }}>
-            Bienvenue sur votre espace administration
-          </h2>
-        </div>
-      </div>
+    <OverlayA/>
       <div className="ConsultNewsLetter">
         <div className="ConsultNewsLetterContainer">
           <Link to="/admin/Newsletter/emailing">

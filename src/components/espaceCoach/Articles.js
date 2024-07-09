@@ -8,11 +8,11 @@ import Newsletter from "../coach/Newsletter";
 import Footer from "../coach/Footer";
 import { getImageUrl } from "../..";
 import logo from "../../images/logo.jpg";
-import { GrLinkedin } from "react-icons/gr";
-import { FaFacebook } from "react-icons/fa";
+
 import { MdPerson } from "react-icons/md";
 import { Dialog, DialogContent, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import { FacebookShareButton, FacebookIcon, LinkedinShareButton, LinkedinIcon } from 'react-share';
 
 const Articles = () => {
   const dispatch = useDispatch();
@@ -20,6 +20,7 @@ const Articles = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const shareURL = 'http://facebook.com'; 
 
   useEffect(() => {
     dispatch(GetArticle());
@@ -122,14 +123,36 @@ const Articles = () => {
                       <MdPerson className="artic-author-icon" />
                       <h5 className="articl-auteur">{selectedArticle.auteur}</h5>
                     </div>
-                    <div className='partageArticle'>
-                      <button className="linkedin-buttonArt">
-                        <GrLinkedin /> Partage
-                      </button>
-                      <button className="facebook-buttonArt">
-                        <FaFacebook /> Partage
-                      </button>
-                    </div>
+                    <div className='partageArticle' style={{ display: "flex", justifyContent: 'center', padding: "20px" }}>
+            <div>
+              <FacebookShareButton url={shareURL} quote={selectedArticle.titre} hashtag='#evenement'>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundColor: '#0965FE',
+                  paddingRight: '5px'
+                }}>
+                  <FacebookIcon size={20} />
+                  <h3 className="info-item">Partage</h3>
+                </div>
+              </FacebookShareButton>
+            </div>
+            <div>
+              <LinkedinShareButton url={shareURL}>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundColor: '#0077B5',
+                  paddingRight: '5px'
+                }}>
+                  <LinkedinIcon size={20} />
+                  <h3 className="info-item">Partage</h3>
+                </div>
+              </LinkedinShareButton>
+            </div>
+          </div> 
                   </div>
                 </div>
               </div>

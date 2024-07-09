@@ -78,8 +78,22 @@
     cursor: pointer;
     text-align: justify;
   }
-  
+  .AtelierTheme,.AtelierTheme,.AtelierTitre{
+    width: 80%;
+    margin: 0 auto;
+text-align: center;
+font-size: 1.5rem;
+color: #000;
+font-weight: 300;
 
+  }
+  .AtelierStatut,.AtelierHeure,.AtelierDate{
+    text-align: center;
+    font-size: 16px;
+    color: gray;
+    font-weight: 300;
+    
+      }
   
   .labelAtelier{
     font-size: 16;

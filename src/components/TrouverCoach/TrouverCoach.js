@@ -200,7 +200,7 @@ const TrouverCoach = () => {
               setup: (editor) => {
                 editor.on("change", () => handleEditorChange(editor.getContent()));
               },
-              body_class: 'TemEditor' // Apply the custom class to the editor's body
+              body_class: 'TemEditor' 
 
             }}
             value={Texte}
@@ -220,11 +220,11 @@ const TrouverCoach = () => {
           onClick={closeModal}
           sx={{
             position: "fixed",
-            right: "calc(50% - 500px + 8px)", // Adjust based on Dialog maxWidth and desired offset
-            top: "calc(50% - 250px - 40px)", // Adjust based on Dialog maxHeight and desired offset
+            right: "calc(50% - 500px + 8px)", 
+            top: "calc(50% - 250px - 40px)", 
             color: "gray",
             fontWeight:'500',
-            zIndex: 1000, // Ensure it's above the dialog
+            zIndex: 1000, 
           }}
         >
           <CloseIcon />

@@ -2,13 +2,12 @@ import React, { useEffect } from "react";
 import BarheaderAdmin from "../BarheaderAdmin";
 import NavBarAdmin from "../NavBarAdmin";
 import "./css/partenairesA.css";
-import image from "../../../images/big_image_2.jpg";
 import { Link } from "react-router-dom";
-import { IoPowerOutline } from 'react-icons/io5';
 import { GetPartenaire, deletePartenaire } from "../../../Redux/Slice/PartenaireSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { getImageUrl } from "../../../index.js";
+import OverlayA from "../OverlayA.js";
 
 const PartenairesA = () => {
   const dispatch = useDispatch();
@@ -27,12 +26,7 @@ const PartenairesA = () => {
 
 <BarheaderAdmin />
       <NavBarAdmin />
-      <div className="ImagePlatforme" style={{ position: 'relative', textAlign: 'center', height: '300px', backgroundImage: `url(${image})`, backgroundSize: 'cover', overflow: 'hidden' }}>
-        <div style={{ paddingTop: '100px' }}>
-          <IoPowerOutline style={{ fontSize: '35px', fontWeight: '700' }} />
-          <h2 style={{ fontSize: '30px' }}>Bienvenue sur votre espace administration</h2>
-        </div>
-      </div>
+     <OverlayA/>
     
       <div className="ConsultPartenaires">
         <div className="ConsultPartenairesContainer">

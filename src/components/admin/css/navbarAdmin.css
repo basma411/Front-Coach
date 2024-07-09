@@ -1,11 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 /*NavBar*/
+.NavbarAdmin{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  height:82px;
+
+}
+  .NavbarAdminContainer{
+    width: 90%;
+    margin: 0 auto;
+  }
+ 
 .nav-link {
-  font-weight: 300;
   font-size: 15px;
-color: rgb(43, 43, 43);
+  color: rgb(43, 43, 43);
   line-height: 30px;
-  padding: 18px 9px ;
+  padding: 27px 7px ;
+border-color: #fff;
 
 
 
@@ -17,7 +29,7 @@ color: rgb(43, 43, 43);
 
 .icon-LIST{
 
-  font-size:40px;
+  font-size:30px;
   color:gray ;
   display: none;
 }

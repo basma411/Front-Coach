@@ -202,15 +202,11 @@ gap: 30px;
 }
 
 
-.info-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 5px;
-}
+
 
 .info-icon {
   color: rgb(156, 155, 155);
-  margin-right: 5px; /* Space between icon and text */
+  margin-right: 5px; 
 }
 
 .info-lieu,.info-date {
@@ -227,15 +223,7 @@ gap: 30px;
 
 
 
-.linkedin-button  {
-  padding: 2px;
-  font-size: 14px;
-  border: none;
-  background-color:     rgb(0,115,177)    ;
 
-  color: #fff;
-
-}
 .info-item{
   padding: 2px;
   font-size: 14px;

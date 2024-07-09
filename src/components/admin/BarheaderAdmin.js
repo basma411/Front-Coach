@@ -8,11 +8,11 @@ import { Link } from 'react-router-dom';
 const BarheaderAdmin = () => {
   return (
     <div className="barheaderAdmin">
-      <div className='barheaderContainer'>
+      <div className='barheaderContainerA'>
         <BsPersonBadgeFill  className="iconCompte" />
-        <Link to="/admin/Base-Coach" className='barheadericon'>Base des coachs  </Link>
-        <FaQuestion/>
-        <Link to="/admin/FAQ" className='barheadericon'>      FAQ
+        <Link to="/admin/Base-Coach" className='barheadericon'>Base des coachs  / </Link>
+        <FaQuestion className="iconCompte"/>
+        <Link to="/admin/FAQ" className='barheadericon'>   FAQ
         </Link>
       </div>
     </div>

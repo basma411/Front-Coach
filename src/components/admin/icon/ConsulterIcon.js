@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { CiEdit } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { getImageUrl } from "../../..";
+import OverlayA from "../OverlayA";
 
 const ConsulterIcon = () => {
   const dispatch = useDispatch();
@@ -28,24 +29,7 @@ const ConsulterIcon = () => {
     <>
       <BarheaderAdmin />
       <NavBarAdmin />
-      <div
-        className="ImagePlatforme"
-        style={{
-          position: "relative",
-          textAlign: "center",
-          height: "300px",
-          backgroundImage: `url(${image})`,
-          backgroundSize: "cover",
-          overflow: "hidden",
-        }}
-      >
-        <div style={{ paddingTop: "100px" }}>
-          <IoPowerOutline style={{ fontSize: "35px", fontWeight: "400" }} />
-          <h2 style={{ fontSize: "30px" }}>
-            Bienvenue sur votre espace administration
-          </h2>
-        </div>
-      </div>
+      <OverlayA/>
       <div className="ConsultIcon">
         <div className="ConsultIconContainer">
           <Link to='/admin/Accueil'>

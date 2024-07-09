@@ -18,7 +18,7 @@ const Login = () => {
         <form>
           <h1>Connexion</h1>
           <label className="title">
-            <h3>Nom d'utilisateur</h3>
+            <h2>Nom d'utilisateur</h2>
           </label>
           <input type="text" placeholder="Entrer le nom d'utilisateur" ref={user} className="inputadmin" />
 
@@ -27,7 +27,7 @@ const Login = () => {
           </label>
           <input type="password" placeholder="Entrer le mot de passe" ref={password} className="inputadmin" />
 
-          <h3 href="#" className="mdpoublie">Mot de passe oublié ?</h3>
+          <h2 href="#" className="mdpoublie">Mot de passe oublié ?</h2>
           <input 
             type="submit" 
             value="LOGIN" 

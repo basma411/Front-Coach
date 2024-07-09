@@ -76,7 +76,7 @@ const VideoCard = ({ video }) => {
                   paddingRight: '5px'
                 }}>
                   <FacebookIcon size={20} />
-                  <h3 style={{ fontSize: '15px' }}>Partage</h3>
+                  <h3 className='info-item'>Partage</h3>
                 </div>
               </FacebookShareButton>
             </div>
@@ -90,7 +90,7 @@ const VideoCard = ({ video }) => {
                   paddingRight: '5px'
                 }}>
                   <LinkedinIcon size={20} />
-                  <h3 style={{ fontSize: '15px' }}>Partage</h3>
+                  <h3 className='info-item'>Partage</h3>
                 </div>
               </LinkedinShareButton>
             </div>

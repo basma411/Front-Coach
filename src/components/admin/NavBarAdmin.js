@@ -10,12 +10,17 @@ import "./css/navbarAdmin.css";
 
 const NavBarAdmin = () => {
   return (
-    <Navbar  style={{ display: 'flex', flexDirection: 'column', margin: '80px' }} className="m-0 p-0">
-      <Container style={{ display: "flex", justifyContent: "space-between" }} className="m-0 p-0">
-        <div>
-          <img src={logo} alt="Logo" style={{ padding: "0px" }} />
-          <HiOutlineViewList className="icon-LIST" />
-        </div>
+<div className="NavbarAdmin">
+
+  <div className="NavbarAdminContainer">
+
+  <Navbar   style={{ display: "flex",width:'100%' ,justifyContent:'space-around' ,alignItems:'center'}} className="m-0 p-0 ">
+      <Container style={{ display: "flex", justifyContent: "space-between",alignItems:'center' }} className="m-0 p-0">
+      
+      <div style={{ display: "flex", alignItems: "center" }}>
+      <img src={logo} alt="Logo" style={{ paddingLeft: "0" }} />
+      <HiOutlineViewList className="icon-LIST" style={{ color: "gray" }}  />
+      </div>
         <div>
           <Nav className="me-auto">
           <Link to="/admin/Accueil" className="nav-link">Accueil</Link>
@@ -32,6 +37,8 @@ const NavBarAdmin = () => {
         </div>
       </Container>
     </Navbar>
+  </div>
+</div>
   );
 };
 

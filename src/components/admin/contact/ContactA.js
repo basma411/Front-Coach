@@ -1,15 +1,14 @@
 import React, { useEffect } from "react";
 
 import "./css/contactA.css";
-import image from "../../../images/big_image_2.jpg";
-import { IoPowerOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import BarheaderAdmin from "../BarheaderAdmin";
 import NavBarAdmin from "../NavBarAdmin";
 import { DeleteContact, GetContact } from "../../../Redux/Slice/ContactSlice";
 import { FiSend } from "react-icons/fi";
+import OverlayA from "../OverlayA";
 
 const ContactA = () => {
   const dispatch = useDispatch();
@@ -27,24 +26,7 @@ const ContactA = () => {
     <>
       <BarheaderAdmin />
       <NavBarAdmin />
-      <div
-        className="ImagePlatforme"
-        style={{
-          position: "relative",
-          textAlign: "center",
-          height: "300px",
-          backgroundImage: `url(${image})`,
-          backgroundSize: "cover",
-          overflow: "hidden",
-        }}
-      >
-        <div style={{ paddingTop: "100px" }}>
-          <IoPowerOutline style={{ fontSize: "35px", fontWeight: "400" }} />
-          <h2 style={{ fontSize: "30px" }}>
-            Bienvenue sur votre espace administration
-          </h2>
-        </div>
-      </div>
+     <OverlayA/>
 
       <div className="ConsultContact">
         <div className="ConsultContactContainer">

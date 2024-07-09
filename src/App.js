@@ -82,6 +82,7 @@ import ListePub from './components/Acueil/ListePub.js';
 import Faq_Coach from './components/Acueil/Faq_Coach.js';
 import EmailingNewsletter from './components/admin/newsletter/EmailingNewsletter.js';
 import './index.css';
+import Menu from './components/admin/Menu.js';
 
 function App() {
   const isLoading = useSelector(state => state.loading.isLoading);
@@ -191,6 +192,8 @@ function App() {
             <Route path="/admin/Newsletter/emailing" element={<EmailingNewsletter />} />
 
             <Route path="/admin/login" element={<Login />} />
+            <Route path="/admin/menu" element={<Menu />} />
+
             <Route path="/admin/Accueil" element={<AccueilAdmin />} />
             <Route path="/admin/Base-Coach" element={<BaseCoach />} />
             <Route path="/admin/EmailingCoach" element={<EmailingCoach />} />

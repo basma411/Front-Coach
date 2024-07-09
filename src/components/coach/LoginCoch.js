@@ -53,10 +53,10 @@ const LoginCoch = () => {
         <form className="Form-Login" onSubmit={handleLoginFormSubmit}>
           <label className="labelLogin">Connectez-vous:</label>
           <div className="input-Login">
-            <input type="email" name="email" className="input-Login" ref={email}  placeholder="Login (Votre adresse mail)" />
+            <input type="email" name="email" className="input-Login" ref={email}  placeholder="Login (Votre adresse mail)" style={{paddingLeft:"10px"}} />
           </div>
           <div className="input-Login">
-            <input type="password" name="password" ref={password} className="input-Login" placeholder="Mot de passe" />
+            <input type="password" name="password" ref={password} className="input-Login" placeholder="Mot de passe"  style={{paddingLeft:"10px"}}/>
           </div>
           <label className="labelLogin">Mot de passe oublié?</label>
           <button type="submit" className="Connecter">Connecter</button>

@@ -59,4 +59,4 @@ const Model = ({ selectedEvent, closeModal }) => {
   );
 }
 
-export default Model;
+// export default Model;

@@ -1,3 +1,4 @@
+
 .PlatformeAdmin{
     width: 100%;
     margin: 0;
@@ -5,13 +6,14 @@
 }
 .containerPlatforme{
     width: 80%;
-    height: 100vh;
+    /* height: 100vh; */
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin: 0 auto;
 }
 .left{
+    width: 50%;
     padding-right: 140px;
     border-right: solid 1px black;
 }
@@ -20,25 +22,24 @@
     display: flex;
     flex-direction: column;
 }
+ 
 .buttonStyle {
-    width: 100%;
+    width: 450px;
+    height: 45px;
     margin-bottom: 20px;
 
     font-weight: bold;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 
 
 
-    margin:auto;
     margin-top:30px; 
    background-color:#0D345A;
    font-weight:bold; 
-   padding:10px 100px;
-    text-align:center; 
+   padding: 10px 0px;
+       text-align:center; 
     color: #e3d80a;
     cursor: pointer;
-    line-height: 32px;
-    text-decoration-style:solid ;
-    font-size: 15px;
+    font-size: 12px;
 }
