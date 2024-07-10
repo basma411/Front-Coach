@@ -9,6 +9,7 @@ import image from "../../../images/big_image_2.jpg";
 import { IoPowerOutline } from "react-icons/io5";
 
 import './css/workshop.css';
+import OverlayA from '../OverlayA.js';
 
 function WorkshopList() {
   const dispatch = useDispatch();
@@ -24,24 +25,8 @@ function WorkshopList() {
     <>
       <BarheaderAdmin />
       <NavBarAdmin />
-      <div
-        className="ImagePlatforme"
-        style={{
-          position: "relative",
-          textAlign: "center",
-          height: "300px",
-          backgroundImage: `url(${image})`,
-          backgroundSize: "cover",
-          overflow: "hidden",
-        }}
-      >
-        <div style={{ paddingTop: "100px" }}>
-          <IoPowerOutline style={{ fontSize: "35px", fontWeight: "400" }} />
-          <h2 style={{ fontSize: "30px" }}>
-            Bienvenue sur votre espace administration
-          </h2>
-        </div>
-      </div>
+      <OverlayA/>
+
       <div className='workshop'>
         <div className='workshopContainer'>
             <button onClick={() => navigate("/admin/atelier-A/ajouter")}>Ajouter un Atelier</button>

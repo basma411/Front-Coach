@@ -1,38 +1,64 @@
-.ConsultArtVisib{
+.ConsultArtVisib {
     width: 100%;
     margin: 0;
     padding: 0;
-    font-family: "Rubik", arial, sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 2;
-    color: gray;
-    
-}
-.ConsultArtVisibContainer{
+  }
+  
+  .ConsultArtVisibContainer {
     width: 80%;
+    margin: 0 auto;
+  }
+  
+  .AccueilArtVisib {
+    width: 50%;
+    height: 50px;
+    display: block;
+    margin: 40px auto;
+    background-color: #0d345a;
+    font-weight: bold;
+    padding: 10px 100px;
+    text-align: center;
+    color: #e3d80a;
+    cursor: pointer;
+    line-height: 32px;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  .AccueilArtVisib:hover {
+    color: #fdc900;
+  }
+  
+  .TableArtVisib {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .TableHeader {
+    padding: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    color: rgb(128, 128, 128);
+  }
+  
+  .TableData {
+    padding: 8px;
+    color: rgb(128, 128, 128);
+    font-size: 12px;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 20px auto;
-    gap: 50px;
-}
-.AccueilArtVisib{
-    /* width: 650px; */
 
-    margin:auto;
-     margin-top:10px; 
-    margin-bottom:10px; 
-    background-color:#0D345A;
-    padding:10px 100px;
-     text-align:center; 
-     color: #e3d80a;
-     cursor: pointer;
-     line-height: 32px;
-     text-decoration-style:solid ;
-     font-size: 20px;
+  }
+  
+  .TableDataimg {
+    width: 100px;
+  }
+  
+  .IconData {
+    margin:  0 20px; /* Space between icons */
 
-
-}
+    font-size: 20px;
+    color: black;
+  }
+  

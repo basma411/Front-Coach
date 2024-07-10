@@ -8,6 +8,7 @@ import image from '../../../images/big_image_2.jpg';
 import { IoPowerOutline } from 'react-icons/io5';
 import './css/addatelier.css';
 import { AddPublic } from '../../../Redux/Slice/PubAtelierSlice.js';
+import OverlayA from '../OverlayA.js';
 
 const AddPublication = () => {
     const [titre, setTitre] = useState('');
@@ -56,12 +57,7 @@ const AddPublication = () => {
         <>
             <BarheaderAdmin />
             <NavBarAdmin />
-            <div className="ImagePlatforme" style={{ backgroundImage: `url(${image})` }}>
-                <div>
-                    <IoPowerOutline />
-                    <h2>Bienvenue sur votre espace administration</h2>
-                </div>
-            </div>
+         <OverlayA/>
             <div className="addAtelier">
                 <form onSubmit={handleSubmit} className="addAtelierContainer">
                     <div>

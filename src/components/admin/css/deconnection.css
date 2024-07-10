@@ -15,10 +15,10 @@
     margin: 0;
     padding: 0;
   }
-  .ImagePlatforme {
+  .Image-Platforme {
     position: relative;
     text-align: center;
-    height: 260px;
+    height: 270px;
     display: flex;
     justify-content: center;
     align-items: center;

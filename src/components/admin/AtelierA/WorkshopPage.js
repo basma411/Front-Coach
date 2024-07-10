@@ -8,6 +8,7 @@ import './css/WorkshopPage.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetPublication } from '../../../Redux/Slice/PubAtelierSlice.js';
 import { getImageUrl } from '../../../index.js';
+import OverlayA from '../OverlayA.js';
 
 function WorkshopPage() {
   const { id } = useParams();
@@ -33,12 +34,7 @@ function WorkshopPage() {
     <>  
       <BarheaderAdmin />
       <NavBarAdmin />
-      <div className="ImagePlatforme" style={{ backgroundImage: `url(${image})` }}>
-        <div>
-          <IoPowerOutline />
-          <h2>Bienvenue sur votre espace administration</h2>
-        </div>
-      </div>
+    <OverlayA/>
       <div className='WorkshopPage'>
         <div className='WorkshopPageContainer'>
           <button onClick={() => navigate(`/admin/atelier-A/${id}/add-PUB`)}>Ajouter publication</button>

@@ -14,13 +14,13 @@ const Article = () => {
 <BarheaderAdmin />
       <NavBarAdmin />
    <Deconnection/>
-      <div className="ConsultArticles">
-        <div className="ConsultArticlesContainer">
+      <div className="Consult-Articles">
+        <div className="ConsultArticles-Container">
           <Link to='/admin/article/invisible'>
-          <button className="AccueilArticles">Liste des articles invisibles</button>
+          <button className="buttonListArtc">Liste des articles invisibles</button>
           </Link>
           <Link to='/admin/article/visible'>
-          <button className="AccueilArticles">Liste des articles visibles </button>
+          <button className="buttonListArtc">Liste des articles visibles </button>
           </Link>
          
         </div>

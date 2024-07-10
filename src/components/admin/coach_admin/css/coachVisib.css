@@ -1,40 +1,64 @@
-.ConsultCochVisib{
+.ConsultCochVisib {
     width: 100%;
     margin: 0;
     padding: 0;
-    font-family: "Rubik", arial, sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 2;
-    color: gray;
-    
-}
-.ConsultCochVisibContainer{
+  }
+  
+  .ConsultCochVisibContainer {
     width: 80%;
+    margin: 0 auto;
+  }
+  
+  .TableCochVisib {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .TableHeaderC {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 8px;
+    font-size: 13px;
+    font-weight: bold;
+    color: rgb(128, 128, 128);
+  }
+  
+  .TableDataC {
+    padding: 8px;
+    font-weight: 300;
+    font-size: 12PX;
+    color: rgb(128, 128, 128);
 
+  }
+  
+
+  
+  .TableDataimgC {
+    width: 100px;
+  }
+  
+  .TableDataText {
+    white-space: pre-line;
+    text-align: start;
+  }
+  
+  .DataAct {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 20px auto;
-    gap: 50px;
-}
-.AccueilCochVisib{
-    /* width: 650px; */
+    
+  }
+  
+  .IconData {
+    /* margin:  0 20px; */
 
-    margin:auto;
-     margin-top:10px; 
-    margin-bottom:10px; 
-    background-color:#0D345A;
-    /* font-weight:bold;  */
-    padding:10px 100px;
-     text-align:center; 
-     color: #e3d80a;
-     cursor: pointer;
-     line-height: 32px;
-     /* font-weight: 500; */
-     text-decoration-style:solid ;
-     font-size: 20px;
+    font-size: 20px;
+    color: black;
+  }
+  
+  .IconSend {
+    /* margin:  0 20px; */
 
-
-}
+    font-size: 20px;
+    color: black;
+  }
+  

@@ -21,7 +21,11 @@ const BarheaderProfil = () => {
     const toggleList = () => {
         setIsListOpen(!isListOpen);
     };
+const handlFAQ=()=>{
+    navigator("/faq")
 
+
+}
     const handleMenuItemClick = (option) => {
         console.log("Clicked on:", option);
         if (option === "Déconnexion") {
@@ -39,11 +43,11 @@ const BarheaderProfil = () => {
     };
 
     return (
-        <div className="barheader">
-            <div className="barheaderContainer">
+        <div className="barheaderC">
+            <div className="barheader-Container">
                 <GoPersonFill className="iconCom" />
                 <h5 className='mocompte'>{coachdata.nom}</h5>
-                <RiArrowDropDownLine onClick={toggleList} style={{ fontSize: '20px' }} />
+                <RiArrowDropDownLine onClick={toggleList} style={{ fontSize: '20px', color:'#e3d80a'}} />
                 <Dropdown show={isListOpen} align="end" onClose={() => setIsListOpen(false)}>
                     <Dropdown.Menu>
                         <Dropdown.Item onClick={() => handleMenuItemClick("Profil")} className='selected'>Profil</Dropdown.Item>
@@ -52,9 +56,7 @@ const BarheaderProfil = () => {
                         <Dropdown.Item onClick={() => handleMenuItemClick("Déconnexion")} className='selected'>Déconnexion</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
-                <Link to='/faq'>
-                    <h5 className='faq'>FAQ</h5>
-                </Link>
+                    <h5 className='faq' onClick={()=>handlFAQ()}>FAQ</h5>
             </div>
         </div>
     );

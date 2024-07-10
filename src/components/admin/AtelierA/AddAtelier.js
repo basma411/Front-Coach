@@ -7,6 +7,7 @@ import NavBarAdmin from '../NavBarAdmin.js';
 import image from '../../../images/big_image_2.jpg';
 import { IoPowerOutline } from 'react-icons/io5';
 import './css/addatelier.css';
+import Deconnection from '../Deconnection.js';
 
 const AddAtelier = () => {
   const [numThéme, setNumThéme] = useState('');
@@ -62,12 +63,8 @@ console.log(numThéme,titre,date)
     <>
       <BarheaderAdmin />
       <NavBarAdmin />
-      <div className="ImagePlatforme" style={{ backgroundImage: `url(${image})` }}>
-        <div>
-          <IoPowerOutline />
-          <h2>Bienvenue sur votre espace administration</h2>
-        </div>
-      </div>
+      <Deconnection/>
+
       <div className="addAtelier">
         <form onSubmit={handleSubmit} className="addAtelierContainer">
           <div>

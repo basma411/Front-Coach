@@ -9,6 +9,7 @@ import BarheaderAdmin from "../BarheaderAdmin";
 import { delDomaine, getdomaine } from "../../../Redux/Slice/DomainSlice";
 import image from "../../../images/big_image_2.jpg";
 import "./css/consulterdomaine.css";
+import OverlayA from "../OverlayA";
 
 const ConsulterDomaine = () => {
   const dispatch = useDispatch();
@@ -26,24 +27,8 @@ const ConsulterDomaine = () => {
     <>
       <BarheaderAdmin />
       <NavBarAdmin />
-      <div
-        className="ImagePlatforme"
-        style={{
-          position: "relative",
-          textAlign: "center",
-          height: "300px",
-          backgroundImage: `url(${image})`,
-          backgroundSize: "cover",
-          overflow: "hidden",
-        }}
-      >
-        <div style={{ paddingTop: "100px" }}>
-          <IoPowerOutline style={{ fontSize: "35px", fontWeight: "400" }} />
-          <h2 style={{ fontSize: "30px" }}>
-            Bienvenue sur votre espace administration
-          </h2>
-        </div>
-      </div>
+      <OverlayA/>
+
       <div className="ConsultDomaine">
         <div className="ConsultDomaineContainer">
           <Link to="/admin/Accueil">

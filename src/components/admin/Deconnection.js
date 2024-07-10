@@ -14,7 +14,7 @@ const Deconnection = () => {
   return (
     <div>
            <div
-        className="ImagePlatforme"
+        className="Image-Platforme"
         style={{
           position: "relative",
           textAlign: "center",
