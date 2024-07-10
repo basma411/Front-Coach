@@ -41,19 +41,23 @@ const Setting = () => {
        <div className='containerr'>
             <div className='Profil'>
                 <form onSubmit={handleSubmit}>
-                    <label htmlFor="Email" className='Labelstyle'>Email</label><br />
+                    <label htmlFor="Email" className='LabelProfil'>Email</label><br />
                     <input type="text"  name="email" defaultValue={coachdata.Email} ref={Email} className='inputStyle'/><br />
 
-                    <label htmlFor="oldPassword" className='Labelstyle'>Ancien mot de passe</label><br />
+                    <label htmlFor="oldPassword" className='LabelProfil'>Ancien mot de passe</label><br />
                     <input type="password"  name="oldPassword" ref={oldPassword}  className='inputStyle'/><br />
 
-                    <label htmlFor="newPassword" className='Labelstyle'>Nouveau mot de passe</label><br />
+                    <label htmlFor="newPassword" className='LabelProfil'>Nouveau mot de passe</label><br />
                     <input type="password"  name="newPassword" ref={newPassword} className='inputStyle'/><br />
 
-                    <div className='UpdatePasword'>
+                  <div style={{
+display:'block',margin:'0 auto'
+                  }}>
+                  <div className='Update-Pasword'>
                         <button type="submit" className='Setting'>Modifier</button>
-                        <h3>Annuler</h3>
+                        <h3 className='ProfilAnnuler'>Annuler</h3>
                     </div>
+                  </div>
                 </form>
             </div>
         </div>

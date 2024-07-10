@@ -123,7 +123,7 @@ const Edit = () => {
     <div className="containerEdit">
       <div className="ProfilEdit">
         <form onSubmit={handleSubmit}>
-          <label htmlFor="Nom">Nom et Prénom</label>
+          <label  className="ProfilEditlabel" htmlFor="Nom">Nom et Prénom</label>
           <br />
           <textarea
             type="text"
@@ -136,7 +136,7 @@ const Edit = () => {
           />
           <br />
 
-          <label htmlFor="Email">Email</label>
+          <label   className="ProfilEditlabel"htmlFor="Email">Email</label>
           <br />
           <textarea
             type="text"
@@ -149,7 +149,7 @@ const Edit = () => {
           />
           <br />
 
-          <label htmlFor="Numéro">Numéro</label>
+          <label  className="ProfilEditlabel" htmlFor="Numéro">Numéro</label>
           <br />
           <textarea
             type="text"
@@ -163,11 +163,10 @@ const Edit = () => {
           <br />
 
           <div className="domaineIntervention">
-            <label>Domaines d'intervention</label>
-            <br />
+            <label  className="ProfilEditlabel">Domaines d'intervention</label>
             {Array.isArray(domaines) &&
               domaines.map((domaine, index) => (
-                <div key={index} className="domaine checkbox">
+                <div key={index} className=" checkbox">
                   <div>
                     <input
                       type="checkbox"
@@ -187,20 +186,20 @@ const Edit = () => {
                       }
                     />
                   </div>
-                  <label htmlFor={`domaine-${index}`}>
+                  <label  className="ProfilEditlabel" htmlFor={`domaine-${index}`}>
                     {domaine.domaines}
                   </label>
                 </div>
               ))}
           </div>
 
-          <label htmlFor="Gouvernorat">Gouvernorat</label>
+          <label   className="ProfilEditlabel"htmlFor="Gouvernorat">Gouvernorat</label>
           <br />
           <select
             id="gouvernorat"
             value={gouvernorat}
             onChange={handleGouvernoratChange}
-                        className="Gouvernorat"
+                        className="Gouver"
           >
             {[
               "Tunis",
@@ -234,7 +233,7 @@ const Edit = () => {
             ))}
           </select>
 
-          <label htmlFor="Méthodes de coaching:">Méthodes de coaching:</label>
+          <label   className="ProfilEditlabel"htmlFor="Méthodes de coaching:">Méthodes de coaching:</label>
           <br />
           <div className="checkbox">
             <div>
@@ -251,7 +250,7 @@ const Edit = () => {
                 }
               />
             </div>
-            <label htmlFor="face-a-face">Face à face</label>
+            <label   className="ProfilEditlabel"htmlFor="face-a-face">Face à face</label>
           </div>
           <div className="checkbox">
             <div>
@@ -268,10 +267,10 @@ const Edit = () => {
                 }
               />
             </div>
-            <label htmlFor="en-ligne">En ligne</label>
+            <label   className="ProfilEditlabel" htmlFor="en-ligne">En ligne</label>
           </div>
 
-          <label htmlFor="Langues:">Langues:</label>
+          <label  className="ProfilEditlabel" htmlFor="Langues:">Langues:</label>
           <br />
           <div className="checkbox">
             <input
@@ -284,7 +283,7 @@ const Edit = () => {
               onChange={(e) => handleLangueChange("Arabe", e.target.checked)}
             />
 
-            <label htmlFor="arabe">Arabe</label>
+            <label   className="ProfilEditlabel" htmlFor="arabe">Arabe</label>
           </div>
           <div className="checkbox">
             <input
@@ -297,7 +296,7 @@ const Edit = () => {
               onChange={(e) => handleLangueChange("Français", e.target.checked)}
             />
 
-            <label htmlFor="français">Français</label>
+            <label  className="ProfilEditlabel" htmlFor="français">Français</label>
           </div>
           <div className="checkbox">
             <input
@@ -312,7 +311,7 @@ const Edit = () => {
             <label htmlFor="anglais">Anglais</label>
           </div>
 
-          <label htmlFor="Types de clients:">Types de clients:</label>
+          <label  className="ProfilEditlabel" htmlFor="Types de clients:">Types de clients:</label>
           <br />
           <div className="checkbox">
             <input
@@ -322,7 +321,7 @@ const Edit = () => {
               defaultChecked={coachdata.type_client && coachdata.type_client.includes("Personne")}
               onChange={(e) => handleTypeClientChange("Personne", e.target.checked)}
             />
-            <label htmlFor="personne">Personne</label>
+            <label   className="ProfilEditlabel"htmlFor="personne">Personne</label>
           </div>
           <div className="checkbox">
             <input
@@ -332,10 +331,10 @@ const Edit = () => {
               defaultChecked={coachdata.type_client && coachdata.type_client.includes("Organisation")}
               onChange={(e) => handleTypeClientChange("Organisation", e.target.checked)}
             />
-            <label htmlFor="organisation">Organisation</label>
+            <label   className="ProfilEditlabel" htmlFor="organisation">Organisation</label>
           </div>
 
-          <label htmlFor="Tarif:">
+          <label   className="ProfilEditlabel" htmlFor="Tarif:">
             Tarif préférentiel (réduction de 10% pour les clients de la
             plateforme):
           </label>
@@ -349,7 +348,7 @@ const Edit = () => {
                 name="tarif"
                 checked={tarifPreferentiel === true}
                 onChange={() => handleTarifChange(true)}          />
-              <label htmlFor="organisation-oui">oui</label>
+              <label    className="ProfilEditlabel"htmlFor="organisation-oui">oui</label>
             </div>
 
             <div className="checkbox">
@@ -360,11 +359,11 @@ const Edit = () => {
                 checked={tarifPreferentiel === false}
                 onChange={() => handleTarifChange(false)}
                           />
-              <label htmlFor="organisation-non">non</label>
+              <label  className="ProfilEditlabel" htmlFor="organisation-non">non</label>
             </div>
           </div>
 
-          <label htmlFor="Site">Site</label>
+          <label   className="ProfilEditlabel"htmlFor="Site">Site</label>
           <br />
           <textarea
             type="text"
@@ -376,7 +375,7 @@ const Edit = () => {
           />
           <br />
 
-          <label htmlFor="Facebook">Facebook</label>
+          <label  className="ProfilEditlabel" htmlFor="Facebook">Facebook</label>
           <br />
           <textarea
             type="text"
@@ -389,7 +388,7 @@ const Edit = () => {
           />
           <br />
 
-          <label htmlFor="LinkedIn">LinkedIn</label>
+          <label   className="ProfilEditlabel"htmlFor="LinkedIn">LinkedIn</label>
           <br />
           <textarea
             type="text"
@@ -402,7 +401,7 @@ const Edit = () => {
           />
           <br />
 
-          <label htmlFor="Youtube">You Tube</label>
+          <label  className="ProfilEditlabel" htmlFor="Youtube">You Tube</label>
           <br />
           <textarea
             type="text"
@@ -415,7 +414,7 @@ const Edit = () => {
           />
           <br />
 
-          <label htmlFor="Brève Bio">Brève Bio</label>
+          <label   className="ProfilEditlabel"htmlFor="Brève Bio">Brève Bio</label>
           <br />
           <textarea
             type="text"
@@ -427,7 +426,7 @@ const Edit = () => {
 
           />
           <br />
-          <label htmlFor="otherFileInput:">Photo:</label>
+          <label   className="ProfilEditlabel"htmlFor="otherFileInput:">Photo:</label>
           <div className="updateimage">
             <img
            src={getImageUrl(coachdata.image)}
@@ -439,7 +438,7 @@ const Edit = () => {
 
           <div className="Update">
             <button type="submit" className="modifier">Modifier</button>
-            <h3>Annuler</h3>
+            <h3 className="ProfilAnnuler">Annuler</h3>
           </div>
         </form>
       </div>

@@ -81,19 +81,19 @@ const EditArticle = () => {
     return (
         <div className='edit-Article'>
             <div className='FormContainer'>
-                <form onSubmit={handleSubmit} className='container-Edit-Article'>
-                    <div>
-                        <label>Titre</label>
+                <form onSubmit={handleSubmit} >
+                    <div className='FormContainerItem'>
+                        <label className='labelEdit'>Titre</label>
                         <input
-                            className='TitleArticle'
+                            className='inputView'
                             type='text'
                             name='titre'
                             value={formData.titre}
                             onChange={handleInputChange}
                         />
                     </div>
-                    <div>
-                        <label>Texte</label>
+                    <div className='FormContainerItem'>
+                        <label className='labelEdit'>Texte</label>
                         <Editor
   apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
   onInit={(evt, editor) => {
@@ -120,20 +120,20 @@ const EditArticle = () => {
                             }}
                         />
                     </div>
-                    <div>
-                        <label>Lien</label>
+                    <div className='FormContainerItem'>
+                        <label className='labelEdit'>Lien</label>
                         <input
-                            className='LienArticle'
+                            className='inputView'
                             type='text'
                             name='lien'
                             value={formData.lien}
                             onChange={handleInputChange}
                         />
                     </div>
-                    <div>
-                        <label>Auteur</label>
+                    <div className='FormContainerItem'>
+                        <label className='labelEdit'>Auteur</label>
                         <input
-                            className='AuteurArticle'
+                            className='inputView'
                             type='text'
                             name='auteur'
                             value={formData.auteur}
@@ -141,7 +141,7 @@ const EditArticle = () => {
                         />
                     </div>
                     <div className="form-group-Article">
-                        <label>Image</label>
+                        <label className='labelEdit'>Image</label>
                         {formData.photo && (
                             <img
                                 src={getImageUrl(formData.photo)}

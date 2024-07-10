@@ -6,7 +6,6 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useNavigate } from 'react-router-dom';
 import { getCoach } from '../../Redux/Slice/CoachSlice';
-import { Link } from "react-router-dom";
 
 const BarheaderProfil = () => {
     const [isListOpen, setIsListOpen] = useState(false);
@@ -45,7 +44,6 @@ const handlFAQ=()=>{
     return (
         <div className="barheaderC">
             <div className="barheader-Container">
-                <GoPersonFill className="iconCom" />
                 <h5 className='mocompte'>{coachdata.nom}</h5>
                 <RiArrowDropDownLine onClick={toggleList} style={{ fontSize: '20px', color:'#e3d80a'}} />
                 <Dropdown show={isListOpen} align="end" onClose={() => setIsListOpen(false)}>

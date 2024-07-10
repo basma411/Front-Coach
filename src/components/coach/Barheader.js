@@ -1,35 +1,30 @@
-import React from 'react'
-import { GoPersonFill } from "react-icons/go";
-import '../coach/css/barheader.css'
+import React from 'react';
+import { GoPersonFill } from 'react-icons/go';
+import '../coach/css/barheader.css';
 import { useNavigate } from 'react-router-dom';
 
 const Barheader = () => {
-  const navigator = useNavigate();
+  const navigate = useNavigate();
 
-  const handlMonCompte=()=>{
-    navigator("/coach/login")
+  const handleMonCompte = () => {
+    navigate('/coach/login');
+  }
 
+  const handleFAQ = () => {
+    navigate('/faq');
+  }
 
-}
-const handlFAQ=()=>{
-  navigator("/faq")
-
-
-}
   return (
-
-    <div className="barheaderC {
-">
-
-<div  className="barheader-Container">
-          
+    <div className="barheaderC">
+      <div className="barheader-Container">
+        <div className="mocompte-container" onClick={handleMonCompte}>
           <GoPersonFill className="iconCom" />
-            <h5 className='mocompte '  onClick={()=>handlMonCompte()}>Mon compte</h5>
-      <h5 className='faq' onClick={()=>handlFAQ()}>FAQ</h5>
-      
-         </div>  
+          <h5 className='mocompte'>Mon compte</h5>
+        </div>
+        <h5 className='faq' onClick={handleFAQ}>FAQ</h5>
+      </div>
     </div>
-)
+  );
 }
 
-export default Barheader
+export default Barheader;

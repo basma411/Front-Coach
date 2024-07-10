@@ -108,19 +108,19 @@ console.log(selectedDomaines)
   return (
     <div className='CoachEdit'>
       <div className='CoachEditContainer'>
-        <form onSubmit={handleSubmit} className='CoachContainer'>
-          <label>Nom Et Prénom</label>
-          <textarea defaultValue={formData.nom} ref={Nom} style={{ width: '100%' }}></textarea>
+        <form onSubmit={handleSubmit} >
+          <label className='LabelCoachEdit'>Nom Et Prénom</label>
+          <textarea defaultValue={formData.nom} ref={Nom} className='textCochEdit'></textarea>
 
-          <label>Email</label>
-          <textarea defaultValue={formData.email} ref={Email} style={{ width: '100%' }}></textarea>
+          <label  className='LabelCoachEdit'>email</label>
+          <textarea defaultValue={formData.email} ref={Email} className='textCochEdit'></textarea>
 
-          <label>Numéro</label>
-          <textarea defaultValue={formData.num} ref={Num} style={{ width: '100%' }}></textarea>
+          <label  className='LabelCoachEdit'>Numéro</label>
+          <textarea defaultValue={formData.num} ref={Num} className='textCochEdit'></textarea>
 
           <label>Domaines d’intervention:</label>
           {Array.isArray(domaines) && domaines.map((domaine, index) => (
-            <div key={index} className="domaine checkbox">
+            <div key={index} className=" checkbox">
               <div>
                 <input
                   type="checkbox"
@@ -134,12 +134,13 @@ console.log(selectedDomaines)
             </div>
           ))}
 
-          <label>Gouvernorats:</label>
+         <div style={{ display: 'flex',flexDirection:'column' }}>
+         <label className='LabelCoachEdit'>Gouvernorats:</label>
           <select
             id="gouvernorat"
             value={gouvernorat}
             onChange={handleGouvernoratChange}
-            className="Gouvernorat"
+            className="GouverEdit"
           >
             {[
               "Tunis", "Ariana", "Ben Arous", "Manouba", "Nabeul", "Zaghouan", "Bizerte", "Béja", "Jendouba", "Kef", "Siliana", "Kairouan", "Kasserine", "Sidi Bouzid", "Sousse", "Monastir", "Mahdia", "Sfax", "Kébili", "Gabès", "Medenine", "Tataouine", "Tozeur", "Gafsa"
@@ -148,7 +149,8 @@ console.log(selectedDomaines)
             ))}
           </select>
 
-          <label>Méthodes de coaching:</label>
+         </div>
+          <label  className='LabelCoachEdit'>Méthodes de coaching:</label>
           <div className="checkbox">
             <div>
               <input
@@ -174,7 +176,7 @@ console.log(selectedDomaines)
             <label htmlFor="en-ligne">En ligne</label>
           </div>
 
-          <label>Langues:</label>
+          <label className='LabelCoachEdit'>Langues:</label>
           <div className="checkbox">
             <input
               type="checkbox"
@@ -206,7 +208,7 @@ console.log(selectedDomaines)
             <label htmlFor="anglais">Anglais</label>
           </div>
 
-          <label>Types de clients:</label>
+          <label className='LabelCoachEdit'>Types de clients:</label>
           <div className="checkbox">
             <input
               type="checkbox"
@@ -228,7 +230,7 @@ console.log(selectedDomaines)
             <label htmlFor="organisation">Organisation</label>
           </div>
 
-          <label>Tarif préférentiel (réduction de 10% pour les clients de la plateforme):</label>
+          <label className='LabelCoachEdit'>Tarif préférentiel (réduction de 10% pour les clients de la plateforme):</label>
           <div>
             <div className="checkbox">
               <input
@@ -252,31 +254,34 @@ console.log(selectedDomaines)
             </div>
           </div>
 
-          <label>Site</label>
-          <textarea defaultValue={formData.site} ref={Site} style={{ width: '100%' }}></textarea>
+          <label className='LabelCoachEdit'>Site</label>
+          <textarea defaultValue={formData.site} ref={Site} className='textCochEdit'></textarea>
 
-          <label>Facebook</label>
-          <textarea defaultValue={formData.fb} ref={Facebook} style={{ width: '100%' }}></textarea>
+          <label className='LabelCoachEdit'>Facebook</label>
+          <textarea defaultValue={formData.fb} ref={Facebook}className='textCochEdit'></textarea>
 
-          <label>Linkedin</label>
-          <textarea defaultValue={formData.In} ref={Linkedin} style={{ width: '100%' }}></textarea>
+          <label className='LabelCoachEdit'>Linkedin</label>
+          <textarea defaultValue={formData.In} ref={Linkedin}className='textCochEdit'></textarea>
 
-          <label>YouTube</label>
-          <textarea defaultValue={formData.yt} ref={Youtube} style={{ width: '100%' }}></textarea>
+          <label className='LabelCoachEdit'>YouTube</label>
+          <textarea defaultValue={formData.yt} ref={Youtube}className='textCochEdit'></textarea>
 
-          <label>Brève Bio</label>
-          <textarea defaultValue={formData.bio} ref={Bio} style={{ width: '100%' }}></textarea>
+          <label className='LabelCoachEdit' >Brève Bio</label>
+          <textarea defaultValue={formData.bio} ref={Bio} className='textCochEdit'style={{height:'100px'}}></textarea>
 
-          <label>Image</label>
+        <div style={{display:'flex',flexDirection:'column'}}>
+
+        <label className='LabelCoachEdit'>Photo</label>
           <img
    src={getImageUrl(formData.image)}
    style={{ width: "150px", height: "150px" }}
             alt="Coach"
           />
+        </div>
 
-<div style={{ display: 'block',margin:'10px auto' }}>
-            <button type="submit" style={{marginRight:'10px',color:'white',backgroundColor:'blue', border:'none'}}>Modifier</button>
-            <button type="button" style={{color:'blue',backgroundColor:'white', border:'solid 1px blue'}} onClick={() => navigate("/admin/Coachs/visible")}>Annuler</button>
+<div className='EDITCOACH'>
+            <button type="submit" className='ButtonEditCoach'>Modifier</button>
+            <button type="button" className='ButtonCoachAnnuler'>Annuler</button>
           </div>
         </form>
        

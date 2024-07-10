@@ -36,72 +36,69 @@ const ProfilCoach = () => {
     <>
 
       <div
-        className="ImagePlatforme"
+        className="PlatformeProfil"
         style={{
-          position: "relative",
-          textAlign: "center",
-          height: "300px",
+       
           backgroundImage: `url(${image})`,
-          backgroundSize: "cover",
-          overflow: "hidden",
+       
         }}
       >
-        <div style={{ paddingTop: "100px" }}>
-          <h2>Voici votre compte</h2>
+        <div >
+          <h2 className="ProfilTitre">Voici votre compte</h2>
         </div>
       </div>
 
       <div className="profil-container">
         <div style={{ textAlign: "left" }} className="PROFIL_LEFT">
           <div className="Photo">
-            <p>{coachdata.nom}</p>
+            <p className="NomProfil">{coachdata.nom}</p>
             <img
            src={getImageUrl(coachdata.image)}
            alt="Photo de profil"
-              style={{
-                width: "220px",
-                height: "207px",
-                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-              }}
+           className="PhotoProfil"
+
+
+
+              
             />
           </div>
 
           <div className="Contact">
             <div>
-              <h1>Contact</h1>
+              <h1 className="ProfilContact">Contact</h1>
             </div>
-            <div className="information">
-              <div>
+            <div >
+              <div className="information">
                 <FaEarthAfrica style={{ color: " rgb(255,205,51)" }} />
-                <h3>Site web: {coachdata.site}</h3>
+                <h3 className="information-Item">Site web: {coachdata.site}</h3>
               </div>
               <hr />
-              <div>
+              <div className="information">
                 <MdEmail style={{ color: " rgb(255,205,51)" }} />
 
-                <h3>E-mail: {coachdata.email}</h3>
+                <h3 className="information-Item">E-mail: {coachdata.email}</h3>
               </div>
               <hr />
-              <div>
+              <div className="information">
                 <BsTelephoneFill style={{ color: " rgb(255,205,51)" }} />
 
-                <h3>Tél: {coachdata.num}</h3>
+                <h3 className="information-Item">Tél: {coachdata.num}</h3>
               </div>
               <hr />
-              <div>
+              <div className="information">
                 <GiPositionMarker style={{ color: " rgb(255,205,51)" }} />
 
-                <h3>Gouvernorat: {coachdata.gouv}</h3>
+                <h3 className="information-Item">Gouvernorat: {coachdata.gouv}</h3>
               </div>
               <hr />
 
-              <div>
+              <div className="information">
                 <SiRss style={{ color: " rgb(255,205,51)" }} />
 
-                <h3>Réseaux sociaux:</h3>
+                <h3 className="information-Item">Réseaux sociaux:</h3>
               </div>
             </div>
-            <div>
+            <div className="information">
               <FaFacebookF
                 style={{
                   color: "rgb(255,205,51)",
@@ -129,12 +126,12 @@ const ProfilCoach = () => {
 
         <div style={{ textAlign: "right", width: "50%" }}>
           <div className="abonner">
-            <p>
+            <p className="ProfilAccès">
               Restez connecté(e) avec vos clients et activez l’accès à votre
               profil.
             </p>
 
-            <button>Abonnement Annuel</button>
+            <button className="buttonAccès">Abonnement Annuel</button>
           </div>
 
           <h3 className="domaines-coaching-title titre">
@@ -144,7 +141,7 @@ const ProfilCoach = () => {
           <div className="domaines-intervention list">
             {coachdata.domain &&
               coachdata.domain.map((domaine, index) => (
-                <h3 key={index}>{domaine}</h3>
+                <h3  className="ProfilDomaine" key={index}>{domaine}</h3>
               ))}
           </div>
 
@@ -162,14 +159,14 @@ const ProfilCoach = () => {
           <div className="Méthodes-Coaching list">
             {coachdata.method &&
               coachdata.method.map((MethCoach, index) => (
-                <h3 key={index}>{MethCoach}</h3>
+                <h3 className="ProfilMethode" key={index}>{MethCoach}</h3>
               ))}
           </div>
 
           <h2 className="Type-de-Client-title titre list"> Type de Client</h2>
 
           <div className="Type-de-Client list">
-            <h3>{coachdata.type_client}</h3>
+            <h3 className="ProfilType">{coachdata.type_client}</h3>
           </div>
 
           <h2 className="Langues titre list">Langues</h2>
@@ -177,12 +174,12 @@ const ProfilCoach = () => {
           <div className="Langues list">
             {coachdata.langue &&
               coachdata.langue.map((Lang, index) => (
-                <h3 key={index}>{Lang}</h3>
+                <h3 className="ProfilLangues" key={index}>{Lang}</h3>
               ))}
           </div>
           <h2 className="tarif titre list">Tarif préférentiel (réduction de 10% pour les clients de la plateforme)</h2>
           <div className="Tarif list">
-          {coachdata.tarif ? <h3>oui</h3> : <h3>non</h3>}
+          {coachdata.tarif ? <h3 className="ProfilTarif">oui</h3> : <h3 className="ProfilTarif">non</h3>}
 
           </div>
         </div>

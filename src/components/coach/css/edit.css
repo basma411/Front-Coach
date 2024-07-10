@@ -1,39 +1,43 @@
-.containerEdit{
+.containerEdit {
     width: 100%;
-    background: linear-gradient(to bottom, #DFDFDF, #fff);
-  margin: 0;
-  padding: 0;
+    background-color: #fff;
+    margin: 0;
+    padding-top: 50px;
+    box-shadow: inset -20px 80px 80px -20px  #ccc; 
 }
+
+
+
 .ProfilEdit{
  
     background-color:transparent;
-    width: 80%; /* Vous avez mentionné que vous voulez centrer dans 80% de la largeur */
+    width: 70%; /* Vous avez mentionné que vous voulez centrer dans 80% de la largeur */
     border-radius: 10px; /* Ajoutez une bordure arrondie si nécessaire */
     margin: 0 auto;
-    padding-top: 80px;
 }
-/* .ProfilEdit label{
+.ProfilEditlabel{
+    font-size: 16px ;
+    color: rgb(128, 128, 128)  ;
+    line-height: 24px;
 
- font-size: 20px;
- line-height: 2;
- color: gray;
-
-} */
-.ProfilEdit textarea{
-    font-size: 18px;
+}
+.textareaEdit{
+    width: 100%; 
+height: 60px;
     line-height: 2;
-    color: #000; 
-    width: 100%; /* Vous avez mentionné que vous voulez centrer dans 80% de la largeur */
-    background-color:transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+        color: #495057;
+            background-color:transparent;
     border: solid 1px rgb(175, 173, 173) ;
 }
-form {
-    display: flex;
-    flex-direction: column;
-  align-items: flex-start;
-  width: 100%; /* Vous avez mentionné que vous voulez centrer dans 80% de la largeur */
-
-}
+.textareaEdit:focus {
+    border: solid 1px transparent;
+    outline-color: rgb(36, 233, 233);
+    outline-style: solid;
+    outline-width: 0.5px; /* Définir l'épaisseur de la bordure */
+    outline-offset: 0;
+  }
 
   .domaineIntervention {
     display: flex;
@@ -49,6 +53,7 @@ justify-content: flex-start;
 align-items: center;
 margin-bottom: 3px;
 margin-left: 50px;
+gap:5px
 
 } 
 /* .checkbox label {
@@ -58,23 +63,24 @@ margin-left: 50px;
  color: gray;
 
     }  */
-    .Gouvernorat{
+    .Gouver{
         width: 100%;
         height: 40px;
-        font-size: 20px;
+        font-size: 16px;
         line-height: 2;
         color: gray;
-        border: solid 1PX gray;
+        border: solid 1PX rgb(206, 212, 218);
         background-color: transparent;
     }
   
     
-.textareaEdit:focus,
-.Gouvernorat:focus {
-  outline-color: rgb(36, 233, 233);
-  outline-style: solid; /* Set the outline style to solid */
-  outline-offset: 0; /* Set the outline width to 1px */
-}
+    .Gouver:focus {
+        border: solid 1px transparent;
+        outline-color: rgb(36, 233, 233);
+        outline-style: solid;
+        outline-width: 0.5px; /* Définir l'épaisseur de la bordure */
+        outline-offset: 0;
+      }
     .updateimage{
 
 display: flex;
@@ -85,12 +91,7 @@ gap:30px
 
     }
 
-    
-    /* .updateimage input{
-
-      height: 37px;
-        
-            } */
+ 
     .Update {
         display: flex;
         justify-content: center;
@@ -99,38 +100,35 @@ margin:40px 40%;      }
       
     
 .modifier{
-    width: 100px;
-    margin: 10px;
-    padding: 0.375rem 0.75rem;
-    font-size: 1.3rem;
+    padding:0.375rem 0.75rem;
+    font-size: 1rem;
     line-height: 1.5;
         background-color: #fdc900;
         border-radius: 10px;
         color: #fff;
     border: 2px solid transparent;
     display: inline-block;
+    font-weight: 400;
     text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
+
     cursor: pointer;
 }
-.Update button:hover{
-    
-        background-color: #fff;
-        color: #000;
-    border: 2px solid #000;
-    display: inline-block;
+.modifier:hover{
+    background-color: #fff;
+    color: #000;
+border: 2px solid blue;
    
 }
-.Update h3{
+
+.ProfilAnnuler{
     padding: 5px;
-    font-size: 1.3rem;
-    line-height: 1.5;
-    color: #212529;
+    font-size: 16px;
+   font-weight: 400;
+    color: #000;
     cursor: pointer;
 
 }
-.Update h3:hover{
+.ProfilAnnuler:hover{
   
     color: #fdc900;;
 }
