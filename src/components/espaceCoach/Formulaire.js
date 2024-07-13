@@ -504,7 +504,8 @@ const Formulaire = () => {
                   <label htmlFor="organisation-non">non</label>
                 </div>
               </div>
-              <label className="TITREcoach">Photo</label>
+            <div>
+            <label className="TITREcoach">Photo</label>
               <input
                 type="file"
                 placeholder=""
@@ -512,6 +513,7 @@ const Formulaire = () => {
                 onChange={handleFileChange}
                 className="filecoach"
               />
+            </div>
               <label className="TITREcoach">Lien du site:</label>
               <input
                 type="text"
@@ -519,7 +521,8 @@ const Formulaire = () => {
                 ref={siteRef}
                 className="inputCoach"
               />
-              <label className="TITREcoach">Logo</label>
+            <div>
+            <label className="TITREcoach">Logo</label>
               <input
                 type="file"
                 placeholder=" "
@@ -527,6 +530,7 @@ const Formulaire = () => {
                 onChange={handleLogoChange}
                 className="filecoach"
               />
+            </div>
               <label className="TITREcoach">Réseaux sociaux :</label>
               <br />
               <label className="TITREcoach">Facebook:</label>

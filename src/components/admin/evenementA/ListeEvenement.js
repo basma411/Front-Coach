@@ -3,15 +3,18 @@ import BarheaderAdmin from "../BarheaderAdmin";
 import NavBarAdmin from "../NavBarAdmin";
 import "./css/ListeEvenement.css";
 import image from "../../../images/big_image_2.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoPowerOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { CiEdit } from "react-icons/ci";
 import { GetEvenement, deleteEvenement } from "../../../Redux/Slice/EvenementSlice";
 import { getImageUrl } from '../../../index.js';
+import OverlayA from "../OverlayA.js";
 const ListeEvenement = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { Evenement } = useSelector((state) => state.evenement);
 
   useEffect(() => {
@@ -23,7 +26,9 @@ console.log(Evenement)
       dispatch(deleteEvenement({ id }));
     }
   };
-
+  const handelAccueil = () => {
+    navigate("/admin/Accueil");
+  };
   const truncateText = (htmlText, maxLength) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(htmlText, 'text/html');
@@ -35,30 +40,13 @@ console.log(Evenement)
     <>
       <BarheaderAdmin />
       <NavBarAdmin />
-      <div
-        className="ImagePlatforme"
-        style={{
-          position: "relative",
-          textAlign: "center",
-          height: "300px",
-          backgroundImage: `url(${image})`,
-          backgroundSize: "cover",
-          overflow: "hidden",
-        }}
-      >
-        <div style={{ paddingTop: "100px" }}>
-          <IoPowerOutline style={{ fontSize: "35px", fontWeight: "700" }} />
-          <h2 style={{ fontSize: "30px" }}>
-            Bienvenue sur votre espace administration
-          </h2>
-        </div>
-      </div>
+   <OverlayA/>
 
       <div className="ConsultEvenement">
         <div className="ConsultEvenementContainer">
-          <Link to="/admin/Accueil">
-            <button className="AccueilEvenement">Accueil</button>
-          </Link>
+        <button className="buttonAccueil" onClick={handelAccueil}>
+            Accueil
+          </button>
           <table
             className="TableEvenement"
             style={{
@@ -69,19 +57,19 @@ console.log(Evenement)
           >
             <thead>
               <tr>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="TableHeaderEvnt">
                   Image
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="TableHeaderEvnt">
                   Titre
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="TableHeaderEvnt">
                   Description
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="TableHeaderEvnt">
                   Date
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="TableHeaderEvnt">
                   Modifier
                 </th>
               </tr>
@@ -89,24 +77,23 @@ console.log(Evenement)
             <tbody>
               {Evenement.map((evt, index) => (
                 <tr key={index}>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className="DataEvnt">
                   <img
             src={getImageUrl(evt.photo)}
-            width="100px"
-            height="70px"
+      className="ListEvntAdm"
             alt="Event"
         />
                   </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className="DataEvnt">
                     {evt.titre}
                   </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className="DataEvnt">
                     {truncateText(evt.texte, 49)}
                   </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className="DataEvnt">
                     {evt.dates}
                   </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className="DataEvnt   actionEvnt">
                     <RiDeleteBin6Line
                       style={{
                         fontSize: "25px",

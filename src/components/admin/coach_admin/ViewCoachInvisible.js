@@ -30,226 +30,109 @@ const ViewCoachInvisible = () => {
 
   return (
     <div className="ViewCoach">
-      <h1
-        style={{
-          width: "30%",
-          color: "gray",
-          display: "block",
-          margin: "0 auto",
-        }}
-      >
-        Voir Enregistrement
-      </h1>
       <div className="viewCoachContainer">
-        <div
-          style={{
-            borderBottom: "solid 1px rgb(194, 192, 192)",
-            width: "100%",
-            padding: "5px",
-          }}
-        >
-          <label>Nom et Prénom</label>
-          <p className="styletexte">{formData.nom}</p>
-        </div>
+        <h3 className="TitreView">Voir Enregistrement</h3>
+        <hr style={{ color: "#ddd" }} />
 
-        <div
-          style={{
-            width: "100%",
-            padding: "5px",
-            borderBottom: "solid 1px rgb(194, 192, 192)",
-          }}
-        >
-          <label>Numéro Téléphone</label>
-          <p className="styletexteCoach">{formData.num}</p>
-        </div>
+        <div className="CoachContainer">
+          <div className="border-bottom">
+            <label className="LabelViewCoach">Nom et Prénom</label>
+            <p className="styletexteCoach">{formData.nom}</p>
+          </div>
 
-        <div
-          style={{
-            width: "100%",
-            padding: "5px",
-            borderBottom: "solid 1px rgb(194, 192, 192)",
-          }}
-        >
-          <label>Domaines D'intervention</label>
-          <div className="styletexteCoach">
-            {formData.domain?.map((domain, index) => (
-              <p key={index} className="styletexteCoach">
-                * {domain}{" "}
-              </p>
+          <div className="border-bottom">
+            <label className="LabelViewCoach">Numéro Téléphone</label>
+            <p className="styletexteCoach">{formData.num}</p>
+          </div>
+
+          <div className="border-bottom">
+            <label className="LabelViewCoach" >Domaines D'intervention</label>
+            <div className="styletexteCoach">
+              {formData.domain?.map((domain, index) => (
+                <p key={index} className="styletexteCoach">* {domain}</p>
+              ))}
+              {formData.AutreDomaine && (
+                <p className="styletexteCoach">* {formData.AutreDomaine}</p>
+              )}
+            </div>
+          </div>
+
+          <div className="border-bottom">
+            <label className="LabelViewCoach">Adresse Email</label>
+            <p className="styletexteCoach">{formData.email}</p>
+          </div>
+
+          <div className="border-bottom">
+            <label className="LabelViewCoach">Bréve Bio</label>
+            <p className="styletexteCoach">{formData.bio}</p>
+          </div>
+
+          <label className="LabelViewCoach">Méthode de Coaching</label>
+          <div className="styletexteCoach border-bottom">
+            {formData.method?.map((methode, index) => (
+              <p key={index} className="styletexteCoach">* {methode}</p>
             ))}
-            {formData.AutreDomaine && (
-              <p className="styletexteCoach">* {formData.AutreDomaine}</p>
-            )}
+          </div>
+
+          <label className="LabelViewCoach">Langue</label>
+          <div className="styletexteCoach border-bottom">
+            {formData.langue?.map((Langue, index) => (
+              <p key={index} className="styletexteCoach">* {Langue}</p>
+            ))}
+          </div>
+
+          <label className="LabelViewCoach">Type_Client</label>
+          <div className="styletexteCoach border-bottom">
+            {formData.type_client?.map((TC, index) => (
+              <p key={index} className="styletexteCoach">* {TC}</p>
+            ))}
+          </div>
+
+          <div className="border-bottom">
+            <label className="LabelViewCoach">Photo</label>
+            <img src={getImageUrl(formData.image)} style={{ display: "block", margin: "auto", width: "100px" }} />
+          </div>
+
+          <div className="border-bottom">
+            <label className="LabelViewCoach">Site</label>
+            <p className="styletexteCoach">{formData.site}</p>
+          </div>
+
+          <div className="border-bottom">
+            <label className="LabelViewCoach">Facebook</label>
+            <p className="styletexteCoach">{formData.fb}</p>
+          </div>
+
+          <div className="border-bottom">
+            <label className="LabelViewCoach">Linkedin</label>
+            <p className="styletexteCoach">{formData.In}</p>
+          </div>
+
+          <div className="border-bottom">
+            <label className="LabelViewCoach">You Tube</label>
+            <p className="styletexteCoach">{formData.yt}</p>
+          </div>
+
+          <div className="border-bottom">
+            <label className="LabelViewCoach">Piéce Jointe</label>
+            <p className="styletexteCoach">{formData.piece}</p>
+          </div>
+
+          <div className="border-bottom">
+            <label className="LabelViewCoach">Gouvernerats</label>
+            <p className="styletexteCoach">{formData.gouv}</p>
+          </div>
+
+          <div style={{ width: "100%", padding: "5px" }}>
+            <label  className="LabelViewCoach">Tarif</label>
+            <p className="styletexteCoach">{formData.tarif ? "oui" : "non"}</p>
           </div>
         </div>
-        <div
-          style={{
-            width: "100%",
-            padding: "5px",
-            borderBottom: "solid 1px rgb(194, 192, 192)",
-          }}
-        >
-          <label>Adresse Email</label>
-          <p className="styletexte">{formData.email}</p>
-        </div>
-        <div
-          style={{
-            width: "100%",
-            padding: "5px",
-            borderBottom: "solid 1px rgb(194, 192, 192)",
-          }}
-        >
-          <label> Bréve Bio</label>
-          <p className="styletexteCoach">{formData.bio}</p>
-        </div>
 
-        <label>Méthode de Coaching</label>
-        <div
-          className="styletexteCoach"
-          style={{
-            width: "100%",
-            padding: "5px",
-            borderBottom: "solid 1px rgb(194, 192, 192)",
-          }}
-        >
-          {formData.method?.map((methode, index) => (
-            <p key={index} className="styletexteCoach">
-              * {methode}{" "}
-            </p>
-          ))}
-        </div>
-
-        <label>Langue</label>
-        <div
-          className="styletexteCoach"
-          style={{
-            width: "100%",
-            padding: "5px",
-            borderBottom: "solid 1px rgb(194, 192, 192)",
-          }}
-        >
-          {formData.langue?.map((Langue, index) => (
-            <p key={index} className="styletexteCoach">
-              * {Langue}{" "}
-            </p>
-          ))}
-        </div>
-
-        <label>Type_Client</label>
-        <div
-          className="styletexteCoach"
-          style={{
-            width: "100%",
-            padding: "5px",
-            borderBottom: "solid 1px rgb(194, 192, 192)",
-          }}
-        >
-          {formData.type_client?.map((TC, index) => (
-            <p key={index} className="styletexteCoach">
-              * {TC}{" "}
-            </p>
-          ))}
-        </div>
-
-        <div
-          style={{
-            borderBottom: "solid 1px rgb(194, 192, 192)",
-            width: "100%",
-            padding: "5px",
-          }}
-        >
-          <label>Photo</label>
-          <img
-            src={getImageUrl(formData.image)}
-            style={{ display: "block", margin: "auto", width: "100px" }}
-          />
-        </div>
-
-        <div
-          style={{
-            borderBottom: "solid 1px rgb(194, 192, 192)",
-            width: "100%",
-            padding: "5px",
-          }}
-        >
-          <label>Site</label>
-          <p className="styletexte">{formData.site}</p>
-        </div>
-
-        <div
-          style={{
-            borderBottom: "solid 1px rgb(194, 192, 192)",
-            width: "100%",
-            padding: "5px",
-          }}
-        >
-          <label>Facebook</label>
-          <p className="styletexte">{formData.fb}</p>
-        </div>
-
-        <div
-          style={{
-            borderBottom: "solid 1px rgb(194, 192, 192)",
-            width: "100%",
-            padding: "5px",
-          }}
-        >
-          <label>Linkedin</label>
-          <p className="styletexte">{formData.In}</p>
-        </div>
-
-        <div
-          style={{
-            borderBottom: "solid 1px rgb(194, 192, 192)",
-            width: "100%",
-            padding: "5px",
-          }}
-        >
-          <label>You Tube</label>
-          <p className="styletexte">{formData.yt}</p>
-        </div>
-        <div
-          style={{
-            borderBottom: "solid 1px rgb(194, 192, 192)",
-            width: "100%",
-            padding: "5px",
-          }}
-        >
-          <label>Piéce Jointe</label>
-          <p className="styletexte">{formData.piece}</p>
-        </div>
-
-        <div
-          style={{
-            borderBottom: "solid 1px rgb(194, 192, 192)",
-            width: "100%",
-            padding: "5px",
-          }}
-        >
-          <label>Gouvernerats</label>
-          <p className="styletexte">{formData.gouv}</p>
-        </div>
-        <div
-          style={{
-            width: "100%",
-            padding: "5px",
-          }}
-        >
-          <label>Tarif</label>
-          <p className="styletexte">{formData.tarif ? "oui" : "non"}</p>
-        </div>
+        <button className="button-retour" onClick={() => navigate("/admin/Coachs/invisible")}>
+          Retour
+        </button>
       </div>
-      <button
-        style={{
-          backgroundColor: "blue",
-          color: "white",
-          display: "block",
-          margin: " 10px auto",
-        }}
-        onClick={() => navigate("/admin/Coachs/invisible")}
-      >
-        Retour
-      </button>
     </div>
   );
 };

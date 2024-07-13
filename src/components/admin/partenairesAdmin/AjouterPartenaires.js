@@ -1,6 +1,4 @@
 import React, { useRef } from 'react';
-import image from '../../../images/big_image_2.jpg';
-import { IoPowerOutline } from 'react-icons/io5';
 import { useDispatch } from 'react-redux';
 import './css/ajouterpartenaire.css';
 import BarheaderAdmin from '../BarheaderAdmin';
@@ -26,8 +24,7 @@ const AjouterPartenaires = () => {
     
     // Dispatch the action with the formData
     dispatch(AddPartenaire(formData));
-    navigate('/admin/Partenaires')
-
+    navigate('/admin/Partenaires');
   };
 
   return (
@@ -37,16 +34,21 @@ const AjouterPartenaires = () => {
       <OverlayA/>
       <div className="PartenaireAjouter">
         <form className="ParteAjouterContainer" onSubmit={handlePartenaire}>
-          <label style={{ margin: '5px' }}>Statut</label>
-          <select ref={statutRef} style={{ width: '100%', height: '40px' }}>
+          <label className='LabelParAdd'>Statut</label>
+          <select ref={statutRef} className="select-inputPar ">
             <option value="platforme">Platforme</option>
             <option value="salon">Salon</option>
           </select>
-          <label style={{ margin: '5px' }}>Photo:</label>
-          <input type="file" ref={photoRef} />
-          <label style={{ margin: '5px' }}>Nom:</label>
-          <input type="text" ref={nomRef} style={{ width: '100%', height: '40px' }} />
-          <button type="submit" style={{ margin: '20px' }}>
+          
+          <div className="input-containerPar ">
+            <label className='LabelParAdd'>Photo:</label>
+            <input type="file" ref={photoRef} className="file-inputPar " />
+          </div>
+          
+          <label className='LabelParAdd'>Nom:</label>
+          <input type="text" ref={nomRef} className="text-inputPar " />
+          
+          <button type="submit" className="submit-buttonPar ">
             Envoyer
           </button>
         </form>

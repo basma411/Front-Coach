@@ -1,25 +1,68 @@
-.ViewCoach{
-    width: 100%;
-        /* height: 100vh; */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
 
-    margin: 0;
-    padding:0 ;
+.ViewCoach {
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
-.viewCoachContainer{
-    width: 50%;
-    margin: 20px auto 80px auto;
-display: flex;
-align-items: start;
-justify-content: flex-start;
-flex-direction: column;
-border: solid 1px rgb(194, 192, 192);
+
+.viewCoachContainer {
+  width: 35%;
+  margin: 20px auto 80px auto;
 }
-.styletexteCoach{
+
+.CoachContainer {
+  display: flex;
+  align-items: start;
+  justify-content: flex-start;
+  flex-direction: column;
+  border: solid 1px #ddd;
+}
+
+.TitreView {
+  color: gray;
+  display: block;
+  margin: 0 auto;
+  font-family: 'Libre Baskerville', serif;
+  color: rgb(111, 30, 81);
+  font-size: 30px;
+  font-weight: 100;
+}
+.LabelViewCoach{
+    font-family: 'Libre Baskerville', serif;
+    font-size: 12px;
+    font-weight: bold;
+
+}
+.styletexteCoach {
+  display: block;
+  text-align: start;
+  font-family:  Helvetica,Arial, sans-serif;
+  font-size: 14px;
+  padding: 5px;
+  font-weight: 400;
+  color: rgb(51, 51, 51)
+  ;
+}
+
+.border-bottom {
+  border-bottom: solid 1px #ddd;
+  width: 100%;
+  padding: 5px;
+}
+
+
+
+.button-retour {
+    color: #fff;
+    background-color: #337ab7;
     display: block;
-    text-align: start;
-    font-size: 16px;
-    
-    padding: 5px;
-
-
+    padding: 6px 12px;
+margin: 20px auto; 
+   font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    border: solid 1px transparent;
+    border-radius: 4px;
 }

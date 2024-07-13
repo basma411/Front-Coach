@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import BarheaderAdmin from "../BarheaderAdmin";
 import NavBarAdmin from "../NavBarAdmin";
 import "./css/partenairesA.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { GetPartenaire, deletePartenaire } from "../../../Redux/Slice/PartenaireSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -11,11 +11,14 @@ import OverlayA from "../OverlayA.js";
 
 const PartenairesA = () => {
   const dispatch = useDispatch();
-
+const navigate=useNavigate()
   const { Partenaire } = useSelector((state) => state.partenaire);
   useEffect(() => {
     dispatch(GetPartenaire());
   }, [dispatch]);
+  const handelAdd = () => {
+    navigate("/admin/Partenaires/ajouter");
+  };
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this partenaire?")) {
       dispatch(deletePartenaire({ id }));
@@ -30,9 +33,9 @@ const PartenairesA = () => {
     
       <div className="ConsultPartenaires">
         <div className="ConsultPartenairesContainer">
-          <Link to='/admin/Partenaires/ajouter'>
-          <button className="AccueilPartenaires">Ajouter parteniare</button>
-          </Link>
+        <button className="buttonAddPar" onClick={handelAdd}>
+        Ajouter parteniare
+          </button>
           <table
             className="TablePartenaires"
             style={{

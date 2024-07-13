@@ -104,7 +104,9 @@ console.log(selectedDomaines)
     alert("Nom modifié");
     navigate("/admin/Coachs/visible");
   };
-
+  const handleOut = (value) => {
+    navigate("/admin/Coachs/visible");
+  };
   return (
     <div className='CoachEdit'>
       <div className='CoachEditContainer'>
@@ -128,6 +130,7 @@ console.log(selectedDomaines)
                   name={`domaine-${index}`}
                   checked={selectedDomaines.includes(domaine.domaines)}
                   onChange={(e) => handleDomaineChange(domaine.domaines, e.target.checked)}
+                  className='editdomaine'
                 />
               </div>
               <label htmlFor={`domaine-${index}`}>{domaine.domaines}</label>
@@ -281,7 +284,7 @@ console.log(selectedDomaines)
 
 <div className='EDITCOACH'>
             <button type="submit" className='ButtonEditCoach'>Modifier</button>
-            <button type="button" className='ButtonCoachAnnuler'>Annuler</button>
+            <button type="button" className='ButtonCoachAnnuler' onClick={()=>handleOut()}>Annuler</button>
           </div>
         </form>
        

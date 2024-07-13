@@ -8,7 +8,10 @@ import { Link, useNavigate } from "react-router-dom";
 import Deconnection from "../Deconnection";
 const EvenementA = () => {
   const navigator=useNavigate()
-
+  const handelAddEvnt = () => {
+    navigator("/admin/Evenements/AjouterEvenement")};
+const handelListEvnt = () => {
+  navigator("/admin/Evenements/liste")};
   return (
 <>
 
@@ -17,12 +20,8 @@ const EvenementA = () => {
    <Deconnection/>
       <div className="ConsultEvenement">
         <div className="ConsultEvenementContainer">
-          <Link to='/admin/Evenements/AjouterEvenement'>
-          <button className="AccueilEvenement">Ajouter un événement</button>
-          </Link>
-          <Link to='/admin/Evenements/liste'>
-          <button className="AccueilEvenement">Liste des événements </button>
-          </Link>
+          <button className="AccuEvenement" onClick={()=>handelAddEvnt()}>Ajouter un événement</button>
+          <button className="AccuEvenement" onClick={()=>handelListEvnt()}>Liste des événements </button>
          
         </div>
       </div>

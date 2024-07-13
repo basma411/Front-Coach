@@ -14,43 +14,78 @@
 
 }
 
-.container-Edit-Evenement {
-    width: 100%;
-
+.ItemEvntEdit{
     display: flex;
-    align-items: center;
+    flex-direction: column;
+}
+.labelEditEvnt{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color:rgb(51, 51, 51);
+    font-weight: 700;
+}
+.InputEditEvnt{
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.InputEditEvnt:focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+
+
+.buttonsContainer {
+    display: flex;
     justify-content: center;
-}
+    gap: 20px; /* Espace entre les boutons */
+    margin-top: 20px;
+  }
+  
+  .btnEditEvnt, .btnAnnuleEdit {
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 4px;
 
-.TitreEvenement,
-.LienEvenement,
-.LieuEvenement ,.DateEvenement
-{
-    width: 600px;
-    margin-bottom: 15px;
-    padding: 5px;
-}
-
-.ck-editor__editable {
-    height: 300px;
-}
-
-.form-group-Evenement {
-    width: 600px;
-    margin-bottom: 15px;
-}
-
-.imageEdit-Article {
-    display: block;
-    width: 30%;
-    margin: 0 auto;
-}
-/* .custom-ckeditor-text {
-    color: #000 ; 
+  }
+  
+  .btnEditEvnt {
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    color: white;
     
-} */
-.Bouton-Edit-Evenement {
-
-     display: flex; 
-    gap: 20px;
+  }
+  
+  .btnAnnuleEdit {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+  }
+.btnAnnuleEdit:hover{
+    background-color: #ccc;
 }
+.btnEditEvnt:hover {
+    background-color: #2e6da4;
+
+    
+  }
+  .btnEditEvnt:focus {
+    border:solid 2px  #000;
+
+    
+  }

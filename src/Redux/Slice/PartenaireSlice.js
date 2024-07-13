@@ -20,9 +20,10 @@ export const deletePartenaire = createAsyncThunk('Partenaire/delete', async ({ i
   }
 });
 
-export const AddPartenaire = createAsyncThunk('Partenaire/add', async (data, { rejectWithValue }) => {
+export const AddPartenaire = createAsyncThunk('Partenaire/add', async (data, { rejectWithValue ,dispatch}) => {
   try {
     const res = await axios.post("/api/Partenaire", data, { headers: { token: localStorage.getItem('token1') } });
+    dispatch(GetPartenaire())
     return res.data;
   } catch (error) {
     return rejectWithValue(error);

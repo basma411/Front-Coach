@@ -8,6 +8,7 @@ import NavBarAdmin from '../NavBarAdmin';
 import { AddEvenement } from '../../../Redux/Slice/EvenementSlice';
 import { useNavigate } from 'react-router-dom';
 import { Editor } from '@tinymce/tinymce-react';
+import OverlayA from '../OverlayA';
 
 const AjouterEvenement = () => {
   const dispatch = useDispatch();
@@ -45,7 +46,9 @@ const AjouterEvenement = () => {
   const handleEditorChange = (content) => {
     setTexte(content);
   };
-
+  const handelAccueil = () => {
+    navigate("/admin/Accueil");
+  };
   const handlePartenaire = (event) => {
     event.preventDefault();
 
@@ -76,35 +79,27 @@ const AjouterEvenement = () => {
     <>
       <BarheaderAdmin />
       <NavBarAdmin />
-      <div
-        className="ImagePlatforme"
-        style={{
-          position: 'relative',
-          textAlign: 'center',
-          height: '300px',
-          backgroundImage: `url(${image})`,
-          backgroundSize: 'cover',
-          overflow: 'hidden',
-        }}
-      >
-        <div style={{ paddingTop: '100px' }}>
-          <IoPowerOutline style={{ fontSize: '35px', fontWeight: '700' }} />
-          <h2 style={{ fontSize: '30px' }}>Bienvenue sur votre espace administration</h2>
-        </div>
-      </div>
+      <OverlayA/>
+
       <div className="EvenementAjouter">
         <form className="EveAjouterContainer" onSubmit={handlePartenaire}>
-          <label>Titre :</label>
+        <button className="buttonAccueil" onClick={handelAccueil}>
+            Accueil
+          </button>
+     <div style={{display:'flex',flexDirection:'column'}}>
+     <label  className='labelAddEvnt'>Titre :</label>
           <input
             type="text"
             name="titre"
             value={formData.titre}
             onChange={handleInputChange}
-            className='styleinput'
+            className='inputAddEvnt'
             required // Champ requis
           />
+     </div>
 
-          <label>Texte :</label>
+     <div style={{display:'flex',flexDirection:'column'}}>
+     <label className='labelAddEvnt'>Texte :</label>
           <Editor
             apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
             onInit={(evt, editor) => {
@@ -130,41 +125,52 @@ const AjouterEvenement = () => {
               }
             }}
           />
-
-          <label>Lien :</label>
+        </div>
+<div style={{display:'flex',flexDirection:'column'}}>
+<label className='labelAddEvnt'>Lien :</label>
           <input
             type="text"
             name="lien"
             value={formData.lien}
             onChange={handleInputChange}
-            className='styleinput'
-            required // Champ requis
+            className='inputAddEvnt'
+            required 
           />
+</div>
 
-          <label>Lieu :</label>
+<div style={{display:'flex',flexDirection:'column'}}>     <label  className='labelAddEvnt'>Lieu :</label>
           <input
             type="text"
             name="lieu"
             value={formData.lieu}
             onChange={handleInputChange}
-            className='styleinput'
+            className='inputAddEvnt'
             required // Champ requis
-          />
+          /></div>
 
-          <label>Date :</label>
+
+<div style={{display:'flex',flexDirection:'column'}}>   <label  className='labelAddEvnt'>Date :</label>
           <input
             type="text"
             name="dates" // Modifié de 'date' à 'dates'
             value={formData.dates}
             onChange={handleInputChange}
-            className='styleinput'
+            className='inputAddEvnt'
             required // Champ requis
           />
+          </div>
 
-          <label>Photo :</label>
-          <input type="file" ref={photoRef} className='styleinput' required />
 
-          <button type="submit">
+          <div style={{display:'flex',flexDirection:'column'}}> 
+            
+          <label  className='labelAddEvnt'>Photo :</label>
+          <input type="file" ref={photoRef}  required className='fileAddEvnt'    
+          /> 
+          </div>
+
+
+
+          <button type="submit" className='ButtonAddEvnt'>
             Envoyer
           </button>
         </form>
