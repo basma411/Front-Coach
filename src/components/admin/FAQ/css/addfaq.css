@@ -10,7 +10,7 @@
     
 }
 .ConsultAddFaqContainer{
-    width: 40%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,12 +18,30 @@
     margin: 50px auto;
     gap: 50px;
 }
-.QUESTION{
-width: 100%;
-height: 40px; 
+.TitreFAQ{
+    font-size: 40px;
+    font-weight: 300;
+    color: #000;
+}
+.QUESTION,.RES{
+    width: 100%;
+    height: 43px;
+    margin-bottom: 10px;
+    border: 1px solid #ced4da;
+    font-size: 14px;
+    color: #535252;
+    cursor: pointer;   
+    padding: 0.375rem 0.75rem;
 
 }
+
+  
+  .QUESTION:focus,  .RES:focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+  }
 .RES{
-    width: 100%;
 height: 150px; 
 }

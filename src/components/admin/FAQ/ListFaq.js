@@ -5,44 +5,29 @@ import "./css/listFAQ.css";
 import image from "../../../images/big_image_2.jpg";
 import { IoPowerOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getFaq } from "../../../Redux/Slice/FaqSlice";
+import OverlayA from "../OverlayA";
 
 const ListFaq = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { Faqs } = useSelector((state) => state.faq);
   useEffect(() => {
     dispatch(getFaq());
   }, [dispatch]);
-
+  const handelAccueil = () => {
+    navigate("/admin/Accueil");
+  };
   return (
     <>
       <BarheaderAdmin />
       <NavBarAdmin />
-      <div
-        className="ImagePlatforme"
-        style={{
-          position: "relative",
-          textAlign: "center",
-          height: "300px",
-          backgroundImage: `url(${image})`,
-          backgroundSize: "cover",
-          overflow: "hidden",
-        }}
-      >
-        <div style={{ paddingTop: "100px" }}>
-          <IoPowerOutline style={{ fontSize: "35px", fontWeight: "400" }} />
-          <h2 style={{ fontSize: "30px" }}>
-            Bienvenue sur votre espace administration
-          </h2>
-        </div>
-      </div>
+    <OverlayA/>
       <div className="ConsultListFaq">
         <div className="ListFaqContainer">
-          <Link to='/admin/Accueil'>
-          <button className="AccueilListFaq">Accueil</button>
-          </Link>
+          <button className="AccueilListFaq" onClick={handelAccueil}>Accueil</button>
           <table
             className="TableListFaq"
             style={{
@@ -53,16 +38,16 @@ const ListFaq = () => {
           >
             <thead>
               <tr>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="TableHeaderfaq">
                 Question
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="TableHeaderfaq">
                 Réponse
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="TableHeaderfaq">
                 date
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="TableHeaderfaq">
                 action
                 </th>
               </tr>
@@ -70,15 +55,15 @@ const ListFaq = () => {
              <tbody>
               {Faqs && Faqs.map((Faq, index) => (
                 <tr key={index}>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td  className="DATAfaq">
 {Faq.question}                  </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className="DATAfaq">
 {Faq.rreponse}                  </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className="DATAfaq">
 {Faq.dates} 
                   </td>
 
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className="DATAfaq" >
                    
                   </td>
                 </tr>

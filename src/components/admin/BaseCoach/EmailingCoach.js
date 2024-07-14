@@ -6,12 +6,14 @@ import image from "../../../images/big_image_2.jpg";
 import { IoPowerOutline } from 'react-icons/io5';
 import { sendEmail } from "../../../Redux/Slice/emailSlice";
 import "./css/emailcoach.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Editor } from '@tinymce/tinymce-react';
 import OverlayA from "../OverlayA";
 
 const EmailingCoach = () => {
   const dispatch = useDispatch();
+    const navigate = useNavigate();
+
   const editorRef = useRef(null);
 
   const { coachVisible, selectedCoaches } = useSelector((state) => state.coach);
@@ -30,7 +32,9 @@ const EmailingCoach = () => {
   const handleEditorChange = (content, editor) => {
     setEmailMessage(content);
   };
-
+  const handelAccueil = () => {
+    navigate("/admin/Accueil");
+  };
   const handleSendEmail = () => {
     const selectedCoachEmails = coachVisible
       .filter((coach) => selectedCoaches.includes(coach._id))
@@ -46,10 +50,8 @@ const EmailingCoach = () => {
       <OverlayA/>
       <div className="ConsultEmail">
         <div className="ConsultEmailContainer">
-          <Link to='/admin/Base-Coach'>
-            <button className="AccueilEmail">Base des coachs</button>
-          </Link>
-          <h3 style={{ textAlign: 'center', fontSize: '35px', color: 'gray' }}>Emailing Coachs</h3>
+            <button className="AccueilData" onClick={handelAccueil}>Base des coachs</button>
+          <h3 className="EmailingCoach">Emailing Coachs</h3>
           <label>Objet:</label>
           <input type="text" value={subject} onChange={(e) => setSubject(e.target.value)} />
           <label>Message:</label>
@@ -75,7 +77,7 @@ const EmailingCoach = () => {
               }
             }}
           />
-          <button onClick={handleSendEmail} style={{ padding: "10px 20px", fontSize: "16px" }}>Send Email</button>
+          <button onClick={handleSendEmail} className="SendEmail">Envoyer</button>
           {/* {isLoading && <p>Sending email...</p>}
           {error && <p>Error: {error}</p>}
           {success && <p>Email sent successfully!</p>} */}

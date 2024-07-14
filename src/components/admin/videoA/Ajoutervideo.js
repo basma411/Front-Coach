@@ -19,7 +19,9 @@ const Ajoutervideo = () => {
   });
 
   const photoRef = useRef();
-
+  const handelAcceuil=()=>{
+    navigate("/admin/Accueil")
+  }
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
@@ -45,33 +47,35 @@ const Ajoutervideo = () => {
       <NavBarAdmin />
       <OverlayA/>
       <div className="videoAjouter">
+      <button className="btn-ACCEUIL" onClick={()=>handelAcceuil()}>Accueil</button>
+
         <form className="videoAjouterContainer" onSubmit={handlevideo}>
-          <label>Titre :</label>
+
+      <div style={{display:'flex',flexDirection:'column'}}>    <label className="labelAddVideo">Titre :</label>
           <input
             type="text"
             name="titre"
             value={formData.titre}
             onChange={handleInputChange}
-            className="styleinput"
-          />
-
-          <label>Photo :</label>
+            className="inputAddVideo"
+          /></div>
+<div style={{display:'flex',flexDirection:'column'}}>
+          <label className="labelAddVideo">Photo :</label>
           <input
             type="file"
             ref={photoRef}
-            className="styleinput"
             name="images"
-          />
-          <label>Lien :</label>
+          /></div>
+        <div style={{display:'flex',flexDirection:'column'}}>  <label className="labelAddVideo">Lien :</label>
           <input
             type="text"
             name="lien"
             value={formData.lien}
             onChange={handleInputChange}
-            className="styleinput"
-          />
+            className="inputAddVideo"
+          /></div>
 
-          <button type="submit">Envoyer</button>
+          <button type="submit" className="ButtonAddVideo">Envoyer</button>
         </form>
       </div>
     </>

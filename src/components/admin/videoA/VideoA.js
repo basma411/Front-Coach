@@ -3,10 +3,16 @@ import BarheaderAdmin from "../BarheaderAdmin";
 import NavBarAdmin from "../NavBarAdmin";
 import "./css/video.css";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Deconnection from "../Deconnection";
 const VideoA = () => {
-
+  const navigate=useNavigate()
+  const handelAdd = () => {
+    navigate("/admin/videoCoching/ajouter");
+  };
+  const handelList = () => {
+    navigate("/admin/videoCoching/liste");
+  };
   return (
 <>
 
@@ -15,12 +21,8 @@ const VideoA = () => {
      <Deconnection/>
       <div className="Consultvideo">
         <div className="ConsultvideoContainer">
-          <Link to='/admin/videoCoching/ajouter'>
-          <button className="Accueilvideo">Ajouter une Vidéo</button>
-          </Link>
-          <Link to='/admin/videoCoching/liste'>
-          <button className="Accueilvideo">Liste des Vidéos </button>
-          </Link>
+          <button className="btn-AddVedio" onClick={()=>handelAdd()}>Ajouter une Vidéo</button>
+          <button className="btn-ListVedio" onClick={()=>handelList()}>Liste des Vidéos </button>
          
         </div>
       </div>

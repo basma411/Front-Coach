@@ -56,11 +56,11 @@ const BaseCoach = () => {
           <table className="TableBD" style={{ borderCollapse: "collapse", width: "100%", textAlign: "center" }}>
             <thead>
               <tr>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>Nom et prénom</th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>Email</th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>Tél</th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
-                  <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
+                <th className="TableHeaderDate">Nom et prénom</th>
+                <th className="TableHeaderDate">Email</th>
+                <th className="TableHeaderDate">Tél</th>
+                <th className="TableHeaderDate">
+                  <div style={{ display: 'flex', justifyContent: 'center', gap: '5px' }}>
                     <label>
                       <input type="radio" name="selectOptions" onClick={handleCheckAll} />
                       Tout cocher
@@ -76,10 +76,10 @@ const BaseCoach = () => {
             <tbody>
               {coachVisible && coachVisible.map((coach, index) => (
                 <tr key={index}>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>{coach.nom}</td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>{coach.email}</td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>{coach.num}</td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className="Data">{coach.nom}</td>
+                  <td className="Data">{coach.email}</td>
+                  <td className="Data">{coach.num}</td>
+                  <td className="Data">
                     <input
                       type="checkbox"
                       checked={selectedCoaches.includes(coach._id)}

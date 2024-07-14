@@ -35,7 +35,9 @@ const EmailingNewsletter = () => {
   const handleEditorChange = (content, editor) => {
     setEmailMessage(content);
   };
-
+  const handelAccueil = () => {
+    navigate("/admin/Accueil");
+  };
   const handleSendEmail = () => {
     const NewsLetterEmail = NewsLetter.map((newsLetter) => newsLetter.email);
     const cleanedHtml = DOMPurify.sanitize(emailMessage);
@@ -67,10 +69,8 @@ const EmailingNewsletter = () => {
       </div>
       <div className="ConsultEmail">
         <div className="ConsultEmailContainer">
-          <Link to='/admin/Base-Coach'>
-            <button className="AccueilEmail">Newsletter</button>
-          </Link>
-          <h3 style={{ textAlign: 'center', fontSize: '35px', color: 'gray' }}> Emailing Newsletter </h3>
+            <button className="AccueilNews"onClick={handelAccueil}>Newsletter</button>
+          <h3 className="emailingNews"> Emailing Newsletter </h3>
           <label>Objet:</label>
           <input type="text" value={subject} onChange={(e) => setSubject(e.target.value)} />
           <label>Message:</label>
@@ -96,7 +96,7 @@ const EmailingNewsletter = () => {
               }
             }}
           />
-          <button onClick={handleSendEmail} style={{ padding: "10px 20px", fontSize: "16px" }}>Send Email</button>
+          <button onClick={handleSendEmail} className="btn-send">Envoyer</button>
         </div>
         {showAlert && (
           <Alert icon={<CheckIcon fontSize="inherit" />} severity="success" style={{ marginTop: '20px', textAlign: 'center' }}>

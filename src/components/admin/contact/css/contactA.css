@@ -35,6 +35,23 @@
 
 
 }
+
+.DataContact{
+    /* width: 22%; */
+        padding: 8px;
+        font-size: 12px;
+        color: gray;
+    
+    }
+      .TableHeaderContact {
+    
+        padding: 8px;
+        font-size: 10px;
+        font-weight: bold;
+        color: rgb(128, 128, 128);
+      }
+      
+    
 .IconContact{
 
 

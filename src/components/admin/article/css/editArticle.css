@@ -34,11 +34,10 @@
   }
   
   .inputView:focus {
-    border: solid 1px transparent;
-    outline-color: rgb(36, 233, 233);
-    outline-style: solid; /* Set the outline style to solid */
-    outline-offset: 0; /* Set the outline width to 1px */
-    box-shadow: 0 1px 5px rgb(36, 233, 233);
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
   }
   
 

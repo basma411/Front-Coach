@@ -3,7 +3,7 @@ import BarheaderAdmin from "../BarheaderAdmin";
 import NavBarAdmin from "../NavBarAdmin";
 import "./css/listevideo.css";
 import image from "../../../images/big_image_2.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoPowerOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -14,6 +14,7 @@ import OverlayA from "../OverlayA";
 
 const Listevideo = () => {
   const dispatch = useDispatch();
+  const navigate=useNavigate()
   const { video } = useSelector((state) => state.video);
 
   useEffect(() => {
@@ -26,6 +27,10 @@ const Listevideo = () => {
       dispatch(deletevideo({ id }));
     }
   };
+            <button className="btn-ACCEUIL" onClick={()=>handelAcceuil()}>Accueil</button>
+  const handelAcceuil=()=>{
+    navigate("/admin/Accueil")
+  }
   const truncateText = (htmlText, maxLength) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(htmlText, 'text/html');
@@ -40,9 +45,7 @@ const Listevideo = () => {
 
       <div className="ConsultEvenement">
         <div className="ConsultEvenementContainer">
-          <Link to="/admin/Accueil">
-            <button className="AccueilEvenement">Accueil</button>
-          </Link>
+            <button className="btn-ACCEUIL" onClick={()=>handelAcceuil()}>Accueil</button>
           <table
             className="TableEvenement"
             style={{
@@ -53,17 +56,17 @@ const Listevideo = () => {
           >
             <thead>
               <tr>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="TableHeaderVideo">
                 Titre
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="TableHeaderVideo">
                 Image
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="TableHeaderVideo">
                 Lien
                 </th>
              
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="TableHeaderVideo">
                   Action
                 </th>
               </tr>
@@ -71,11 +74,11 @@ const Listevideo = () => {
             <tbody>
               {video && video.map((video, index) => (
                 <tr key={index}>
-                     <td style={{ border: "1px solid gray", padding: "10px" }}>
+                     <td className="DateVideo">
                     {truncateText(video.titre)}
 
                   </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td  className="DateVideo">
                     <img
            src={getImageUrl(video.images)}
            width="100px"
@@ -85,11 +88,11 @@ const Listevideo = () => {
                     />
                   </td>
                  
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className="DateVideo">
                     {video.lien}
                   </td>
                 
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td  className="DateVideo">
                     <RiDeleteBin6Line
                       style={{
                         fontSize: "25px",

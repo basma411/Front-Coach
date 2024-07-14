@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import BarheaderAdmin from "../BarheaderAdmin";
 import NavBarAdmin from "../NavBarAdmin";
@@ -10,6 +10,8 @@ import OverlayA from "../OverlayA";
 
 const NewsletterA = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { NewsLetter } = useSelector((state) => state.newsletter);
 
   useEffect(() => {
@@ -21,7 +23,9 @@ const NewsletterA = () => {
       dispatch(DeleteNewletter({ id }));
     }
   };
-
+const handeEmail=()=>{
+  navigate("/admin/Newsletter/emailing")
+}
   return (
     <>
       <BarheaderAdmin />
@@ -29,9 +33,7 @@ const NewsletterA = () => {
     <OverlayA/>
       <div className="ConsultNewsLetter">
         <div className="ConsultNewsLetterContainer">
-          <Link to="/admin/Newsletter/emailing">
-            <button className="AccueilNewsLetter">Emailing Newsletter</button>
-          </Link>
+            <button className="EmailingNewsLetter" onClick={()=>handeEmail()}>Emailing Newsletter</button>
           <table
             className="TableNewsLetter"
             style={{
@@ -42,10 +44,10 @@ const NewsletterA = () => {
           >
             <thead>
               <tr>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="TableHeaderNews">
                   Email
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="TableHeaderNews">
                   Action
                 </th>
               </tr>
@@ -53,12 +55,12 @@ const NewsletterA = () => {
             <tbody>
               {NewsLetter.map((newsletter, index) => (
                 <tr key={index}>
-                  <td style={{ border: "1px solid gray" }}>
+                  <td className="DateNews">
                     {newsletter.email}
                   </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td  className="DateNews">
                     <RiDeleteBin6Line
-                      style={{ fontSize: "25px", color: "black" }}
+                      style={{ fontSize: "18px", color: "black" }}
                       onClick={() => handleDelete(newsletter._id)}
                     />
                   </td>

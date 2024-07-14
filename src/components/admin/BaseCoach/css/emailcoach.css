@@ -19,7 +19,7 @@
     margin: 20px auto;
     gap: 5px;
 }
-.AccueilEmail{
+.AccueilData{
     /* width: 650px; */
 
     margin:auto;
@@ -37,4 +37,17 @@
      font-size: 20px;
 
 
+}
+.EmailingCoach{
+
+        text-align:center;
+        font-size:  28px;
+         color: #000 ;
+         font-weight:300;
+        
+}
+.SendEmail{
+    background-color: rgb(240, 240, 240);
+padding: 1px 6px;
+border: solid 1px #000;
 }

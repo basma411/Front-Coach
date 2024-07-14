@@ -40,22 +40,22 @@ const ContactA = () => {
           >
             <thead>
               <tr>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th  className="TableHeaderContact">
                   Nom et Prénom
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="TableHeaderContact">
                   Téléphone
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="TableHeaderContact">
                   Email
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th  className="TableHeaderContact">
                   Data
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th  className="TableHeaderContact">
                   Message
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th  className="TableHeaderContact">
                   Action
                 </th>
               </tr>
@@ -63,23 +63,23 @@ const ContactA = () => {
             <tbody>
               {Contacts.map((contact, index) => (
                 <tr key={index}>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td  className="DataContact">
                     {contact.nom_prenom}
                   </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className="DataContact">
                     {contact.tel}
                   </td>
 
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className="DataContact">
                     {contact.email}
                   </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className="DataContact">
                     {contact.dates}
                   </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className="DataContact">
                     {contact.mssg.substring(0, 100)}
                   </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className="DataContact">
                     <div className="IconContact">
                       <Link to={`/admin/Contact/Email/${contact._id}`}>
                         <FiSend style={{ fontSize: "20px", color: "black" }} />

@@ -7,6 +7,7 @@ import BarheaderAdmin from "../BarheaderAdmin";
 import NavBarAdmin from "../NavBarAdmin";
 import { addFaq } from "../../../Redux/Slice/FaqSlice";
 import { useNavigate } from "react-router-dom";
+import OverlayA from "../OverlayA";
 
 const AddFaq = () => {
   const dispatch = useDispatch();
@@ -26,28 +27,11 @@ const AddFaq = () => {
     <>
       <BarheaderAdmin />
       <NavBarAdmin />
-      <div
-        className="ImagePlatforme"
-        style={{
-          position: "relative",
-          textAlign: "center",
-          height: "300px",
-          backgroundImage: `url(${image})`,
-          backgroundSize: "cover",
-          overflow: "hidden",
-        }}
-      >
-        <div style={{ paddingTop: "100px" }}>
-          <IoPowerOutline style={{ fontSize: "35px", fontWeight: "400" }} />
-          <h2 style={{ fontSize: "30px" }}>
-            Bienvenue sur votre espace administration
-          </h2>
-        </div>
-      </div>
+     <OverlayA/>
 
       <div className="ConsultAddFaq">
         <div className="ConsultAddFaqContainer">
-          <h3 style={{ textAlign: 'center', fontSize: '35px', color: 'black' }}>FAQ</h3>
+          <h3 className="TitreFAQ">FAQ</h3>
           <input
             type="text"
             className="QUESTION"
