@@ -84,11 +84,11 @@ const EditSlider = () => {
     }
 
     return (
-        <div className='edit-Article'>
-            <div className='FormContainer'>
-                <form onSubmit={handleSubmit} className='container-Edit-Article'>
-                    <div>
-                        <label>Titre1</label>
+        <div className='edit-Slider'>
+            <div className='EditContainerSlider'>
+                <form onSubmit={handleSubmit}>
+                    <div style={{display:'flex',flexDirection:'column'}}>
+                        <label className='LabelEditSlider'>Titre1</label>
                         <Editor
                             apiKey="votre-cle-api-tinymce"
                             onInit={(evt, editor) => {
@@ -115,8 +115,8 @@ const EditSlider = () => {
                             }}
                         />
                     </div>
-                    <div>
-                        <label>Titre2</label>
+                    <div style={{display:'flex',flexDirection:'column'}}>
+                        <label className='LabelEditSlider'>Titre2</label>
                         <Editor
                             apiKey="votre-cle-api-tinymce"
                             onInit={(evt, editor) => {
@@ -145,7 +145,7 @@ const EditSlider = () => {
                     </div>
 
                     <div className="form-group-Article">
-                        <label>Image</label>
+                        <label className='LabelEditSlider'>Image</label>
                         {formData.photo && (
                             <img
                                 src={getImageUrl(formData.photo)}
@@ -154,9 +154,9 @@ const EditSlider = () => {
                             />
                         )}
                     </div>
-                    <div className='Bouton-Edit-Article'>
-                        <button type="submit" className='btn btn-primary edit-modifier-Article'>Modifier</button>
-                        <button type="button" className='btn btn-secondary' onClick={() => navigate('/admin/Accueil')}>Annuler</button>
+                    <div className='buttonsContainer'>
+                        <button type="submit" className='btnEditSlider'>Modifier</button>
+                        <button type="button" className='btnAnnuleSlider' onClick={() => navigate('/admin/Accueil')}>Annuler</button>
                     </div>
                 </form>
             </div>

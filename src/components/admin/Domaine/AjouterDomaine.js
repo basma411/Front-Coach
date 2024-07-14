@@ -33,23 +33,27 @@ const AjouterDomaine = () => {
     <>
      
  
-      <div className="DomaineAjouter">
+      <div className="Domaine-Ajouter">
         <form className="DomaineAjouterContainer" onSubmit={handlePartenaire}>
-          <label>Domaines D'interventions :</label>
+          <hr style={{color:"#ccc" }}/>
+       <div style={{display:'flex',flexDirection:"column"}}>
+       <label className='labelDomaine'>Domaines D'interventions :</label>
           <textarea
             type="text"
             name="domaines"
            ref={nomRef}
+           className='textAreaDomaine'
           />
+       </div>
           
               
         
 
       <div className='addDomaine'>
-      <button type="submit"  className='btn btn-secondary'>
+      <button type="submit"  className='submitDomaine'>
           Submit
           </button> 
-          <button type="button" className='btn btn-secondary' onClick={() => navigate('/admin/Accueil')}>Annuler</button>
+          <button type="button" className='AnnuleDomaine' onClick={() => navigate('/admin/Accueil')}>Annuler</button>
 
       </div>
         </form>

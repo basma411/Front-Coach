@@ -19,20 +19,23 @@
     gap: 50px;
 }
 .AccueilBiblio{
-    margin:auto;
-     margin-top:50px; 
-    margin-bottom:50px; 
-    background-color:#0D345A;
-    padding:10px 200px;
-     text-align:center; 
-     color: #e3d80a;
-     cursor: pointer;
-     line-height: 32px;
-     text-decoration-style:solid ;
-     font-size: 20px;
+    width: 40%;
+    height: 50px;
+    display: block;
+    margin: 0 auto;
+    background-color: #0d345a;
+    font-weight: bold;
+    padding: 10px 100px;
+    text-align: center;
+    color: #e3d80a;
+    cursor: pointer;
+    line-height: 32px;
+    text-decoration: none;
+    font-size: 16px;
 
 
 }
-/* .TableIcon{
-    width: 100%;
-} */
+.ImagSlide{
+    width: 200px;
+    height: 100px;
+}

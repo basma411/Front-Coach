@@ -67,7 +67,7 @@ const Edit = () => {
             <div className='container-Edit-Icon'>
                 <form onSubmit={handleSubmit}>
                     <div>
-                        <label>Titre</label>
+                        <label className='LabelEditIcon'>Titre</label>
                         <Editor
                             apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8" // Replace with your TinyMCE API Key
                             initialValue={formData.Titre}
@@ -90,7 +90,7 @@ const Edit = () => {
                     </div>
 
                     <div>
-                        <label>Texte</label>
+                        <label className='LabelEditIcon'>Texte</label>
                         <Editor
                             apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8" // Replace with your TinyMCE API Key
                             initialValue={formData.Texte}
@@ -114,13 +114,13 @@ const Edit = () => {
                     </div>
 
                     <div className="form-group">
-                        <label>Icone</label>
+                        <label className='LabelEditIcon'>Icone</label>
                         {formData.image && <img src={getImageUrl(formData.image)} alt="Icone" className='imageEdit' />}
                     </div>
 
-                    <div className='Bouton-Edit'>
-                        <button type="submit" className='btn btn-primary edit-modifier'>Modifier</button>
-                        <button type="button" className='btn btn-secondary' onClick={() => navigate('/admin/Accueil')}>Annuler</button>
+                    <div className='buttonsContainer'>
+                        <button type="submit" className='btnEditIcon'>Modifier</button>
+                        <button type="button" className='btnAnnulIcon' onClick={() => navigate('/admin/Accueil')}>Annuler</button>
                     </div>
                 </form>
             </div>

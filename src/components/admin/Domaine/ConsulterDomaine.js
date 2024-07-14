@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { IoPowerOutline } from "react-icons/io5";
+import { Link, useNavigate } from "react-router-dom";
 import { CiEdit } from "react-icons/ci";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import NavBarAdmin from "../NavBarAdmin";
 import BarheaderAdmin from "../BarheaderAdmin";
 import { delDomaine, getdomaine } from "../../../Redux/Slice/DomainSlice";
-import image from "../../../images/big_image_2.jpg";
 import "./css/consulterdomaine.css";
 import OverlayA from "../OverlayA";
 
 const ConsulterDomaine = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { domaines } = useSelector((state) => state.domaine);
 
   useEffect(() => {
@@ -23,6 +23,12 @@ const ConsulterDomaine = () => {
       dispatch(delDomaine({ id }));
     }
   };
+  const handelAccueil = () => {
+    navigate("/admin/Accueil");
+  };
+  const handelAjouter = () => {
+    navigate("/admin/consulter_domaine/ajouter");
+  };
   return (
     <>
       <BarheaderAdmin />
@@ -31,12 +37,8 @@ const ConsulterDomaine = () => {
 
       <div className="ConsultDomaine">
         <div className="ConsultDomaineContainer">
-          <Link to="/admin/Accueil">
-            <button className="AccueilDomaine">Accueil</button>
-          </Link>
-          <Link to="/admin/consulter_domaine/ajouter">
-            <button className="AccueilDomaine">Ajouter Domaine</button>
-          </Link>
+            <button className="AccueilDomaine" onClick={handelAccueil}>Accueil</button>
+            <button className="AccueilDomaine"onClick={handelAjouter}>Ajouter Domaine</button>
           <table
             className="TableDomaine"
             style={{
@@ -47,10 +49,10 @@ const ConsulterDomaine = () => {
           >
             <thead>
               <tr>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="HeaderDomaine">
                   Domaines D'interventions
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="HeaderDomaine">
                   Action
                 </th>
               </tr>
@@ -59,10 +61,10 @@ const ConsulterDomaine = () => {
               {Array.isArray(domaines) && domaines.length > 0 ? (
                 domaines.map((domaine, index) => (
                   <tr key={index}>
-                    <td style={{ border: "1px solid gray", padding: "10px" }}>
+                    <td className="DateDomaine">
                       {domaine.domaines}
                     </td>
-                    <td style={{ border: "1px solid gray", padding: "10px" }}>
+                    <td className="DateDomaine">
                       <Link to={`/admin/consulter_domaine/edit/${domaine._id}`}>
                         <CiEdit
                           style={{
@@ -73,7 +75,7 @@ const ConsulterDomaine = () => {
                         />
                       </Link>
                       <RiDeleteBin6Line
-                        style={{ fontSize: "20px", color: "black" }}
+                        style={{ fontSize: "15px", color: "black" }}
                         onClick={() => handleDelete(domaine._id)}
 
                       />

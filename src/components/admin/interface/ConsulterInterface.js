@@ -2,17 +2,16 @@ import React, { useEffect } from "react";
 import BarheaderAdmin from "../BarheaderAdmin";
 import NavBarAdmin from "../NavBarAdmin";
 import "./css/consultinterface.css";
-import image from "../../../images/big_image_2.jpg";
-import { IoPowerOutline } from "react-icons/io5";
-import { GetIcon } from "../../../Redux/Slice/IconSlice";
+
 import { useDispatch, useSelector } from "react-redux";
 import { CiEdit } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { fetchInterface } from "../../../Redux/Slice/InterfaceSlice";
 import { getImageUrl } from "../../..";
 import OverlayA from "../OverlayA";
 const ConsulterInterface = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const { interfaceData } = useSelector((state) => state.interface);
     useEffect(() => {
@@ -24,7 +23,9 @@ const ConsulterInterface = () => {
       const textContent = doc.body.textContent || "";
       return textContent.length > maxLength ? textContent.substring(0, maxLength) + '...' : textContent;
     };
-  
+    const handelAccueil = () => {
+      navigate("/admin/Accueil");
+    };
   return (
 
 <>
@@ -34,11 +35,9 @@ const ConsulterInterface = () => {
 
       {interfaceData && interfaceData.length > 0 && (
      
- <div className="ConsultIcon">
- <div className="ConsultIconContainer">
-   <Link to='/admin/Accueil'>
-   <button className="AccueilIcon">Accueil</button>
-   </Link>
+ <div className="ConsultInter">
+ <div className="ConsultInterContainer">
+   <button className="AccueilInter" onClick={handelAccueil}>Accueil</button>
    <table
      className="TableIcon"
      style={{
@@ -49,47 +48,47 @@ const ConsulterInterface = () => {
    >
      <thead>
        <tr>
-         <th style={{ border: "1px solid gray", padding: "8px" }}>
+         <th className="HeaderInter">
          titre
          </th>
-         <th style={{ border: "1px solid gray", padding: "8px" }}>
+         <th className="HeaderInter">
          textes
          </th>
-         <th style={{ border: "1px solid gray", padding: "8px" }}>
+         <th className="HeaderInter">
          image
          </th>
-         <th style={{ border: "1px solid gray", padding: "8px" }}>
+         <th className="HeaderInter">
          privilège
          </th>
-         <th style={{ border: "1px solid gray", padding: "8px" }}>
+         <th className="HeaderInter">
          page
          </th>
-         <th style={{ border: "1px solid gray", padding: "8px" }}>
+         <th className="HeaderInter">
          modificateur
          </th>
        </tr>
      </thead>
      <tbody>
          <tr >
-           <td style={{ border: "1px solid gray", padding: "10px" }}>
+           <td className="DataInter">
              {truncateText(interfaceData[0].titre)}
            </td>
-           <td style={{ border: "1px solid gray", padding: "10px" }}>
+           <td className="DataInter">
              {truncateText(interfaceData[0].texte, 50)}
            </td>
-           <td style={{ border: "1px solid gray", padding: "10px" }}>
+           <td className="DataInter">
            <img            src={getImageUrl(interfaceData[0].image)}
  width={'100px'} />
 
            </td>
-           <td style={{ border: "1px solid gray", padding: "10px" }}>
+           <td className="DataInter">
           1
            </td>
            
-            <td style={{ border: "1px solid gray", padding: "10px" }}>
+            <td className="DataInter">
             TrouverCoach
            </td>
-           <td style={{ border: "1px solid gray", padding: "10px" }}>
+           <td className="DataInter">
              <Link to={`/admin/consulter_interface/edit/${interfaceData[0]._id}`}>
              <CiEdit style={{ fontSize: "25px",  color:'black'}} />
              </Link>

@@ -7,18 +7,22 @@ import { IoPowerOutline } from "react-icons/io5";
 import { GetIcon } from "../../../Redux/Slice/IconSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { CiEdit } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getImageUrl } from "../../..";
 import OverlayA from "../OverlayA";
 
 const ConsulterIcon = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { Icon } = useSelector((state) => state.icon);
   useEffect(() => {
     dispatch(GetIcon());
   }, [dispatch]);
   console.log(Icon);
+  const handelAccueil = () => {
+    navigate("/admin/Accueil");
+  };
   const truncateText = (htmlText, maxLength) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(htmlText, 'text/html');
@@ -32,9 +36,7 @@ const ConsulterIcon = () => {
       <OverlayA/>
       <div className="ConsultIcon">
         <div className="ConsultIconContainer">
-          <Link to='/admin/Accueil'>
-          <button className="AccueilIcon">Accueil</button>
-          </Link>
+          <button className="AccueilIcon" onClick={handelAccueil}>Accueil</button>
           <table
             className="TableIcon"
             style={{
@@ -45,16 +47,16 @@ const ConsulterIcon = () => {
           >
             <thead>
               <tr>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="HeaderIcon">
                   Titre
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="HeaderIcon">
                   Texte
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="HeaderIcon">
                   Image
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="HeaderIcon">
                   Modifier
                 </th>
               </tr>
@@ -62,18 +64,18 @@ const ConsulterIcon = () => {
             <tbody>
               {Icon.map((icon, index) => (
                 <tr key={index}>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className="DataIcon">
                   {truncateText(icon.Titre, 49)}
                   </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className="DataIcon">
                   {truncateText(icon.Texte, 49)}
                   </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    <img    src={getImageUrl(icon.image)}
+                  <td className="DataIcon">
+                    <img    src={getImageUrl(icon.image)} className="ImageIcon"
  />
                   </td>
 
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className="DataIcon">
                     <Link to={`/admin/icon/edit/${icon._id}`}>
                     <CiEdit style={{ fontSize: "25px",  color:'black'}} />
                     </Link>

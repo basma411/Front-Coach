@@ -122,8 +122,8 @@ const EditEvenement = () => {
           <div className="ItemEvntEdit">
             <label className="labelEditEvnt">Texte</label>
             <Editor
-              apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
-              onInit={(evt, editor) => {
+            apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
+            onInit={(evt, editor) => {
                 editorRef.current = editor;
                 editor.setContent(formData.texte);
               }}

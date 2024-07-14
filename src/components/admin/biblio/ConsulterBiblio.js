@@ -4,7 +4,7 @@ import { IoPowerOutline } from "react-icons/io5";
 
 import { useDispatch, useSelector } from "react-redux";
 import { MdOutlineModeEdit } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BarheaderAdmin from '../BarheaderAdmin';
 import NavBarAdmin from '../NavBarAdmin';
 import { GetBiblio } from '../../../Redux/Slice/BiblioSlice';
@@ -14,12 +14,15 @@ import { getImageUrl } from '../../..';
 import OverlayA from '../OverlayA';
 const ConsulterBiblio = () => {
   const dispatch = useDispatch();
-
+const navigate = useNavigate()
   const { Biblios } = useSelector((state) => state.biblio);
   useEffect(() => {
     dispatch(GetBiblio());
   }, [dispatch]);
   console.log(Biblios);
+  const handelAccueil = () => {
+    navigate("/admin/Accueil");
+  };
   return (
 
 <>
@@ -31,9 +34,7 @@ const ConsulterBiblio = () => {
 
       <div className="ConsultBiblio">
         <div className="ConsultBiblioContainer">
-          <Link to='/admin/Accueil'>
-          <button className="AccueilBiblio">Accueil</button>
-          </Link>
+          <button className="AccueilBiblio" onClick={handelAccueil}>Accueil</button>
           <table
             className="TableBiblio"
             style={{
@@ -44,19 +45,19 @@ const ConsulterBiblio = () => {
           >
             <thead>
               <tr>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="HeaderSlider">
                   Image
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="HeaderSlider">
                 Description
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="HeaderSlider">
                 auteurs
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="HeaderSlider">
                   Année
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className="HeaderSlider">
                   Modifier
                 </th>
               </tr>
@@ -64,22 +65,21 @@ const ConsulterBiblio = () => {
             <tbody>
               {Biblios && Biblios.map((Biblio, index) => (
                 <tr key={index}>
-                    <td style={{ border: "1px solid gray", padding: "10px" }}>
-                    <img    src={getImageUrl(Biblio.photo_c)}
-  height={"100px"}/>
+                    <td className="DataSlider">
+                    <img    src={getImageUrl(Biblio.photo_c)} className='ImagSlide'/>
                   </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className="DataSlider">
                     {Biblio.descrip.substring(0, 50)}
                   </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className="DataSlider">
                     {Biblio.auteur1}
                   </td>
                 
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className="DataSlider">
                     {Biblio.annee}
                   </td>
 
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className="DataSlider">
                     <Link to={`/admin/consulter_biblio/Edit/${Biblio._id}`}>
                       <MdOutlineModeEdit style={{ fontSize: "30px",  color:'black'}} />
                     </Link>

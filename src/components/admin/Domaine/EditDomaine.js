@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { putDomaine } from '../../../Redux/Slice/DomainSlice';
-import './css/ajouterdomaine.css';
+import './css/editdomaine.css';
 
 const EditDomaine = () => {
   const dispatch = useDispatch();
@@ -38,19 +38,20 @@ const EditDomaine = () => {
   };
 
   return (
-    <div className="DomaineAjouter">
-      <form className="DomaineAjouterContainer" onSubmit={handlePartenaire}>
-        <label>Bréve Bio</label>
+    <div className="DomaineEdit">
+      <form className="DomaineEditContainer" onSubmit={handlePartenaire}>
+      <div style={{display:'flex',flexDirection:"column"}}>  <label className='LabelEditD'>Bréve Bio</label>
         <textarea
           name="domaines"
           value={formData.domaines}
           onChange={handleInputChange}
-        />
-        <div className='addDomaine'>
-          <button type="submit" className='btn btn-secondary'>
+          className='textAreaDomaine'
+        /></div>
+        <div className='EditDomaine'>
+          <button type="submit" className='submitDomaine'>
             modifier
           </button>
-          <button type="button" className='btn btn-secondary' onClick={() => navigate('/admin/Accueil')}>
+          <button type="button" className='AnnuleDomaine' onClick={() => navigate('/admin/Accueil')}>
             Annuler
           </button>
         </div>

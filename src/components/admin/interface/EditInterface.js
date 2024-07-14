@@ -104,9 +104,9 @@ const EditInterface = () => {
     return (
         <div className='edit-Evenement'>
             <div className='FormContainerEvenement'>
-                <form onSubmit={handleSubmit} className='container-Edit-Evenement'>
-                    <div>
-                        <label>Titre</label>
+                <form onSubmit={handleSubmit}>
+                    <div style={{display:"flex",flexDirection:"column"}}>
+                        <label className='labelIner'>Titre</label>
                         <Editor
                             apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
                             onInit={(evt, editor) => {
@@ -133,8 +133,8 @@ const EditInterface = () => {
                             }}
                         />
                     </div>
-                    <div>
-                        <label>Texte</label>
+                    <div style={{display:"flex",flexDirection:"column"}}>
+                        <label className='labelIner'>Texte</label>
                         <Editor
                             apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
                             onInit={(evt, editor) => {
@@ -159,22 +159,23 @@ const EditInterface = () => {
                                     editor.on('change', () => handleEditorChange(editor.getContent(), editor, 'texte'));
                                 }
                             }}
+                            className="InputEditInter"
                         />
                     </div>
-                    <div>
-                        <label>Page</label>
+                    <div style={{display:"flex",flexDirection:"column"}}>
+                        <label className='labelIner'>Page</label>
                         <textarea
-                            className='LienEvenement'
+                            className='InputEditInter'
                             type='text'
                             name='page'
                             value={formData.page}
                             onChange={handleInputChange}
                         />
                     </div>
-                    <div>
-                        <label>Lien</label>
+                    <div style={{display:"flex",flexDirection:"column"}}>
+                        <label className='labelIner'>Lien</label>
                         <textarea
-                            className='LieuEvenement'
+                            className='InputEditInter'
                             type='text'
                             name='lien'
                             value={formData.lien}
@@ -182,7 +183,7 @@ const EditInterface = () => {
                         />
                     </div>
                     <div className="form-group-Article">
-                        <label>Image</label>
+                        <label className='labelIner'>Image</label>
                         <input type="file" name="image" onChange={handleFileChange} style={{ margin: "20px 0", display: 'block' }} />
                         {formData.image && !image && <img src={getImageUrl(formData.image)} alt="Icone" className='imageEdit-Article' />}
                     </div>
