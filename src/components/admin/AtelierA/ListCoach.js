@@ -1,26 +1,36 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { GetList } from '../../../Redux/Slice/ListSlice';
+import { delAtelier, GetList } from '../../../Redux/Slice/ListSlice';
 import { useParams } from 'react-router-dom';
 import BarheaderAdmin from '../BarheaderAdmin';
 import { Link, useNavigate } from "react-router-dom";
-import image from "../../../images/big_image_2.jpg";
 import NavBarAdmin from '../NavBarAdmin';
 import Deconnection from '../Deconnection';
-
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { GrView } from "react-icons/gr";
 const ListCoach = () => {
   const dispatch = useDispatch();
   const { id } = useParams(); // Get 'id' from URL parameters
-  const navigator=useNavigate()
-  const handleLogout = () => {
- navigator("/admin/login")
-  };
-  useEffect(() => {
-    dispatch(GetList({ id, entreprise: "Coach" })); // Pass id and entreprise as an object
-  }, [dispatch, id]);
-
+  const navigate=useNavigate()
   const { Lists } = useSelector((state) => state.list);
 
+  useEffect(() => {
+    dispatch(GetList({ id, entreprise: "Coach" })); 
+  }, [dispatch, id]);
+
+  const handelAccueil = () => {
+    navigate("/admin/Accueil");
+  };
+  const handelEmailing = () => {
+    navigate("/admin/Accueil");
+  };
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete ?")) {
+      dispatch(delAtelier({ id }));
+      dispatch(GetList({ id, entreprise: "Coach" })); 
+
+    }
+  };
   return (
     <>
 
@@ -28,14 +38,13 @@ const ListCoach = () => {
       <NavBarAdmin />
  <Deconnection/>
   
-      <div className="ConsultList">
+   
+ <div className="ConsultList">
         <div className="ListContainer">
-          <Link to="/admin/Accueil">
-            <button className="AccueilList">Accueil</button>
-          </Link>
-          <Link to="/admin/Accueil">
-            <button className="AccueilList">Emailing</button>
-          </Link>
+    <div className='buttonContainer'>
+    <button className="btnAccueil " onClick={handelAccueil}>Accueil</button>
+    <button className="btnEmailingProf" onClick={handelEmailing}>Emailing</button>
+    </div>
           <table
             className="TableList"
             style={{
@@ -46,28 +55,28 @@ const ListCoach = () => {
           >
             <thead>
               <tr>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className='headerList'>
                 nom
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className='headerList'>
                 Prénom
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className='headerList'>
                 Téléphone
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className='headerList'>
                 Email:
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className='headerList'>
                 Coach:
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className='headerList'>
                 Poste
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className='headerList'>
                 Question
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className='headerList'>
                 Action
                 </th>
               </tr>
@@ -75,16 +84,16 @@ const ListCoach = () => {
              <tbody>
               {Lists && Lists.map((list, index) => (
                 <tr key={index}>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className='DataList'>
                     {list.nom}
                   </td>
                 
 
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className='DataList'>
                     {list.prenom}
                   </td>
 
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className='DataList'>
                                        {list.tel}
 
                   
@@ -92,22 +101,29 @@ const ListCoach = () => {
                 
                    
                   </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className='DataList'>
                     {list.mail}
                   </td>
-                      <td style={{ border: "1px solid gray", padding: "10px" }}>
+                      <td className='DataList'>
                     {list.entreprise}
                   </td>
                 
-                      <td style={{ border: "1px solid gray", padding: "10px" }}>
+                      <td className='DataList'>
                     {list.poste}
                   </td>
                 
-                      <td style={{ border: "1px solid gray", padding: "10px" }}>
+                      <td className='DataList'>
                     {list.proposition}
                   </td>
-                
-                      <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className='DataList'>
+                      <Link to={`/admin/article/invisible/view/${list._id}`}>
+                      <GrView className="IconData" />
+                    </Link>
+                 
+                    <RiDeleteBin6Line
+                      className="IconData"
+                      onClick={() => handleDelete(list._id)}
+                    />
                   </td>
                 
                 </tr>

@@ -69,9 +69,9 @@ const CoachVisib = () => {
       <NavBarAdmin />
       <Deconnection />
 
-      <div className="ConsultCochVisib">
-        <div className="ConsultCochVisibContainer">
-          <table className="TableCochVisib">
+      <div className="ConsultCoch">
+        <div className="ConsultCochcontainer">
+          <table className="TableCoch">
             <thead>
               <tr>
                 <th className="TableHeaderC">Nom et prénom</th>

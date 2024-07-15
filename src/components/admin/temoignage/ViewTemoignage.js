@@ -41,7 +41,7 @@ const ViewTemoignage = () => {
             padding: "5px",
           }}
         >
-          <label>Nom:</label>
+          <label className="labelViewTem">Nom:</label>
           <p className="styletexteTem">{formData.nom}</p>
         </div>
 
@@ -52,7 +52,7 @@ const ViewTemoignage = () => {
             padding: "5px",
           }}
         >
-          <label>Texte:</label>
+          <label className="labelViewTem">Texte:</label>
           <p className="styletexteTem">
 
           {truncateText(formData.texte)}
@@ -61,12 +61,11 @@ const ViewTemoignage = () => {
         </div>
 
         <div style={{ width: "100%", padding: "5px" }}>
-          <label>Date:</label>
+          <label  className="labelViewTem">Date:</label>
           <p className="styletexteTem">{formData.Date}</p>
         </div>
       </div>
       <button
-        style={{ backgroundColor: "blue", color: "white" }}
         onClick={() => navigator("/admin/témoignages/invisible")}
         className="Retour_Tem"
       >

@@ -30,21 +30,23 @@
   }
   
   .TableArtInvisib {
-border:     1px solid #808080
-;    
     width: 100%;
     text-align: center;
     margin: 40px 0 200px 0;
-
-  }
-  
+    border-collapse: collapse; 
+    border: 1px solid #ccc; 
+}
+.TableHeader, .TableData {
+  border: 1px solid #ccc; /* Cell borders */
+  padding: 8px;
+}
   .TableHeader {
     padding: 8px;
     font-size: 12px;
     font-weight: bold;
     color: rgb(128, 128, 128);
   }
-  
+
   .TableData {
     padding: 8px;
   }

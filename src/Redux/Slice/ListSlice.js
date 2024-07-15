@@ -2,29 +2,49 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const GetList = createAsyncThunk(
-    'List/get',
-    async ({ id, entreprise }, { rejectWithValue }) => {
-      try {
-        const res = await axios.get(`/api/pub-List/get/${id}`, {
-          params: { entreprise }, // Pass 'entreprise' as a query parameter
-          headers: { token: localStorage.getItem('token1') }
-        });
-        return res.data;
-      } catch (error) {
-        return rejectWithValue(error);
-      }
+  'List/get',
+  async ({ id, entreprise }, { rejectWithValue }) => {
+    try {
+      const res = await axios.get(`/api/pub-List/get/${id}`, {
+        params: { entreprise }, // Pass 'entreprise' as a query parameter
+        headers: { token: localStorage.getItem('token1') }
+      });
+      return res.data;
+    } catch (error) {
+      return rejectWithValue({
+        error: error.response?.data?.message || error.message,
+      });
     }
-  );
-
+  }
+);
 
 export const AddList = createAsyncThunk('List/add', async ({data,id}, { rejectWithValue }) => {
   try {
     const res = await axios.post(`/api/pub-List/${id}`, data);
     return res.data;
   } catch (error) {
-    return rejectWithValue(error);
+    return rejectWithValue({
+      error: error.response?.data?.message || error.message,
+    });
   }
 });
+
+export const delAtelier = createAsyncThunk(
+  'Atelier/delete',
+  async ({ id }, { rejectWithValue, dispatch }) => {
+    try {
+      const res = await axios.delete(`/api/delete-atelier/${id}`, {
+        headers: { token: localStorage.getItem('token1') },
+      });
+      // dispatch(GetList()); 
+      return res.data;
+    } catch (error) {
+      return rejectWithValue({
+        error: error.response?.data?.message || error.message,
+      });
+    }
+  }
+);
 
 const ListSlice = createSlice({
   name: "List",
@@ -69,6 +89,21 @@ const ListSlice = createSlice({
         state.token = null;
         state.isAuth = false;
         state.error = action.payload.error;
+      })
+      .addCase(delAtelier.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(delAtelier.fulfilled, (state, action) => {
+        state.isLoading = false;
+        // Mettre à jour le token si nécessaire
+        state.error = null;
+        state.isAuth = true;
+      })
+      .addCase(delAtelier.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload.error;
+        // Mettre à jour d'autres champs du state si nécessaire
       });
   },
 });

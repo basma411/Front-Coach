@@ -84,22 +84,23 @@ const ContactEmailA = () => {
       <BarheaderAdmin />
       <NavBarAdmin />
       <div
-        className="ImagePlatforme"
+        className="ImagePlatformeContact"
         style={{ backgroundImage: `url(${image})` }}
       >
         <div>
-          <h4>Formulaire d'envoi d'email</h4>
+          <h3 className='TitreContact'>Formulaire d'envoi d'email</h3>
         </div>
       </div>
-      <div className='EmailContainer'>
-        <form ref={form} onSubmit={handleSubmit} className='EmailForm'>
+     <div className='EmailContact'>
+     <div className='EmailContainer'>
+        <form ref={form} onSubmit={handleSubmit}>
           <input type="hidden" name="to_email" value={contact.email} />
-          <div>
-            <label>Objet</label>
-            <input type="text" name="subject" />
+          <div style={{display:'flex',flexDirection:'column'}}>
+            <label className='LabelContact'>Objet</label>
+            <input type="text" name="subject"  className='inputObjet'/>
           </div>
-          <div>
-            <label>Message</label>
+          <div style={{display:'flex',flexDirection:'column'}}>
+            <label className='LabelContact'>Message</label>
             <Editor
               apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
               onInit={(evt, editor) => {
@@ -126,9 +127,10 @@ const ContactEmailA = () => {
               }}
             />
           </div>
-          <input type="submit" value="Send" className='sendemail' />
+          <input type="submit" value="Envoyer" className='sendemail' />
         </form>
       </div>
+     </div>
     </>
   );
 };

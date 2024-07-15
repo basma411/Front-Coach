@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetAtelier } from '../../../Redux/Slice/AtelierSlice';
 import { getImageUrl } from '../../../index.js';
 import BarheaderAdmin from '../BarheaderAdmin.js';
 import NavBarAdmin from '../NavBarAdmin.js';
-import image from "../../../images/big_image_2.jpg";
-import { IoPowerOutline } from "react-icons/io5";
+
 
 import './css/workshop.css';
 import OverlayA from '../OverlayA.js';
@@ -28,28 +27,29 @@ function WorkshopList() {
       <OverlayA/>
 
       <div className='workshop'>
-        <div className='workshopContainer'>
-            <button onClick={() => navigate("/admin/atelier-A/ajouter")}>Ajouter un Atelier</button>
-          <table>
+        <div className='workshop-Container'>
+            <button className='AddAtelier' onClick={() => navigate("/admin/atelier-A/ajouter")}>Ajouter un Atelier</button>
+          <table className='TableAtel'>
             <thead>
               <tr>
-                <th>Image</th>
-                <th>Atelier</th>
-                <th>Information</th>
+                <th className='HeaderAte'>Image</th>
+                <th className='HeaderAte'>Atelier</th>
+                <th className='HeaderAte'>Information</th>
               </tr>
             </thead>
             <tbody>
               {ateliers && ateliers.map(workshop => (
-                <tr key={workshop.id}>
-                  <td>
+                <tr  key={workshop.id}>
+                  <td className='DataAte'>
                     <img 
                       src={getImageUrl(workshop.photo)}
                       alt={`Théme${workshop.num}`} 
+                      className='ImageTheme'
                     />
                   </td>
-                  <td>{`Théme${workshop.num}`}</td>
-                  <td>
-                    <button onClick={() => navigate(`/admin/atelier-A/${workshop._id}`)}>
+                  <td className='DataAte'>{`Théme${workshop.num}`}</td>
+                  <td className='DataAte'>
+                    <button  className='btn-Théme' onClick={() => navigate(`/admin/atelier-A/${workshop._id}`)}>
                       {`Atelier ${workshop.num}`}
                     </button>
                   </td>

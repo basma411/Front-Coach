@@ -4,20 +4,45 @@
     padding:0 ;
 }
 .viewContainerTem{
-    width: 50%;
+    width: 35%;
     height:100%;
-    margin: 20px auto 80px auto;
+    margin: 20px auto 10px auto;
 display: flex;
 align-items: start;
 flex-direction: column;
-border: solid 1px rgb(194, 192, 192);
+border: solid 1px #ccc;
+border-radius: 4px;
+}
+.labelViewTem{
+    font-family: "Bell MT"    ;
+    font-size: 14px;
+    color: rgb(51, 51, 51)    ;
+    font-weight: 700;
+    line-height: 20px;
+    padding-bottom: 5px;
+
 }
 .styletexteTem{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: justify;
-    font-size: 16px;
+    font-size: 14px;
+    color: rgb(51, 51, 51);
+    font-weight: 400;
+
 
 }
 .Retour_Tem{
     display: block;
     margin: 0 auto;
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
 }

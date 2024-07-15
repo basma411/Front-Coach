@@ -91,7 +91,7 @@ const FormAtelier = () => {
         </div>
       </div>
 
-     <div className="AddAtelier">
+     <div className="Add-Atelier">
 
      <div className="AddAtelier-container">
         <div className="left-Atelier">

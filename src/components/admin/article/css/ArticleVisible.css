@@ -8,7 +8,13 @@
     width: 80%;
     margin: 0 auto;
   }
-  
+  .TableArtvisib {
+    width: 100%;
+    text-align: center;
+    margin: 40px 0 200px 0;
+    border-collapse: collapse; 
+    border: 1px solid #ccc; 
+}
   .AccueilArtVisib {
     width: 50%;
     height: 50px;
@@ -29,14 +35,17 @@
     color: #fdc900;
   }
   
-  .TableArtVisib {
-    border-collapse: collapse;
+  .TableArtInvisib {
     width: 100%;
     text-align: center;
-    margin: 20px 0;
-  }
-  
+    margin: 40px 0 200px 0;
+    border-collapse: collapse; 
+    border: 1px solid #ccc; 
+}
+
   .TableHeader {
+    border: 1px solid #ccc; 
+    padding: 8px;
     padding: 8px;
     font-size: 12px;
     font-weight: bold;
@@ -44,6 +53,8 @@
   }
   
   .TableData {
+    border: 1px solid #ccc; 
+    padding: 8px;
     padding: 8px;
     color: rgb(128, 128, 128);
     font-size: 12px;

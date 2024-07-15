@@ -1,25 +1,13 @@
-.ConsultNewsLetter{
+.ConsultTem{
     width: 100%;
     margin: 0;
     padding: 0;
-    font-family: "Rubik", arial, sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 2;
-    color: gray;
-    
 }
-.ConsultNewsLetterContainer{
-    width: 60%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0px  auto 200px auto;
-    gap: 50px;
+.ConsultTemContainer{
+    width: 80%;
+    margin: 20px auto;
 }
-.EmailingNewsLetter{
+.AcceuilTem{
     width: 50%;
     height: 50px;
     display: block;
@@ -33,21 +21,26 @@
     line-height: 32px;
     text-decoration: none;
     font-size: 16px;
-
-
 }
-.DateNews{
+.DataTem{
     width: 22%;
     border: 1px solid #ccc; 
     padding: 8px;        font-size: 12px;
         color: gray;
     
     }
-      .TableHeaderNews {
+    .DataTemIcon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px; 
+        border: 1px solid #ccc; 
+        padding: 8px;
+    }
+      .HeaderTem {
     
         border: 1px solid #ccc; 
         padding: 8px;        font-size: 10px;
         font-weight: bold;
         color: rgb(128, 128, 128);
       }
-      

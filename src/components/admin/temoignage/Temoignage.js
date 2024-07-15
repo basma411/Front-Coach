@@ -4,9 +4,16 @@ import NavBarAdmin from "../NavBarAdmin";
 import "./css/temoignage.css";
 import image from "../../../images/big_image_2.jpg";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Deconnection from "../Deconnection";
 const Temoignage = () => {
+  const navigate=useNavigate()
+  const handelListVesible = () => {
+    navigate("/admin/témoignages/visible");
+  };
+  const handelListInvesible = () => {
+    navigate("/admin/témoignages/invisible");
+  };
   return (
 <>
 
@@ -15,12 +22,8 @@ const Temoignage = () => {
    <Deconnection/>
       <div className="ConsultTemoignage">
         <div className="ConsultTemoignageContainer">
-          <Link to='/admin/témoignages/invisible'>
-          <button className="AccueilTemoignage">Liste des témoignages invisibles</button>
-          </Link>
-          <Link to='/admin/témoignages/visible'>
-          <button className="AccueilTemoignage">Liste des témoignages visibles </button>
-          </Link>
+          <button className="AccueilTemoignage" onClick={handelListInvesible}>Liste des témoignages invisibles</button>
+          <button className="AccueilTemoignage" onClick={handelListVesible}>Liste des témoignages visibles </button>
          
         </div>
       </div>

@@ -74,21 +74,21 @@ const EditTemoignage = () => {
         );
     }
     return (
-        <div className='edit-Article'>
-            <div className='FormContainer'>
-              <form onSubmit={handleSubmit} className='container-Edit-Article '>
-                    <div>
-                        <label>Nom</label>
+        <div className='edit-Tem'>
+            <div className='FormTemContainer'>
+              <form onSubmit={handleSubmit} >
+                    <div style={{display:"flex",flexDirection:"column"}}>
+                        <label className='labelEditTem'>Nom</label>
                         <input
-                            className='TitleArticle'
+                            className='inputEditTem'
                             type='text'
                             name='nom'
                             value={formData.nom}
                             onChange={handleInputChange}
                         />
                     </div>
-                    <div>
-                        <label>Texte</label>
+                    <div style={{display:"flex",flexDirection:"column"}}>
+                        <label className='labelEditTem'>Texte</label>
                         <Editor
     apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
     onInit={(evt, editor) => {
@@ -118,10 +118,10 @@ const EditTemoignage = () => {
 
                     </div>
                    
-                    <div>
-                        <label>Date</label>
+                    <div style={{display:"flex",flexDirection:"column"}}>
+                        <label className='labelEditTem'>Date</label>
                         <input
-                            className='AuteurArticle'
+                            className='inputEditTem'
                             type='text'
                             name='auteur'
                             value={formData.Date}
@@ -129,9 +129,9 @@ const EditTemoignage = () => {
                         />
                     </div>
                    
-                    <div className='Bouton-Edit-Article'>
-                        <button type="submit" className='btn btn-primary edit-modifier-Article'>Modifier</button>
-                        <button type="button" className='btn btn-secondary' onClick={() => navigate('/admin/Accueil')}>Annuler</button>
+                    <div className='Bouton-Edit-Tem'>
+                        <button type="submit" className='btn-EditTem'>Modifier</button>
+                        <button type="button" className='btn-AnnulerTem' onClick={() => navigate('/admin/Accueil')}>Annuler</button>
                     </div>
                 </form>
             </div>

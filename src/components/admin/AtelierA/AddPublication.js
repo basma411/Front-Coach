@@ -6,7 +6,7 @@ import BarheaderAdmin from '../BarheaderAdmin.js';
 import NavBarAdmin from '../NavBarAdmin.js';
 import image from '../../../images/big_image_2.jpg';
 import { IoPowerOutline } from 'react-icons/io5';
-import './css/addatelier.css';
+import './css/AddPub.css';
 import { AddPublic } from '../../../Redux/Slice/PubAtelierSlice.js';
 import OverlayA from '../OverlayA.js';
 
@@ -52,20 +52,27 @@ const AddPublication = () => {
             navigate('/admin/atelier-A')
         
     };
-
+    const handelAccueil = () => {
+        navigate("/admin/Accueil");
+      };
     return (
         <>
             <BarheaderAdmin />
             <NavBarAdmin />
          <OverlayA/>
-            <div className="addAtelier">
-                <form onSubmit={handleSubmit} className="addAtelierContainer">
-                    <div>
-                        <label className='LabelAtelier'>Titre:</label>
-                        <input type="text" value={titre} onChange={handleTitreChange} required />
+            <div className="addPub">
+           <div       className="addPubContainer"
+           >
+           <button className="buttonAccueil" onClick={handelAccueil}>
+            Accueil
+          </button>
+                <form onSubmit={handleSubmit} >
+                    <div style={{display:'flex',flexDirection:'column'}}>
+                        <label className='LabelAddPub'>Titre:</label>
+                        <input type="text"  className="inputAddPubl" value={titre} onChange={handleTitreChange} required />
                     </div>
-                    <div>
-                        <label className='LabelAtelier'>Texte:</label>
+                    <div style={{display:'flex',flexDirection:'column'}}>
+                        <label className='LabelAddPub'>Texte:</label>
                         <Editor
                             apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
                             onInit={(evt, editor) => {
@@ -90,17 +97,19 @@ const AddPublication = () => {
                                     editor.on('change', () => handleEditorChange(editor.getContent()));
                                 }
                             }}
+                            className="editorPub"
                         />
                     </div>
-                    <div>
+                    <div style={{display:'flex',flexDirection:'column'}}>
                         <label className='LabelAtelier'>Photo:</label>
-                        <input type="file" onChange={handlePhotoChange} required />
+                        <input type="file"  onChange={handlePhotoChange} required />
                     </div>
-                    <div style={{ display: 'flex', gap: '20px' }}>
-                        <button type="submit">Ajouter</button>
-                        <button type="button" onClick={() => navigate("/admin/atelier-A")}>Annuler</button>
+                    <div className='button-Container'>
+                        <button type="submit" className='btnAddPub'>Ajouter</button>
+                        <button type="button" className='btnAnnulerAdd' onClick={() => navigate("/admin/atelier-A")}>Annuler</button>
                     </div>
                 </form>
+           </div>
             </div>
         </>
     );

@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams ,Link} from 'react-router-dom';
 import BarheaderAdmin from '../BarheaderAdmin.js';
 import NavBarAdmin from '../NavBarAdmin.js';
-import image from "../../../images/big_image_2.jpg";
-import { IoPowerOutline } from "react-icons/io5";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { CiEdit } from "react-icons/ci";
 import './css/WorkshopPage.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { GetPublication } from '../../../Redux/Slice/PubAtelierSlice.js';
+import { delPublic, GetPublication } from '../../../Redux/Slice/PubAtelierSlice.js';
 import { getImageUrl } from '../../../index.js';
 import OverlayA from '../OverlayA.js';
 
@@ -27,7 +27,11 @@ function WorkshopPage() {
     const textContent = doc.body.textContent || "";
     return textContent.length > maxLength ? textContent.substring(0, maxLength) + '...' : textContent;
   };
-
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this publication?")) {
+      dispatch(delPublic({ id }));
+    }
+  };
   const filteredPubatelier = pubatelier.filter(pub => pub.ouner === id);
 
   return (
@@ -37,9 +41,9 @@ function WorkshopPage() {
     <OverlayA/>
       <div className='WorkshopPage'>
         <div className='WorkshopPageContainer'>
-          <button onClick={() => navigate(`/admin/atelier-A/${id}/add-PUB`)}>Ajouter publication</button>
-          <button onClick={() => navigate(`/admin/atelier-A/${id}/List-PROF`)}>Liste des professionnels</button>
-          <button onClick={() => navigate(`/admin/atelier-A/${id}/List-COACH`)}>Liste des coachs</button>
+          <button  className="AddPub" onClick={() => navigate(`/admin/atelier-A/${id}/add-PUB`)}>Ajouter publication</button>
+          <button  className="ListPro" onClick={() => navigate(`/admin/atelier-A/${id}/List-PROF`)}>Liste des professionnels</button>
+          <button  className="ListCoach" onClick={() => navigate(`/admin/atelier-A/${id}/List-COACH`)}>Liste des coachs</button>
         </div>
         <div className='ListpubAtelier'> 
           <table
@@ -52,24 +56,27 @@ function WorkshopPage() {
           >
             <thead>
               <tr>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className='HeaderPub'>
                   Titre
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className='HeaderPub'>
                   Image
                 </th>
-                <th style={{ border: "1px solid gray", padding: "8px" }}>
+                <th className='HeaderPub'>
                   Texte
+                </th>
+                <th className='HeaderPub'>
+                  Action
                 </th>
               </tr>
             </thead>
             <tbody>
               {filteredPubatelier.map((pub) => (
                 <tr key={pub._id}>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className='TableDataPub'>
                     {pub.titre}
                   </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className='TableDataPub'>
                     <img
                       src={getImageUrl(pub.img)}
                       width="100px"
@@ -77,8 +84,14 @@ function WorkshopPage() {
                       alt="Event"
                     />
                   </td>
-                  <td style={{ border: "1px solid gray", padding: "10px" }}>
+                  <td className='TableDataPub'>
                     {truncateText(pub.texte, 49)}
+                  </td>
+                  <td className='TableDataPub'>
+                  <RiDeleteBin6Line className="IconData" onClick={() => handleDelete(pub._id)} />
+                    <Link to={`/admin/atelier-A/${pub._id}/edit`}>
+                      <CiEdit className="IconData" />
+                    </Link>
                   </td>
                 </tr>
               ))}

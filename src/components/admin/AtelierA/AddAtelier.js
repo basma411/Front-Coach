@@ -4,13 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { addAtelier } from '../../../Redux/Slice/AtelierSlice';
 import BarheaderAdmin from '../BarheaderAdmin.js';
 import NavBarAdmin from '../NavBarAdmin.js';
-import image from '../../../images/big_image_2.jpg';
-import { IoPowerOutline } from 'react-icons/io5';
+
 import './css/addatelier.css';
 import Deconnection from '../Deconnection.js';
 
 const AddAtelier = () => {
-  const [numThéme, setNumThéme] = useState('');
+  const [numThéme, setNumThéme] = useState(0);
   const [titre, setTitre] = useState('');
   const [date, setDate] = useState('');
   const [heure, setHeure] = useState('');
@@ -67,33 +66,33 @@ console.log(numThéme,titre,date)
 
       <div className="addAtelier">
         <form onSubmit={handleSubmit} className="addAtelierContainer">
-          <div>
-            <label className='LabelAtelier'>Théme:</label>
-            <input type="number" value={numThéme} onChange={handleNumThémeChange} required />
+          <div style={{display:'flex',flexDirection:"column"}}>
+            <label className='LabelAtelier'>Num Théme:</label>
+            <input  className="imputAtelierNum" type="number"  value={numThéme} onChange={handleNumThémeChange} required />
           </div>
-          <div>
+          <div  style={{display:'flex',flexDirection:"column"}}>
             <label className='LabelAtelier'>Titre:</label>
-            <input type="text" value={titre} onChange={handleTitreChange} required />
+            <input type="text"  className="imputAtelier" value={titre} onChange={handleTitreChange} required />
           </div>
-          <div>
+          <div  style={{display:'flex',flexDirection:"column"}}>
             <label className='LabelAtelier'>Date:</label>
-            <input type="text" value={date} onChange={handleDateChange} required />
+            <input type="text"  className="imputAtelier" value={date} onChange={handleDateChange} required />
           </div>
-          <div>
+          <div  style={{display:'flex',flexDirection:"column"}}>
             <label className='LabelAtelier'>Heure:</label>
-            <input type="text" value={heure} onChange={handleHeureChange} required />
+            <input type="text"   className="imputAtelier" value={heure} onChange={handleHeureChange} required />
           </div>
-          <div>
+          <div  style={{display:'flex',flexDirection:"column"}}>
             <label className='LabelAtelier'>Statut:</label>
-            <input type="text" value={statut} onChange={handleStatutChange} required />
+            <input type="text"  className="imputAtelier" value={statut} onChange={handleStatutChange} required />
           </div>
-          <div>
+          <div  style={{display:'flex',flexDirection:"column"}}>
             <label className='LabelAtelier'>Photo de Théme :</label>
             <input type="file" onChange={handlePhotoChange} required />
           </div>
-          <div style={{display:'flex', gap:'20px'}}>
-            <button type="submit">Ajouter</button>
-            <button type="button" onClick={() => navigate("/admin/atelier-A")}>Annuler</button>
+          <div className='buttonContainer'>
+            <button type="submit" className='btnAddAtelier'>Ajouter</button>
+            <button type="button"  className="btnAnnulerAdd"onClick={() => navigate("/admin/atelier-A")}>Annuler</button>
           </div>
         </form>
       </div>

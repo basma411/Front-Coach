@@ -5,8 +5,9 @@ import "./css/ArticleVisible.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { GetArticle, delArticle } from "../../../Redux/Slice/ArticleSlice";
 import { CiEdit } from "react-icons/ci";
+
+import { GetArticle, delArticle } from "../../../Redux/Slice/ArticleSlice";
 import { getImageUrl } from "../../..";
 import OverlayA from "../OverlayA";
 
@@ -45,7 +46,7 @@ const ArticleVisible = () => {
         <button className="buttonAccueil" onClick={handelAccueil}>
             Accueil
           </button>
-          <table className="TableArtVisib">
+          <table className="TableArtvisib">
             <thead>
               <tr>
                 <th className="TableHeader">titre</th>

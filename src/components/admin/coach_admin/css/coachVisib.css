@@ -1,15 +1,15 @@
-.ConsultCochVisib {
+.ConsultCoch {
     width: 100%;
     margin: 0;
     padding: 0;
   }
   
-  .ConsultCochVisibContainer {
+  .ConsultCochcontainer {
     width: 80%;
     margin: 0 auto;
   }
   
-  .TableCochVisib {
+  .TableCoch {
     border-collapse: collapse;
     width: 100%;
     text-align: center;
@@ -18,15 +18,15 @@
   
   .TableHeaderC {
     font-family: Arial, Helvetica, sans-serif;
-    padding: 8px;
-    font-size: 13px;
+    border: 1px solid #ccc; 
+    padding: 8px;    font-size: 13px;
     font-weight: bold;
     color: rgb(128, 128, 128);
   }
   
   .TableDataC {
-    padding: 8px;
-    font-weight: 300;
+    border: 1px solid #ccc; 
+    padding: 8px;    font-weight: 300;
     font-size: 12PX;
     color: rgb(128, 128, 128);
 

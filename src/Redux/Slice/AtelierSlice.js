@@ -20,6 +20,7 @@ export const addAtelier= createAsyncThunk('Atelier/add', async ({id, data}, { re
   }
 });
 
+
 const AtelierSlice = createSlice({
   name: "icon",
   initialState: {
@@ -65,7 +66,8 @@ const AtelierSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload.error;
         // Mettre à jour d'autres champs du state si nécessaire
-      });
+      })
+     
   },
 });
 

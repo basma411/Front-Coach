@@ -6,52 +6,77 @@
     font-family: Arial, sans-serif;
 }
 
-.workshopContainer {
+.workshop-Container {
     width: 80%;
     margin: 0px auto;
-    padding: 40px;
     border-radius: 8px;
 }
-
-/* .workshopContainer button {
-    background-color: #0C4270;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.AddAtelier{
+    width: 50%;
+    height: 50px;
     display: block;
-    margin: 0 auto;
-
-} */
-
-.workshopContainer button:hover {
-    background-color: #0C4270;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-table, th, td {
-    border: 1px solid #ddd;
-}
-
-th, td {
-    padding: 12px;
+    margin: 40px auto;
+    background-color: #0d345a;
+    font-weight: bold;
+    padding: 10px 100px;
     text-align: center;
+    color: #e3d80a;
+    cursor: pointer;
+    line-height: 32px;
+    text-decoration: none;
+    font-size: 16px;
 }
 
+.AddAtelier:hover {
+    color: #fdc900;
+  }
 
 
-td img {
-    display: block;
-    margin: 0 auto;
+  .HeaderAte {
+    padding: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    color: rgb(128, 128, 128);
+  }
+  
+  .TableAtel {
+    width: 100%;
+    text-align: center;
+    margin: 40px 0 200px 0;
+    border-collapse: collapse; 
+    border: 1px solid #ccc; 
+}
+.HeaderAte, .DataAte {
+  border: 1px solid #ccc; /* Cell borders */
+  padding: 8px;
+}
+  .DataAte {
+    padding: 8px;
+    color: rgb(128, 128, 128);
+    font-size: 12px;  }
+
+
+
+ .ImageTheme {
+    margin: 0 ;
     width: 100px;
+    padding: 0;
     height: auto;
     border-radius: 4px;
+} 
+
+
+.btn-Théme{
+    width: 70%;
+    color: #fff;
+    background-color: #0d345a;
+    border-color: #0d345a;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
 }
-
-

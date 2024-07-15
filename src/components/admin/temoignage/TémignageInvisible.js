@@ -1,19 +1,20 @@
 import React, { useEffect } from "react";
 import BarheaderAdmin from "../BarheaderAdmin";
 import NavBarAdmin from "../NavBarAdmin";
-import "./css/coachvisible.css";
+import "./css/TemoignageList.css";
 import image from "../../../images/big_image_2.jpg";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoPowerOutline } from "react-icons/io5";
 import { FaCheck } from "react-icons/fa6";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { GrView } from "react-icons/gr";
 
 import { GetTemoignageIn, PutTemoignagesInv, delTemoignageIn } from "../../../Redux/Slice/TemoignegeSlice";
+import OverlayA from "../OverlayA";
 const TémignageInvisible = () => {
     const dispatch = useDispatch();
-
+const navigate=useNavigate()
     const { TemoignegeIv } = useSelector((state) => state.temoignage);
     useEffect(() => {
       dispatch(GetTemoignageIn());
@@ -34,34 +35,19 @@ const TémignageInvisible = () => {
       const textContent = doc.body.textContent || "";
       return textContent.length > maxLength ? textContent.substring(0, maxLength) + '...' : textContent;
     };
+    const handelAccueil = () => {
+      navigate("/admin/Accueil");
+    };
   return (
 
     <>
     <BarheaderAdmin />
     <NavBarAdmin />
-    <div
-      className="ImagePlatforme"
-      style={{
-        position: "relative",
-        textAlign: "center",
-        height: "300px",
-        backgroundImage: `url(${image})`,
-        backgroundSize: "cover",
-        overflow: "hidden",
-      }}
-    >
-      <div style={{ paddingTop: "100px" }}>
-        <IoPowerOutline style={{ fontSize: "35px", fontWeight: "400" }} />
-        <h2 style={{ fontSize: "30px" }}>
-          Bienvenue sur votre espace administration
-        </h2>
-      </div>
-    </div>
-    <div className="ConsultIcon">
-      <div className="ConsultIconContainer">
-        <Link to='/admin/Accueil'>
-        <button className="AccueilIcon">Accueil</button>
-        </Link>
+    <OverlayA/>
+
+    <div className="ConsultTem">
+      <div className="ConsultTemContainer">
+        <button className="AcceuilTem" onClick={handelAccueil}>Accueil</button>
         <table
           className="TableIcon"
           style={{
@@ -72,16 +58,16 @@ const TémignageInvisible = () => {
         >
           <thead>
             <tr>
-              <th style={{ border: "1px solid gray", padding: "8px" }}>
+              <th className="HeaderTem">
               nom
               </th>
-              <th style={{ border: "1px solid gray", padding: "8px" }}>
+              <th className="HeaderTem">
               textes
               </th>
-              <th style={{ border: "1px solid gray", padding: "8px" }}>
+              <th className="HeaderTem">
               date
               </th>
-              <th style={{ border: "1px solid gray", padding: "8px" }}>
+              <th className="HeaderTem">
               action
               </th>
             </tr>
@@ -89,33 +75,31 @@ const TémignageInvisible = () => {
         <tbody>
             {TemoignegeIv && TemoignegeIv.map((T_iV, index) => (
               <tr key={index}>
-                <td style={{ border: "1px solid gray", padding: "10px" }}>
+                <td className="DataTem">
                   {T_iV.nom}
                 </td>
-                <td style={{ border: "1px solid gray", padding: "10px" }}>
+                <td className="DataTem">
                   {truncateText(T_iV.texte, 49)}
 
                 </td>
-                <td style={{ border: "1px solid gray", padding: "10px" }}>
+                <td className="DataTem">
 {T_iV.Date}                </td>
 
-                <td style={{ border: "1px solid gray", padding: "10px" }}>
+                <td className="DataTemIcon">
                 <Link to={`/admin/témoignages/invisible/view/${T_iV._id}`}>
-                      <GrView style={{ fontSize: "25px", color: "black" }} />
+                      <GrView style={{ fontSize: "15px", color: "black" }} />
                     </Link>
                 <FaCheck
                       style={{
-                        fontSize: "25px",
+                        fontSize: "15px",
                         color: "black",
-                        marginRight: "20px",
                       }}
                       onClick={() => handleValid(T_iV._id)}
                     />
                   <RiDeleteBin6Line
                       style={{
-                        fontSize: "25px",
+                        fontSize: "15px",
                         color: "black",
-                        marginRight: "20px",
                       }}
                       onClick={() => handleDelete(T_iV._id)}
                     />

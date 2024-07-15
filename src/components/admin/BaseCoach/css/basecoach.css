@@ -39,16 +39,17 @@
     color: #fdc900;
   }
   .Data{
+    border: 1px solid #ccc; 
+    padding: 8px;
     width: 22%;
-        padding: 8px;
         font-size: 12px;
         color: gray;
     
     }
       .TableHeaderDate {
     
-        padding: 8px;
-        font-size: 10px;
+        border: 1px solid #ccc; 
+        padding: 8px;        font-size: 10px;
         font-weight: bold;
         color: rgb(128, 128, 128);
       }

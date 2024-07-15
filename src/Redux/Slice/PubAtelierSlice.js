@@ -19,6 +19,17 @@ export const AddPublic = createAsyncThunk('Publication/add', async ({data,id}, {
     return rejectWithValue(error);
   }
 });
+export const delPublic = createAsyncThunk('Publication/delete', async ({data,id}, { rejectWithValue,dispatch }) => {
+  try {
+    const res = await axios.delete(`/api/pub/delete/${id}`,{
+      headers: { token: localStorage.getItem('token1') },
+    });
+    dispatch(GetPublication())
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
 
 const pubatelierSlice = createSlice({
   name: "pubatelier",
@@ -59,6 +70,22 @@ const pubatelierSlice = createSlice({
         state.isAuth = true;
       })
       .addCase(AddPublic.rejected, (state, action) => {
+        state.isLoading = false;
+        state.token = null;
+        state.isAuth = false;
+        state.error = action.payload.error;
+      })
+      
+      .addCase(delPublic.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(delPublic.fulfilled, (state) => {
+        state.isLoading = false;
+        state.error = null;
+        state.isAuth = true;
+      })
+      .addCase(delPublic.rejected, (state, action) => {
         state.isLoading = false;
         state.token = null;
         state.isAuth = false;

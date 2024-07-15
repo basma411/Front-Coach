@@ -44,29 +44,29 @@ const CoachInvisib = () => {
       <NavBarAdmin />
       <Deconnection />
 
-      <div className="ConsultCochVisib">
-        <div className="ConsultCochVisibContainer">
-          <table className="TableCochVisib">
+      <div className="ConsultCoch">
+        <div className="ConsultCochcontainer">
+          <table className="TableCoch">
             <thead>
               <tr>
-                <th className="TableHeader">Nom et prénom</th>
-                <th className="TableHeader">Domaines d’intervention</th>
-                <th className="TableHeader">Photo</th>
-                <th className="TableHeader">Action</th>
+                <th className="TableHeaderC">Nom et prénom</th>
+                <th className="TableHeaderC">Domaines d’intervention</th>
+                <th className="TableHeaderC">Photo</th>
+                <th className="TableHeaderC">Action</th>
               </tr>
             </thead>
             <tbody>
               {coacheInvisible.map((coachI, index) => (
                 <tr key={index}>
-                  <td className="TableData">{coachI.nom}</td>
-                  <td className="TableData TableDataText">
+                  <td className="TableDataC">{coachI.nom}</td>
+                  <td className="TableDataC TableDataText">
                     *{coachI.domain.join("\n * ")}
                     {coachI.AutreDomaine && `\n * ${coachI.AutreDomaine}`}
                   </td>
-                  <td className="TableData">
-                    <img src={getImageUrl(coachI.image)} alt="Coach" className="TableDataImg" />
+                  <td className="TableDataC">
+                    <img src={getImageUrl(coachI.image)} alt="Coach" className="TableDataimgC" />
                   </td>
-                  <td className="TableData">
+                  <td className="TableDataC">
                     <Link to={`/admin/Coachs/invisible/view/${coachI._id}`}>
                       <GrView className="IconData" />
                     </Link>
