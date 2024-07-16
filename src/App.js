@@ -83,6 +83,8 @@ import Faq_Coach from './components/Acueil/Faq_Coach.js';
 import EmailingNewsletter from './components/admin/newsletter/EmailingNewsletter.js';
 import './index.css';
 import Menu from './components/admin/Menu.js';
+import EditPub from './components/admin/AtelierA/EditPub.js';
+import EmailingPub from './components/admin/AtelierA/EmailingPub.js';
 
 function App() {
   const isLoading = useSelector(state => state.loading.isLoading);
@@ -163,8 +165,13 @@ function App() {
             <Route path="/admin/atelier-A/:id" element={<WorkshopPage />} />
             <Route path="/admin/atelier-A/ajouter" element={<AddAtelier />} />
             <Route path="/admin/atelier-A/:id/add-PUB" element={<AddPublication />} />
+            <Route path="/admin/atelier-A/:id/add-PUB" element={<AddPublication />} />
+            <Route path="/admin/atelier-A/List/email" element={<EmailingPub />} />
+
             <Route path="/admin/atelier-A/:id/List-PROF" element={<ListProf />} />
             <Route path="/admin/atelier-A/:id/List-COACH" element={<ListCoach />} />
+            <Route path="/admin/atelier-A/:id/edit" element={<EditPub />} />
+
             <Route path="/admin/article" element={<Article />} />
             <Route path="/admin/article/invisible" element={<ArticleInvisible />} />
             <Route path="/admin/article/visible" element={<ArticleVisible />} />

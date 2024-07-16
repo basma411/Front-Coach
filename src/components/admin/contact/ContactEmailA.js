@@ -39,12 +39,7 @@ const ContactEmailA = () => {
     };
   }, []);
 
-  const truncateText = (htmlText, maxLength) => {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(htmlText, 'text/html');
-    const textContent = doc.body.textContent || "";
-    return textContent.length > maxLength ? textContent.substring(0, maxLength) + '...' : textContent;
-  };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -16,14 +16,14 @@ const Login = () => {
     <div className="Login">
       <div className="containe">
         <form>
-          <h1>Connexion</h1>
-          <label className="title">
-            <h2>Nom d'utilisateur</h2>
+          <h1 className="Loginconnection">Connexion</h1>
+          <label className="logintitle">
+            Nom d'utilisateur
           </label>
           <input type="text" placeholder="Entrer le nom d'utilisateur" ref={user} className="inputadmin" />
 
-          <label className="title">
-            <h3>Mot de passe</h3>
+          <label className="logintitle">
+            Mot de passe
           </label>
           <input type="password" placeholder="Entrer le mot de passe" ref={password} className="inputadmin" />
 

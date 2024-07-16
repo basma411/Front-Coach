@@ -1,6 +1,8 @@
 /* biblio.css */
 .biblioAccueil {
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .ContainerBiblio {
@@ -8,7 +10,7 @@
   flex-direction: column;
   width: 80%;
   height: 100vh;
-  margin: 0 auto;
+  margin: 20px auto;
   background: #fff;
   font-weight: 300;
   font-size: 16px;
@@ -22,6 +24,7 @@
   font-size: 45px;
   color: rgb(253, 201, 0);
   margin: 50px auto;
+  font-weight: 300;
 }
 
 .site-section {

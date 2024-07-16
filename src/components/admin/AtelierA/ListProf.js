@@ -27,7 +27,7 @@ const ListProf = () => {
   };
 
   const handelEmailing = () => {
-    navigate("/admin/Accueil");
+    navigate("/admin/atelier-A/List/email");
   };
 
   const handleDelete = (id) => {

@@ -16,6 +16,7 @@ const ContactA = () => {
   const { Contacts } = useSelector((state) => state.contact);
   useEffect(() => {
     dispatch(GetContact());
+    console.log(Contacts)
   }, [dispatch]);
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this contact?")) {
@@ -61,7 +62,7 @@ const ContactA = () => {
               </tr>
             </thead>
             <tbody>
-              {Contacts.map((contact, index) => (
+              {Contacts && Contacts.map((contact, index) => (
                 <tr key={index}>
                   <td  className="DataContact">
                     {contact.nom_prenom}

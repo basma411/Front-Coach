@@ -74,7 +74,7 @@ function WorkshopPage() {
               {filteredPubatelier.map((pub) => (
                 <tr key={pub._id}>
                   <td className='TableDataPub'>
-                    {pub.titre}
+                    {truncateText(pub.titre)}
                   </td>
                   <td className='TableDataPub'>
                     <img

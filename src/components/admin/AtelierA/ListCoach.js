@@ -22,7 +22,7 @@ const ListCoach = () => {
     navigate("/admin/Accueil");
   };
   const handelEmailing = () => {
-    navigate("/admin/Accueil");
+    navigate("/admin/atelier-A/List/email");
   };
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete ?")) {

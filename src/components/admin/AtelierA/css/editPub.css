@@ -1,0 +1,80 @@
+
+.edit-Pub {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+/* .form{
+    width:100% ;
+} */
+.container-Edit-Pub {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto 100px auto
+    
+}
+
+.LabelEditPub{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color:rgb(51, 51, 51);
+    font-weight: 700;
+}
+.form-group{
+    width: 100%;
+} 
+ .imageEdit  {
+    display:block ;
+ width: 20%;
+ 
+ margin: 0 auto;
+}
+.buttonsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espace entre les boutons */
+    margin-top: 20px;
+  }
+  
+  .btnEditPub, .btnAnnulePub {
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 4px;
+
+  }
+  
+  .btnEditPub {
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    color: white;
+    
+  }
+  
+  .btnAnnulPub{
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+  }
+.btnAnnulPub:hover{
+    background-color: #ccc;
+}
+.btnEditPub:hover {
+    background-color: #2e6da4;
+
+    
+  }
+  .btnEditPub:focus {
+    border:solid 2px  #000;
+
+    
+  }
+
+
