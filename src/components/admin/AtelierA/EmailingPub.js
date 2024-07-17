@@ -38,8 +38,7 @@ const EmailingPub = () => {
     const selectedListEmails = Lists.map((List) => List.mail);
 
   dispatch(sendEmail({ email: selectedListEmails, subject: subject, message: emailMessage }));
-  console.log({ email: selectedListEmails, subject: subject, message: emailMessage })
-  };
+  navigate("/admin/atelier-A")  };
 
 
   return (

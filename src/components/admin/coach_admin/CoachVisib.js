@@ -37,9 +37,9 @@ const CoachVisib = () => {
         <div style="font-family: Arial, sans-serif; max-width: 600px; color: #000; margin: 0 auto; padding: 20px;">
           <h5>Bonjour,</h5>
           
-          <p style=" color: #000">Nous vous remercions pour votre inscription sur la plateforme : <a href="http://localhost:3000" style="color: #007bff; text-decoration: none;">MonCoach.tn</a></p>
+          <p style=" color: #000">Nous vous remercions pour votre inscription sur la plateforme : <a href="http://localhost:3000" style="color: blue; ">MonCoach.tn</a></p>
           
-          <p>Veuillez trouver ci-joint le lien vers votre profil : <a href="http://localhost:3000" style="color: #007bff; text-decoration: none;">Lien vers le profil</a></p>
+          <p>Veuillez trouver ci-joint le lien vers votre profil : <a href="http://localhost:3000" style="color: blue; ">Lien vers le profil</a></p>
           
           <p>Merci pour votre confiance !</p>
           
@@ -53,12 +53,12 @@ const CoachVisib = () => {
     dispatch(sendEmail(templateParams))
       .then(() => {
         alert("Email envoyé avec succès !");
-        navigate("/admin/Contact");
+        navigate("/admin/Coachs/visible");
       })
       .catch((error) => {
         console.error("Failed to send email:", error);
         alert("Failed to send email: " + error.message);
-        navigate("/admin/Contact");
+        navigate("/admin/Coachs/visible");
       });
   };
   

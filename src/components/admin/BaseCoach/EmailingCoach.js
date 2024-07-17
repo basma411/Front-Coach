@@ -41,6 +41,7 @@ const EmailingCoach = () => {
       .map((coach) => coach.email);
 
     dispatch(sendEmail({ email: selectedCoachEmails, subject: subject, message: emailMessage }));
+    navigate("/admin/Base-Coach")
   };
 
   return (

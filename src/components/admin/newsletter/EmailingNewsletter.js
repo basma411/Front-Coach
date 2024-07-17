@@ -11,6 +11,7 @@ import { Editor } from '@tinymce/tinymce-react';
 import DOMPurify from 'dompurify';
 import Alert from '@mui/material/Alert';
 import CheckIcon from '@mui/icons-material/Check';
+import OverlayA from "../OverlayA";
 
 const EmailingNewsletter = () => {
   const dispatch = useDispatch();
@@ -61,12 +62,8 @@ const EmailingNewsletter = () => {
     <>
       <BarheaderAdmin />
       <NavBarAdmin />
-      <div className="ImagePlatforme" style={{ position: 'relative', textAlign: 'center', height: '300px', backgroundImage: `url(${image})`, backgroundSize: 'cover', overflow: 'hidden' }}>
-        <div style={{ paddingTop: '100px' }}>
-          <IoPowerOutline style={{ fontSize: '35px', fontWeight: '700' }} />
-          <h2 style={{ fontSize: '30px' }}>Bienvenue sur votre espace administration</h2>
-        </div>
-      </div>
+      
+   <OverlayA/>
       <div className="ConsultEmail">
         <div className="ConsultEmailContainer">
             <button className="AccueilNews"onClick={handelAccueil}>Newsletter</button>

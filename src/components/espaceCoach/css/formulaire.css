@@ -171,3 +171,12 @@
   font-size: 15px;
   color: gray;
 }
+.required-label::after {
+  content: "(*)";
+  color: red;
+  margin-left: 5px;
+}
+.error-message{
+  color:rgb(238, 66, 66) ;
+  font-size: 14px;
+}

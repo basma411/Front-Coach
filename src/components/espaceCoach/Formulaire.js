@@ -15,7 +15,7 @@ const Formulaire = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { coachVisible, error } = useSelector((state) => state.coach);
+  const { coachVisible, error, msg } = useSelector((state) => state.coach);
   const { domaines } = useSelector((state) => state.domaine);
   const [selectedDomaines, setSelectedDomaines] = useState([]);
   const [compte, setCompte] = useState(0);
@@ -27,6 +27,8 @@ const Formulaire = () => {
   const [imageCoach, setImage] = useState(null);
   const [LogoCoach, setLogo] = useState(null);
   const [PdfCoach, setPdf] = useState(null);
+  const [errors, setErrors] = useState({});
+  const [randomCoach, setRandomCoach] = useState([]);
 
   const passwordRef = useRef(null);
   const confirmPasswordRef = useRef(null);
@@ -43,25 +45,34 @@ const Formulaire = () => {
   useEffect(() => {
     dispatch(getCoachVisivble());
     dispatch(getdomaine());
+    console.log(msg)
+
   }, [dispatch]);
 
   useEffect(() => {
     setCompte(selectedDomaines.length);
   }, [selectedDomaines]);
 
-  const randomCoach  = coachVisible
-  .slice()
-  .sort(() => Math.random() - 0.5)
-  .slice(0, 3);  
+  useEffect(() => {
+    if (coachVisible.length > 0 && randomCoach.length === 0) {
+      const shuffledCoaches = coachVisible
+        .slice()
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 3);
+      setRandomCoach(shuffledCoaches);
+    }
+  }, [coachVisible]);
+
   const customContentRenderer = () => (
     <label>
       <p
         style={{
           color: "#fff",
           background: "#ADD8E6",
-          fontSize: "15px",
+          fontSize: "14px",
           marginTop: "18px",
           marginLeft: "600px",
+          padding:"0 4px"
         }}
       >
         {compte}
@@ -71,6 +82,41 @@ const Formulaire = () => {
 
   const isALLselected =
     domaines.length > 0 && selectedDomaines.length === domaines.length;
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!nomPrenomRef.current.value) {
+      newErrors.nomPrenom = "Veuillez renseigner ce champ.";
+    }
+
+    if (!selectedDomaines.length) {
+      newErrors.domaines = "Veuillez sélectionner au moins un domaine.";
+    }
+
+    if (!telephoneRef.current.value) {
+      newErrors.telephone = "Le numero doit avoir 8 chiffres !";
+    }
+
+    if (!adresseMailRef.current.value) {
+      newErrors.email = "Veuillez renseigner ce champ.";
+    }
+
+    if (!passwordRef.current.value) {
+      newErrors.password = "Veuillez renseigner ce champ.";
+    }
+
+    if (passwordRef.current.value !== confirmPasswordRef.current.value) {
+      newErrors.confirmPassword = "Les mots de passe ne correspondent pas.";
+    }
+
+    if (!bioRef.current.value) {
+      newErrors.bio = "Veuillez renseigner ce champ.";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleDomaineChange = (selectedValues) => {
     if (selectedValues.includes("allDomaine")) {
@@ -86,7 +132,6 @@ const Formulaire = () => {
       setSelectedDomaines(selectedValues);
     }
   };
-
   const handleGouvernoratChange = (e) => setGouvernorat(e.target.value);
 
   const handleMethodeChange = (methode, checked) => {
@@ -123,9 +168,10 @@ const Formulaire = () => {
 
   const handleAddCoach = async (e) => {
     e.preventDefault();
-
+  
+  
     const formData = new FormData();
-
+  
     formData.append("nom", nomPrenomRef.current.value);
     formData.append("AutreDomaine", autresDomainesRef.current.value);
     formData.append("num", telephoneRef.current.value);
@@ -149,22 +195,36 @@ const Formulaire = () => {
     formData.append("imagee", imageCoach);
     formData.append("logo", LogoCoach);
     formData.append("piece", PdfCoach);
-
+  
     try {
       const resultAction = await dispatch(addCoach(formData)).unwrap();
+      console.log(resultAction); // Log the full result to debug
+  
+      // Check the response message
       if (resultAction.msg === "successfully") {
-        toast.success("Coach ajouté avec succès !");
+        toast.success("Coach ajouté avec succès!");
+        alert("Votre formulaire a bien été envoyé ... Vous recevrez un mail de confirmation de votre inscription sur moncoach.tn !");
+        // navigate("/EspaceCoach");
       } else {
-        toast.error(
-          resultAction.error.msg || "Erreur lors de l'ajout du coach."
-        );
+        const errorMessage = resultAction.msg ? resultAction.msg : "Erreur lors de l'ajout du coach.";
+        toast.error(errorMessage);
       }
     } catch (error) {
-      toast.error(error || "Erreur lors de l'ajout du coach.");
+      // If error.response is available, it means the backend responded with an error status code
+      if (msg) {
+        const errorMessage = error.response.data.msg || "Erreur lors de l'ajout du coach.";
+        toast.error(errorMessage);
+      } else {
+        console.error("Error dispatching addCoach:", error); // Log the error for debugging
+        toast.error(error.message || "Erreur lors de l'ajout du coach .");
+      }
     }
-    navigate("/EspaceCoach");
+      if (!validateForm()) {
+      return;
+    }
+  
   };
-
+  
   return (
     <>
       <div
@@ -237,9 +297,11 @@ const Formulaire = () => {
               communauté de coachs.
             </h3>
             <form onSubmit={handleAddCoach}>
-              <label className="TITREcoach">Nom et prénom:</label>
+              <label className="TITREcoach required-label">Nom et prénom:</label>
               <input type="text" ref={nomPrenomRef} className="inputCoach" />
-              <label className="TITREcoach">Domaines d’intervention:</label>
+              {errors.nomPrenom && <p className="error-message">{errors.nomPrenom}</p>}
+
+              <label className="TITREcoach required-label">Domaines d’intervention:</label>
               <Select
                 className="domaine"
                 options={
@@ -263,7 +325,7 @@ const Formulaire = () => {
                             }
                             className="CHECK"
                           />
-                          <span style={{ marginLeft: "0px", color: "black" }}>
+                          <span style={{ marginLeft: "0px", color: "black",fontSize:"14px" }}>
                             Tous les domaines
                           </span>
                         </label>
@@ -298,7 +360,7 @@ const Formulaire = () => {
                             }
                             className="CHECK"
                           />
-                          <span style={{ marginLeft: "8px", color: "black" }}>
+                          <span style={{ marginLeft: "8px", color: "black",fontSize:"14px"  }}>
                             {domaine.domaines}
                           </span>
                         </label>
@@ -311,6 +373,7 @@ const Formulaire = () => {
                 contentRenderer={customContentRenderer}
                 style={{ width: "100%" }}
               />
+              {errors.domaines && <p className="error-message">{errors.domaines}</p>}
 
               <label className="TITREcoach">Autres domaines:</label>
               <input
@@ -319,14 +382,14 @@ const Formulaire = () => {
                 ref={autresDomainesRef}
                 className="inputCoach"
               />
-              <label className="TITREcoach">Gouvernorats</label>
+              <label className="TITREcoach required-label">Gouvernorats</label>
               <select
                 id="gouvernorat"
                 className="gouvernorat"
                 value={gouvernorat}
                 onChange={handleGouvernoratChange}
               >
-                {[
+                {["",
                   "Tunis",
                   "Ariana",
                   "Ben Arous",
@@ -355,35 +418,44 @@ const Formulaire = () => {
                   <option key={index}>{gouvernorat}</option>
                 ))}
               </select>
-              <label className="TITREcoach">Numéro de téléphone:</label>
+
+              <label className="TITREcoach required-label">Numéro de téléphone:</label>
               <input
                 type="text"
                 placeholder=""
                 ref={telephoneRef}
                 className="inputCoach"
               />
-              <label className="TITREcoach">Adresse mail:</label>
+                {errors.telephone && <p className="error-message">{errors.telephone}</p>}
+
+              <label className="TITREcoach required-label">Adresse mail:</label>
               <input
-                type="text"
+                type="email"
                 placeholder=""
                 ref={adresseMailRef}
                 className="inputCoach"
               />
-              <label className="TITREcoach">Mot de passe:</label>
+                {errors.email && <p className="error-message">{errors.email}</p>}
+
+              <label className="TITREcoach required-label">Mot de passe:</label>
               <input
                 type="password"
                 placeholder=""
                 ref={passwordRef}
                 className="inputCoach"
               />
-              <label className="TITREcoach">Confirmer Mot de passe:</label>
+                {errors.password && <p className="error-message">{errors.password}</p>}
+
+              <label className="TITREcoach required-label">Confirmer Mot de passe:</label>
               <input
                 type="password"
                 placeholder=""
                 ref={confirmPasswordRef}
                 className="inputCoach"
               />
-              <label className="TITREcoach">
+                {errors.confirmPassword && <p className="error-message">{errors.confirmPassword}</p>}
+
+              <label className="TITREcoach required-label">
                 Brève Bio (maximum 5 lignes):
               </label>
               <textarea
@@ -392,7 +464,9 @@ const Formulaire = () => {
                 ref={bioRef}
                 className="inputCoach"
               />
-              <label className="TITREcoach">Méthodes de coaching:</label>
+                {errors.bio && <p className="error-message">{errors.bio}</p>}
+
+              <label className="TITREcoach required-label">Méthodes de coaching:</label>
               <div className="checkbox">
                 <div>
                   <input
@@ -404,7 +478,7 @@ const Formulaire = () => {
                     }
                   />
                 </div>
-                <label htmlFor="face-a-face">Face à face</label>
+                <label htmlFor="face-a-face ">Face à face</label>
               </div>
               <div className="checkbox">
                 <div>
@@ -420,7 +494,7 @@ const Formulaire = () => {
                 <label htmlFor="en-ligne">En ligne</label>
               </div>
 
-              <label className="TITREcoach">Langues</label>
+              <label className="TITREcoach required-label">Langues</label>
               <div className="checkbox">
                 <input
                   type="checkbox"
@@ -456,7 +530,7 @@ const Formulaire = () => {
                 />
                 <label htmlFor="anglais">Anglais</label>
               </div>
-              <label className="TITREcoach">Types de clients:</label>
+              <label className="TITREcoach required-label">Types de clients:</label>
               <div className="checkbox">
                 <input
                   type="checkbox"
@@ -479,7 +553,7 @@ const Formulaire = () => {
                 />
                 <label htmlFor="organisation">Organisation</label>
               </div>
-              <label className="TITREcoach">
+              <label className="TITREcoach required-label">
                 Tarif préférentiel (réduction de 10% pour les clients de la
                 plateforme):
               </label>
@@ -505,7 +579,7 @@ const Formulaire = () => {
                 </div>
               </div>
             <div>
-            <label className="TITREcoach">Photo</label>
+            <label className="TITREcoach required-label">Photo</label>
               <input
                 type="file"
                 placeholder=""

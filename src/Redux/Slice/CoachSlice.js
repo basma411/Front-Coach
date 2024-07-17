@@ -132,6 +132,7 @@ const coachSlice = createSlice({
     selectedCoaches: [], 
     isLoading: false,
     error: null,
+    msg:" ",
     token: localStorage.getItem("token") || null,
     isAuth: localStorage.getItem("isAuth") || false,
   },
@@ -251,6 +252,7 @@ const coachSlice = createSlice({
         state.token = null;
         state.isAuth = false;
         state.error = action.payload.error;
+        state.msg=action.payload;
       })
       .addCase(getCoachInVisivble.pending, (state) => {
         state.isLoading = true;
