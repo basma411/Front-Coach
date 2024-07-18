@@ -45,7 +45,28 @@ const AjouterEvtt = () => {
   }, [dispatch]);
 
   const latestArticles = Evenement.slice(-4);
+  // const validateForm = () => {
+  //   const newErrors = {};
 
+  //   if (!authorRef.current.value) {
+  //     newErrors.authorRef = "Veuillez renseigner ce champ.";
+  //   }
+
+
+
+  //   if (!titleRef.current.value) {
+  //     newErrors.titleRef = "Veuillez renseigner ce champ.";
+  //   }
+
+  //   if (!editorRef.current.getContent()) {
+  //     newErrors.editorRef = "Veuillez renseigner ce champ.";
+  //   }
+
+ 
+
+  //   setErrors(newErrors);
+  //   return Object.keys(newErrors).length === 0;
+  // };
   const handleTitleClick = (article) => {
     setSelectedEvent(article);
     setShowModal(true);

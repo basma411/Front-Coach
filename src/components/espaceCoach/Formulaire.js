@@ -198,13 +198,35 @@ const Formulaire = () => {
   
     try {
       const resultAction = await dispatch(addCoach(formData)).unwrap();
+   
       console.log(resultAction); // Log the full result to debug
   
       // Check the response message
       if (resultAction.msg === "successfully") {
+       
         toast.success("Coach ajouté avec succès!");
         alert("Votre formulaire a bien été envoyé ... Vous recevrez un mail de confirmation de votre inscription sur moncoach.tn !");
-        // navigate("/EspaceCoach");
+          // Clear the input fields
+          nomPrenomRef.current.value = "";
+          autresDomainesRef.current.value = "";
+          telephoneRef.current.value = "";
+          adresseMailRef.current.value = "";
+          bioRef.current.value = "";
+          siteRef.current.value = "";
+          facebook.current.value = "";
+          Youtube.current.value = "";
+          linkedin.current.value = "";
+          setGouvernorat(""); // Assuming setGouvernorat is a state setter
+          setSelectedDomaines([]); // Assuming setSelectedDomaines is a state setter
+          setSelectedMethodes([]);
+          setSelectedLangues([]);
+          setSelectedTypesClients([]);
+          passwordRef.current.value = "";
+          confirmPasswordRef.current.value = "";
+          setTarifPreferentiel(""); // Assuming setTarifPreferentiel is a state setter
+          setImage(null); // Assuming setImageCoach is a state setter
+          setLogo(null); // Assuming setLogoCoach is a state setter
+          setPdf(null); // Assuming setPdfCoach is a state setter
       } else {
         const errorMessage = resultAction.msg ? resultAction.msg : "Erreur lors de l'ajout du coach.";
         toast.error(errorMessage);
@@ -219,10 +241,10 @@ const Formulaire = () => {
         toast.error(error.message || "Erreur lors de l'ajout du coach .");
       }
     }
-      if (!validateForm()) {
+    
+    if (!validateForm()) {
       return;
     }
-  
   };
   
   return (

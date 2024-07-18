@@ -87,9 +87,17 @@ import EditPub from './components/admin/AtelierA/EditPub.js';
 import EmailingPub from './components/admin/AtelierA/EmailingPub.js';
 
 function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname.startsWith('/admin')) {
+      document.title = 'Moncoach Admin';
+    } else {
+      document.title = '1ère Plateforme dédiée au coach';
+    }
+  }, [location]);
   const isLoading = useSelector(state => state.loading.isLoading);
   const dispatch = useDispatch();
-  const location = useLocation();
 
   useEffect(() => {
     // Simulation d'un chargement asynchrone initial (par exemple, une requête API)

@@ -7,9 +7,7 @@ import {
   LinkedinShareButton,
   LinkedinIcon,
 } from "react-share";
-
 import { MdPerson } from "react-icons/md";
-
 import "./css/ajouterarticle.css";
 import { useDispatch, useSelector } from "react-redux";
 import { AddArticle, GetArticle } from "../../Redux/Slice/ArticleSlice";
@@ -21,13 +19,15 @@ import { Dialog, DialogContent } from "@mui/material";
 const AjoutArticle = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const { Articles } = useSelector((state) => state.article);
   const [imageArticle, setImageArticle] = useState(null);
+  const [errors, setErrors] = useState({});
+
   const editorRef = useRef(null);
   const authorRef = useRef(null);
   const titleRef = useRef(null);
   const linkRef = useRef(null);
+  const fileInputRef = useRef(null); // Ref for the file input
   const shareURL = "http://facebook.com";
   const [open, setOpen] = useState(false);
   const [currentArticle, setCurrentArticle] = useState(null);
@@ -36,10 +36,32 @@ const AjoutArticle = () => {
     dispatch(GetArticle());
   }, [dispatch]);
 
-  const randomArtc  = Articles
-  .slice()
-  .sort(() => Math.random() - 0.5)
-  .slice(0, 4); 
+  const randomArtc = Articles
+    .slice()
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 4);
+    const validateForm = () => {
+      const newErrors = {};
+  
+      if (!authorRef.current.value) {
+        newErrors.authorRef = "Veuillez renseigner ce champ.";
+      }
+  
+  
+  
+      if (!titleRef.current.value) {
+        newErrors.titleRef = "Veuillez renseigner ce champ.";
+      }
+  
+      if (!editorRef.current.getContent()) {
+        newErrors.editorRef = "Veuillez renseigner ce champ.";
+      }
+  
+   
+  
+      setErrors(newErrors);
+      return Object.keys(newErrors).length === 0;
+    };
   const handleImageChange = (e) => {
     setImageArticle(e.target.files[0]);
   };
@@ -57,7 +79,10 @@ const AjoutArticle = () => {
     formData.append("lien", linkRef.current.value);
 
     dispatch(AddArticle(formData));
-    navigate("/EspaceCoach");
+    if (!validateForm()) {
+      return;
+    }
+ navigate("/")
   };
 
   const handleClickOpen = (article) => {
@@ -97,26 +122,27 @@ const AjoutArticle = () => {
             <h3 className="left-ArticlePartager">
               Articles, offres déjà partagé(e)s
             </h3>
-            {randomArtc && randomArtc.map((article, index) => (
-              <div key={index}>
-                <img
-                  src={getImageUrl(article.photo)}
-                  alt="Article"
-                  className="left-Article-img"
-                />
-                <h1
-                  className="titreART"
-                  onClick={() => handleClickOpen(article)}
-                >
-                  {article.titre}
-                </h1>
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  <MdPerson className="artic-author-icon" />
-                  <h2 className="auteurART">{article.auteur}</h2>
+            {randomArtc &&
+              randomArtc.map((article, index) => (
+                <div key={index}>
+                  <img
+                    src={getImageUrl(article.photo)}
+                    alt="Article"
+                    className="left-Article-img"
+                  />
+                  <h1
+                    className="titreART"
+                    onClick={() => handleClickOpen(article)}
+                  >
+                    {article.titre}
+                  </h1>
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <MdPerson className="artic-author-icon" />
+                    <h2 className="auteurART">{article.auteur}</h2>
+                  </div>
+                  <hr />
                 </div>
-                <hr />
-              </div>
-            ))}
+              ))}
           </div>
           <div className="right-Article">
             <h3 className="FormulaireCoach">
@@ -130,6 +156,8 @@ const AjoutArticle = () => {
                 ref={authorRef}
                 className="inputArticle"
               />
+                            {errors.authorRef && <p className="error-message">{errors.authorRef}</p>}
+
               <label className="LabelArticle">Titre:</label>
               <input
                 type="text"
@@ -137,6 +165,8 @@ const AjoutArticle = () => {
                 ref={titleRef}
                 className="inputArticle"
               />
+                            {errors.titleRef && <p className="error-message">{errors.titleRef}</p>}
+
               <label className="LabelArticle">Texte:</label>
 
               <Editor
@@ -179,6 +209,7 @@ const AjoutArticle = () => {
                   },
                 }}
               />
+                            {errors.editorRef && <p className="error-message">{errors.editorRef}</p>}
 
               <label className="LabelArticle">Photo ou illustration:</label>
               <input
@@ -187,6 +218,7 @@ const AjoutArticle = () => {
                 onChange={handleImageChange}
                 name="imagee"
                 className="FileArticle"
+                ref={fileInputRef} // Add ref here
               />
 
               <label className="LabelArticle">
