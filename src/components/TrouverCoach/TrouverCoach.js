@@ -124,10 +124,10 @@ const TrouverCoach = () => {
       {interfaceData && interfaceData.length > 0 && (
         <div className="Temaignage">
           <div className="Temaignage-container">
-            <div className="heading">
-              <h3 className="titreTemoignage">
+            <div className="PartageTEM">
+           <div>   <h3 className="titreTemoignage">
                 {truncateText(interfaceData[0].titre)}
-              </h3>
+              </h3></div>
               <div id="styledtext">
                 <div dangerouslySetInnerHTML={{ __html: interfaceData[0].texte }} />
               </div>
@@ -140,13 +140,13 @@ const TrouverCoach = () => {
             </div>
             <div className="Temaignage-image">
               <h3 className="ParcouTem">Parcourez les témoignages !</h3>
+           <div className="Tem-image"> 
               <img
                 src={getImageUrl(interfaceData[0].image)}
                 alt="Image placeholder"
                 className="ImageTem"
-                height={"300px"}
               />
-              <FaRegCirclePlay className="icon-playTem" onClick={handleTemClick} />
+              <FaRegCirclePlay className="icon-playTem" onClick={handleTemClick} /></div>
             </div>
           </div>
         </div>

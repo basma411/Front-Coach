@@ -238,3 +238,7 @@ border-radius: 5%;
 display: flex;  
 gap: 20px;}
 
+.error-message{
+  color:rgb(238, 66, 66) ;
+  font-size: 13px;
+}

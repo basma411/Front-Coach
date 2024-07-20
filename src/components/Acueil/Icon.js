@@ -36,7 +36,7 @@ const Icon = () => {
 
   return (
     <div className="Icon">
-      <div className="grid-container">
+      <div className="grid-containericon">
         {Icon &&
           Icon.map((icon, index) => (
             <div key={index} className="grid-item">
@@ -46,8 +46,8 @@ const Icon = () => {
                   alt={`icon ${index + 1}`}
                   className="ImgIcon"
                 />
-                <h3 className="IconTitle">{truncateText(icon.Titre)}</h3>
-                <p className="IconDescrip">{truncateText(icon.Texte, 170)}</p>
+                <h3 className="icontitle">{truncateText(icon.Titre)}</h3>
+                <p className="icondescrip">{truncateText(icon.Texte, 190)}</p>
               </div>
               <h3 onClick={() => handleOpenDialog(icon)} className="Affichersuit">
                 Afficher la suite... &#8594;

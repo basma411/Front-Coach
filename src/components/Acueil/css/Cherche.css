@@ -3,6 +3,7 @@
   width: 100%;
   margin: 0;
   padding: 0;
+
 }
 
 /* Conteneur centré avec une largeur de 80% */
@@ -31,7 +32,12 @@
   height: 20vh;
   gap: 20px;
 }
-
+.style-Domaine,.style-cherche{
+  width: 30%;
+}
+.style-gouv{
+  width: 15%;
+}
 /* Styles appliqués aux champs de recherche : Domaines, Coach, Gouvernorat */
 .DomainesCherche,
 .coachcherche,
@@ -63,4 +69,25 @@
   color: #000;
   background: none;
   border: 2px solid #275491;
+}
+@media (max-width: 961px) {
+  .style-cherche,.style-Domaine,.style-gouv{
+    width: 20%
+  }
+}
+@media (max-width: 519px) {
+  .cherche-coach{
+    display: flex;
+    flex-direction: column;
+    margin: 100px   0;
+  }
+  .style-cherche,.style-Domaine,.style-gouv{
+    width: 100%
+  }
+  /* Titre principal avec une largeur de 100%, marges, alignement centré, et style de police personnalisé */
+.ChercheTitle {
+  font-size: 35px;
+  /* margin: 100px auto 80px auto; */
+}
+
 }

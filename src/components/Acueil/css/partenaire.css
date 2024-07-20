@@ -65,7 +65,7 @@ padding: 0;
 .marquee-img{
   width: 80%; /* Largeur de l'image */
   border: 1px solid #e9e9e9; /* Bordure */
-  height: 150px; 
+  height: 80%; 
 
 }
 
@@ -73,4 +73,28 @@ padding: 0;
 @keyframes scrolling {
   0% { transform: translateX(0); } /* Début de l'animation */
   100% { transform: translateX(calc(-192vw)) } /* Fin de l'animation */
+}
+@media (max-width:727PX) {
+
+  :root {
+
+    --marquee-elements-displayed: 4; /* Nombre d'éléments affichés à la fois dans le marquee */
+    
+  }
+}
+@media (max-width:727PX) {
+
+  :root {
+
+    --marquee-elements-displayed: 4; /* Nombre d'éléments affichés à la fois dans le marquee */
+    
+  }
+}
+@media (max-width:581PX) {
+
+  :root {
+
+    --marquee-elements-displayed: 3; /* Nombre d'éléments affichés à la fois dans le marquee */
+    
+  }
 }

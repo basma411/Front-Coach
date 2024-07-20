@@ -28,6 +28,8 @@ const AjouterEvtt = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [Texte, setTexte] = useState("");
   const [image, setimage] = useState("");
+  const [randomEvnt, setRandomEvnt] = useState([]);
+
   const editorRef = useRef(null);
   const photoRef = useRef(null);
   const shareURL = "http://facebook.com";
@@ -39,34 +41,52 @@ const AjouterEvtt = () => {
     lieu: "",
     dates: "",
   });
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     dispatch(GetEvenement());
   }, [dispatch]);
-
-  const latestArticles = Evenement.slice(-4);
-  // const validateForm = () => {
-  //   const newErrors = {};
-
-  //   if (!authorRef.current.value) {
-  //     newErrors.authorRef = "Veuillez renseigner ce champ.";
-  //   }
-
-
-
-  //   if (!titleRef.current.value) {
-  //     newErrors.titleRef = "Veuillez renseigner ce champ.";
-  //   }
-
-  //   if (!editorRef.current.getContent()) {
-  //     newErrors.editorRef = "Veuillez renseigner ce champ.";
-  //   }
-
- 
-
-  //   setErrors(newErrors);
-  //   return Object.keys(newErrors).length === 0;
-  // };
+  useEffect(() => {
+    if (Evenement.length > 0 && randomEvnt.length === 0) {
+      const shuffledEvnt = Evenement
+        .slice()
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 4);
+      setRandomEvnt(shuffledEvnt);
+    }
+  }, [Evenement]);
+  const validateForm = () => {
+    const newErrors = {};
+  
+    if (!formData.titre) {
+      newErrors.titre = "Veuillez renseigner ce champ.";
+    }
+    if (!Texte) {
+      newErrors.Texte = "Veuillez renseigner ce champ.";
+    }
+    if (!Texte) {
+      newErrors.texte = "Veuillez renseigner ce champ.";
+    }
+  
+    if (!formData.lieu) {
+      newErrors.lieu = "Veuillez renseigner ce champ.";
+    }
+  
+    if (!formData.lien) {
+      newErrors.lien = "Veuillez renseigner ce champ.";
+    }
+  
+    if (!formData.dates) {
+      newErrors.dates = "Veuillez renseigner ce champ.";
+    }
+  
+    if (!image) {
+      newErrors.image = "Veuillez ajouter une photo.";
+    }
+  
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
   const handleTitleClick = (article) => {
     setSelectedEvent(article);
     setShowModal(true);
@@ -87,12 +107,16 @@ const AjouterEvtt = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!validateForm()) {
+      return;
+    }
+  
     const Titre = formData.titre;
     const Lien = formData.lien;
     const Lieu = formData.lieu;
     const Dates = formData.dates;
     const Photo = photoRef.current.files[0];
-
+  
     const formDataToSend = new FormData();
     formDataToSend.append("titre", Titre);
     formDataToSend.append("texte", Texte);
@@ -100,7 +124,7 @@ const AjouterEvtt = () => {
     formDataToSend.append("lieu", Lieu);
     formDataToSend.append("dates", Dates);
     formDataToSend.append("photo", Photo);
-
+  
     dispatch(AddEvenement(formDataToSend));
     navigate("/Evenement");
   };
@@ -124,7 +148,7 @@ const AjouterEvtt = () => {
         <div className="ContainerEvnt">
           <div className="left-Evnt">
             <h2 className="EvntPartager">Évènements déjà partagés</h2>
-            {latestArticles.map((article, index) => (
+            {randomEvnt.map((article, index) => (
               <div key={index}>
                 <img
                   className="left-Evnt-img"
@@ -150,113 +174,116 @@ const AjouterEvtt = () => {
               Pour partager un évènement, cet espace est pour vous !
             </h1>
             <form onSubmit={handleSubmit}>
-              <label className="LabelEvnt">Titre:</label>
-              <input
-                type="text"
-                className="InputEvnt"
-                name="titre"
-                placeholder=""
-                required
-                value={formData.titre}
-                onChange={(e) =>
-                  setFormData({ ...formData, titre: e.target.value })
-                }
-              />
-              <label className="LabelEvnt">Texte:</label>
-              <Editor
-                apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
-                onInit={(evt, editor) => {
-                  editorRef.current = editor;
-                  editor.setContent(formData.texte);
-                }}
-                initialValue={formData.texte}
-                init={{
-                  height: 500,
-                  menubar: false,
-                  plugins: [
-                    "advlist",
-                    "autolink",
-                    "lists",
-                    "link",
-                    "image",
-                    "charmap",
-                    "preview",
-                    "anchor",
-                    "searchreplace",
-                    "visualblocks",
-                    "code",
-                    "fullscreen",
-                    "insertdatetime",
-                    "media",
-                    "table",
-                    "code",
-                    "help",
-                    "wordcount",
-                  ],
-                  toolbar:
-                    "undo redo | blocks | " +
-                    "bold italic forecolor | alignleft aligncenter " +
-                    "alignright alignjustify | bullist numlist outdent indent | " +
-                    "removeformat | help",
-                  content_css: "/path/to/custom.css", // Ajoutez le chemin vers votre fichier CSS personnalisé
-                  setup: (editor) => {
-                    editor.on("init", () => {
-                      editor.getContainer().classList.add("no-border");
-                    });
-                    editor.on("change", () =>
-                      handleEditorChange(editor.getContent())
-                    );
-                  },
-                }}
-                className="editorEvnt"
-              />
-              <label className="LabelEvnt">Lien:</label>
-              <input
-                type="text"
-                className="InputEvnt"
-                name="lien"
-                placeholder=""
-                required
-                value={formData.lien}
-                onChange={(e) =>
-                  setFormData({ ...formData, lien: e.target.value })
-                }
-              />
-              <label className="LabelEvnt">Lieu:</label>
-              <input
-                type="text"
-                className="InputEvnt"
-                name="lieu"
-                placeholder=""
-                required
-                value={formData.lieu}
-                onChange={(e) =>
-                  setFormData({ ...formData, lieu: e.target.value })
-                }
-              />
-              <label className="LabelEvnt">Date:</label>
-              <input
-                type="text"
-                className="InputEvnt"
-                name="dates"
-                placeholder=""
-                required
-                value={formData.dates}
-                onChange={(e) =>
-                  setFormData({ ...formData, dates: e.target.value })
-                }
-              />
-              <label className="LabelEvnt">Photo:</label>
-              <input
-                type="file"
-                name="photo"
-                onChange={handleFileChange}
-                ref={photoRef}
-              />
-              <button type="submit" className="AddEvnt">
-                Envoyer
-              </button>
-            </form>
+  <label className="LabelEvnt">Titre:</label>
+  <input
+    type="text"
+    className="InputEvnt"
+    name="titre"
+    placeholder=""
+    required
+    value={formData.titre}
+    onChange={(e) => setFormData({ ...formData, titre: e.target.value })}
+  />
+  {errors.titre && <p className="error-message">{errors.titre}</p>}
+
+  <label className="LabelEvnt">Texte:</label>
+  <Editor
+    apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
+    onInit={(evt, editor) => {
+      editorRef.current = editor;
+      editor.setContent(formData.texte);
+    }}
+    initialValue={formData.texte}
+    init={{
+      height: 500,
+      menubar: false,
+      plugins: [
+        "advlist",
+        "autolink",
+        "lists",
+        "link",
+        "image",
+        "charmap",
+        "preview",
+        "anchor",
+        "searchreplace",
+        "visualblocks",
+        "code",
+        "fullscreen",
+        "insertdatetime",
+        "media",
+        "table",
+        "code",
+        "help",
+        "wordcount",
+      ],
+      toolbar:
+        "undo redo | blocks | " +
+        "bold italic forecolor | alignleft aligncenter " +
+        "alignright alignjustify | bullist numlist outdent indent | " +
+        "removeformat | help",
+      content_css: "/path/to/custom.css",
+      setup: (editor) => {
+        editor.on("init", () => {
+          editor.getContainer().classList.add("no-border");
+        });
+        editor.on("change", () => handleEditorChange(editor.getContent()));
+      },
+    }}
+    className="editorEvnt"
+  />
+  {errors.Texte && <p className="error-message">{errors.Texte}</p>}
+
+  <label className="LabelEvnt">Lien:</label>
+  <input
+    type="text"
+    className="InputEvnt"
+    name="lien"
+    placeholder=""
+    required
+    value={formData.lien}
+    onChange={(e) => setFormData({ ...formData, lien: e.target.value })}
+  />
+  {errors.lien && <p className="error-message">{errors.lien}</p>}
+
+  <label className="LabelEvnt">Lieu:</label>
+  <input
+    type="text"
+    className="InputEvnt"
+    name="lieu"
+    placeholder=""
+    required
+    value={formData.lieu}
+    onChange={(e) => setFormData({ ...formData, lieu: e.target.value })}
+  />
+  {errors.lieu && <p className="error-message">{errors.lieu}</p>}
+
+  <label className="LabelEvnt">Date:</label>
+  <input
+    type="text"
+    className="InputEvnt"
+    name="dates"
+    placeholder=""
+    required
+    value={formData.dates}
+    onChange={(e) => setFormData({ ...formData, dates: e.target.value })}
+  />
+  {errors.dates && <p className="error-message">{errors.dates}</p>}
+
+  <label className="LabelEvnt">Photo:</label>
+  <input
+    type="file"
+    name="photo"
+    onChange={handleFileChange}
+    ref={photoRef}
+  />
+  {errors.image && <p className="error-message">{errors.image}</p>}
+
+  <button type="submit" className="AddEvnt">
+    Envoyer
+  </button>
+</form>
+
           </div>
         </div>
       </div>

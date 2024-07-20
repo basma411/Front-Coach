@@ -13,40 +13,47 @@
   padding: 0;
   margin: 0;
 }
-
+.FORMECOACH{
+  width: 80%;
+  margin: 0 auto;
+}
 .coach_Titre {
-  width: 70%;
+  width: 100%;
   font-size: 40px;
   color: white;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   line-height: 1.2;
   animation: fadeIn 1s ease-in-out;
   font-weight: 300;
 }
 
-.fields {
+.fieldsCOACH{
+  width: 100%;
   background-color: #fefefe;
-  margin: auto;
+  padding:  10px 20px;
   display: flex;
   position: relative;
 }
-.formulairecoch {
+.formulairecoach{
+  width: 100%;
+  display: flex;
   color: #999;
-  padding: 0px 0px 0px 80px;
-  font-size: 2rem;
-  margin: 15px 0px;
+padding: 0; 
+ font-size: 2rem;
   font-weight: 300;
 }
-.remplir {
+.remplirFormulaire {
   padding: 25px 70px;
   background-color: #275491;
   color: #fff;
   border: none;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
   font-size: 16px;
-  margin: 0px 20px 0px 80px;
+  margin: 0px auto;
 }
 .remplirArticle {
+  width: 50%;
+  height: 70px;
   background-color: #275491;
   border: none;
   color: white;
@@ -56,9 +63,12 @@
   display: inline-block;
   font-size: 16px;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  width: 250px;
-  height: 70px;
+
   font-weight: 300;
+}
+.ARTICLEright{
+  width: 50%;
+  margin: 0 auto;
 }
 .AddArticle {
   display: flex;
@@ -91,4 +101,19 @@
   z-index: 1;
   color: yellow;
   font-size: 50px;
+}
+@media (max-width: 950px) {
+  .formulairecoach{
+display: flex;
+flex-direction: column;
+
+  }
+}
+@media (max-width: 816px) {
+  .AddArticle{
+display: flex;
+flex-direction: column-reverse;
+gap: 20px;
+
+  }
 }

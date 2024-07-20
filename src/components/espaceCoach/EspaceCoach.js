@@ -3,11 +3,14 @@ import image from "../../images/big_image_2.jpg";
 import "./css/espaceCoach.css";
 import image1 from "../../images/article.jpg";
 import { FaPlay } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Newsletter from "../coach/Newsletter";
 import Footer from "../coach/Footer";
 
 const EspaceCoach = () => {
+  const navigate=useNavigate()
+  const handelFormilaire = () => navigate("/formulaire");
+
   return (
     <>
       <div
@@ -21,16 +24,14 @@ const EspaceCoach = () => {
           overflow: "hidden",
         }}
       >
-        <div >
+        <div style={{width:"100%"}} >
           <h3 className="coach_Titre">Vous êtes coach?</h3>
-          <form class="d-block d-lg-flex mb-4">
-            <div class="fields">
-              <h3 className="formulairecoch">
+          <form class="FORMECOACH">
+            <div class="fieldsCOACH  d-block d-lg-flex">
+              <h3 className="formulairecoach">
                 Rejoignez votre plateforme
-                <Link to="/formulaire" >
 
-                <button className="remplir">Formulaire à remplir</button>
-                </Link>
+                <button className="remplirFormulaire" onClick={handelFormilaire}>Formulaire à remplir</button>
 
               </h3>
             </div>
@@ -44,10 +45,10 @@ const EspaceCoach = () => {
         <button className="remplirArticle">Partagez article,offre</button>
         </Link>
 
-        <div>
+        <div className="ARTICLEright">
           <h2 className="ParcourArticle">Parcourez les articles, les offres d'emploi!</h2>
           <div className="ContainerArticle">
-            <img src={image1} alt="image placeholder" />
+            <img src={image1} alt="image placeholder" width="100%" height="100vh" />
             <Link to="/articles" className="icon-play">
               <FaPlay />
             </Link>

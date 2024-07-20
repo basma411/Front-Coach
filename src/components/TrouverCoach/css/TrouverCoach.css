@@ -10,188 +10,177 @@
     transform: translateY(0);
   }
 }
-.Platforme{
-  width: 100%;
-padding: 0;
-margin: 0;
-}
 
+.Platforme {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
 
 .TrouveCoachTitre {
   width: 80%;
-  font-size: 3.75rem; 
+  font-size: 3.75rem;
   color: white;
   margin: 0 auto;
   line-height: 1.2;
   animation: fadeIn 1s ease-in-out;
   font-weight: 300;
+}
 
+.Temaignage {
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
-.Temaignage{
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
+
 .Temaignage-container {
-    width: 80%;
-   display: flex;
+  width: 80%;
+  display: flex;
+  gap: 50px;
+  background: #fff;
+  font-size: 18px;
+  line-height: 2;
+  color: gray;
+  margin: 120px auto;
+}
 
-   gap: 50PX;
-   background: #fff;
+/* .PartageTEM {
+  max-width: 50%;
+  margin-bottom: 0px;
+} */
 
-   font-size: 18px;
-   line-height: 2;
-   color: gray;
-   margin: 120px auto;
-  }
-     .heading {
-        max-width: 40%;
-        margin-bottom: 0px;
-    }
-    .titreTemoignage{
-        font-size: 45px;
-    margin-bottom: 10px;
-    padding: 0;
-    color: rgb(39, 84, 145);
-    line-height: 1.2;
-    }
-   #styledtext {
+.titreTemoignage {
+  width: 100%;
+  font-size: 45px;
+  margin-bottom: 10px;
+  padding: 0;
+  color: rgb(39, 84, 145);
+  line-height: 1.2;
+  font-weight: 300;
+}
+
+#styledtext {
   font-size: 16px !important;
   color: gray !important;
   line-height: 1.6 !important;
   text-align: justify !important;
 }
 
-#styledtext p  {
+#styledtext p {
   font-size: inherit !important;
   color: inherit !important;
-
 }
 
- 
-  
-    .Temaignage-image{
-        width: 60%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        position: relative;
+.Temaignage-image {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-    }
-    .ParcouTem{
+.Tem-image {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
 
-      color: blue;
-      font-size: 18px;
-      padding: 10px;
-      font-weight: 300;
-  }
-  
-    .ImageTem {
-      position: absolute;
+.ParcouTem {
+  color: blue;
+  font-size: 18px;
+  padding: 10px;
+  font-weight: 300;
+}
 
-      width: 90%;
-      height: auto;
-    }
-    
-    .icon-playTem {
-      position: absolute;
-      top: 50%;
-      left: 45%;
-      transform: translate(-50%, -50%);
-      font-size: 80px;
-      color: #e3d80a;
-      opacity: 0.8;
-      cursor: pointer;
-    }
-    .PartageTem{
-      width: 90%;
-      cursor: pointer;
-      display: block;
-    
-      margin: 100px auto 0 auto  ;
-      
-    
-      background-color: #275491;
-      border: none;
-      color: white;
-      padding: 18px 32px;
-      text-align: center;
-      text-decoration: none;
-      font-size: 16px;
-      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-     }
-    /****Dialogue**/
+.ImageTem {
+  width: 100%;
+}
 
+.icon-playTem {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 80px;
+  color: #e3d80a;
+  opacity: 0.8;
+  cursor: pointer;
+}
 
+.PartageTem {
+  width: 90%;
+  cursor: pointer;
+  display: block;
+  margin: 100px auto 0 auto;
+  background-color: #275491;
+  border: none;
+  color: white;
+  padding: 18px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
-  .PlatformeEvn {
-    position: relative;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    top: 0;
-    background-size: cover;
-    overflow: hidden;
-    height: 200px; /* Ajustez la hauteur si nécessaire */
-    display: flex;
-    flex-direction: column; /* Pour empiler les éléments verticalement */
-    align-items: center;
-    justify-content: center; /* Centrage vertical */
-  }
-  
-  .AjouterTemTitre {
-    width: 50%;
-    font-size: 40px; /* Equivalent à 60px si la base est 16px */
-    color: white;
-    margin: 0 auto;
-    line-height: 1.2;
-    text-align: center; /* Centrage horizontal du texte */
-    animation: fadeIn 1s ease-in-out;
-    font-weight: 300;
+/**** Dialogue ****/
+.PlatformeEvn {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  top: 0;
+  background-size: cover;
+  overflow: hidden;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-  }
-  
-.MuiDialogContent-root{
+.AjouterTemTitre {
+  width: 50%;
+  font-size: 40px;
+  color: white;
+  margin: 0 auto;
+  line-height: 1.2;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+  font-weight: 300;
+}
+
+.MuiDialogContent-root {
   padding: 0;
   margin: 0;
 }
-.NomTem{
-  margin: 0;
-  padding: 0;
 
-}
-
-.css-ypiqx9-MuiDialogContent-root{
+.css-ypiqx9-MuiDialogContent-root {
   padding: 0 !important;
-  margin: 0 !important;}
-.NomTem{
-  width: 100%;
-  height: 40px;
-display: block;
-margin: 80px auto 40px auto;
-padding-left: 15px;
-border: solid 0.5px rgb(206,212,218);
-}
-.tox{
-  width: 100%;
-  height: 40px;
-display: block;
-margin: 0px auto 40px auto;
+  margin: 0 !important;
 }
 
+.NomTem {
+  width: 100%;
+  height: 40px;
+  display: block;
+  margin: 80px auto 40px auto;
+  padding-left: 15px;
+  border: solid 0.5px rgb(206, 212, 218);
+}
 
-.NomTem:focus
- {
+.tox {
+  width: 100%;
+  height: 40px;
+  display: block;
+  margin: 0px auto 40px auto;
+}
+
+.NomTem:focus {
   border: solid 0.5px transparent;
-
-  outline-color: rgb(36, 233, 233) ;
-  outline-style: solid ;
-
-  outline-width: 0.5px; 
+  outline-color: rgb(36, 233, 233);
+  outline-style: solid;
+  outline-width: 0.5px;
   outline-offset: 0;
 }
-
-
 
 /* Applique une bordure rouge lorsque l'éditeur est en focus */
 .tox-tinymce:focus,
@@ -208,24 +197,36 @@ margin: 0px auto 40px auto;
   outline: 2px solid red !important;
 }
 
- .addTemoign{
-display: block;
-margin: 20px auto;
-    background-color:#275491 ;
-    color: #fff;
-    border: 2px solid transparent !important;   
-    border-radius: 10px;
-    font-weight: 400;
-    text-align: center;
-    white-space: nowrap;
-    cursor: pointer;
-    box-shadow: 0 5px 20px -5px rgba(0, 0, 0, 0.2) !important;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
- }
- .addTemoign:hover{
-  border: 2px solid #275491 !important;  
-  background-color: white; 
-  color: #000;
+.addTemoign {
+  display: block;
+  margin: 20px auto;
+  background-color: #275491;
+  color: #fff;
+  border: 2px solid transparent !important;
+  border-radius: 10px;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 5px 20px -5px rgba(0, 0, 0, 0.2) !important;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+}
 
- }
+.addTemoign:hover {
+  border: 2px solid #275491 !important;
+  background-color: white;
+  color: #000;
+}
+
+@media (max-width: 992px) {
+  .Temaignage-container {
+    flex-direction: column;
+  }
+  .PartageTEM {
+    width: 100%;
+  }
+  .Temaignage-image {
+    width: 100%;
+  }
+}

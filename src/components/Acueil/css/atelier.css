@@ -19,7 +19,7 @@ margin: 0;
    display: flex;
    /* align-items: center;
    justify-content: center; */
-   gap: 80PX;
+   gap: 60PX;
    background: #fff;
    font-size: 18px;
    line-height: 2;
@@ -27,8 +27,8 @@ margin: 0;
    margin: 120px auto;
    font-weight: 300;
   }
-     .heading {
-width: 50%;
+     .Heading {
+width: 60%;
         /* margin-bottom: 60px; */
     }
     .TitlePlateforme{
@@ -50,8 +50,10 @@ color: rgb(128, 128, 128);
         flex-direction: column;
         justify-content: center;
         position: relative;
+        margin: 0 auto;
 
     }
+    
     .atelier-image .icon-play{
 
         position: absolute;
@@ -65,7 +67,8 @@ color: rgb(128, 128, 128);
     .AtelierInscri{
         width: 50%;
     cursor: pointer;
-    margin: 20px 130px  ;
+    display: block;
+    margin:20px auto  ;
     
 
     background-color: #275491;
@@ -80,8 +83,41 @@ color: rgb(128, 128, 128);
 
     }
 
+
+
+  @media (max-width: 1155px) {
+    .Platforme-container{
+      width: 90%;
+    }
+      .TitlePlateforme{
+        font-size: 35PX;
+  }
+
   
 
- 
+}
+@media (max-width: 851px) {
+  .Platforme-container{
+    width: 95%;
+  }
+    .TitlePlateforme{
+      font-size: 35PX;
+}
 
- 
+
+}
+@media (max-width:809px) {
+.Platforme-container{
+  width: 90%;
+
+  display: flex;
+  flex-direction: column;
+}
+.Heading{
+  width: 100%;
+}
+.atelier-image{
+  width: 80%;
+
+}
+}

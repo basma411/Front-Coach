@@ -1,22 +1,21 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react";
 import image from "../../images/big_image_2.jpg";
-import './css/temoignage.css'
-import { GetTemoignageV } from '../../Redux/Slice/TemoignegeSlice';
-import { useDispatch, useSelector } from 'react-redux';
-import Newsletter from '../coach/Newsletter';
-import Footer from '../coach/Footer';
+import "./css/temoignage.css";
+import { GetTemoignageV } from "../../Redux/Slice/TemoignegeSlice";
+import { useDispatch, useSelector } from "react-redux";
+import Newsletter from "../coach/Newsletter";
+import Footer from "../coach/Footer";
 const Temoignages = () => {
   const { TemoignegeV } = useSelector((state) => state.temoignage);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(GetTemoignageV());
-    console.log(TemoignegeV)
+    console.log(TemoignegeV);
   }, [dispatch]);
   return (
     <>
-    
-    <div
+      <div
         className="ImagePlatforme"
         style={{
           position: "relative",
@@ -27,51 +26,17 @@ const Temoignages = () => {
           overflow: "hidden",
         }}
       >
-        <div >
-          <h3 className="TemTitre">Témoignages
-          </h3>
+        <div>
+          <h3 className="TemTitre">Témoignages</h3>
         </div>
       </div>
 
+      <div style={{ height: "400px" }}></div>
 
-
-
-
-
-<div style={{height:'400px'}}>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<Newsletter />
-<Footer />
+      <Newsletter />
+      <Footer />
     </>
-  )
-}
+  );
+};
 
-export default Temoignages
+export default Temoignages;
