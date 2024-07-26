@@ -10,6 +10,8 @@ import { getImageUrl } from "../..";
 import "./css/formulaire.css";
 import { useNavigate } from "react-router-dom";
 import { FaYoutube, FaLinkedin, FaFacebook } from "react-icons/fa";
+import Newsletter from "../coach/Newsletter";
+import Footer from "../coach/Footer";
 
 const Formulaire = () => {
   const dispatch = useDispatch();
@@ -67,12 +69,14 @@ const Formulaire = () => {
     <label>
       <p
         style={{
+          width:"100%",
           color: "#fff",
           background: "#ADD8E6",
           fontSize: "14px",
-          marginTop: "18px",
-          marginLeft: "600px",
-          padding:"0 4px"
+          padding: "5px 3px",  // Optional: Add padding for better appearance
+          borderRadius: "5px",   // Optional: Add border radius for rounded corners
+          display:"block",
+          margin:" auto auto"
         }}
       >
         {compte}
@@ -324,8 +328,10 @@ const Formulaire = () => {
               {errors.nomPrenom && <p className="error-message">{errors.nomPrenom}</p>}
 
               <label className="TITREcoach required-label">Domaines d’intervention:</label>
-              <Select
-                className="domaine"
+            <div                 className="domaineCoach"
+            >
+            <Select
+            className="domaine"
                 options={
                   domaines && [
                     {
@@ -395,6 +401,7 @@ const Formulaire = () => {
                 contentRenderer={customContentRenderer}
                 style={{ width: "100%" }}
               />
+            </div>
               {errors.domaines && <p className="error-message">{errors.domaines}</p>}
 
               <label className="TITREcoach">Autres domaines:</label>
@@ -672,6 +679,8 @@ const Formulaire = () => {
           </div>
         </div>
       </div>
+      <Newsletter/>
+      <Footer/>
     </>
   );
 };

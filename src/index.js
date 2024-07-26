@@ -1,3 +1,4 @@
+// index.js
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -8,6 +9,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './Redux/Store';
 import { BrowserRouter as Router } from 'react-router-dom'; 
+import { HelmetProvider } from 'react-helmet-async';
 
 axios.defaults.baseURL = "http://localhost:8000";
 
@@ -23,13 +25,15 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <Router>
-        <React.StrictMode>
-          <App />
-        </React.StrictMode>
-      </Router>
-    </PersistGate>
+    <HelmetProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <Router>
+          <React.StrictMode>
+            <App />
+          </React.StrictMode>
+        </Router>
+      </PersistGate>
+    </HelmetProvider>
   </Provider>
 );
 

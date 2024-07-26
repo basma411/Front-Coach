@@ -98,17 +98,11 @@ const AjoutArticle = () => {
   return (
     <>
       <div
-        className="PlatformeArticle"
+        className="PlatformeArticle-Add"
         style={{
-          position: "relative",
-          textAlign: "center",
-          height: "300px",
+        
           backgroundImage: `url(${image})`,
-          backgroundSize: "cover",
-          overflow: "hidden",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+      
         }}
       >
         <div>

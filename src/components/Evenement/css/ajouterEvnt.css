@@ -242,3 +242,30 @@ gap: 20px;}
   color:rgb(238, 66, 66) ;
   font-size: 13px;
 }
+@media (max-width: 991PX) {
+  .left-Evnt {
+    width: 50%;
+ 
+}
+
+.right-Evnt {
+  width: 50%;
+
+}
+}
+@media (max-width: 767PX) {
+  .ContainerEvnt {
+    display: flex;
+   flex-direction: column-reverse;
+
+}
+  .left-Evnt {
+    width: 100%;
+ 
+}
+
+.right-Evnt {
+  width: 100%;
+
+}
+}

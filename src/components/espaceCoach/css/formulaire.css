@@ -42,12 +42,12 @@
   padding: 50px;
 }
 .formulaire-left {
-  width: 30%;
+  width: 33%;
   text-align: center;
 }
 
 .formulaire-right {
-  width: 70%;
+  width: 67%;
   background-color: #fff !important;
   padding: 50px 20px;
 
@@ -125,15 +125,20 @@
   text-decoration: underline;
 }
 .inputCoach,
-.gouvernorat,
-.domaine {
+.gouvernorat,.domaine {
   border: solid 1px #ccc;
   margin: 20px 0;
   width: 100%;
   height: 40px;
+
   background-color: transparent;
 }
-
+.domaineCoach{
+  width: 100% !important;
+}
+.react-dropdown-select-content {
+  display: flex;
+justify-content: flex-end;}
 .inputCoach:focus,
 .gouvernorat:focus {
   border: solid 0.5px transparent;
@@ -182,3 +187,29 @@
   color:rgb(238, 66, 66) ;
   font-size: 13px;
 }
+
+@media (max-width: 991PX) {
+  .formulaire-left {
+    width:  45%    ;
+  }
+  
+  .formulaire-right {
+    width:  55%    ;
+   
+  }
+  }
+  @media (max-width: 767PX) {
+    .Formulaire-container {
+    
+      display: flex;
+flex-direction: column-reverse;   
+    }
+    .formulaire-left {
+      width:  100%    ;
+    }
+    
+    .formulaire-right {
+      width:  100%    ;
+     
+    }
+    }

@@ -8,40 +8,44 @@
     transform: translateY(0);
   }
 }
+
 .ImagePlatforme {
   width: 100%;
   padding: 0;
   margin: 0;
 }
-.FORMECOACH{
+
+.FORMECOACH {
   width: 80%;
   margin: 0 auto;
 }
+
 .coach_Titre {
   width: 100%;
   font-size: 40px;
   color: white;
-  /* margin: 0 auto; */
   line-height: 1.2;
   animation: fadeIn 1s ease-in-out;
   font-weight: 300;
 }
 
-.fieldsCOACH{
+.fieldsCOACH {
   width: 100%;
   background-color: #fefefe;
-  padding:  10px 20px;
+  padding: 10px 20px;
   display: flex;
   position: relative;
 }
-.formulairecoach{
+
+.formulairecoach {
   width: 100%;
   display: flex;
   color: #999;
-padding: 0; 
- font-size: 2rem;
+  padding: 0;
+  font-size: 2rem;
   font-weight: 300;
 }
+
 .remplirFormulaire {
   padding: 25px 70px;
   background-color: #275491;
@@ -51,30 +55,40 @@ padding: 0;
   font-size: 16px;
   margin: 0px auto;
 }
-.remplirArticle {
-  width: 50%;
+
+.remplir-Article {
+  width: 30%;
   height: 70px;
+  margin: 0 auto;
   background-color: #275491;
   border: none;
   color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  /* display: inline-block; */
   font-size: 16px;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
   font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
-.ARTICLEright{
-  width: 50%;
+
+.Add-Article {
+  width: 80%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
 }
-.AddArticle {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 100px 0;
+
+.ARTICLEright {
+  width: 50%;
+  display: block ;
+  margin: auto;
 }
 
 .ParcourArticle {
@@ -84,13 +98,26 @@ padding: 0;
   line-height: 32px;
   color: #275491;
 }
+
 .ContainerArticle {
   position: relative;
   display: inline-block;
+  width: 100%;
+  /* height: 100vh; */
 }
 
-.ContainerArticle img {
-  height: 300px;
+.image-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.image-Article {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .icon-play {
@@ -102,18 +129,86 @@ padding: 0;
   color: yellow;
   font-size: 50px;
 }
-@media (max-width: 950px) {
-  .formulairecoach{
-display: flex;
-flex-direction: column;
 
+/* Responsive styles */
+@media (max-width: 1200px) {
+  .coach_Titre {
+    font-size: 35px;
+  }
+
+  .formulairecoach {
+    font-size: 1.8rem;
+  }
+
+  .remplirFormulaire {
+    padding: 20px 60px;
+    font-size: 14px;
+  }
+
+  .ContainerArticle {
+
+    height: 100vh;
   }
 }
-@media (max-width: 816px) {
-  .AddArticle{
-display: flex;
-flex-direction: column-reverse;
-gap: 20px;
 
+@media (max-width: 950px) {
+  .formulairecoach {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .coach_Titre {
+    font-size: 30px;
+  }
+
+  .remplirFormulaire {
+    padding: 15px 50px;
+    font-size: 12px;
+  }
+
+  .ContainerArticle {
+
+    height: 100vh;
+  }
+
+
+}
+
+@media (max-width: 767px) {
+  .Add-Article {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .remplir-Article {
+    width: 80%;
+  }
+
+  .ARTICLEright {
+    width: 100%;
+  }
+
+  .coach_Titre {
+    font-size: 25px;
+  }
+
+  .formulairecoach {
+    font-size: 1.5rem;
+  }
+
+  .remplirFormulaire {
+    padding: 10px 40px;
+    font-size: 12px;
+  }
+
+  .ParcourArticle {
+    font-size: 14px;
+  }
+  .ContainerArticle {
+
+    height: 100vh;
   }
 }

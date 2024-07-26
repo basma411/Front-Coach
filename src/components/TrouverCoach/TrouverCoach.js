@@ -12,6 +12,8 @@ import { Editor } from "@tinymce/tinymce-react";
 import { AddTemoignages } from "../../Redux/Slice/TemoignegeSlice";
 import { useNavigate } from "react-router-dom";
 import DOMPurify from "dompurify";
+// import { Helmet,HelmetProvider } from 'react-helmet-async';
+
 import {
   Dialog,
   DialogContent,
@@ -104,7 +106,11 @@ const TrouverCoach = () => {
 
   return (
     <>
-      <div
+    {/* <HelmetProvider>
+<Helmet>
+  <title>Trouver Coach</title>
+</Helmet> */}
+    <div
         className="ImagePlatforme"
         style={{
           position: "relative",
@@ -233,6 +239,7 @@ const TrouverCoach = () => {
 
       <Newsletter />
       <Footer />
+    
     </>
   );
 };

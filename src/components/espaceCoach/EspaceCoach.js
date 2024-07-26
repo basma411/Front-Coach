@@ -3,13 +3,15 @@ import image from "../../images/big_image_2.jpg";
 import "./css/espaceCoach.css";
 import image1 from "../../images/article.jpg";
 import { FaPlay } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Newsletter from "../coach/Newsletter";
 import Footer from "../coach/Footer";
 
 const EspaceCoach = () => {
-  const navigate=useNavigate()
-  const handelFormilaire = () => navigate("/formulaire");
+  const navigate = useNavigate();
+  const handleFormulaire = () => navigate("/formulaire");
+  const handleAddArticle = () => navigate("/ajouter_article");
+  const handleARTICLES = () => navigate("/articles");
 
   return (
     <>
@@ -24,39 +26,47 @@ const EspaceCoach = () => {
           overflow: "hidden",
         }}
       >
-        <div style={{width:"100%"}} >
+        <div style={{ width: "100%" }}>
           <h3 className="coach_Titre">Vous êtes coach?</h3>
-          <form class="FORMECOACH">
-            <div class="fieldsCOACH  d-block d-lg-flex">
+          <form className="FORMECOACH">
+            <div className="fieldsCOACH d-block d-lg-flex">
               <h3 className="formulairecoach">
                 Rejoignez votre plateforme
-
-                <button className="remplirFormulaire" onClick={handelFormilaire}>Formulaire à remplir</button>
-
+                <button
+                  className="remplirFormulaire"
+                  onClick={handleFormulaire}
+                >
+                  Formulaire à remplir
+                </button>
               </h3>
             </div>
           </form>
         </div>
       </div>
 
-      <div className="AddArticle">
-      <Link to="/ajouter_article" >
-
-        <button className="remplirArticle">Partagez article,offre</button>
-        </Link>
+      <div className="Add-Article">
+        <button className="remplir-Article" onClick={handleAddArticle}>
+          Partagez article, offre
+        </button>
 
         <div className="ARTICLEright">
-          <h2 className="ParcourArticle">Parcourez les articles, les offres d'emploi!</h2>
-          <div className="ContainerArticle">
-            <img src={image1} alt="image placeholder" width="100%" height="100vh" />
-            <Link to="/articles" className="icon-play">
-              <FaPlay />
-            </Link>
+          <h2 className="ParcourArticle">
+            Parcourez les articles, les offres d'emploi!
+          </h2>
+          <div className="ContainerArticle" onClick={handleARTICLES} style={{ cursor: 'pointer' }}>
+            <div className="image-container">
+              <img
+                src={image1}
+                alt="image placeholder"
+                className="image-Article"
+              />
+              <FaPlay className="icon-play" />
+            </div>
           </div>
         </div>
       </div>
-      <Newsletter/>
-      <Footer/>
+      <Newsletter />
+      <Footer />
     </>
   );
 };

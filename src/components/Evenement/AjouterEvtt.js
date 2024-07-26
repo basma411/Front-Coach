@@ -18,6 +18,8 @@ import {
   LinkedinShareButton,
   LinkedinIcon,
 } from "react-share";
+import Newsletter from "../coach/Newsletter";
+import Footer from "../coach/Footer";
 
 const AjouterEvtt = () => {
   const dispatch = useDispatch();
@@ -368,6 +370,8 @@ const AjouterEvtt = () => {
           </div>
         </div>
       </Dialog>
+      <Newsletter/>
+      <Footer/>
     </>
   );
 };

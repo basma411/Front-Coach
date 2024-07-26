@@ -9,7 +9,7 @@
       transform: translateY(0);
     }
   }
-  .PlatformeContact {
+  .platforme-contact {
     position: relative;
     text-align: center;
     height: 300px;
@@ -18,7 +18,7 @@
     align-items: center;
   }
   
-  .Contact-Titre {
+  .contact-titre {
     width: 100%;
     font-size: 3.75rem; 
     color: white;
@@ -28,13 +28,13 @@
     font-weight: 300;
   
   }
-.Contact-coach{
+.contact-coach{
     width: 100%;
     margin: 0;
     padding: 0;
 }
 .Contact-coach-Container{
-    width: 85%;
+    width: 80%;
     margin: 100px auto;
     display: flex ;
     /* align-items: center; */
@@ -42,18 +42,27 @@
     gap: 60px;
 }
 .left-Contact{
-    width: 60%;
+    width: 70%;
 }
 .right-Contact{
-    width: 40%;
+    width: 30%;
 
 }
-.ContactLabel{
+.form-group{
+  width: 100%;
+  display: flex;
+  gap: 20PX;
+}
+.form-field{
+  display: flex;
+  flex-direction: column;
+}
+.contact-label{
 font-size: 16px;
 margin-bottom: 10px;
 color: rgb(157,157,157);}
-.ContactInput{
-width: 200px;
+.contact-input{
+width: 100%;
 height: 40px;
 border: solid 0.5px rgb(206, 212, 218);
 
@@ -61,13 +70,13 @@ border: solid 0.5px rgb(206, 212, 218);
 }
 
 
-.ContactTextarea{
+.contact-textarea{
     width: 100%;
     height: 200px;
     border: solid 0.5px rgb(206, 212, 218);
 
 }
-.ContactInput:focus,.ContactTextarea:focus
+.contact-input:focus,.contact-textarea:focus
  {
   border: solid 0.5px transparent;
 
@@ -78,14 +87,14 @@ border: solid 0.5px rgb(206, 212, 218);
   outline-offset: 0;
 }
 /**right*****/
-.Infomation{
+.information-titre{
 margin-bottom: 3rem;
 color: #000;
 font-size: 1.75rem;
 line-height: 1.2;
 font-weight: 300;
 }
-.Info-contact{
+.info-contact{
     display: flex;
     align-items: center;
     color: rgb(128,128,128);
@@ -93,17 +102,22 @@ font-weight: 300;
     gap: 15px;
     cursor: pointer;
 }
-.Info-tel,.Info-mail,.Contact-social{
+.social-links{
+  display: flex;
+  flex-direction: row;
+  gap: 10PX;
+}
+.info-detail,.contact-social{
     color: #e3d80a;
     font-weight: 300;
     font-size: 16px;
 }
-.Info-tel:hover,.Info-mail:hover,.Contact-social:hover{
+.info-detail:hover,.Info-mail:hover,.contact-social:hover{
     color: #fdc900;
     font-weight: 300;
     font-size: 16px;
 }
-.ContactButton{
+.contact-button{
     cursor: pointer;
     font-weight: 400;
     text-align: center;
@@ -116,8 +130,26 @@ border-radius: 10px;
 border: solid 1px transparent;
 
 }
-.ContactButton:hover{
+.contact-button:hover{
     color: #000 ;
     background: none ;
     border: 2px solid #275491 ;
+}
+@media (max-width: 792PX) {
+  .Contact-coach-Container {
+display: flex;  
+flex-direction: column;
+  }
+  .left-Contact{
+    width: 100%;
+
+}
+.right-Contact{
+    width: 100%;
+
+}
+.form-group{
+display: flex;
+flex-direction: column;
+}
 }

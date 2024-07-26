@@ -422,7 +422,7 @@ const Edit = () => {
             name="Brève Bio"
             defaultValue={coachdata.bio}
             ref={Bio}
-            className="textareaEdit"
+            className="textareaEdit bioEDIT"
 
           />
           <br />

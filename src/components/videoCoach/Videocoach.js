@@ -37,7 +37,7 @@ const Videocoach = () => {
             Parcourez nos vidéos sur la chaîne YouTube : MonCoach.tn
           </h1>
           <div className="video-list">
-            {video && video.map((VD) => <VideoCard key={VD.id} video={VD} />)}
+            {video && video.map((Vid) => <VideoCard key={Vid.id} video={Vid} />)}
           </div>
         </div>
       </div>

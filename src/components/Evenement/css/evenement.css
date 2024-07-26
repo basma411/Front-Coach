@@ -17,7 +17,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 300px;
+  height: 260px;
   background-size: cover;
   overflow: hidden;
 }
@@ -104,7 +104,7 @@
   display: inline-block;
 }
 
-.ContainerArticle img {
+.ContainerArticle-img {
   height: 300px; /* ajustez la hauteur de l'image selon vos besoins */
 }
 
@@ -130,7 +130,7 @@
   }
   
   .ContainerEvnement {
-    width: 90%;
+    width: 80%;
     display: flex;    
     flex-direction: column;   
     justify-content: center;
@@ -168,11 +168,11 @@
   height: 70px;
 }
 .evnt-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns of equal width */
+  gap: 20px; /* Space between grid items */
   margin-top: 80px;
-
+  width: 100%;
 }
 .card{
   border-radius: 0 ;
@@ -180,7 +180,7 @@
 
 }
 .evnt-card {
-  width: 49%;
+  width: 100%;
   height:435px;
   margin-bottom: 80px;
   background-color: #fff;
@@ -203,6 +203,7 @@
 .Imageevnt{
   width:100%;
   height:250px;
+  border-radius: 0;
   border: solid 1px #C0C0C0;
 }
 .evnt-card-author{
@@ -385,3 +386,9 @@ border-radius: 5%;
 display: flex;  
 gap: 20px;}
 
+@media (max-width: 767PX) {
+  .evnt-list {
+    grid-template-columns: repeat(1, 1fr); /* Two columns of equal width */
+  
+  }
+}

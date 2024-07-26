@@ -85,6 +85,8 @@ import './index.css';
 import Menu from './components/admin/Menu.js';
 import EditPub from './components/admin/AtelierA/EditPub.js';
 import EmailingPub from './components/admin/AtelierA/EmailingPub.js';
+import EvenementPartage from './components/Evenement/EvenementPartage.js';
+import PartageArticle from './components/espaceCoach/PartageArticle.js';
 
 function App() {
   const location = useLocation();
@@ -138,6 +140,7 @@ function App() {
   const isRouteValid = validRoutes.includes(location.pathname) || location.pathname.startsWith("/atelier_degustation");
 
   return (
+    
     <div className="App"  style={{ fontFamily: '"Rubik", arial, sans-serif', fontWeight: 300 }}>
       {isLoading ? (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -194,6 +197,7 @@ function App() {
             <Route path="/admin/Partenaires" element={<PartenairesA />} />
             <Route path="/admin/Partenaires/ajouter" element={<AjouterPartenaires />} />
             <Route path="/admin/Evenements" element={<EvenementA />} />
+
             <Route path="/admin/Evenements/AjouterEvenement" element={<AjouterEvenement />} />
             <Route path="/admin/Evenements/Liste" element={<ListeEvenement />} />
             <Route path="/admin/Evenements/liste/edit/:id" element={<EditEvenement />} />
@@ -227,6 +231,8 @@ function App() {
             <Route path="/Temoignages" element={<Temoignages />} />
             <Route path="/EspaceCoach" element={<EspaceCoach />} />
             <Route path="/Evenement" element={<Evenement />} />
+                        <Route path="/Evenement/:id" element={<EvenementPartage />} />
+
             <Route path="/Evenement/ajouter" element={<AjouterEvtt />} />
             <Route path="/video" element={<Videocoach />} />
             <Route path="/Contact-coach" element={<ContactCoach />} />
@@ -236,6 +242,8 @@ function App() {
             <Route path="/atelier_degustation/:id" element={<ListePub />} />
             <Route path="/formatelier" element={<FormAtelier />} />
             <Route path="/articles" element={<Articles />} />
+            <Route path="/articles/:id" element={<PartageArticle />} />
+
             <Route path="/ajouter_article" element={<AjoutArticle />} />
             <Route path="/formulaire" element={<Formulaire />} />
           </Routes>

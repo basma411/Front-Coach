@@ -1,4 +1,3 @@
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -9,7 +8,15 @@
     transform: translateY(0);
   }
 }
-.PlatformeProfil{
+@keyframes slideBackground {
+  0% {
+    background-position: 0 ;
+  }
+  100% {
+    background-position: 100% ;
+  }
+}
+.PlatformeProfil {
   width: 100%;
   padding: 0;
   margin: 0;
@@ -17,151 +24,198 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 300px;
-  background-size: cover;
+  height: 260px; /* Hauteur de la section */
+  background-size: contain; /* Couvrir toute la section */
   overflow: hidden;
   text-align: center;
+
+  
+}
+
+.PlatformeProfil:hover {
+  cursor: pointer;
 }
 
 
 .ProfilTitre {
   width: 100%;
-  font-size: 3.75rem; /* Equivalent à 60px si la base est 16px */
+  font-size: 3.75rem; /* Equivalent to 60px if base is 16px */
   color: white;
   margin: 0 auto;
   line-height: 1.2;
   animation: fadeIn 1s ease-in-out;
   font-weight: 300;
-
+}
+.PROFIL{
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 .profil-container {
-  width: 90%;
-    display: flex;
-    justify-content: space-around;
-    padding:100px 0px ;
-    margin: 0 auto;
-    gap: 30px;
-   
-
-  }
-  /*left*/
-  .PROFIL_LEFT{
-    width: 35%;
-text-align: center;
-  }
-  .Photo{
-    display: flex;
-flex-direction: column;
-align-items: center;  }
-  .NomProfil{
-font-size:20px ;
-font-weight: 300;
-font-family: 'Rubik', Arial, sans-serif;
-line-height:25px ;
-color: #797979;
-  }
-  .PhotoProfil{
-    width: 220px;
-    height: 207px;
-    display: block;
-    margin: 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-  }
-  .Contact{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #F7F7F7;
-    margin-top: 30px;
-    height:100vh;
-  }
-  .ProfilContact{
-    color: rgb(255,205,51);
-    padding-bottom: 30px;
-
-font-weight: 400;
-font-size: 40px;
-
-  }
- 
-  .information {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding-left:  20PX; ;
-  }
-  .information-Item{
-    padding-left:10px;
-    font-size: 16px;
-    font-weight: 300;
-    color: rgb(51, 51, 51)
-    ;
-  }
-  /*right*/
-  .abonner{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #F7F7F7;
-    padding: 40px 40px 80px 40px;
-  }
-  .ProfilAccès{
-    text-align: center;
-    padding-bottom: 20px;
-    color: #333;
-    font-size: 18px;  }
-  .buttonAccès {
-    padding: 25px 50px;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 20px;
-    background-color: #295591;
-    border-bottom: 8px solid #295591;
-    border-left: 18px solid #295591;
-    border-right: 18px solid #295591;
-    border-top: 8px solid #295591;
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  padding:20px 0px;
+  margin: 0 auto;
+  gap: 80px;
 }
+
+.PROFIL_LEFT {
+  width: 34%;
+  text-align: start;
+}
+.PROFIL_Right{
+  width: 66%;
+  text-align: start;
+}
+.Photo {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.NomProfil {
+  font-size: 20px;
+  font-weight: 300;
+  font-family: 'Rubik', Arial, sans-serif;
+  line-height: 25px;
+  color: #797979;
+  text-align: start;
+}
+
+.PhotoProfil {
+  width: 200px;
+  height: 200px;
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.Contact {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F7F7F7;
+  margin-top: 30px;
+  height: 100vh;
+}
+
+.ProfilContact {
+  color: rgb(255, 204, 51);
+  padding-bottom: 30px;
+  font-weight: 300;
+  font-size: 32px;
+  text-align: center;
+}
+.informationCOACH{
+  width: 100%;
+
+}
+.information {
+  width: 100%;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.information-Item {
+  width: 100%;
+  padding-left: 10px;
+  font-size: 16px;
+  font-weight: 300;
+  color: rgb(51, 51, 51);
+  
+}
+
+/* Right */
+.abonner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F7F7F7;
+  padding: 40px 40px 80px 40px;
+}
+
+.ProfilAccès {
+  text-align: center;
+  color: #333;
+  font-size: 18px;
+}
+
+.buttonAccès {
+  background-color: #295591;
+  border-bottom: 8px solid #295591;
+  border-left: 18px solid #295591;
+  border-right: 18px solid #295591;
+  border-top: 8px solid #295591;
+  color: #fff;
+  width: 245px;
+  height: 80px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  padding: 20px 30px;
+  font-weight: 300;
+  font-size: 16px;
+}
+
 .titre {
-background-color: #EFEFEF;
-margin-top: 15px ;
-text-align: center;
-padding: 0px;
-    color: rgb(51, 51, 51)    ;
- 
-    font-size: 16px;
-    line-height: 2;
-    font-weight: 400;
+  background-color: #EFEFEF;
+  margin-top: 15px;
+  text-align: center;
+  padding: 0px;
+  color: rgb(51, 51, 51);
+  font-size: 16px;
+  line-height: 2;
+  font-weight: 400;
+}
 
-}
-.domaines-intervention  {
+.domaines-intervention {
   background-color: #F9F9F9;
-  color:#333;
-  padding:10px;
+  color: #333;
+  padding: 10px;
 }
-.ProfilDomaine,.ProfilMethode,.ProfilLangues,.ProfilType,.ProfilTarif{
- 
-  padding:10px;
-color: rgb(51, 51, 51);
+
+.ProfilDomaine,
+.ProfilMethode,
+.ProfilLangues,
+.ProfilType,
+.ProfilTarif {
+  padding: 10px;
+  color: rgb(51, 51, 51);
   font-size: 16px;
   text-align: start;
   font-weight: 300;
-
 }
-.bio{
+
+.bio {
   background-color: #F9F9F9;
-  color:#333;
-  padding:10px;
-  text-align: start;
+  color: #333;
+  padding: 10px;
+  
 }
-.bio p{
-  padding:10px;
 
+.bioCoach {
+  padding: 10px;
   font-size: 16px;
-  text-align: start;
+  text-align: justify;
+}
+@media (max-width: 767px) {
+  .profil-container {
+    display: flex;
+ flex-direction: column;
+  }
+  
+  .PROFIL_LEFT {
+    width: 100%;
 
+  }
+  .PROFIL_Right{
+    width: 100%;
 
+  }
 }

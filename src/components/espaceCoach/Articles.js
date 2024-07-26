@@ -8,6 +8,7 @@ import Newsletter from "../coach/Newsletter";
 import Footer from "../coach/Footer";
 import { getImageUrl } from "../..";
 import logo from "../../images/logo.jpg";
+import { Helmet, HelmetProvider } from 'react-helmet-async'; 
 
 import { MdPerson } from "react-icons/md";
 import { Dialog, DialogContent, IconButton } from "@mui/material";
@@ -20,7 +21,6 @@ const Articles = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const shareURL = 'http://facebook.com'; 
 
   useEffect(() => {
     dispatch(GetArticle());
@@ -42,10 +42,21 @@ const Articles = () => {
 
   const closeModal = () => {
     setShowModal(false);
+    setSelectedArticle(null);
   };
 
   return (
     <>
+    <HelmetProvider>
+     <Helmet>
+        <meta property="og:url" content={selectedArticle ? `https://8ade-41-225-78-122.ngrok-free.app/articles/${selectedArticle._id}` : ''} />
+        <meta property="og:title" content={selectedArticle ? selectedArticle.titre : ''} />
+        <meta property="og:description" content={selectedArticle ? selectedArticle.texte : ''} />
+        <meta property="og:image" content={selectedArticle ? getImageUrl(selectedArticle.photo) : ''} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="MonCoach" />
+        <title>{selectedArticle ? selectedArticle.titre : 'Articles'}</title>
+      </Helmet>
       <div
         className="PlatformeArticle"
         style={{
@@ -69,12 +80,12 @@ const Articles = () => {
                 <Card.Img variant="top" src={getImageUrl(article.photo)} width="100%" height="300px" />
                 <Card.Body>
                   <Card.Title className="article-card-title">{article.titre}</Card.Title>
-                  <Card.Text>
+                  <Card.Body>
                     <div style={{ display: "flex" }}>
                       <MdPerson className="article-card-author-icon" />
                       <h3 className="article-card-author">{article.auteur}</h3>
                     </div>
-                  </Card.Text>
+                  </Card.Body>
                 </Card.Body>
               </Card>
             </div>
@@ -124,35 +135,35 @@ const Articles = () => {
                       <h5 className="articl-auteur">{selectedArticle.auteur}</h5>
                     </div>
                     <div className='partageArticle' style={{ display: "flex", justifyContent: 'center', padding: "20px" }}>
-            <div>
-              <FacebookShareButton url={shareURL} quote={selectedArticle.titre} hashtag='#evenement'>
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  backgroundColor: '#0965FE',
-                  paddingRight: '5px'
-                }}>
-                  <FacebookIcon size={20} />
-                  <h3 className="info-item">Partage</h3>
-                </div>
-              </FacebookShareButton>
-            </div>
-            <div>
-              <LinkedinShareButton url={shareURL}>
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  backgroundColor: '#0077B5',
-                  paddingRight: '5px'
-                }}>
-                  <LinkedinIcon size={20} />
-                  <h3 className="info-item">Partage</h3>
-                </div>
-              </LinkedinShareButton>
-            </div>
-          </div> 
+                      <div>
+                        <FacebookShareButton url={`https://8ade-41-225-78-122.ngrok-free.app/articles/${selectedArticle._id}`} quote={selectedArticle.titre} hashtag='#evenement'>
+                          <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            backgroundColor: '#0965FE',
+                            paddingRight: '5px'
+                          }}>
+                            <FacebookIcon size={20} />
+                            <h3 className="info-item">Partage</h3>
+                          </div>
+                        </FacebookShareButton>
+                      </div>
+                      <div>
+                        <LinkedinShareButton url={`https://8ade-41-225-78-122.ngrok-free.app/articles/${selectedArticle._id}`}>
+                          <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            backgroundColor: '#0077B5',
+                            paddingRight: '5px'
+                          }}>
+                            <LinkedinIcon size={20} />
+                            <h3 className="info-item">Partage</h3>
+                          </div>
+                        </LinkedinShareButton>
+                      </div>
+                    </div> 
                   </div>
                 </div>
               </div>
@@ -162,6 +173,7 @@ const Articles = () => {
       </Dialog>
       <Newsletter />
       <Footer />
+      </HelmetProvider>
     </>
   );
 };
