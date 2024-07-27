@@ -12,14 +12,14 @@
 
  
 }
-.btn-ACCEUIL{
+.btn-ACCEUILvedio{
     width: 50%;
     height: 50px;
     display: block;
     margin: 40px auto;
     background-color: #0d345a;
     font-weight: bold;
-    padding: 10px 100px;
+    /* padding: 10px 100px; */
     text-align: center;
     color: #e3d80a;
     cursor: pointer;

@@ -10,15 +10,16 @@
 }.ImagePlatformeContact {
   position: relative;
   text-align: center;
-  height: 260px;
+  height: 250px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-size:contain;
+  background-size:cover;
   overflow: "hidden";
   display: "flex";
   justify-content: "center";
   align-items: "center";
+  background-position: center center;
   }
   
   .TitreContact {
@@ -28,6 +29,7 @@
     margin: 0 auto;
     line-height: 1.5;
     animation: fadeIn 1s ease-in-out;
+    font-weight: 300;
   }
   .EmailContact{
     width: 100%;
@@ -61,7 +63,7 @@
  margin: 0 auto;
   } */
   .sendemail{
-    width: 20%;
+    width: 31%;
     display: block;
     margin: 0px auto;
     background-color :rgb(240, 240, 240);

@@ -88,13 +88,13 @@ const Editvideo = () => {
     <div className="edit-Evenement">
       <div className="FormContainerEvenement">
         <form onSubmit={handleSubmit}>
-          <div>
+          <div className="ItemVedioEdit">
             <label className="LabelEditVedio">Titre</label>
             <Editor
               apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
               onInit={(evt, editor) => {
                 editorRef.current = editor;
-                editor.setContent(formData.titre);
+                editor.setContent(formData.texte);
               }}
               initialValue={formData.titre}
               init={{
@@ -135,7 +135,7 @@ const Editvideo = () => {
               }}
             />
           </div>
-          <div>
+          <div className="ItemVedioEdit">
             <label className="LabelEditVedio">Lien</label>
             <textarea
               className="inputVideoEdit"

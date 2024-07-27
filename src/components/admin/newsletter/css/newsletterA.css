@@ -20,19 +20,19 @@
     gap: 50px;
 }
 .EmailingNewsLetter{
-    width: 50%;
-    height: 50px;
+   width: 50%;
     display: block;
-    margin: 40px auto;
     background-color: #0d345a;
     font-weight: bold;
-    padding: 10px 100px;
+    padding: 10px 0px;
     text-align: center;
     color: #e3d80a;
     cursor: pointer;
-    line-height: 32px;
+    line-height: 2;
     text-decoration: none;
     font-size: 16px;
+    cursor: pointer;
+    margin-top: 40px;
 
 
 }

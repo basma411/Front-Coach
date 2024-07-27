@@ -83,7 +83,7 @@ const AjouterEvenement = () => {
 
       <div className="EvenementAjouter">
         <form className="EveAjouterContainer" onSubmit={handlePartenaire}>
-        <button className="buttonAccueil" onClick={handelAccueil}>
+        <button className="buttonAccueilEvnt" onClick={handelAccueil}>
             Accueil
           </button>
      <div style={{display:'flex',flexDirection:'column'}}>

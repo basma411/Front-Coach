@@ -47,7 +47,7 @@ const Ajoutervideo = () => {
       <NavBarAdmin />
       <OverlayA/>
       <div className="videoAjouter">
-      <button className="btn-ACCEUIL" onClick={()=>handelAcceuil()}>Accueil</button>
+      <button className="btn-ACCEUILvedio" onClick={()=>handelAcceuil()}>Accueil</button>
 
         <form className="videoAjouterContainer" onSubmit={handlevideo}>
 

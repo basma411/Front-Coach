@@ -9,28 +9,23 @@
     
 }
 .ConsultEvenementContainer{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* margin: 20px auto; */
-    gap: 50px;
+    width: 80%;
+margin: 0 auto;
 }
-.buttonAccueil {
-    width: 50%;
-    height: 50px;
-    display: block;
-    margin: 40px auto;
-    background-color: #0d345a;
-    font-weight: bold;
-    padding: 10px 100px;
-    text-align: center;
-    color: #e3d80a;
-    cursor: pointer;
-    line-height: 32px;
-    text-decoration: none;
-    font-size: 16px;
+.buttonAccueilEvnt {
+  width: 50%;
+  height: 50px;
+  display: block;
+  margin: 40px auto;
+  background-color: #0d345a;
+  font-weight: bold;
+  /* padding: 10px 100px; */
+  text-align: center;
+  color: #e3d80a;
+  cursor: pointer;
+  line-height: 32px;
+  text-decoration: none;
+  font-size: 16px;
   }
   
   .buttonAccueil:hover {
@@ -38,8 +33,8 @@
   }
 
 .ListEvntAdm{
-    width:200px;
-    height:100px;
+    width:100px;
+    height:50px;
 }
 
 .DataEvnt{

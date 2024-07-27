@@ -33,7 +33,13 @@
     cursor: pointer;
     padding: 0.375rem 0.75rem;
 }
-
+.ItemVedioEdit{
+    display: flex;
+    flex-direction: column;
+}
+.tox{
+    width: 100%;
+}
 .inputVideoEdit:focus {
     border-color: #66afe9;
     outline: 0;
