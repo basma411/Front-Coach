@@ -33,7 +33,7 @@ const PartageArticle = () => {
 
   return (
     <div>
-      {art ? (
+      {
         <div className="ArticleContai">
           <img src={logo} alt="Article" style={{ width: "180px" }} />
           <hr />
@@ -103,9 +103,7 @@ const PartageArticle = () => {
             </div>
           </div>
         </div>
-      ) : (
-        <div>Loading...</div> // Show a loading message or spinner while data is being fetched
-      )}
+  }
     </div>
   );
 };

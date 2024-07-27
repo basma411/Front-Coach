@@ -109,7 +109,7 @@ const EditArticle = () => {
                                     'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
                                     'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
                                 ],
-                                toolbar: 'undo redo | blocks | ' +
+                                toolbar: 'undo redo | ' +
                                     'bold italic forecolor | alignleft aligncenter ' +
                                     'alignright alignjustify | bullist numlist outdent indent | ' +
                                     'removeformat | help',

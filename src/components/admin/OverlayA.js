@@ -14,7 +14,7 @@ const OverlayA = () => {
       };
   return (
 <div className="PlatformeA">
-<div className="PlatformeAcceuil" 
+<div className="PlatformeAcceuil" data-stellar-background-ratio="0.5"
     style={{
       position: "relative",
       textAlign: "center",

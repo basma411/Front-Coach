@@ -1,31 +1,34 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import BarheaderAdmin from "../BarheaderAdmin";
 import NavBarAdmin from "../NavBarAdmin";
 import "./css/articleA.css";
-import image from "../../../images/big_image_2.jpg";
-
-import { Link, useNavigate } from "react-router-dom";
 import Deconnection from "../Deconnection";
+
 const Article = () => {
+  const navigate = useNavigate();
+
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
 
   return (
-<>
-
-<BarheaderAdmin />
+    <>
+      <BarheaderAdmin />
       <NavBarAdmin />
-   <Deconnection/>
+      <Deconnection />
       <div className="Consult-Articles">
         <div className="ConsultArticles-Container">
-          <Link to='/admin/article/invisible'>
-          <button className="buttonListArtc">Liste des articles invisibles</button>
-          </Link>
-          <Link to='/admin/article/visible'>
-          <button className="buttonListArtc">Liste des articles visibles </button>
-          </Link>
-         
+          <button className="buttonListArtc" onClick={() => handleNavigation('/admin/article/invisible')}>
+            Liste des articles invisibles
+          </button>
+          <button className="buttonListArtc" onClick={() => handleNavigation('/admin/article/visible')}>
+            Liste des articles visibles
+          </button>
         </div>
       </div>
-      </>  )
-}
+    </>
+  );
+};
 
-export default Article
+export default Article;

@@ -12,6 +12,7 @@
 }
 
 .CoachContainer {
+  width:100%;
   display: flex;
   align-items: start;
   justify-content: flex-start;
@@ -20,7 +21,8 @@
 }
 
 .TitreView {
-  color: gray;
+  width:100%;
+
   display: block;
   margin: 0 auto;
   font-family: 'Libre Baskerville', serif;

@@ -1,45 +1,39 @@
-
-.PlatformeAdmin{
+.PlatformeAdmin {
     width: 100%;
     margin: 0;
     padding: 0;
 }
-.containerPlatforme{
+
+.containerPlatforme {
     width: 80%;
-    /* height: 100vh; */
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin: 0 auto;
 }
-.left{
-    width: 50%;
-    padding-right: 140px;
-    border-right: solid 1px black;
-}
-.left,.rigth{
 
+.left, .rigth {
+    width: 50%;
     display: flex;
     flex-direction: column;
+    align-items: center; /* Center the buttons horizontally */
+    border-right: solid 1px black;
 }
- 
+
+.rigth {
+    border-right: none; /* Remove border from the right container */
+}
+
 .buttonStyle {
-    width: 450px;
+    width: 80%;
     height: 45px;
     margin-bottom: 20px;
-
     font-weight: bold;
     text-align: center;
-    margin-bottom: 20px;
-
-
-
-    margin-top:30px; 
-   background-color:#0D345A;
-   font-weight:bold; 
-   padding: 10px 0px;
-       text-align:center; 
+    margin-top: 30px; 
+    background-color: #0D345A;
     color: #e3d80a;
     cursor: pointer;
     font-size: 12px;
+    padding: 10px 0;
 }

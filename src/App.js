@@ -87,6 +87,7 @@ import EditPub from './components/admin/AtelierA/EditPub.js';
 import EmailingPub from './components/admin/AtelierA/EmailingPub.js';
 import EvenementPartage from './components/Evenement/EvenementPartage.js';
 import PartageArticle from './components/espaceCoach/PartageArticle.js';
+import PartagePub from './components/Acueil/PartagePub.js';
 
 function App() {
   const location = useLocation();
@@ -240,6 +241,8 @@ function App() {
             <Route path="*" element={<NotFound />} />
             <Route path="/atelier_degustation" element={<Atelier_Degustation />} />
             <Route path="/atelier_degustation/:id" element={<ListePub />} />
+            <Route path="atelier/:id" element={<PartagePub />} />
+
             <Route path="/formatelier" element={<FormAtelier />} />
             <Route path="/articles" element={<Articles />} />
             <Route path="/articles/:id" element={<PartageArticle />} />

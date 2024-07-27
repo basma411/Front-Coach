@@ -25,7 +25,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <Provider store={store}>
-    <HelmetProvider>
       <PersistGate loading={null} persistor={persistor}>
         <Router>
           <React.StrictMode>
@@ -33,7 +32,6 @@ root.render(
           </React.StrictMode>
         </Router>
       </PersistGate>
-    </HelmetProvider>
   </Provider>
 );
 

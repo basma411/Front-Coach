@@ -18,15 +18,17 @@
   .Image-Platforme {
     position: relative;
     text-align: center;
-    height: 270px;
-    display: flex;
+    min-height: 250px;
+    height: 250px;
+        display: flex;
     justify-content: center;
     align-items: center;
-    background-size:contain;
+    background-size:cover;
     overflow: "hidden";
     display: "flex";
     justify-content: "center";
     align-items: "center";
+    background-position: center center;
   }
   
   .text-center {

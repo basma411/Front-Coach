@@ -43,7 +43,7 @@ const ArticleVisible = () => {
       <OverlayA />
       <div className="ConsultArtVisib">
         <div className="ConsultArtVisibContainer">
-        <button className="buttonAccueil" onClick={handelAccueil}>
+        <button className="buttonAccueilArct" onClick={handelAccueil}>
             Accueil
           </button>
           <table className="TableArtvisib">

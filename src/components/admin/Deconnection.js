@@ -14,7 +14,7 @@ const Deconnection = () => {
   return (
     <div>
            <div
-        className="Image-Platforme"
+        className="Image-Platforme" data-stellar-background-ratio="0.5"
         style={{
           position: "relative",
           textAlign: "center",

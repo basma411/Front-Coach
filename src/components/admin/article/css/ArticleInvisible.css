@@ -9,14 +9,13 @@
     margin: 0 auto;
   }
   
-  .buttonAccueil {
+  .buttonAccueilArct {
     width: 50%;
     height: 50px;
     display: block;
     margin: 40px auto;
     background-color: #0d345a;
     font-weight: bold;
-    padding: 10px 100px;
     text-align: center;
     color: #e3d80a;
     cursor: pointer;
@@ -37,7 +36,7 @@
     border: 1px solid #ccc; 
 }
 .TableHeader, .TableData {
-  border: 1px solid #ccc; /* Cell borders */
+  border: 1px solid #ccc; 
   padding: 8px;
 }
   .TableHeader {
@@ -48,7 +47,7 @@
   }
 
   .TableData {
-    padding: 8px;
+    padding: 0px;
   }
 
   .TableDataimg {
@@ -59,7 +58,7 @@
   
   
   .IconData {
-    margin:  0 20px;
+    margin:  0 auto;
 
     font-size: 20px;
     color: black;

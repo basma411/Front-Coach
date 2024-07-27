@@ -38,7 +38,7 @@ const BiblioCoaching = () => {
                 <div className={`flipper ${isHovered === index ? "flipped" : ""}`}>
                   <div className="front">
                     <Card>
-                      <div className="image-container">
+                      <div className="image-containerBiblio ">
                         <Card.Img
                           variant="top"
                           src={getImageUrl(Biblio.photo_c)}
@@ -54,7 +54,7 @@ const BiblioCoaching = () => {
                           {Biblio.descrip}
                         </p>
                         <div className="author">
-                          <div className="image-container">
+                          <div>
                             <img
                               src={getImageUrl(Biblio.photo_c)}
                               width="60px"

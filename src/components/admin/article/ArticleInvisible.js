@@ -54,7 +54,7 @@ const ArticleInvisible = () => {
       <OverlayA />
       <div className="ConsultArtInvisib">
         <div className="ArtInvContainer">
-          <button className="buttonAccueil" onClick={handelAccueil}>
+          <button className="buttonAccueilArct" onClick={handelAccueil}>
             Accueil
           </button>
           <table className="TableArtInvisib">
@@ -81,7 +81,7 @@ const ArticleInvisible = () => {
                   <td className="TableData">
                     {truncateText(artV.texte, 49)}
                   </td>
-                  <td className="TableData  DataAction">
+                  <td className="TableData  ">
                     <Link to={`/admin/article/invisible/view/${artV._id}`}>
                       <GrView className="IconData" />
                     </Link>

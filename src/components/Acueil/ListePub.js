@@ -7,6 +7,8 @@ import { GetPublication } from '../../Redux/Slice/PubAtelierSlice.js';
 import './css/ListPub.css';
 import Newsletter from '../coach/Newsletter.js';
 import Footer from '../coach/Footer.js';
+import { Helmet, HelmetProvider } from 'react-helmet-async'; 
+
 import {
   Dialog,
   DialogContent,
@@ -23,34 +25,51 @@ const ListePub = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [selectedBub, setselectedBub] = useState(null);
-const shareURL="www.facebook.com"
   useEffect(() => {
     dispatch(GetPublication());
   }, [dispatch]);
 
-  useEffect(() => {
-    console.log('ID from useParams:', id);
-    console.log('Pubatelier:', pubatelier);
-  }, [id, pubatelier]);
+  // useEffect(() => {
+  //   console.log('ID from useParams:', id);
+  //   console.log('Pubatelier:', pubatelier);
+  // }, [id, pubatelier]);
 
   const filteredPublications = pubatelier && Array.isArray(pubatelier) ? pubatelier.filter(pub => pub.ouner === id) : [];
 
-  useEffect(() => {
-    console.log('Filtered Publications:', filteredPublications);
-  }, [filteredPublications]);
+  // useEffect(() => {
+  //   console.log('Filtered Publications:', filteredPublications);
+  // }, [filteredPublications]);
 
   const openModal = (article) => {
     setselectedBub(article);
     setShowModal(true);
+    console.log(selectedBub)
+
   };
 
   const closeModal = () => {
-    setselectedBub(null);
+    // setselectedBub(null);
     setShowModal(false);
   };
-
+  const shareUrl = `https://faab-197-1-117-152.ngrok-free.app/atelier/${selectedBub._id}` ;
+  const ogImage =  getImageUrl(selectedBub.photo) ;
+  const ogTitle =  selectedBub.titre  ;
+  const ogDescription = selectedBub.texte; 
   return (
     <>
+      <HelmetProvider>
+      <Helmet>
+        <meta property="og:url" content={shareUrl} />
+        <meta property="og:title" content={ogTitle} />
+        <meta property="og:description" content={ogDescription} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:type" content="website" />
+        <meta
+      name="title"
+      content="title"
+    />
+        <title>{ogTitle}</title>
+      </Helmet>
       <div
         className="ImagePlatforme"
         style={{
@@ -104,7 +123,7 @@ const shareURL="www.facebook.com"
               <div className="Bub-inf">
               <div className='partageBub' style={{ display: "flex", justifyContent: 'center', padding: "20px" }}>
             <div>
-              <FacebookShareButton url={shareURL} quote={selectedBub.titre} hashtag='#evenement'>
+              <FacebookShareButton url={shareUrl} quote={selectedBub.titre} >
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -118,7 +137,7 @@ const shareURL="www.facebook.com"
               </FacebookShareButton>
             </div>
             <div>
-              <LinkedinShareButton url={shareURL}>
+              <LinkedinShareButton url={shareUrl}>
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -143,6 +162,7 @@ const shareURL="www.facebook.com"
       </Dialog>
       <Newsletter />
       <Footer />
+      </HelmetProvider>
     </>
   );
 };

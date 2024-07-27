@@ -12,7 +12,9 @@
     margin: 0 auto;
   }
  
-.nav-link {
+.nav-linkAdmin{
+  text-decoration: none;
+
   font-size: 15px;
   color: rgb(43, 43, 43);
   line-height: 30px;
@@ -22,7 +24,7 @@ border-color: #fff;
 
 
 }
-.nav-link:hover {
+.nav-linkAdmin:hover {
   background-color:#275491;
   color: #fff;
 }
@@ -36,3 +38,67 @@ border-color: #fff;
 .me-auto {
   padding-right: 70px;
 }
+
+@media (max-width: 992px) {
+  .NavbarAdmin{
+
+  height: auto;
+
+}
+  .icon-LIST{
+    display: block;
+    margin-left: auto;
+  }
+
+  .NAVBAR-IMG {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+
+    
+  }
+
+
+
+  .nav-closed {
+    display: none;
+  }
+
+  .nav-open {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #fff;
+    position: relative;
+    border-top: solid 1px gray;
+    padding: 5px;
+  }
+
+  .nav-linkAdmin {
+    width: 100%;
+    display: block;
+margin: auto;  
+  padding: 10px 0;
+  }
+
+  .MENU-NAVBAR,.navbar-nav {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex !important ;
+    flex-direction: column !important ;
+    justify-content: center;
+    text-align: center;
+    /* align-items: center;
+    justify-content: center; */
+  }
+
+  .navbarContainerStyle {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
