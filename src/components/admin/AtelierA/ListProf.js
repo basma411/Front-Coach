@@ -47,8 +47,8 @@ const ListProf = () => {
 
       <div className="ConsultList">
         <div className="ListContainer">
-          <div className='buttonContainer'>
-            <button className="btnAccueil" onClick={handelAccueil}>Accueil</button>
+          <div className='LISTbuttonContainer'>
+            <button className="btnAccueilPROF" onClick={handelAccueil}>Accueil</button>
             <button className="btnEmailingProf" onClick={handelEmailing}>Emailing</button>
           </div>
           <table className="TableArtInvisib" style={{ borderCollapse: "collapse", width: "100%", textAlign: "center" }}>

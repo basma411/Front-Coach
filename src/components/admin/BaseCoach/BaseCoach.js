@@ -61,11 +61,11 @@ const BaseCoach = () => {
                 <th className="TableHeaderDate">Tél</th>
                 <th className="TableHeaderDate">
                   <div style={{ display: 'flex', justifyContent: 'center', gap: '5px' }}>
-                    <label>
+                    <label style={{display:'flex'}}>
                       <input type="radio" name="selectOptions" onClick={handleCheckAll} />
                       Tout cocher
                     </label>
-                    <label>
+                    <label style={{display:'flex'}}>
                       <input type="radio" name="selectOptions" onClick={handleUncheckAll} />
                       Tout décocher
                     </label>

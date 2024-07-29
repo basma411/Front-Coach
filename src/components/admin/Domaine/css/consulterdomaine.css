@@ -15,21 +15,22 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 20px auto;
-    gap: 50px;
+    margin: 0px auto;
+    gap: 20px;
 }
 .AccueilDomaine{
-    width: 90%;
+    width: 80%;
     height: 50px;
-        background-color:#0D345A;
-        padding:10px 100px;
-         text-align:center; 
-         color: #e3d80a;
-         cursor: pointer;
-         line-height: 32px;
-         text-decoration-style:solid ;
-         font-size: 16px;
-         font-weight: bold;
+    display: block;
+    margin: 10px auto;
+    background-color: #0d345a;
+    font-weight: bold;
+    text-align: center;
+    color: #e3d80a;
+    cursor: pointer;
+    line-height: 32px;
+    text-decoration: none;
+    font-size: 16px;
 
 
 }

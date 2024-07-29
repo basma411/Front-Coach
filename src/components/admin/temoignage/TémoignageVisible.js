@@ -77,9 +77,9 @@ const TémoignageVisible = () => {
                 <td className="DataTem">
 {T_V.Date}                </td>
 
-                <td className="DataTemIcon">
+                <td className="DataTem">
                 <Link to={`/admin/témoignages/invisible/edit/${T_V._id}`}>
-                      <CiEdit style={{ fontSize: "15px", color: "black" }} />
+                      <CiEdit style={{ fontSize: "15px", color: "black",marginRight:"8px" }} />
                     </Link>
               
                   <RiDeleteBin6Line

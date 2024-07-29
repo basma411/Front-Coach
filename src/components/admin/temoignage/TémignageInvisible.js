@@ -85,14 +85,14 @@ const navigate=useNavigate()
                 <td className="DataTem">
 {T_iV.Date}                </td>
 
-                <td className="DataTemIcon">
+                <td className="DataTem">
                 <Link to={`/admin/témoignages/invisible/view/${T_iV._id}`}>
-                      <GrView style={{ fontSize: "15px", color: "black" }} />
+                      <GrView style={{ fontSize: "15px", color: "black", marginRight:'8px' }} />
                     </Link>
                 <FaCheck
                       style={{
                         fontSize: "15px",
-                        color: "black",
+                        color: "black",marginRight:'8px'
                       }}
                       onClick={() => handleValid(T_iV._id)}
                     />

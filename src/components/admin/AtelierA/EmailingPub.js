@@ -55,7 +55,7 @@ const EmailingPub = () => {
       </div>
       <div className="ConsultEmail">
         <div className="ConsultEmailContainer">
-          <h3 className="EmailingCoach">Emailing </h3>
+          <h3 className="EmailingC">Emailing </h3>
           <label>Objet:</label>
           <input type="text" value={subject} onChange={(e) => setSubject(e.target.value)} />
           <label>Message:</label>

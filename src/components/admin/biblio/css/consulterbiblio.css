@@ -15,17 +15,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 50px auto;
-    gap: 50px;
+    margin: 0px auto;
+    gap: 20px;
 }
 .AccueilBiblio{
-    width: 40%;
+    width: 50%;
     height: 50px;
     display: block;
-    margin: 0 auto;
+    margin: 40px auto;
     background-color: #0d345a;
     font-weight: bold;
-    padding: 10px 100px;
     text-align: center;
     color: #e3d80a;
     cursor: pointer;

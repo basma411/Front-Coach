@@ -78,7 +78,7 @@ const ConsulterInterface = () => {
            </td>
            <td className="DataInter">
            <img            src={getImageUrl(interfaceData[0].image)}
- width={'100px'} />
+ width={'70px'} />
 
            </td>
            <td className="DataInter">

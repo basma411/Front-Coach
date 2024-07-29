@@ -10,15 +10,16 @@
     width: 80%;
     margin: 0px auto;
     border-radius: 8px;
+    padding-top: 20px;
 }
 .AddAtelier{
     width: 50%;
     height: 50px;
     display: block;
-    margin: 40px auto;
+    margin: 0px auto;
     background-color: #0d345a;
     font-weight: bold;
-    padding: 10px 100px;
+    /* padding: 10px 100px; */
     text-align: center;
     color: #e3d80a;
     cursor: pointer;

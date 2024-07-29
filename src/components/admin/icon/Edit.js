@@ -71,18 +71,22 @@ const Edit = () => {
                         <Editor
                             apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8" // Replace with your TinyMCE API Key
                             initialValue={formData.Titre}
-                            init={{
+                             init={{
                                 height: 500,
                                 menubar: true,
                                 plugins: [
-                                    'advlist autolink  lists link image charmap print preview anchor',
-                                    'searchreplace visualblocks code fullscreen',
-                                    'insertdatetime media table paste code help wordcount'
+                                    'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                                    'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                                    'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
                                 ],
-                                toolbar:
-                                    'undo redo | formatselect | bold italic backcolor | \
-                                    alignleft aligncenter alignright alignjustify | \
-                                    bullist numlist outdent indent | removeformat | help'
+                                toolbar: 'undo redo | ' +
+                                    'bold italic forecolor | alignleft aligncenter ' +
+                                    'alignright alignjustify | bullist numlist outdent indent | ' +
+                                    'removeformat | help',
+                                content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+                                setup: (editor) => {
+                                    editor.on('change', () => handleEditorChange(editor.getContent()));
+                                }
                             }}
                             value={formData.Titre}
                             onEditorChange={handleTitreChange}

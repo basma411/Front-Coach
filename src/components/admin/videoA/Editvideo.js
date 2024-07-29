@@ -14,9 +14,9 @@ const Editvideo = () => {
   const { id } = useParams();
   const editorRef = useRef();
 
-  const { video } = useSelector((state) => state.video);
+  const { video, loading } = useSelector((state) => state.video); // Assuming loading state is handled in Redux
   const [image, setImage] = useState(null);
-  const [Titre, settitre] = useState("");
+  const [titre, setTitre] = useState("");
 
   const [formData, setFormData] = useState({
     titre: "",
@@ -34,7 +34,7 @@ const Editvideo = () => {
       const videoEdit = video.find((video) => video._id === id);
       if (videoEdit) {
         setFormData(videoEdit);
-        settitre(videoEdit.titre); // Set the initial title state
+        setTitre(videoEdit.titre); // Set the initial title state
       }
     }
   }, [video, id]);
@@ -44,7 +44,7 @@ const Editvideo = () => {
   };
 
   const handleEditorChange = (content) => {
-    settitre(content);
+    setTitre(content);
   };
 
   const handleInputChange = (e) => {
@@ -57,8 +57,13 @@ const Editvideo = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!titre || !formData.lien) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
     const formDataToSend = new FormData();
-    formDataToSend.append("titre", Titre);
+    formDataToSend.append("titre", titre);
     formDataToSend.append("lien", formData.lien);
 
     if (image) {
@@ -69,7 +74,7 @@ const Editvideo = () => {
     navigate("/admin/videoCoching");
   };
 
-  if (!editorLoaded) {
+  if (loading || !editorLoaded) {
     return (
       <div
         style={{
@@ -94,43 +99,24 @@ const Editvideo = () => {
               apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
               onInit={(evt, editor) => {
                 editorRef.current = editor;
-                editor.setContent(formData.texte);
+                editor.setContent(formData.titre);
               }}
               initialValue={formData.titre}
               init={{
                 height: 500,
-                menubar: false,
+                menubar: true,
                 plugins: [
-                  "advlist",
-                  "autolink",
-                  "lists",
-                  "link",
-                  "image",
-                  "charmap",
-                  "preview",
-                  "anchor",
-                  "searchreplace",
-                  "visualblocks",
-                  "code",
-                  "fullscreen",
-                  "insertdatetime",
-                  "media",
-                  "table",
-                  "code",
-                  "help",
-                  "wordcount",
+                  "advlist autolink lists link image charmap preview anchor",
+                  "searchreplace visualblocks code fullscreen",
+                  "insertdatetime media table code help wordcount",
                 ],
                 toolbar:
-                  "undo redo | blocks | " +
-                  "bold italic forecolor | alignleft aligncenter " +
+                  "undo redo | bold italic forecolor | alignleft aligncenter " +
                   "alignright alignjustify | bullist numlist outdent indent | " +
                   "removeformat | help",
-                content_style:
-                  "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+                content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
                 setup: (editor) => {
-                  editor.on("change", () =>
-                    handleEditorChange(editor.getContent())
-                  );
+                  editor.on("change", () => handleEditorChange(editor.getContent()));
                 },
               }}
             />

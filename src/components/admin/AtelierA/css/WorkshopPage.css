@@ -22,7 +22,8 @@
 }
 .AddPub ,.ListPro,.ListCoach{
     width: 100%;
-    padding: 10px 20px;
+    height: 50px;
+    /* padding: 10px 20px; */
     margin: 10px 0;
     background-color: #0C4270;
     color: white;

@@ -20,20 +20,35 @@
     flex-direction: column;
 }
 
-.addAtelierContainer label {
+/* .addAtelierContainer label {
     margin-bottom: 8px;
     font-weight: bold;
-}
+} */
 
-.addAtelierContainer input[type="number"],
-.addAtelierContainer input[type="file"] {
+.addAtelierContainer input[type="number"]{
+    background-color: transparent;
+
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 20%;
+}
+.imputAtelier{
+    background-color: transparent;
     margin-bottom: 20px;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
     width: 100%;
 }
-
+.imputAtelier:focus,.addAtelierContainer input[type="number"]:focus {
+    border: solid 1px transparent;
+    outline-color: rgb(36, 233, 233);
+    outline-style: solid;
+    outline-width: 0.5px; /* Définir l'épaisseur de la bordure */
+    outline-offset: 0;
+  }
 /* .addAtelierContainer button {
     padding: 10px 20px;
     background-color: #0D3C68;
@@ -43,7 +58,7 @@
     cursor: pointer;
 } */
 
-.addAtelierContainer button:hover {
+.btnaddAtelier:hover {
     background-color: #0056b3;
 }
 
@@ -70,7 +85,7 @@
     font-size: 30px;
 } */
 
-.ImagePlatforme svg {
+/* .ImagePlatforme svg {
     font-size: 35px;
     font-weight: 400;
-}
+} */
