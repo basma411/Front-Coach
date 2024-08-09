@@ -1,0 +1,167 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideBackground {
+  0% {
+    background-position: 0 ;
+  }
+  100% {
+    background-position: 100% ;
+  }
+}
+.PlatformeProfilAbonner {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 260px; /* Hauteur de la section */
+  background-size: contain; /* Couvrir toute la section */
+  overflow: hidden;
+  text-align: center;
+
+  
+}
+
+
+
+.AbonnerTitre {
+  width: 100%;
+  font-size: 3.75rem; /* Equivalent to 60px if base is 16px */
+  color: white;
+  margin: 0 auto;
+  line-height: 1.2;
+  animation: fadeIn 1s ease-in-out;
+  font-weight: 300;
+}
+.PROFILAbonner{
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+.profil-container-Abonner {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  padding:20px 0px;
+  margin: 0 auto;
+  gap: 80px;
+}
+
+.Abonner_LEFT {
+  width: 34%;
+  text-align: start;
+}
+.Abonner_Right{
+  width: 66%;
+  text-align: start;
+}
+
+
+
+
+
+.ContactAbonner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F7F7F7;
+  margin-top: 30px;
+  height: 100vh;
+}
+
+.ProfilContactAbonner {
+  color: rgb(255, 204, 51);
+  padding-bottom: 30px;
+  font-weight: 300;
+  font-size: 32px;
+  text-align: center;
+}
+.infCOACHAbonner{
+  width: 100%;
+
+}
+.infAbonner {
+  width: 100%;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.inf-Item-Abonner{
+  width: 100%;
+  padding-left: 10px;
+  font-size: 16px;
+  font-weight: 300;
+  color: rgb(51, 51, 51);
+  
+}
+
+/* Right */
+.abonner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F7F7F7;
+  padding: 40px 40px 80px 40px;
+}
+
+.ProfilPayer {
+  text-align: center;
+  color: #333;
+  font-size: 18px;
+}
+.img-payer:hover{
+    border: solid 1px black  ;
+}
+.buttonPayer {
+    width: 350px;
+    height: 60px;
+    margin-top: 50px;
+  background-color: #295591;
+  border-bottom: 8px solid #295591;
+  border-left: 18px solid #295591;
+  border-right: 18px solid #295591;
+  border-top: 8px solid #295591;
+  color: #fff;
+ 
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  /* padding: 20px 30px; */
+  font-weight: 300;
+  font-size: 16px;
+}
+
+
+
+
+
+
+@media (max-width: 767px) {
+  .profil-container-Abonner  {
+    display: flex;
+ flex-direction: column;
+  }
+  
+  .Abonner_Right {
+    width: 100%;
+
+  }
+  .Abonner_LEFT{
+    width: 100%;
+
+  }
+}

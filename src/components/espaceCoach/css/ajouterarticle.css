@@ -11,26 +11,30 @@
 .PlatformeArticle-Add {
   position: relative;
   text-align: center;
-  height: 260px;
-  display: flex;
+  min-height: 250px;
+  height: 250px;
+      display: flex;
   justify-content: center;
   align-items: center;
-  background-size:contain;
+  background-size:cover;
   overflow: "hidden";
   display: "flex";
   justify-content: "center";
   align-items: "center";
+  background-position: center center;
+
          
 }
 
 .ArtcTitre {
-  width: 70%;
-  font-size: 3.75rem;
+  width: 80%;
+  font-size: 60px;
   color: white;
   margin: 0 auto;
   line-height: 1.5;
   animation: fadeIn 1s ease-in-out;
   font-weight: 300;
+
 }
 
 .ajouterArtc {

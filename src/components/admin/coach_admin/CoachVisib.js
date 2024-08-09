@@ -43,9 +43,9 @@ const CoachVisib = () => {
           
           <p>Merci pour votre confiance !</p>
           
-          <p>Ensemble pour une communauté plus grande</p>
+          <p >Ensemble pour une communauté plus grande</p>
           
-        <img src=${logo} alt="MonCoach.tn" />
+        <img src="https://i.imgur.com/43ESnOv.jpg" alt="MonCoach.tn"  />
         </div>
       `,
     };

@@ -21,6 +21,7 @@
   color: #275491;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   margin: 100px auto 0 auto;
+  font-weight: 500;
 }
 
 /* Conteneur flexible centré horizontalement et verticalement, avec un espace entre les éléments */
@@ -47,8 +48,15 @@
   font-weight: 400;
   line-height: 1;
   color: rgb(73, 80, 87);
-  border: solid 1px gray;
+  border: solid 1px #ccc;
   height: 40px;
+}
+.DomainesCherche:focus,.coachcherche:focus,.gouvernoratCherche:focus {
+  border: solid 1px transparent;
+  outline-color: rgb(36, 233, 233);
+  outline-style: solid;
+  outline-width: 0.5px; /* Définir l'épaisseur de la bordure */
+  outline-offset: 0;
 }
 
 /* Bouton de soumission avec un style de fond, des bordures arrondies, et des couleurs personnalisées */

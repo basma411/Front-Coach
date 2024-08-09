@@ -101,7 +101,7 @@ console.log(selectedDomaines)
     formData.append('tarif', tarifPreferentiel);
   
     dispatch(UpdateCoachVisibleAdmin({ id, data: formData }));
-    alert("Nom modifié");
+    alert("Informations du coach mises à jour avec succès");
     navigate("/admin/Coachs/visible");
   };
   const handleOut = (value) => {

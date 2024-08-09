@@ -5,8 +5,6 @@ import { getImageUrl } from "../..";
 import { AddEvenement, GetEvenement } from "../../Redux/Slice/EvenementSlice";
 import { useDispatch, useSelector } from "react-redux";
 import "./css/ajouterEvnt.css";
-import Model from "./Model";
-import { useNavigate } from "react-router-dom";
 import { CiCalendarDate } from "react-icons/ci";
 import { Dialog, DialogContent, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
@@ -20,6 +18,7 @@ import {
 } from "react-share";
 import Newsletter from "../coach/Newsletter";
 import Footer from "../coach/Footer";
+import { useNavigate } from "react-router-dom";
 
 const AjouterEvtt = () => {
   const dispatch = useDispatch();

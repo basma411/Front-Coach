@@ -50,8 +50,8 @@ const navigator=useNavigate()
      <div className='style-Domaine'>
      <select className='DomainesCherche' ref={domaine}>
           <option>Choisir un domaine de coaching</option>
-          {domaines && domaines.map((domaine) => (
-            <option key={domaine.id} value={domaine.domaines}>
+          {domaines && domaines.map((domaine,index) => (
+            <option key={index} value={domaine.domaines}>
               {domaine.domaines}
             </option>
           ))}

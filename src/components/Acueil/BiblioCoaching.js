@@ -49,7 +49,7 @@ const BiblioCoaching = () => {
                   </div>
                   <Card className="back">
                     <Card.Body>
-                      <Card.Text className="textCard">
+                      <Card.Body className="textCard">
                         <p className="Bibliodesc">
                           {Biblio.descrip}
                         </p>
@@ -67,7 +67,7 @@ const BiblioCoaching = () => {
                             <h3 className="BiblioAnne">{Biblio.annee}</h3>
                           </div>
                         </div>
-                      </Card.Text>
+                      </Card.Body>
                     </Card.Body>
                   </Card>
                 </div>

@@ -13,17 +13,33 @@ const Temoignages = () => {
     dispatch(GetTemoignageV());
     console.log(TemoignegeV);
   }, [dispatch]);
+  useEffect(() => {
+    const handleScroll = () => {
+      const elem = document.querySelector('.section-hero');
+      const { top } = elem.getBoundingClientRect();
+      console.log(top)
+      if (elem) {
+        const { top } = elem.getBoundingClientRect();
+        // Calculate the background position based on the element's position and scroll
+        const backgroundPositionY = -(top-40-82 )* 0.6;
+        elem.style.backgroundPosition = `50% ${backgroundPositionY}px`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <div
-        className="ImagePlatforme"
+        className="PlatformePartageTem  section-hero" data-stellar-background-ratio="0.5"
         style={{
-          position: "relative",
-          textAlign: "center",
-          height: "300px",
+      
           backgroundImage: `url(${image})`,
-          backgroundSize: "cover",
-          overflow: "hidden",
+       
         }}
       >
         <div>

@@ -1,18 +1,25 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getImageUrl } from '../../index.js';
 import './css/atelierDegus.css';
 import image from '../../images/big_image_atelier.jpg';
 import Newsletter from '../coach/Newsletter.js';
 import Footer from '../coach/Footer.js';
+import { GetPublication } from '../../Redux/Slice/PubAtelierSlice.js';
+import { GetAtelier } from '../../Redux/Slice/AtelierSlice.js';
 
 const Atelier_Degustation = () => {
   // Utilisation de useSelector pour récupérer les données des états Redux
   const { ateliers } = useSelector((state) => state.atelier);
   const { pubatelier } = useSelector((state) => state.pubatelier);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(GetAtelier());
+    console.log(ateliers)
+  }, [dispatch]);
   // Fonction pour obtenir la première image de publication d'un atelier
   const getFirstPublicationImage = (atelierId) => {
     // Rechercher la publication correspondant à l'atelierId

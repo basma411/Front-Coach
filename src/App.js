@@ -11,7 +11,7 @@ import EditProfile from './components/coach/EditProfile';
 import { NavBar } from './components/coach/NavBar';
 import TrouverCoach from './components/TrouverCoach/TrouverCoach';
 import EspaceCoach from './components/espaceCoach/EspaceCoach';
-import Evenement from './components/Evenement/Evenement';
+import Evenement from './components/Evenement/Evenement.js';
 import Videocoach from './components/videoCoach/Videocoach';
 import Coach from './components/Acueil/Coach';
 import { setLoading } from './Redux/Slice/LodingSlice';
@@ -81,37 +81,38 @@ import Temoignages from './components/TrouverCoach/Temoignages.js';
 import ListePub from './components/Acueil/ListePub.js';
 import Faq_Coach from './components/Acueil/Faq_Coach.js';
 import EmailingNewsletter from './components/admin/newsletter/EmailingNewsletter.js';
-import './index.css';
+// import './App.css';
 import Menu from './components/admin/Menu.js';
 import EditPub from './components/admin/AtelierA/EditPub.js';
 import EmailingPub from './components/admin/AtelierA/EmailingPub.js';
 import EvenementPartage from './components/Evenement/EvenementPartage.js';
 import PartageArticle from './components/espaceCoach/PartageArticle.js';
 import PartagePub from './components/Acueil/PartagePub.js';
+import Abonnemment from './components/coach/Abonnemment.js';
 
 function App() {
   const location = useLocation();
 
-  useEffect(() => {
-    if (location.pathname.startsWith('/admin')) {
-      document.title = 'Moncoach Admin';
-    } else {
-      document.title = '1ère Plateforme dédiée au coach';
-    }
-  }, [location]);
+  // useEffect(() => {
+  //   if (location.pathname.startsWith('/admin')) {
+  //     document.title = 'Moncoach Admin';
+  //   } else {
+  //     document.title = '1ère Plateforme dédiée au coach';
+  //   }
+  // }, [location]);
   const isLoading = useSelector(state => state.loading.isLoading);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    // Simulation d'un chargement asynchrone initial (par exemple, une requête API)
-    dispatch(setLoading(true));
-    const delay = setTimeout(() => {
-      dispatch(setLoading(false));
-    }, 2000);
+  // useEffect(() => {
+  //   // Simulation d'un chargement asynchrone initial (par exemple, une requête API)
+  //   dispatch(setLoading(true));
+  //   const delay = setTimeout(() => {
+  //     dispatch(setLoading(false));
+  //   }, 2000);
 
-    // Nettoyage du timeout si le composant est démonté avant la fin du délai
-    return () => clearTimeout(delay);
-  }, [dispatch]);
+  //   // Nettoyage du timeout si le composant est démonté avant la fin du délai
+  //   return () => clearTimeout(delay);
+  // }, [dispatch]);
 
   // Routes valides de l'application
   const validRoutes = [
@@ -134,15 +135,18 @@ function App() {
     "/Contact-coach",
     "/Temoignages",
     "/atelier_degustation/:id",
-    "/faq"
+    "/faq",
+    "/coach/paiement"
   ];
 
   // Vérifie si l'URL actuelle correspond à une route valide
   const isRouteValid = validRoutes.includes(location.pathname) || location.pathname.startsWith("/atelier_degustation");
-
+  
   return (
     
-    <div className="App"  style={{ fontFamily: '"Rubik", arial, sans-serif', fontWeight: 300 }}>
+   <>
+
+     <div className="App"  style={{ fontFamily: '"Rubik", arial, sans-serif', fontWeight: 300 }}>
       {isLoading ? (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
           <img src={loading} alt="Chargement..." />
@@ -222,6 +226,8 @@ function App() {
             <Route path="/admin/list-faq" element={<ListFaq />} />
             <Route path="/coach/login" element={<LoginCoch />} />
             <Route path="/coach/profil" element={<ProfilCoach />} />
+            <Route path="/coach/paiement" element={<Abonnemment />} />
+
             <Route path="/coach/setting/:id" element={<SettingProfil />} />
             <Route path="/coach/edit/:id" element={<EditProfile />} />
             <Route path="/faq" element={<Faq_Coach />} />
@@ -253,6 +259,7 @@ function App() {
         </>
       )}
     </div>
+   </>
   );
 }
 

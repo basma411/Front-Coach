@@ -3,7 +3,7 @@ import image from "../../images/big_image_2.jpg";
 import ChercheCoach from "../Acueil/ChercheCoach";
 import Newsletter from "../coach/Newsletter";
 import Footer from "../coach/Footer";
-import "./css/TrouverCoach.css"; // Assurez-vous que ce chemin est correct
+import "./css/TrouverCoach.css"; 
 import { FaRegCirclePlay } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchInterface, addTemoignage } from "../../Redux/Slice/InterfaceSlice";
@@ -12,7 +12,6 @@ import { Editor } from "@tinymce/tinymce-react";
 import { AddTemoignages } from "../../Redux/Slice/TemoignegeSlice";
 import { useNavigate } from "react-router-dom";
 import DOMPurify from "dompurify";
-// import { Helmet,HelmetProvider } from 'react-helmet-async';
 
 import {
   Dialog,
@@ -30,7 +29,24 @@ const TrouverCoach = () => {
   const { interfaceData } = useSelector((state) => state.interface);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  useEffect(() => {
+    const handleScroll = () => {
+      const elem = document.querySelector('.section-hero');
+      const { top } = elem.getBoundingClientRect();
+      console.log(top)
+      if (elem) {
+        const { top } = elem.getBoundingClientRect();
+        // Calculate the background position based on the element's position and scroll
+        const backgroundPositionY = -(top-40-82 )* 0.6;
+        elem.style.backgroundPosition = `50% ${backgroundPositionY}px`;
+      }
+    };
 
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   useEffect(() => {
     console.log("Fetching interface data...");
     dispatch(fetchInterface());
@@ -104,24 +120,21 @@ const TrouverCoach = () => {
     return div.innerHTML;
   };
 
+  
   return (
     <>
-    {/* <HelmetProvider>
-<Helmet>
-  <title>Trouver Coach</title>
-</Helmet> */}
-    <div
-        className="ImagePlatforme"
+
+<div >
+
+<div
+        className="TrouverCoachPlatforme section-hero"  data-stellar-background-ratio="0.5"
         style={{
-          position: "relative",
-          textAlign: "center",
-          height: "300px",
+       
           backgroundImage: `url(${image})`,
-          backgroundSize: "cover",
-          overflow: "hidden",
-        }}
+     
+       }}
       >
-        <div style={{ paddingTop: "0px" }}>
+        <div >
           <h3 className="TrouveCoachTitre">Rencontrez votre coach!</h3>
         </div>
       </div>
@@ -160,7 +173,7 @@ const TrouverCoach = () => {
 
       <Dialog open={showModal} onClose={closeModal} fullWidth maxWidth="md">
         <DialogContent>
-          <div className="PlatformeEvn" style={{ backgroundImage: `url(${image})` }}>
+          <div className="PlatformeEvn" data-stellar-background-ratio="0.5" style={{ backgroundImage: `url(${image})` }}>
             <h3 className="AjouterTemTitre">Ajoutez votre témoignage ici!</h3>
           </div>
         <div style={{width:"50%" ,display:'block',margin:'0 auto'}}>
@@ -226,7 +239,7 @@ const TrouverCoach = () => {
           onClick={closeModal}
           sx={{
             position: "fixed",
-            right: "calc(50% - 500px + 8px)", 
+            right: "calc(54% - 500px + 8px)", 
             top: "calc(50% - 250px - 40px)", 
             color: "gray",
             fontWeight:'500',
@@ -240,6 +253,7 @@ const TrouverCoach = () => {
       <Newsletter />
       <Footer />
     
+</div>
     </>
   );
 };

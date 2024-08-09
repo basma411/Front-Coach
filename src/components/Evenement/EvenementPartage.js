@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-
-import { Helmet } from 'react-helmet';
 import { CiCalendarDate } from "react-icons/ci";
 import { MdGpsFixed } from "react-icons/md";
 import {
@@ -12,110 +10,118 @@ import {
   LinkedinIcon,
 } from "react-share";
 import { getImageUrl } from "../../index.js";
-import { GetEvenement } from "../../Redux/Slice/EvenementSlice"; // Assume you have an action to fetch event by ID
+import { Evnt_OG, GetEvenement } from "../../Redux/Slice/EvenementSlice";
 import logo from "../../images/logo.jpg";
 import "./css/evenement.css";
+import { Helmet } from "react-helmet-async";
 
 const EvenementPartage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const event = useSelector((state) =>
-    state.evenement.Evenement.find((evt) => evt._id === id)
-  );
+  const [loadedEvent, setLoadedEvent] = useState(null);
 
   useEffect(() => {
-    if (!event) {
-      dispatch(GetEvenement(id)); // Fetch event by ID if not already available in state
-    }
-  }, [dispatch, id, event]);
+ 
+    dispatch(GetEvenement(id));
+    console.log(id)
 
-  const ogTitle = event ? event.titre : "Titre de l'événement";
-  const ogDescription = event ? event.texte : "Description fixe";
-  const ogImage = event ? getImageUrl(event.photo) : "http://localhost:8000/upload/images/1719330847015.png";
-  const shareUrl = `https://8ade-41-225-78-122.ngrok-free.app/Evenement/${id}`;
+  
+}, [dispatch]);
+const { Evenement, selectedEvenement } = useSelector((state) => state.evenement);
+
+  const event =Evenement.find((evt) => evt._id === id)
+
+
+  useEffect(() => {
+ 
+   
+
+    
+      setLoadedEvent(event);
+    console.log(loadedEvent)
+    if(loadedEvent){
+    dispatch(Evnt_OG(loadedEvent._id))
+    console.log(loadedEvent._id)
+  console.log(selectedEvenement)}
+  }, [event]);
+
+  const ogTitle = loadedEvent ? loadedEvent.titre : "événement";
+
+  const share_Url = `https://ce28-197-15-129-6.ngrok-free.app/Evenement/${id}`;
 
   return (
-    <div style={{ padding: "40px" }}>
+    <>
       <Helmet>
-        <meta property="og:url" content={shareUrl} />
-        <meta property="og:title" content={ogTitle} />
-        <meta property="og:description" content={ogDescription} />
-        <meta property="og:image" content={ogImage} />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="MonCoach" />
         <title>{ogTitle}</title>
+
       </Helmet>
-  
-      <img src={logo} alt="logo" width="220px" height="70" />
-      <hr />
-      {event && (
-        <>
-          <div>
-            <img
-              src={getImageUrl(event.photo)}
-              alt="Event"
-              className="Evnt-image"
-            />
-          </div>
-          <div className="modal-Evnt">
-            <h2 className="Evnt-titre">{event.titre}</h2>
-            <div
-              className="Evnt-descri"
-              dangerouslySetInnerHTML={{ __html: event.texte }}
-            />
-            <div className="Evnt-info">
-              <div className="info-item">
-                <CiCalendarDate className="info-icon" />
-                <h5 className="info-date">{event.dates}</h5>
+      <div style={{ padding: "40px" }}>
+        <img src={logo} alt="logo" width="220px" height="70" />
+        <hr />
+        {loadedEvent && (
+          <>
+            <div>
+              <img
+                src={getImageUrl(loadedEvent.photo)}
+                alt="Event"
+                className="Evnt-image"
+              />
+            </div>
+            <div className="modal-Evnt">
+              <h2 className="Evnt-titre">{loadedEvent.titre}</h2>
+              <div
+                className="Evnt-descri"
+                dangerouslySetInnerHTML={{ __html: loadedEvent.texte }}
+              />
+              <div className="Evnt-info">
+                <div className="info-item">
+                  <CiCalendarDate className="info-icon" />
+                  <h5 className="info-date">{loadedEvent.dates}</h5>
+                </div>
+                <div className="info-item">
+                  <MdGpsFixed className="info-icon" />
+                  <h5 className="info-lieu">{loadedEvent.lieu}</h5>
+                </div>
               </div>
-              <div className="info-item">
-                <MdGpsFixed className="info-icon" />
-                <h5 className="info-lieu">{event.lieu}</h5>
+              <div className="partagerEVNT">
+                <div>
+                  <FacebookShareButton url={share_Url} quote={ogTitle}>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        backgroundColor: "#0965FE",
+                        paddingRight: "5px",
+                      }}
+                    >
+                      <FacebookIcon size={20} />
+                      <h3 className="info-item">Partage</h3>
+                    </div>
+                  </FacebookShareButton>
+                </div>
+                <div>
+                  <LinkedinShareButton url={share_Url}>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        backgroundColor: "#0077B5",
+                        paddingRight: "5px",
+                      }}
+                    >
+                      <LinkedinIcon size={20} />
+                      <h3 className="info-item">Partage</h3>
+                    </div>
+                  </LinkedinShareButton>
+                </div>
               </div>
             </div>
-            <div className="partagerEVNT">
-              <div>
-                <FacebookShareButton
-                  url={shareUrl}
-                  quote={ogTitle}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      backgroundColor: "#0965FE",
-                      paddingRight: "5px",
-                    }}
-                  >
-                    <FacebookIcon size={20} />
-                    <h3 className="info-item">Partage</h3>
-                  </div>
-                </FacebookShareButton>
-              </div>
-              <div>
-                <LinkedinShareButton
-                  url={shareUrl}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      backgroundColor: "#0077B5",
-                      paddingRight: "5px",
-                    }}
-                  >
-                    <LinkedinIcon size={20} />
-                    <h3 className="info-item">Partage</h3>
-                  </div>
-                </LinkedinShareButton>
-              </div>
-            </div>
-          </div>
-        </>
-      )}
-    </div>
+          </>
+        )}
+      </div>
+    </>
   );
 };
 

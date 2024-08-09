@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getCoach } from "../../Redux/Slice/CoachSlice";
 import image from "../../images/big_image_2.jpg";
-import "../coach/css/Profil.css";
+import "../coach/css/abonner.css";
 import { FaEarthAfrica } from "react-icons/fa6";
 import { BsTelephoneFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
@@ -27,7 +27,9 @@ const ProfilCoach = () => {
     if (isAuth) navigate("/coach/profil");
     else navigate("/coach/login");
   }, [isAuth, navigate]);
-
+  const handelPayer = () => {
+    navigate("/coach/paiement");
+  };
   return (
     <>
       <div
@@ -115,7 +117,7 @@ const ProfilCoach = () => {
               Restez connecté(e) avec vos clients et activez l’accès à votre
               profil.
             </p>
-            <button className="buttonAccès">Abonnement Annuel</button>
+            <button className="buttonAccès" onClick={handelPayer}>Abonnement Annuel</button>
           </div>
 
           <h3 className="domaines-coaching-title titre">Domaines de Coaching</h3>

@@ -8,7 +8,6 @@ import Newsletter from "../coach/Newsletter";
 import Footer from "../coach/Footer";
 import { getImageUrl } from "../..";
 import logo from "../../images/logo.jpg";
-import { Helmet, HelmetProvider } from 'react-helmet-async'; 
 
 import { MdPerson } from "react-icons/md";
 import { Dialog, DialogContent, IconButton } from "@mui/material";
@@ -47,16 +46,8 @@ const Articles = () => {
 
   return (
     <>
-    <HelmetProvider>
-     <Helmet>
-        <meta property="og:url" content={selectedArticle ? `https://8ade-41-225-78-122.ngrok-free.app/articles/${selectedArticle._id}` : ''} />
-        <meta property="og:title" content={selectedArticle ? selectedArticle.titre : ''} />
-        <meta property="og:description" content={selectedArticle ? selectedArticle.texte : ''} />
-        <meta property="og:image" content={selectedArticle ? getImageUrl(selectedArticle.photo) : ''} />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="MonCoach" />
-        <title>{selectedArticle ? selectedArticle.titre : 'Articles'}</title>
-      </Helmet>
+    <>
+    
       <div
         className="PlatformeArticle"
         style={{
@@ -173,7 +164,7 @@ const Articles = () => {
       </Dialog>
       <Newsletter />
       <Footer />
-      </HelmetProvider>
+      </>
     </>
   );
 };

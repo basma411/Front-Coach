@@ -19,7 +19,6 @@ padding: 0;
 }
 .PartenaireTitre{
   width: 100%;
-  margin-top: 100px;
   text-align: center;
   font-size: 36px;
   color: #275491;
@@ -43,7 +42,7 @@ padding: 0;
   display: flex; /* Affichage en mode flex */
   animation: scrolling var(--marquee-animation-duration) linear infinite; /* Animation du défilement */
   margin: 0; /* Marge zéro */
-  margin: 30px; /* Marge autour du contenu */
+  /* margin: 30px; */
 }
 
 /* Styles pour chaque élément de la liste */

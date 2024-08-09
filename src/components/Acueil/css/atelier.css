@@ -19,7 +19,7 @@ margin: 0;
    display: flex;
    /* align-items: center;
    justify-content: center; */
-   gap: 60PX;
+   gap: 100PX;
    background: #fff;
    font-size: 18px;
    line-height: 2;
@@ -28,7 +28,7 @@ margin: 0;
    font-weight: 300;
   }
      .Heading {
-width: 60%;
+width: 50%;
         /* margin-bottom: 60px; */
     }
     .TitlePlateforme{
@@ -65,7 +65,8 @@ color: rgb(128, 128, 128);
   opacity: 0.8;  ;
     }
     .AtelierInscri{
-        width: 50%;
+        width: 60%;
+        height: 70px;
     cursor: pointer;
     display: block;
     margin:20px auto  ;
@@ -75,7 +76,7 @@ color: rgb(128, 128, 128);
     border: none;
     color: white;
     padding: 15px 32px;
-    text-align: center;
+        text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;

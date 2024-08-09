@@ -17,14 +17,34 @@
   margin: 0;
 }
 
-.TrouveCoachTitre {
+
+
+.TrouverCoachPlatforme {
+  position: relative;
+  text-align: center;
+  min-height: 250px;
+  height: 250px;
+      display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size:cover;
+  overflow: "hidden";
+  display: "flex";
+  justify-content: "center";
+  align-items: "center";
+  background-position: center center;
+
+}
+
+.TrouveCoachTitre{
   width: 80%;
-  font-size: 3.75rem;
+  font-size: 60px;
   color: white;
   margin: 0 auto;
-  line-height: 1.2;
+  line-height: 1.5;
   animation: fadeIn 1s ease-in-out;
   font-weight: 300;
+
 }
 
 .Temaignage {
@@ -124,28 +144,30 @@
 /**** Dialogue ****/
 .PlatformeEvn {
   position: relative;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  top: 0;
-  background-size: cover;
-  overflow: hidden;
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
+  min-height: 250px;
+  height: 250px;
+      display: flex;
   justify-content: center;
+  align-items: center;
+  background-size:cover;
+  overflow: "hidden";
+  display: "flex";
+  justify-content: "center";
+  align-items: "center";
+  background-position: center center;
+
 }
 
 .AjouterTemTitre {
-  width: 50%;
-  font-size: 40px;
+  width: 80%;
+  font-size: 60px;
   color: white;
   margin: 0 auto;
-  line-height: 1.2;
-  text-align: center;
+  line-height: 1.5;
   animation: fadeIn 1s ease-in-out;
   font-weight: 300;
+
 }
 
 .MuiDialogContent-root {

@@ -24,7 +24,7 @@ const Slide = () => {
   return (
     <Carousel>
     {Slide && Slide.map((slide, index) => (
-      <Carousel.Item key={slide.id} >
+      <Carousel.Item key={index} >
         <img
           className="d-block w-700"
           src={getImageUrl(slide.photo)}

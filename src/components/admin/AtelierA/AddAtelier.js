@@ -90,10 +90,7 @@ console.log(numThéme,titre,date)
             <label className='LabelAtelier'>Photo de Théme :</label>
             <input type="file" onChange={handlePhotoChange} required />
           </div>
-          <div className='buttonContainer'>
-            <button type="submit" className='btnAddAtelier'>Ajouter</button>
-            <button type="button"  className="btnAnnulerAdd"onClick={() => navigate("/admin/atelier-A")}>Annuler</button>
-          </div>
+            <button type="submit" className='btnAddAtelier'>Envoyer</button>
         </form>
       </div>
     </>

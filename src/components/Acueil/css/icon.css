@@ -9,7 +9,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   margin: 0 auto;
-  gap: 40px; /* Ajoute un espace entre les éléments */
+  gap: 10px; /* Ajoute un espace entre les éléments */
 }
 
 .grid-item {
@@ -34,7 +34,7 @@
 }
 .icontitle {
   display: block;
-  margin: 10px auto;
+  margin:1rem auto !important;
  font-weight: 400;
   font-size: 20px;
   
@@ -58,7 +58,7 @@ text-align: justify !important;
   color: #e3d80a;
   font-size: 16px;
   cursor: pointer;
-  margin-top: auto; /* Place l'élément en bas */
+  margin-top: auto; 
   font-weight:300 ;
   font-family: Arial, Helvetica, sans-serif;
 }

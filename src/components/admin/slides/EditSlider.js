@@ -90,7 +90,7 @@ const EditSlider = () => {
                     <div style={{display:'flex',flexDirection:'column'}}>
                         <label className='LabelEditSlider'>Titre1</label>
                         <Editor
-                            apiKey="votre-cle-api-tinymce"
+                            apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
                             onInit={(evt, editor) => {
                                 editorRef1.current = editor;
                                 editor.setContent(formData.titre1);
@@ -118,7 +118,7 @@ const EditSlider = () => {
                     <div style={{display:'flex',flexDirection:'column'}}>
                         <label className='LabelEditSlider'>Titre2</label>
                         <Editor
-                            apiKey="votre-cle-api-tinymce"
+                            apiKey="1994z08ifihaxvil1djjswb8ukpzno8v15iflre6tzcdv7g8"
                             onInit={(evt, editor) => {
                                 editorRef2.current = editor;
                                 editor.setContent(formData.titre2);

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Dialog, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { Helmet, HelmetProvider } from 'react-helmet-async'; 
 import image from "../../images/big_image_2.jpg";
 import "./css/evenement.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,52 +20,64 @@ import {
 } from "react-share";
 import logo from "../../images/logo.jpg";
 
+
 const Evenement = () => {
   const dispatch = useDispatch();
-  const { Evenement } = useSelector((state) => state.evenement);
-  const [ShowModal, SetShowModal] = useState(false);
+  const { Evenement, selectedEvenement } = useSelector((state) => state.evenement);
   const [selectedEvent, setSelectedEvent] = useState(null);
-
-  useEffect(() => {
-    dispatch(GetEvenement());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (selectedEvent) {
-      document.title = selectedEvent.titre;
-    } else {
-      document.title = "Titre de l'événement";
-    }
-  }, [selectedEvent]);
-
+  const [metadata, setMetadata] = useState({});
+  const [ShowModal, SetShowModal] = useState(false);
   const handleTitleClick = (event) => {
     setSelectedEvent(event);
+console.log(event._id)
     SetShowModal(true);
-    console.log(event._id)
-  };
 
+  };
   const closeModal = () => {
     SetShowModal(false);
     setSelectedEvent(null);
   };
+  useEffect(() => {
+    dispatch(GetEvenement());
+  }, [dispatch]);
 
-  const shareUrl = selectedEvent ? `https://8ade-41-225-78-122.ngrok-free.app/Evenement/${selectedEvent._id}` : '' ;
-  const ogImage = selectedEvent ? getImageUrl(selectedEvent.photo) : '' ;
-  const ogTitle = selectedEvent ? selectedEvent.titre : "Titre de l'événement" ;
-  const ogDescription = selectedEvent ? selectedEvent.texte : "Description de l'événement"; 
 
+
+  useEffect(() => {
+    if (selectedEvenement) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(selectedEvenement, 'text/html');
+      setMetadata({
+        title: doc.querySelector('meta[property="og:title"]')?.getAttribute('content') || 'Default Title',
+        description: doc.querySelector('meta[name="description"]')?.textContent || 'Default Description',
+        ogTitle: doc.querySelector('meta[property="og:title"]')?.getAttribute('content') || 'Default OG Title',
+        ogDescription: doc.querySelector('meta[property="og:description"]')?.textContent || 'Default OG Description',
+        ogImage: doc.querySelector('meta[property="og:image"]')?.getAttribute('content')?.replace(/\\/g, '/') || 'default-image-url.jpg',
+      });
+    }
+  }, [selectedEvenement]);
+
+  const shareUrl = selectedEvent ? `https://ce28-197-15-129-6.ngrok-free.app/Evenement/${selectedEvent._id}` : '';
+  const ogImage = selectedEvent ? getImageUrl(selectedEvent.photo) : 'default-image-url.jpg';
+  const ogTitle = selectedEvent ? selectedEvent.titre : 'Titre de l\'événement';
+  const ogDescription = selectedEvent ? selectedEvent.texte : 'Description de l\'événement';
+  const [metaTags, setMetaTags] = useState({
+    title: 'Default Title',
+
+});
+useEffect(() => {
+  setTimeout(() => {
+      setMetaTags({
+          title: 'Updated Title',
+    
+      });
+  }, 2000);
+}, []);
   return (
-    <HelmetProvider>
-      <Helmet>
-        <meta property="og:url" content={shareUrl} />
-        <meta property="og:title" content={ogTitle} />
-        <meta property="og:description" content={ogDescription} />
-        <meta property="og:image" content={ogImage} />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="MonCoach" />
-        <title>{ogTitle}</title>
-      </Helmet>
-      <div className="ImagePlatformeEvn" style={{ backgroundImage: `url(${image})` }}>
+    <>
+ 
+
+<div className="ImagePlatformeEvn" style={{ backgroundImage: `url(${image})` }}>
         <h3 className="TitreEnvt">Évènements</h3>
       </div>
       <div className="Evnement">
@@ -168,8 +179,8 @@ const Evenement = () => {
               <div>
                 <LinkedinShareButton
                   url={shareUrl}
-                  title={selectedEvent?.titre} 
-                  summary={selectedEvent?.titre} 
+                 
+                
                 >
                   <div
                     style={{
@@ -191,7 +202,7 @@ const Evenement = () => {
       </Dialog>
       <Newsletter />
       <Footer />
-    </HelmetProvider>
+    </>
   );
 };
 
